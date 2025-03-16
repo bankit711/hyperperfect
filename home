@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HyperPerfect Help Center</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #0078d4;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        h2 {
+            color: #0078d4;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #333;
+            margin-top: 20px;
+        }
+        .section {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .feature {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .feature-icon {
+            flex: 0 0 50px;
+            font-size: 24px;
+            color: #0078d4;
+            text-align: center;
+            margin-right: 15px;
+        }
+        .feature-content {
+            flex: 1;
+        }
+        .tip {
+            background-color: #e6f7ff;
+            border-left: 4px solid #0078d4;
+            padding: 10px 15px;
+            margin: 15px 0;
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #666;
+        }
+        .toc {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        .toc ul {
+            list-style-type: none;
+            padding-left: 15px;
+        }
+        .toc a {
+            color: #0078d4;
+            text-decoration: none;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>HyperPerfect Help Center</h1>
+        <p>Your guide to using HyperPerfect Excel Add-in efficiently</p>
+    </header>
+
+    <div class="toc">
+        <h2>Table of Contents</h2>
+        <ul>
+            <li><a href="#introduction">Introduction to HyperPerfect</a></li>
+            <li><a href="#getting-started">Getting Started</a></li>
+            <li><a href="#clean-data">Clean Data Feature</a>
+                <ul>
+                    <li><a href="#formula-clean">Formula Clean</a></li>
+                    <li><a href="#data-conversion">Data Conversion Options</a></li>
+                </ul>
+            </li>
+            <li><a href="#analyze-data">Analyze Data Feature</a>
+                <ul>
+                    <li><a href="#revenue-waterfall">Revenue Waterfall</a></li>
+                    <li><a href="#pivot-tables">Pivot Tables</a></li>
+                </ul>
+            </li>
+            <li><a href="#troubleshooting">Troubleshooting</a></li>
+            <li><a href="#faq">Frequently Asked Questions</a></li>
+        </ul>
+    </div>
+
+    <section id="introduction" class="section">
+        <h2>Introduction to HyperPerfect</h2>
+        <p>HyperPerfect is a powerful Excel add-in designed to enhance your data processing capabilities. It provides advanced tools for cleaning, analyzing, and visualizing your data, making complex Excel operations faster and more efficient.</p>
+        
+        <div class="feature">
+            <div class="feature-icon">⚡</div>
+            <div class="feature-content">
+                <h3>Speed and Efficiency</h3>
+                <p>HyperPerfect is built for performance, handling large datasets with ease and reducing processing time for complex operations.</p>
+            </div>
+        </div>
+        
+        <div class="feature">
+            <div class="feature-icon">🧹</div>
+            <div class="feature-content">
+                <h3>Data Cleaning</h3>
+                <p>Powerful tools to clean and standardize your data, removing inconsistencies and preparing it for analysis.</p>
+            </div>
+        </div>
+        
+        <div class="feature">
+            <div class="feature-icon">📊</div>
+            <div class="feature-content">
+                <h3>Advanced Analytics</h3>
+                <p>Generate insights with sophisticated analytical tools, including revenue waterfalls and customizable pivot tables.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="getting-started" class="section">
+        <h2>Getting Started</h2>
+        <p>After installing the HyperPerfect add-in, you can access it from the Home tab in Excel. Click on the "Show HyperPerfect" button to open the task pane.</p>
+        
+        <p>The HyperPerfect interface consists of two main sections:</p>
+        <ul>
+            <li><strong>Clean</strong> - Tools for cleaning and standardizing your data</li>
+            <li><strong>Analyze</strong> - Tools for analyzing and visualizing your data</li>
+        </ul>
+        
+        <div class="tip">
+            <strong>Tip:</strong> You can navigate between these sections using the navigation menu at the top of the task pane.
+        </div>
+    </section>
+
+    <section id="clean-data" class="section">
+        <h2>Clean Data Feature</h2>
+        <p>The Clean Data feature provides tools to prepare your data for analysis by cleaning and standardizing it.</p>
+        
+        <h3 id="formula-clean">Formula Clean</h3>
+        <p>The Formula Clean feature helps you process your data using formulas, making it easier to work with complex datasets.</p>
+        
+        <p>To use Formula Clean:</p>
+        <ol>
+            <li>Select your input sheet from the dropdown menu</li>
+            <li>Configure the cleaning options as needed</li>
+            <li>Click the "Clean Source Data with Formulas" button</li>
+        </ol>
+        
+        <h3 id="data-conversion">Data Conversion Options</h3>
+        <p>HyperPerfect offers several data conversion options to standardize your data:</p>
+        
+        <ul>
+            <li><strong>Monthly to Annual Adjustment</strong> - Convert between monthly and annual revenue figures</li>
+            <li><strong>Unit Conversion</strong> - Standardize units across your dataset</li>
+            <li><strong>Adjust Partial Periods</strong> - Handle partial period amounts at the start or end of revenue streams</li>
+            <li><strong>Plug Revenue Gaps</strong> - Fill gaps in revenue streams</li>
+            <li><strong>Remove Overlapping Values</strong> - Identify and remove overlapping revenue entries</li>
+            <li><strong>Exclude Small Revenue Amounts</strong> - Set a minimum threshold for revenue values</li>
+        </ul>
+    </section>
+
+    <section id="analyze-data" class="section">
+        <h2>Analyze Data Feature</h2>
+        <p>The Analyze Data feature provides tools to gain insights from your data through advanced analytics and visualizations.</p>
+        
+        <h3 id="revenue-waterfall">Revenue Waterfall</h3>
+        <p>The Revenue Waterfall feature helps you visualize changes in revenue over time, breaking down increases and decreases by various factors.</p>
+        
+        <p>To generate a Revenue Waterfall:</p>
+        <ol>
+            <li>Select your source sheet from the dropdown menu</li>
+            <li>Choose the metric you want to analyze</li>
+            <li>Select the cohort detail level</li>
+            <li>Apply any dimension filters if needed</li>
+            <li>Click the "Revenue Waterfall" button</li>
+        </ol>
+        
+        <h3 id="pivot-tables">Pivot Tables</h3>
+        <p>HyperPerfect can generate customized pivot tables to analyze your data from different perspectives.</p>
+        
+        <p>To create Pivot Tables:</p>
+        <ol>
+            <li>Select your source sheet</li>
+            <li>Choose the primary dimension</li>
+            <li>Select the row configuration</li>
+            <li>Choose the time period</li>
+            <li>Click the "Run Pivot Tables" button</li>
+        </ol>
+    </section>
+
+    <section id="troubleshooting" class="section">
+        <h2>Troubleshooting</h2>
+        
+        <h3>Common Issues</h3>
+        
+        <div class="feature">
+            <div class="feature-icon">❓</div>
+            <div class="feature-content">
+                <h4>Add-in Not Loading</h4>
+                <p>If the add-in doesn't load, try refreshing Excel or restarting the application. Ensure you have the necessary permissions to run add-ins.</p>
+            </div>
+        </div>
+        
+        <div class="feature">
+            <div class="feature-icon">❓</div>
+            <div class="feature-content">
+                <h4>Processing Large Datasets</h4>
+                <p>When working with very large datasets, the add-in might take longer to process. Consider breaking down your data into smaller chunks for more efficient processing.</p>
+            </div>
+        </div>
+        
+        <div class="feature">
+            <div class="feature-icon">❓</div>
+            <div class="feature-content">
+                <h4>Formula Errors</h4>
+                <p>If you encounter formula errors, check your data for inconsistencies or missing values that might be causing the errors.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="section">
+        <h2>Frequently Asked Questions</h2>
+        
+        <h3>General Questions</h3>
+        
+        <div class="feature">
+            <div class="feature-icon">Q</div>
+            <div class="feature-content">
+                <h4>What types of data can HyperPerfect process?</h4>
+                <p>HyperPerfect is designed to work with various types of data, but it's particularly effective for financial and time-series data, especially revenue data with temporal dimensions.</p>
+            </div>
+        </div>
+        
+        <div class="feature">
+            <div class="feature-icon">Q</div>
+            <div class="feature-content">
+                <h4>Does HyperPerfect modify my original data?</h4>
+                <p>No, HyperPerfect creates new worksheets for processed data, keeping your original data intact.</p>
+            </div>
+        </div>
+        
+        <div class="feature">
+            <div class="feature-icon">Q</div>
+            <div class="feature-content">
+                <h4>Can I customize the output formats?</h4>
+                <p>Yes, HyperPerfect offers various customization options for both data cleaning and analysis outputs.</p>
+            </div>
+        </div>
+        
+        <div class="feature">
+            <div class="feature-icon">Q</div>
+            <div class="feature-content">
+                <h4>Is my data secure when using HyperPerfect?</h4>
+                <p>Yes, HyperPerfect processes all data locally within Excel and does not transmit your data to external servers.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 HyperPerfect. All rights reserved.</p>
+        <p>For additional support, contact us at support@hyperperfect.ai</p>
+    </footer>
+</body>
+</html>
