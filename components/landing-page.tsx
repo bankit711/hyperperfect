@@ -52,16 +52,12 @@ export default function LandingPage() {
               <Link 
                 href="https://publish.obsidian.md/hyperperfect/Website/General+Overview" 
                 className="text-white/90 hover:text-white text-sm font-medium transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 Features
               </Link>
               <Link 
                 href="https://appsource.microsoft.com/" 
                 className="text-white/90 hover:text-white text-sm font-medium transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 Download
               </Link>
@@ -73,8 +69,6 @@ export default function LandingPage() {
               <Link 
                 href="https://publish.obsidian.md/hyperperfect/Website/Help" 
                 className="text-white/90 hover:text-white text-sm font-medium transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 Help
               </Link>
@@ -110,8 +104,6 @@ export default function LandingPage() {
                 href="https://publish.obsidian.md/hyperperfect/Website/General+Overview" 
                 className="text-white text-2xl font-medium" 
                 onClick={() => setIsMenuOpen(false)}
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 Features
               </Link>
@@ -119,8 +111,6 @@ export default function LandingPage() {
                 href="https://appsource.microsoft.com/" 
                 className="text-white text-2xl font-medium" 
                 onClick={() => setIsMenuOpen(false)}
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 Download
               </Link>
@@ -133,8 +123,6 @@ export default function LandingPage() {
                 href="https://publish.obsidian.md/hyperperfect/Website/Help" 
                 className="text-white text-2xl font-medium" 
                 onClick={() => setIsMenuOpen(false)}
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 Help
               </Link>
@@ -181,16 +169,12 @@ export default function LandingPage() {
           <Link 
             href="https://publish.obsidian.md/hyperperfect/Website/Terms+of+Service" 
             className="text-white/90 hover:text-white flex items-center"
-            target="_blank"
-            rel="noopener noreferrer"
           >
             <span className="mr-1">→</span> Terms
           </Link>
           <Link 
             href="https://publish.obsidian.md/hyperperfect/Website/Privacy+Policy" 
             className="text-white/90 hover:text-white flex items-center"
-            target="_blank"
-            rel="noopener noreferrer"
           >
             <span className="mr-1">→</span> Privacy
           </Link>
