@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Keep only essential variables */
+    --hyperperfect-blue: #1a7bff;
+  }
+  
+  body {
+    @apply bg-white text-black;
+  }
+} 
