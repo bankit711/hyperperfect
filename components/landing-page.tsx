@@ -65,9 +65,11 @@ export default function LandingPage() {
               >
                 Download
               </Link>
+              {/* Pricing link temporarily disabled
               <Link href="#" className="text-white/90 hover:text-white text-sm font-medium transition-colors">
                 Pricing
               </Link>
+              */}
               <Link 
                 href="https://publish.obsidian.md/hyperperfect/Website/Help" 
                 className="text-white/90 hover:text-white text-sm font-medium transition-colors"
@@ -122,9 +124,11 @@ export default function LandingPage() {
               >
                 Download
               </Link>
+              {/* Pricing link temporarily disabled
               <Link href="#" className="text-white text-2xl font-medium" onClick={() => setIsMenuOpen(false)}>
                 Pricing
               </Link>
+              */}
               <Link 
                 href="https://publish.obsidian.md/hyperperfect/Website/Help" 
                 className="text-white text-2xl font-medium" 
