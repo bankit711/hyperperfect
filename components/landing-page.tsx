@@ -68,8 +68,13 @@ export default function LandingPage() {
               <Link href="#" className="text-white/90 hover:text-white text-sm font-medium transition-colors">
                 Pricing
               </Link>
-              <Link href="#" className="text-white/90 hover:text-white text-sm font-medium transition-colors">
-                Resources
+              <Link 
+                href="https://publish.obsidian.md/hyperperfect/Website/Help" 
+                className="text-white/90 hover:text-white text-sm font-medium transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Help
               </Link>
             </nav>
 
@@ -120,8 +125,14 @@ export default function LandingPage() {
               <Link href="#" className="text-white text-2xl font-medium" onClick={() => setIsMenuOpen(false)}>
                 Pricing
               </Link>
-              <Link href="#" className="text-white text-2xl font-medium" onClick={() => setIsMenuOpen(false)}>
-                Resources
+              <Link 
+                href="https://publish.obsidian.md/hyperperfect/Website/Help" 
+                className="text-white text-2xl font-medium" 
+                onClick={() => setIsMenuOpen(false)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Help
               </Link>
               <div className="pt-6 border-t border-white/20">
                 {/* Sign In link temporarily disabled
