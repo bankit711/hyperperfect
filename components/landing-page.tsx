@@ -22,14 +22,14 @@ export default function LandingPage() {
     <div className="relative min-h-screen overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 z-0 bg-[#1a7bff]">
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div className="absolute inset-0 flex items-center justify-end">
           <div
-            className="w-full h-full opacity-30"
+            className="w-1/2 h-full opacity-30"
             style={{
               backgroundImage:
                 "url(/images/symbol.svg)",
-              backgroundSize: "40%",
-              backgroundPosition: "center",
+              backgroundSize: "80%",
+              backgroundPosition: "center right",
               backgroundRepeat: "no-repeat",
             }}
           ></div>
