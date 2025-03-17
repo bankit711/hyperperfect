@@ -44,20 +44,20 @@ export default function LandingPage() {
           <div className="flex items-center justify-between h-20 md:h-24">
             {/* Logo */}
             <Link href="/" className="flex items-center">
-              <span className="text-white font-bold text-2xl md:text-3xl">HyperPerfect</span>
+              <span className="text-white font-bold text-3xl md:text-4xl">HyperPerfect</span>
             </Link>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
               <Link 
                 href="https://publish.obsidian.md/hyperperfect/Website/Features" 
-                className="text-white/90 hover:text-white text-base font-medium transition-colors"
+                className="text-white/90 hover:text-white text-lg font-medium transition-colors"
               >
                 Features
               </Link>
               <Link 
                 href="https://appsource.microsoft.com/" 
-                className="text-white/90 hover:text-white text-base font-medium transition-colors"
+                className="text-white/90 hover:text-white text-lg font-medium transition-colors"
               >
                 Download
               </Link>
@@ -68,7 +68,7 @@ export default function LandingPage() {
               */}
               <Link 
                 href="https://publish.obsidian.md/hyperperfect/Website/Help" 
-                className="text-white/90 hover:text-white text-base font-medium transition-colors"
+                className="text-white/90 hover:text-white text-lg font-medium transition-colors"
               >
                 Help
               </Link>
@@ -84,6 +84,8 @@ export default function LandingPage() {
               <Link 
                 href="https://calendly.com/di-hyperperfect/30min"
                 className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-xl font-bold transition-colors focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none bg-white text-[#1a7bff] hover:bg-white/90 px-8 py-4"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Get Started
               </Link>
@@ -102,19 +104,16 @@ export default function LandingPage() {
         <div className="fixed inset-0 z-40 bg-black pt-16">
           <div className="container mx-auto px-4 py-8">
             <nav className="flex flex-col space-y-6">
-              <Link href="#" className="text-white text-2xl font-medium" onClick={() => setIsMenuOpen(false)}>
-                Products
-              </Link>
               <Link 
                 href="https://publish.obsidian.md/hyperperfect/Website/Features" 
-                className="text-white text-2xl font-medium" 
+                className="text-white text-3xl font-medium" 
                 onClick={() => setIsMenuOpen(false)}
               >
                 Features
               </Link>
               <Link 
                 href="https://appsource.microsoft.com/" 
-                className="text-white text-2xl font-medium" 
+                className="text-white text-3xl font-medium" 
                 onClick={() => setIsMenuOpen(false)}
               >
                 Download
@@ -126,7 +125,7 @@ export default function LandingPage() {
               */}
               <Link 
                 href="https://publish.obsidian.md/hyperperfect/Website/Help" 
-                className="text-white text-2xl font-medium" 
+                className="text-white text-3xl font-medium" 
                 onClick={() => setIsMenuOpen(false)}
               >
                 Help
@@ -142,6 +141,8 @@ export default function LandingPage() {
                 href="https://calendly.com/di-hyperperfect/30min"
                 className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-lg font-bold transition-colors focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none bg-white text-[#1a7bff] hover:bg-white/90 py-6 w-full text-center"
                 onClick={() => setIsMenuOpen(false)}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Get Started
               </Link>
@@ -154,10 +155,10 @@ export default function LandingPage() {
       <div className="relative z-10 flex flex-col justify-center min-h-screen">
         <div className="container mx-auto px-4 md:px-6 -mt-16">
           <div className="max-w-2xl md:max-w-3xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-8">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-16">
               Automate your Excel workflow for customer revenue analysis.
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-xl">
+            <p className="text-2xl md:text-3xl text-white/90 mb-8 max-w-xl">
               Instantly clean data and create revenue waterfalls and cohort analyses — all built with auditable formulas directly in Excel.
             </p>
           </div>
@@ -169,15 +170,15 @@ export default function LandingPage() {
         <div className="container mx-auto flex justify-end gap-8">
           <Link 
             href="https://publish.obsidian.md/hyperperfect/Website/Terms+of+Service" 
-            className="text-white/90 hover:text-white flex items-center text-lg"
+            className="text-white/90 hover:text-white flex items-center text-xl"
           >
-            <span className="mr-2 text-xl">→</span> Terms
+            <span className="mr-2 text-2xl">→</span> Terms
           </Link>
           <Link 
             href="https://publish.obsidian.md/hyperperfect/Website/Privacy+Policy" 
-            className="text-white/90 hover:text-white flex items-center text-lg"
+            className="text-white/90 hover:text-white flex items-center text-xl"
           >
-            <span className="mr-2 text-xl">→</span> Privacy
+            <span className="mr-2 text-2xl">→</span> Privacy
           </Link>
         </div>
       </footer>
