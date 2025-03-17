@@ -142,7 +142,12 @@ export default function LandingPage() {
           >
             <span className="mr-1">→</span> Terms
           </Link>
-          <Link href="/privacy" className="text-white/90 hover:text-white flex items-center">
+          <Link 
+            href="https://publish.obsidian.md/hyperperfect/Website/Privacy+Policy" 
+            className="text-white/90 hover:text-white flex items-center"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <span className="mr-1">→</span> Privacy
           </Link>
         </div>
