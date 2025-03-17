@@ -49,8 +49,13 @@ export default function LandingPage() {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
-              <Link href="#" className="text-white/90 hover:text-white text-sm font-medium transition-colors">
-                Help
+              <Link 
+                href="https://publish.obsidian.md/hyperperfect/Website/General+Overview" 
+                className="text-white/90 hover:text-white text-sm font-medium transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Features
               </Link>
               <Link href="#" className="text-white/90 hover:text-white text-sm font-medium transition-colors">
                 Download
@@ -65,9 +70,11 @@ export default function LandingPage() {
 
             {/* Desktop CTA */}
             <div className="hidden md:flex items-center space-x-4">
+              {/* Sign In link temporarily disabled
               <Link href="#" className="text-white/90 hover:text-white text-sm font-medium">
                 Sign In
               </Link>
+              */}
               <Button className="bg-white text-[#1a7bff] hover:bg-white/90 px-6">Try Free</Button>
             </div>
 
@@ -87,7 +94,13 @@ export default function LandingPage() {
               <Link href="#" className="text-white text-2xl font-medium" onClick={() => setIsMenuOpen(false)}>
                 Products
               </Link>
-              <Link href="#" className="text-white text-2xl font-medium" onClick={() => setIsMenuOpen(false)}>
+              <Link 
+                href="https://publish.obsidian.md/hyperperfect/Website/General+Overview" 
+                className="text-white text-2xl font-medium" 
+                onClick={() => setIsMenuOpen(false)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Features
               </Link>
               <Link href="#" className="text-white text-2xl font-medium" onClick={() => setIsMenuOpen(false)}>
@@ -97,9 +110,11 @@ export default function LandingPage() {
                 Resources
               </Link>
               <div className="pt-6 border-t border-white/20">
+                {/* Sign In link temporarily disabled
                 <Link href="#" className="text-white text-2xl font-medium" onClick={() => setIsMenuOpen(false)}>
                   Sign In
                 </Link>
+                */}
               </div>
               <Button
                 className="bg-white text-[#1a7bff] hover:bg-white/90 text-lg py-6"
