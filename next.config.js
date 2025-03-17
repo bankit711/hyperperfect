@@ -1,5 +1,7 @@
 // next.config.js
 /** @type {import('next').NextConfig} */
+
+// GitHub Pages specific configuration
 const nextConfig = {
   output: 'export',  // Enables static HTML export
   distDir: 'out',    // Output directory
@@ -8,10 +10,9 @@ const nextConfig = {
   },
   // Ensure trailing slashes for GitHub Pages compatibility
   trailingSlash: true,
-  // If deploying to a custom domain, you don't need basePath and assetPrefix
-  // If deploying to a GitHub Pages subdomain (username.github.io/repo-name), uncomment these:
-  // basePath: '/repo-name',
-  // assetPrefix: '/repo-name/',
+  // Remove assetPrefix to allow relative paths
+  // assetPrefix: 'https://www.hyperperfect.ai',
+  basePath: '',
 }
 
 module.exports = nextConfig

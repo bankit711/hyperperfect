@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "bash scripts/deploy.sh"
+    "predeploy": "bash scripts/deploy.sh",
+    "deploy": "npx gh-pages -d out -t true",
+    "test-build": "next build && npx serve out"
   },
   "dependencies": {
     "clsx": "^2.0.0",
