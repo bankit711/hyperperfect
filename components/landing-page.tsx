@@ -27,7 +27,7 @@ export default function LandingPage() {
             className="w-full h-full opacity-30"
             style={{
               backgroundImage:
-                "url(https://hebbkx1anhila5yf.public.blob.vercel-storage.com/symbol-4wAslmHGm1dt9rAkmzziSu5MDcXvB2.svg)",
+                "url(/images/symbol.svg)",
               backgroundSize: "40%",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
