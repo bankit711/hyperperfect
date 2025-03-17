@@ -85,7 +85,7 @@ export default function LandingPage() {
                 href="https://calendly.com/di-hyperperfect/30min"
                 className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-lg font-bold transition-colors focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none bg-white text-[#1a7bff] hover:bg-white/90 px-8 py-4"
               >
-                Try Free
+                Get Started
               </Link>
             </div>
 
@@ -143,7 +143,7 @@ export default function LandingPage() {
                 className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-lg font-bold transition-colors focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none bg-white text-[#1a7bff] hover:bg-white/90 py-6 w-full text-center"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Try Free
+                Get Started
               </Link>
             </nav>
           </div>
@@ -154,20 +154,12 @@ export default function LandingPage() {
       <div className="relative z-10 flex flex-col justify-center min-h-screen">
         <div className="container mx-auto px-4 md:px-6 -mt-16">
           <div className="max-w-2xl md:max-w-3xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-8">
               Automate your Excel workflow for customer revenue analysis.
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-xl">
               Instantly clean data and create revenue waterfalls and cohort analyses — all built with auditable formulas directly in Excel.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="https://calendly.com/di-hyperperfect/30min"
-                className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-lg font-bold transition-colors focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none bg-white text-[#1a7bff] hover:bg-white/90 px-12 py-7 w-full sm:w-auto"
-              >
-                Get Started
-              </Link>
-            </div>
           </div>
         </div>
       </div>
