@@ -50,7 +50,7 @@ export default function LandingPage() {
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
               <Link 
-                href="https://publish.obsidian.md/hyperperfect/Website/General+Overview" 
+                href="https://publish.obsidian.md/hyperperfect/Website/Features" 
                 className="text-white/90 hover:text-white text-base font-medium transition-colors"
               >
                 Features
@@ -106,7 +106,7 @@ export default function LandingPage() {
                 Products
               </Link>
               <Link 
-                href="https://publish.obsidian.md/hyperperfect/Website/General+Overview" 
+                href="https://publish.obsidian.md/hyperperfect/Website/Features" 
                 className="text-white text-2xl font-medium" 
                 onClick={() => setIsMenuOpen(false)}
               >
