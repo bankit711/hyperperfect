@@ -155,9 +155,12 @@ export default function LandingPage() {
               Instantly clean data and create revenue waterfalls and cohort analyses — all built with auditable formulas directly in Excel.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="bg-white text-[#1a7bff] hover:bg-white/90 text-lg px-8 py-6 font-medium">
+              <Link
+                href="https://calendly.com/di-hyperperfect/30min"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium transition-colors focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none bg-white text-[#1a7bff] hover:bg-white/90 text-lg px-8 py-6 font-medium"
+              >
                 Get Started
-              </Button>
+              </Link>
             </div>
           </div>
         </div>
