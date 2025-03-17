@@ -132,10 +132,10 @@ export default function LandingPage() {
         <div className="container mx-auto px-4 md:px-6 -mt-16">
           <div className="max-w-2xl md:max-w-3xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
-              Perfect sound for your perfect moments
+              Accelerate Insights, Eliminate Mistakes.
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-xl">
-              Experience audio like never before with our cutting-edge sound technology.
+              Transform your data workflow with powerful AI-driven analytics and error detection.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button className="bg-white text-[#1a7bff] hover:bg-white/90 text-lg px-8 py-6 font-medium">

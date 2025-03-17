@@ -11,8 +11,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "HyperPerfect - Perfect sound for your perfect moments",
-  description: "Experience audio like never before with our cutting-edge sound technology.",
+  title: "HyperPerfect - Accelerate Insights, Eliminate Mistakes",
+  description: "Transform your data workflow with powerful AI-driven analytics and error detection.",
 };
 
 export default function RootLayout({
