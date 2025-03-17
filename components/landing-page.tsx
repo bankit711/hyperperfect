@@ -165,19 +165,19 @@ export default function LandingPage() {
       </div>
 
       {/* Footer */}
-      <footer className="absolute bottom-0 left-0 right-0 p-4 z-10">
-        <div className="container mx-auto flex justify-end gap-6">
+      <footer className="absolute bottom-0 left-0 right-0 p-6 z-10">
+        <div className="container mx-auto flex justify-end gap-8">
           <Link 
             href="https://publish.obsidian.md/hyperperfect/Website/Terms+of+Service" 
-            className="text-white/90 hover:text-white flex items-center"
+            className="text-white/90 hover:text-white flex items-center text-lg"
           >
-            <span className="mr-1">→</span> Terms
+            <span className="mr-2 text-xl">→</span> Terms
           </Link>
           <Link 
             href="https://publish.obsidian.md/hyperperfect/Website/Privacy+Policy" 
-            className="text-white/90 hover:text-white flex items-center"
+            className="text-white/90 hover:text-white flex items-center text-lg"
           >
-            <span className="mr-1">→</span> Privacy
+            <span className="mr-2 text-xl">→</span> Privacy
           </Link>
         </div>
       </footer>
