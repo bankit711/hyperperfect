@@ -57,7 +57,12 @@ export default function LandingPage() {
               >
                 Features
               </Link>
-              <Link href="#" className="text-white/90 hover:text-white text-sm font-medium transition-colors">
+              <Link 
+                href="https://appsource.microsoft.com/" 
+                className="text-white/90 hover:text-white text-sm font-medium transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Download
               </Link>
               <Link href="#" className="text-white/90 hover:text-white text-sm font-medium transition-colors">
@@ -102,6 +107,15 @@ export default function LandingPage() {
                 rel="noopener noreferrer"
               >
                 Features
+              </Link>
+              <Link 
+                href="https://appsource.microsoft.com/" 
+                className="text-white text-2xl font-medium" 
+                onClick={() => setIsMenuOpen(false)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Download
               </Link>
               <Link href="#" className="text-white text-2xl font-medium" onClick={() => setIsMenuOpen(false)}>
                 Pricing
