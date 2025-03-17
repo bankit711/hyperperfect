@@ -12,7 +12,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "HyperPerfect - Accelerate Insights, Eliminate Mistakes",
-  description: "Transform your data workflow with powerful AI-driven analytics and error detection.",
+  description: "Automate data cleaning, revenue waterfalls, cohort analyses, and pivot tables—all seamlessly built with auditable formulas directly in Excel.",
 };
 
 export default function RootLayout({

@@ -135,7 +135,7 @@ export default function LandingPage() {
               Accelerate Insights, Eliminate Mistakes.
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-xl">
-              Transform your data workflow with powerful AI-driven analytics and error detection.
+              Automate data cleaning, revenue waterfalls, cohort analyses, and pivot tables—all seamlessly built with auditable formulas directly in Excel.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button className="bg-white text-[#1a7bff] hover:bg-white/90 text-lg px-8 py-6 font-medium">
