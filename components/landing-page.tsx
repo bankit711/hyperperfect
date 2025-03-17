@@ -28,8 +28,8 @@ export default function LandingPage() {
             style={{
               backgroundImage:
                 "url(/images/symbol.svg)",
-              backgroundSize: "80%",
-              backgroundPosition: "center right",
+              backgroundSize: "60%",
+              backgroundPosition: "85% center",
               backgroundRepeat: "no-repeat",
             }}
           ></div>
