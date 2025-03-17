@@ -134,7 +134,12 @@ export default function LandingPage() {
       {/* Footer */}
       <footer className="absolute bottom-0 left-0 right-0 p-4 z-10">
         <div className="container mx-auto flex justify-end gap-6">
-          <Link href="/terms" className="text-white/90 hover:text-white flex items-center">
+          <Link 
+            href="https://publish.obsidian.md/hyperperfect/Website/Terms+of+Service" 
+            className="text-white/90 hover:text-white flex items-center"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <span className="mr-1">→</span> Terms
           </Link>
           <Link href="/privacy" className="text-white/90 hover:text-white flex items-center">
