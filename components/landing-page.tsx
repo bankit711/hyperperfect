@@ -65,10 +65,10 @@ export default function LandingPage() {
 
             {/* Desktop CTA */}
             <div className="hidden md:flex items-center space-x-4">
-              <Link href="#" className="text-white/90 hover:text-white text-sm font-medium transition-colors">
+              <Link href="#" className="text-white/90 hover:text-white text-sm font-medium">
                 Sign In
               </Link>
-              <Button className="bg-white text-black hover:bg-white/90 rounded-full px-6">Try Free</Button>
+              <Button className="bg-white text-[#1a7bff] hover:bg-white/90 px-6">Try Free</Button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -102,7 +102,7 @@ export default function LandingPage() {
                 </Link>
               </div>
               <Button
-                className="bg-white text-black hover:bg-white/90 rounded-full text-lg py-6"
+                className="bg-white text-[#1a7bff] hover:bg-white/90 text-lg py-6"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Try Free
@@ -123,7 +123,7 @@ export default function LandingPage() {
               Experience audio like never before with our cutting-edge sound technology.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="bg-white text-[#1a7bff] hover:bg-white/90 rounded-full text-lg px-8 py-6 font-medium">
+              <Button className="bg-white text-[#1a7bff] hover:bg-white/90 text-lg px-8 py-6 font-medium">
                 Get Started
               </Button>
             </div>
