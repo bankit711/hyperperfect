@@ -81,7 +81,12 @@ export default function LandingPage() {
                 Sign In
               </Link>
               */}
-              <Button className="bg-white text-[#1a7bff] hover:bg-white/90 px-6">Try Free</Button>
+              <Link 
+                href="https://calendly.com/di-hyperperfect/30min"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-lg font-bold transition-colors focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none bg-white text-[#1a7bff] hover:bg-white/90 px-8 py-4"
+              >
+                Try Free
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -133,12 +138,13 @@ export default function LandingPage() {
                 </Link>
                 */}
               </div>
-              <Button
-                className="bg-white text-[#1a7bff] hover:bg-white/90 text-lg py-6"
+              <Link
+                href="https://calendly.com/di-hyperperfect/30min"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-lg font-bold transition-colors focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none bg-white text-[#1a7bff] hover:bg-white/90 py-6 w-full text-center"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Try Free
-              </Button>
+              </Link>
             </nav>
           </div>
         </div>
@@ -157,7 +163,7 @@ export default function LandingPage() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="https://calendly.com/di-hyperperfect/30min"
-                className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium transition-colors focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none bg-white text-[#1a7bff] hover:bg-white/90 text-lg px-8 py-6 font-medium"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-lg font-bold transition-colors focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none bg-white text-[#1a7bff] hover:bg-white/90 px-12 py-7 w-full sm:w-auto"
               >
                 Get Started
               </Link>
