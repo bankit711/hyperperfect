@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        /* Critical rendering path CSS */
+        body.loading {
+            visibility: hidden;
+        }
+        body.ready {
+            visibility: visible;
+            transition: visibility 0s ease;
+        }
+    </style>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HyperPerfect</title>
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Taskpane CSS -->
+    <link rel="stylesheet" type="text/css" href="taskpane.css" />
+    
+    <!-- Touch enhancements CSS for better touch device compatibility -->
+    <link rel="stylesheet" type="text/css" href="touch-enhancements.css" />
+</head>
+
+<body class="loading">
+    <!-- Header Code -->
+    <header class="header">
+        <div class="header-container">
+            <nav class="nav-menu">
+                <div class="nav-buttons-container">
+                    <a href="clean.html" id="goToClean" class="nav-item" data-section="retention">Clean</a>
+                    <a href="analyze.html" id="goToAnalyze" class="nav-item" data-section="analytics">Analyze</a>
+                    <a href="#" id="aiButton" class="nav-item ai-button" data-section="artificial-intelligence">AI</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="user-messaging-box" class="main-content">
+        <h2 class="main-title">Analytics Dashboard</h2>
+        <div class="description-container">
+            <p id="error-message" class="description"></p>
+            <div id="page-intro" class="description" aria-live="polite">
+                <p>Build context and then create waterfalls and pivot tables with your revenue data.</p>
+            </div>
+        </div>
+
+        <!-- BUILD REVENUE DATA SECTION -->
+        <div class="button-group-container">
+            <div class="button-container">
+                <button id="buildDataButton" class="custom-button" aria-label="Build Revenue Data">
+                    <span class="button-label">Build Revenue Data</span>
+                </button>
+            </div>
+
+            <!-- Choose Input Sheet -->
+            <div class="dropdown-container">
+                <div class="dropdown-header">
+                    <label for="analyticsSourceSheetSelector">Choose Input Sheet:</label>
+                    <button id="refreshDataButton" class="refresh-button" aria-label="Refresh Data Sheets"
+                        title="Refresh the list of available sheets">↻</button>
+                </div>
+                <div class="select-with-refresh">
+                    <select id="analyticsSourceSheetSelector" class="custom-dropdown" aria-label="Select Input Sheet">
+                        <!-- Options will be populated dynamically by JavaScript -->
+                    </select>
+                    <!-- Add loading/error indicators -->
+                    <div class="dropdown-loading hidden">Loading...</div>
+                    <div class="dropdown-error hidden">Failed to load sheets.</div>
+                </div>
+            </div>
+
+            <!-- Fiscal Year -->
+            <div class="dropdown-container">
+                <label for="fiscalYear">Fiscal Year End:</label>
+                <div class="select-with-refresh">
+                    <select id="fiscalYear" class="custom-dropdown"></select>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Revenue Waterfall Container -->
+        <div class="button-group-container">
+            <div class="button-container">
+                <button id="generateRevenueWaterfallButton" class="custom-button"
+                    aria-label="Generate Revenue Waterfall" disabled title="Select a source sheet to enable">
+                    <span class="button-label">Revenue Waterfall</span>
+                </button>
+            </div>
+            
+            <!-- Select Metric -->
+            <div class="dropdown-container">
+                <label for="pivotTableMetricSelector">Metric:</label>
+                <div class="select-with-refresh">
+                    <select id="pivotTableMetricSelector" class="custom-dropdown" aria-label="Select Metric">
+                        <option value="">Select Metric...</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="dropdown-container">
+                <label for="revenueWaterfallRowDetailSelector">Show Cohorts:</label>
+                <div class="select-with-refresh">
+                    <select id="revenueWaterfallRowDetailSelector" class="custom-dropdown"
+                        data-depends-on="analyticsSourceSheetSelector" aria-label="Select Revenue Waterfall Row Detail">
+                        <option value="">Select...</option>
+                        <!-- Options will be populated dynamically -->
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Filter -->
+            <div class="dropdown-container">
+                <label for="pivotTableFilterDimensionSelector">Dimension Filter:</label>
+                <div class="select-with-refresh">
+                    <select id="pivotTableFilterDimensionSelector" class="custom-dropdown" aria-label="Select Filter">
+                        <option value="">None</option>
+                        <!-- Options will be populated dynamically -->
+                    </select>
+                </div>
+            </div>
+            <!-- Search Filters -->
+            <div id="filterRowSelectorContainer" class="dropdown-container hidden">
+                <label for="pivotTableFilterRowSelector">Select Included Value(s):</label>
+                <select id="pivotTableFilterRowSelector" class="custom-dropdown" aria-label="Select Filter" multiple size="4">
+                    <option value="">Select a value...</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- BUILD PIVOT TABLES SECTION -->
+        <div class="button-group-container">
+            <div class="button-container">
+                <button id="runPivotTablesButton" class="custom-button" aria-label="Run Pivot Tables">
+                    <span class="button-label">Run Pivot Tables</span>
+                </button>
+            </div>
+
+            <!-- Select Dimensions -->
+            <div class="dropdown-container">
+                <label for="dimensionSelectorForBuild">Select Primary Dimension:</label>
+                <div class="select-with-refresh">
+                    <select id="dimensionSelectorForBuild" class="custom-dropdown" aria-label="Select Dimension">
+                        <option value="">Select Dimension...</option>
+                        <!-- Options will be populated dynamically -->
+                    </select>
+                </div>
+            </div>
+
+            <!-- Pivot Table Rows -->
+            <div class="dropdown-container">
+                <label for="pivotTableRowSelector">Rows:</label>
+                <div class="select-with-refresh">
+                    <select id="pivotTableRowSelector" class="custom-dropdown" aria-label="Select Pivot Table Row">
+                        <option value="">Select Row...</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Select Period -->
+            <div class="dropdown-container">
+                <label for="pivotTablePeriodSelector">Select Period:</label>
+                <div class="select-with-refresh">
+                    <select id="pivotTablePeriodSelector" class="custom-dropdown" aria-label="Select Period">
+                        <option value="">Select Period...</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Lookback Container -->
+        <div class="button-group-container hidden">
+            <div class="button-container">
+                <button id="lookbackAnalysisButton" class="custom-button" aria-label="Run Lookback Analysis" disabled
+                    title="Select a source sheet to enable">
+                    <span class="button-label">Lookback</span>
+                </button>
+            </div>
+            <div class="dropdown-container">
+                <label for="lookbackDetailSelector">Lookback Detail:</label>
+                <div class="select-with-refresh">
+                    <select id="lookbackDetailSelector" class="custom-dropdown"
+                        data-depends-on="analyticsSourceSheetSelector" aria-label="Select Lookback Detail">
+                        <option value="">Select...</option>
+                        <!-- Options will be populated dynamically -->
+                    </select>
+                </div>
+            </div>
+            <div class="dropdown-container">
+                <label for="lookbackDurationSelector">Lookback Duration:</label>
+                <select id="lookbackDurationSelector" class="custom-dropdown" aria-label="Select Lookback Duration">
+                    <option value="">Select Duration...</option>
+                    <!-- Options will be populated dynamically -->
+                </select>
+            </div>
+            <div class="dropdown-container">
+                <label for="initialCohortMonthSelector">Initial Cohort Month:</label>
+                <select id="initialCohortMonthSelector" class="custom-dropdown"
+                    aria-label="Select Initial Cohort Month">
+                    <option value="">Select Month...</option>
+                    <!-- Options will be populated dynamically -->
+                </select>
+            </div>
+        </div>
+
+        <!-- Progress Indicator -->
+        <div id="progress-container" class="hidden" aria-live="polite">
+            <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <div id="progress-indicator" class="progress-fill"></div>
+            </div>
+            <div id="progress-text">0%</div>
+        </div>
+
+    </main>
+    
+    <!-- Initialization is handled by taskpane.js which calls initializeAnalyzeUI from analyzeController.js -->
+</body>
+
+</html>

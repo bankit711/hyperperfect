@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HyperPerfect Task Pane</title>
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+
+    <!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui#/. -->
+    <link rel="stylesheet"
+        href="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-core/11.1.0/css/fabric.min.css" />
+
+    <!-- Add the link to the taskpane CSS file -->
+    <link rel="stylesheet" type="text/css" href="taskpane.css" />
+    
+    <!-- Touch enhancements CSS for better touch device compatibility -->
+    <link rel="stylesheet" type="text/css" href="touch-enhancements.css" />
+
+    <!-- Webpack will inject the correct JavaScript files here -->
+</head>
+
+<body class="ms-font-m ms-welcome ms-Fabric">
+    <header class="ms-welcome__header ms-bgColor-neutralLighter">
+        <h1 class="ms-font-su">Welcome to HyperPerfect</h1>
+    </header>
+    <main class="ms-firstrun-instructionstep">
+        <ul class="ms-List ms-welcome__features">
+            <li class="ms-ListItem">
+                <i class="ms-Icon ms-Icon--Ribbon ms-font-xl"></i>
+                <span class="ms-font-m">Achieve more with Office integration</span>
+            </li>
+            <li class="ms-ListItem">
+                <i class="ms-Icon ms-Icon--Unlock ms-font-xl"></i>
+                <span class="ms-font-m">Unlock features and functionality</span>
+            </li>
+            <li class="ms-ListItem">
+                <i class="ms-Icon ms-Icon--Design ms-font-xl"></i>
+                <span class="ms-font-m">Create and visualize like a pro</span>
+            </li>
+        </ul>
+        <section class="ms-firstrun-instructionstep__header">
+            <h2 class="ms-font-m"> This add-in demonstrates how to use single sign-on by making a call to Microsoft
+                Graph to get user profile data.</h2>
+            <div class="ms-firstrun-instructionstep__header--image"></div>
+        </section>
+        <div class="ms-firstrun-instructionstep__welcome-body">
+            <p class="ms-font-m ms-firstrun-instructionstep__welcome-intro"><b>To use this add-in:</b></p>
+            <ul class="ms-List ms-firstrun-instructionstep__list">
+                <li class="ms-ListItem">
+                    <span class="ms-ListItem-primaryText">Click the <b>Get My User Profile Information</b>
+                        button.</span>
+                    <div class="clearfix"></div>
+                </li>
+                <li class="ms-ListItem">
+                    <span class="ms-ListItem-secondaryText">If you are not signed into Office, you are prompted to sign
+                        in.</span>
+                    <div class="clearfix"></div>
+                </li>
+                <li class="ms-ListItem">
+                    <span class="ms-ListItem-primaryText">You may also be prompted to accept the app's permissions
+                        request.</span>
+                    <div class="clearfix"></div>
+                </li>
+                <li class="ms-ListItem">
+                    <span class="ms-ListItem-primaryText">Your user profile information will be displayed in the
+                        document.</span>
+                    <div class="clearfix"></div>
+                </li>
+            </ul>
+            <br>
+            <p align="center">
+                <button id="getProfileButton" class="popupButton ms-Button ms-Button--primary"><span
+                        class="ms-Button-label">Get My User Profile Information </span></button>
+            </p>
+        </div>
+        <p><label id="message-area"></label></p>
+    </main>
+
+    <div class="ms-ButtonGroup">
+        <button id="goToClean" class="ms-Button">
+            <span class="ms-Button-label">Go to Clean Data</span>
+        </button>
+        <button id="goToAnalyze" class="ms-Button">
+            <span class="ms-Button-label">Go to Analyze Data</span>
+        </button>
+    </div>
+</body>
+
+</html>
