@@ -1,0 +1,1099 @@
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* 1. Global Styles */
+html,
+body {
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+/* 2. Header Styles */
+.header {
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  height: 40px;
+  background-color: #000000;
+  padding: 0;
+}
+
+.header-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-buttons-container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  height: 100%;
+  padding: 0 12px;
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.nav-item {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  padding: 2px 14px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  background-color: rgba(255, 255, 255, 0.1);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  height: 26px;
+  margin: 7px 0;
+}
+
+.nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+.nav-item.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* 3. Main Content Styles */
+.main-content {
+  padding: 10px;
+  -ms-flex-positive: 1;
+  overflow-y: auto;
+  background-color: #ffffff;
+  height: 100%;
+  width: 100%;
+}
+
+.main-title {
+  color: #000000;
+  margin-bottom: 0px;
+  font-weight: 600;
+  /* Bold */
+  font-size: 14px;
+  /* Larger size for main title */
+  font-family: 'Poppins', sans-serif;
+}
+
+.description-container {
+  display: flex;
+  align-items: center;
+  /* This will vertically center the items */
+  min-height: 24px; /* Add minimum height to prevent container from collapsing */
+  justify-content: space-between;
+  /* This will push the button to the right */
+  margin-left: 10px;
+  margin-bottom: 10px;
+  font-size: 11px;
+  width: 85%;
+  font-family: 'Poppins', sans-serif;
+}
+
+.description {
+  -ms-flex-positive: 1;
+  margin-right: 20px;
+  /* Add some space between the text and the button */
+  min-height: 2em; /* Ensure the error message element maintains height when empty */
+  font-size: 10px;
+}
+
+/* Refresh Button */
+.refresh-button {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.refresh-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.refresh-button .refresh-icon {
+  width: 25px;
+  height: 25px;
+  padding-right: 20px;
+}
+
+.refresh-button:focus {
+  outline: none;
+}
+
+/* Remove the pressed class styling */
+.refresh-button.pressed {
+  transform: scale(0.95);
+  transition: transform 0.1s ease-in-out;
+}
+
+/* Button Group Container */
+.button-group-container {
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 6px rgba(197, 197, 197, 0.437);
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-inline: 15px;
+  background-color: #ffffff;
+}
+
+/* Combined Container for Button and Dropdown */
+.combined-container {
+  margin-bottom: 0px;
+}
+
+.button-container {
+  margin-top: 0px;
+  margin-right: 0px;
+}
+
+/* 4. Dropdown Styles */
+.custom-dropdown {
+  width: calc(100% - 10px);
+  height: 21px;
+  padding: 3px 10px;
+  border: .5px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  font-size: 10px;
+  /* Same as body font size */
+  font-weight: 300;
+  /* Added font weight for bold text */
+  color: #4e4e4e;
+  /* Added font color */
+  background-color: white;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%3333' d='M10.293 3.293L6 7.586 1.707 3.293A1 1 0 00.293 4.707l5 5a1 1 0 001.414 0l5-5a1 1 0 10-1.414-1.414z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 8px 8px;
+  /* Added this line to control the size of the background image */
+}
+
+/* Styling for the dropdown options */
+.custom-dropdown option {
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  color: #4e4e4e;
+  background-color: white;
+  padding: 2px 10px;
+}
+
+.custom-dropdown:focus {
+  outline: none;
+  border-color: #000000;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-container {
+  padding: 5px 0 5px 0;
+  border-radius: 4px;
+  margin-bottom: 7px;
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  border: .05px solid rgb(226, 226, 226);
+}
+
+.dropdown-container label {
+  color: #000000;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 450;
+  font-size: 11px;
+  padding-left: 10px;
+}
+
+/* Add these styles to ensure consistent appearance across browsers */
+.custom-dropdown::-ms-expand {
+  display: none;
+}
+
+.custom-dropdown::-webkit-listbox {
+  background-color: white;
+}
+
+.custom-dropdown::-webkit-list {
+  background-color: white;
+}
+
+.custom-dropdown option:checked,
+.custom-dropdown option:hover {
+  background-color: #f5f5f5;
+  color: #4e4e4e;
+}
+
+/* 5. Button Styles */
+.custom-button {
+  background-color: #000000;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  /* Same as body font size */
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  /* Added width */
+  height: 30px;
+  /* Added height */
+  color: #ffffff;
+  /* Font color set to white */
+}
+
+.custom-button:hover {
+  background-color: #333333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-button:active {
+  background-color: #666666;
+}
+
+/* Result */
+.result {
+  margin-top: 10px;
+  margin-inline: 40px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  /* Same as body font size */
+  font-weight: 500;
+}
+
+/* Display Name Styles */
+.display-name-container {
+  padding: 10px 15px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.display-name {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Custom Chooser Styles */
+.custom-chooser {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.custom-input {
+  width: 92%;
+  /* Adjust based on the width of the buttons */
+  height: 19px;
+  margin-inline: 7px;
+  padding: 1px 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #333333;
+  transition: border-color 0.3s ease;
+}
+
+.custom-input:focus {
+  outline: none;
+  border-color: #000000;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.custom-chooser-buttons {
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  bottom: 1px;
+  display: flex;
+  width: 20px;
+  /* Adjust as needed */
+}
+
+.custom-chooser-button {
+  -ms-flex: 1;
+  flex: 1;
+  background-color: #f5f5f5;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #333333;
+  transition: background-color 0.3s ease;
+}
+
+.custom-chooser-button:hover {
+  background-color: #b3b3b3;
+}
+
+.custom-chooser-button:first-child {
+  border-top-right-radius: 4px;
+}
+
+.custom-chooser-button:last-child {
+  border-bottom-right-radius: 4px;
+}
+
+/* Ensure the custom chooser fits within the dropdown container */
+.dropdown-container {
+  padding: 5px 0 5px 0;
+  border-radius: 4px;
+  margin-bottom: 7px;
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  border: .05px solid rgb(226, 226, 226);
+}
+
+.dropdown-container label {
+  color: #000000;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 450;
+  font-size: 11px;
+  padding-left: 10px;
+}
+
+.checkbox-container {
+  padding: 5px;
+  border-radius: 4px;
+  margin-bottom: 7px;
+  height: 30px;
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  border: .05px solid rgb(226, 226, 226);
+}
+
+.adjust-annual-contracts {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 10px;
+  /* Reduced height */
+  padding-right: 25px;
+  padding-top: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 450;
+}
+
+.adjust-annual-contracts label {
+  /* Ensures the label comes first */
+}
+
+.adjust-annual-contracts input[type="checkbox"] {
+  /* Ensures the checkbox comes second */
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  /* Remove any default styles */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* Add custom styles */
+  border: 1px solid #999;
+  background-color: white;
+}
+
+/* Style for checked state */
+.adjust-annual-contracts input[type="checkbox"]:checked {
+  background: linear-gradient(45deg, #000000, #000000);
+  border: none;
+}
+
+/* Remove focus outline */
+.adjust-annual-contracts input[type="checkbox"]:focus {
+  outline: none;
+}
+
+.adjust-annual-contracts input[type="checkbox"]:checked::after {
+  content: '\2714';
+  /* Unicode checkmark */
+  display: block;
+  text-align: center;
+  color: white;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+/* Multi-Select Checkbox Styles */
+
+/* Container for the multi-select checkboxes */
+.multi-select-checkbox {
+  width: 100%;
+  max-height: 100px;
+  min-height: 21px;
+  /* Match dropdown height */
+  padding: 3px;
+  margin-left: 5px;
+  padding-left: 10px;
+  border: .5px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  background-color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  color: #4e4e4e;
+  overflow-y: auto;
+  transition: max-height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Add these styles to match the dropdown focus state */
+.multi-select-checkbox:focus {
+  outline: none;
+  border-color: #000000;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for the checkbox within each multi-select option */
+.multi-select-checkbox .multi-select-option input[type="checkbox"]:checked {
+  appearance: none;
+  width: 8px;
+  height: 8px;
+  padding: 6px;
+  margin-right: 5px;
+  border: 1px solid #7f7f7f;
+  /* Changed to blue border */
+  color: #fff;
+  /* White checkmark */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Checkmark Styling */
+.multi-select-checkbox .multi-select-option input[type="checkbox"]:checked::after {
+  content: '\2714';
+  display: block;
+  text-align: center;
+  color: white;
+  font-size: 8px;
+  line-height: 12px;
+}
+
+/* Label styling for each multi-select option */
+.multi-select-option label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  color: #727272;
+  padding-top: 2px;
+  line-height: 1;
+  margin: 0;
+}
+
+
+.multi-select-checkbox.hidden {
+  display: none !important;
+  max-height: 0;
+  min-height: 0;
+  padding: 0;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  border: none;
+}
+
+
+
+label[for="filterValuesSelector"].hidden {
+  display: none !important;
+}
+
+.hidden {
+  display: none;
+}
+
+
+
+/* Add or modify these styles */
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  margin-bottom: 10px;
+  /* Reduced from 10px */
+  padding-top: 10px;
+  /* Added to give some space at the top */
+}
+
+.section-title {
+  margin: 0;
+  font-size: 13px;
+  /* Reduced from 14px or 1.2em */
+  font-weight: 600;
+  color: #333;
+}
+
+.button-group-container {
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 6px rgba(197, 197, 197, 0.437);
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 15px;
+  /* Reduced from 20px */
+  margin-left: 0px;
+  margin-right: 15px;
+  background-color: #ffffff;
+}
+
+.refresh-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.refresh-icon {
+  width: 16px;
+  /* Reduced from 20px */
+  height: 16px;
+  /* Reduced from 20px */
+}
+
+/* Tooltip Container */
+[data-tooltip] {
+  position: relative;
+}
+
+/* Tooltip Content */
+[data-tooltip]::before,
+[data-tooltip]::after {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out;
+  transition-delay: 1s;
+  /* Add 1s delay before showing */
+  pointer-events: none;
+}
+
+[data-tooltip]::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 12px;
+
+  /* Enhanced Background & Text */
+  background-color: rgba(51, 51, 51, 0.95);
+  color: #ffffff;
+
+  /* Typography */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 100;
+  font-size: 10px;
+  line-height: 1.4;
+  white-space: wrap;
+
+  /* Styling */
+  border-radius: 6px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+
+/* Tooltip Arrow */
+[data-tooltip]::after {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: rgba(51, 51, 51, 0.95);
+}
+
+/* Show Tooltip on Hover */
+[data-tooltip]:hover::before,
+[data-tooltip]:hover::after {
+  opacity: 1;
+  visibility: visible;
+  animation: tooltipFade 0.2s ease-in-out 1s forwards;
+  /* Add 1s delay to animation */
+}
+
+@keyframes tooltipFade {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* AI Button Styles */
+.ai-button {
+  position: relative;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  /* Matches other nav items */
+}
+
+.ai-button.processing {
+  background-color: white !important;
+  color: #6b46c1 !important;
+  pointer-events: none;
+}
+
+.ai-button.processing::after {
+  content: 'Coming Soon';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #6b46c1;
+  background-color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  /* Smaller size for the "Coming Soon" text */
+  font-weight: 600;
+  /* Slightly reduced from 600 */
+  line-height: 1.2;
+  /* Adjusts line height for closer lines */
+}
+
+
+/* Filter Search Styles */
+.filter-search-container {
+  margin: 5px 0;
+  /* Remove horizontal margin */
+  width: 100%;
+  /* Match parent width */
+}
+
+.filter-search-input {
+  width: calc(100% - 17px);
+  height: 12px;
+  box-shadow: 0 4px 6px rgba(197, 197, 197, 0.437);
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  /* Match dropdown left margin */
+}
+
+.filter-search-input:focus {
+  outline: none;
+  border-color: #000000;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.select-all-container {
+  padding: 5px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 5px;
+}
+
+.select-all-label {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+}
+
+.filter-options {
+  width: calc(100% - 10px);
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.filter-checkbox {
+  margin-right: 8px;
+}
+
+.filter-divider {
+  margin: 5px 0;
+  border: none;
+  border-top: 1px solid #eee;
+}
+
+.no-results {
+  padding: 5px;
+  color: #666;
+  font-style: italic;
+  text-align: center;
+}
+
+/* Ensure filter container matches other containers */
+#filterContainer .dropdown-container {
+  width: 100%;
+  margin: 0 auto;
+  /* Center the container */
+  padding: 5px;
+  border-radius: 4px;
+  margin-bottom: 7px;
+}
+
+.nav-item.ai-button {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-item.ai-button.processing {
+  animation: pulse 1.5s infinite;
+  pointer-events: none;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Spin animation for when refreshing */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.dropdown-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* This spreads out the items */
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.dropdown-header label {
+  margin: 0;
+  -ms-flex-positive: 1;
+  /* Allows label to take up available space */
+}
+
+.refresh-button {
+  font-size: 14px;
+  color: #000000;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding-left: 5px;
+  padding-right: 20px;
+  transition: transform 0.2s ease;
+}
+
+/* Hover effect */
+.refresh-button:hover {
+  color: #000000;
+}
+
+/* Disabled state */
+.refresh-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #0078d4;
+  width: 0;
+  transition: width 0.3s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+
+
+
+.select-dropdown-container {
+  position: relative;
+  width: 100%;
+  margin-left: 0;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 2px;
+  margin-bottom: 10px;
+}
+
+.select-dropdown-header {
+  width: 100%;
+  height: 21px;
+  padding: 3px 10px;
+  border: .5px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 300;
+  color: #4e4e4e;
+  background-color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%3333' d='M10.293 3.293L6 7.586 1.707 3.293A1 1 0 00.293 4.707l5 5a1 1 0 001.414 0l5-5a1 1 0 10-1.414-1.414z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 8px 8px;
+  padding-right: 24px;
+  /* Make room for the arrow */
+}
+
+.select-dropdown-header:hover {
+  border-color: #999;
+}
+
+.selected-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  color: #4e4e4e;
+}
+
+.dropdown-arrow {
+  display: none;
+}
+
+.select-dropdown-list {
+  position: relative;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 100px;
+  background-color: white;
+  border: .5px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  margin-top: 2px;
+  overflow-y: auto;
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  color: #4e4e4e;
+}
+
+.select-dropdown-list.hidden {
+  display: none;
+}
+
+.select-options-container {
+  padding: 2px 0;
+  /* Reduced padding */
+}
+
+.select-option {
+  padding: 2px 10px;
+  /* Reduced vertical padding */
+  display: flex;
+  align-items: center;
+  min-height: 20px;
+  /* Added to ensure consistent height */
+}
+
+.select-option:hover {
+  background-color: #f5f5f5;
+}
+
+.select-option label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  color: #4e4e4e;
+  /* Updated to match dropdown color exactly */
+  margin: 0;
+  width: 100%;
+  line-height: 1;
+}
+
+.custom-checkbox {
+  width: 12px;
+  /* Reduced size */
+  height: 12px;
+  /* Reduced size */
+  margin-right: 6px;
+  /* Reduced margin */
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid #999;
+  background-color: white;
+  border-radius: 2px;
+  flex-shrink: 0;
+  /* Prevent checkbox from shrinking */
+}
+
+.custom-checkbox:checked {
+  background: linear-gradient(45deg, #000000, #000000);
+  border: none;
+}
+
+.custom-checkbox:checked::after {
+  content: '\2714';
+  display: block;
+  text-align: center;
+  color: white;
+  font-size: 8px;
+  /* Reduced size */
+  line-height: 12px;
+  /* Match height */
+}
+
+/* Add this new style for the placeholder state */
+.selected-text:empty::before,
+.selected-text[data-empty="true"] {
+  color: #727272;
+  /* Lighter grey for placeholder text */
+  opacity: 0.7;
+  /* Additional opacity to match dropdown placeholder */
+}
+
+/* Multi-select dropdown styles */
+.custom-dropdown[multiple] {
+    height: auto;
+    min-height: 80px;
+    padding: 5px;
+    background-image: none;
+    overflow-y: auto;
+    display: block !important;
+    width: 100%;
+}
+
+.custom-dropdown[multiple] option {
+    padding: 5px 10px;
+    margin: 2px 0;
+    border-radius: 3px;
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    font-weight: 300;
+    color: #4e4e4e;
+}
+
+.custom-dropdown[multiple] option:checked {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #000000;
+}
+
+.custom-dropdown[multiple] option:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Override any potential hiding styles */
+.custom-dropdown[multiple]:not([disabled]) {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Add styles for select-with-refresh container */
+.select-with-refresh {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 5px 10px;
+}
+
+.select-with-refresh .custom-dropdown {
+  display: flex;
+  align-items: center;
+  width: calc(100% - 20px);
+  margin: 0;
+}
+
+/* Add styles for input elements inside select-with-refresh to match dropdown styling */
+.select-with-refresh input {
+  display: flex;
+  align-items: center;
+  width: calc(100% - 43px);
+  height: 17px;
+  padding: 1px 10px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #727272;
+  font-size: 10px;
+}
+
+#pivotTableFilterRowSelector {
+  /* Your specific styles here */
+  width: calc(100% - 20px);
+  margin: 0 10px 0 10px;
+  padding: 1px 1px 0px 1px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   
+  /* Add any other styles you want */
+}
