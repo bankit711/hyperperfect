@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Install HyperPerfect Excel Add-in</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
@@ -12,48 +11,47 @@
             max-width: 800px;
             margin: 40px auto;
             padding: 0 20px;
-            color: white;
-            background-color: #1a7bff;
+            color: #333;
         }
         .install-button {
             display: inline-block;
-            background-color: white;
-            color: #1a7bff;
+            background-color: #1a7bff;
+            color: white;
             padding: 12px 24px;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 100px;
             margin: 20px 0;
             font-weight: 600;
         }
         .install-button:hover {
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: #1666db;
         }
         .fallback {
             margin-top: 30px;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: #f5f5f5;
             border-radius: 4px;
         }
     </style>
 </head>
 <body>
-    <h1 class="text-5xl font-bold mb-8">Install HyperPerfect Excel Add-in</h1>
+    <h1>Install HyperPerfect Excel Add-in</h1>
     
-    <p class="text-2xl text-white/90 mb-8">Click the button below to install the HyperPerfect add-in for Microsoft Excel:</p>
+    <p>Click the button below to install the HyperPerfect add-in for Microsoft Excel:</p>
     
-    <a href="ms-excel:ofe|u|https://hyperperfect.ai/assets/manifest.xml" class="install-button text-xl">
+    <a href="ms-excel:ofe|u|https://hyperperfect.ai/assets/manifest.xml" class="install-button">
         Install HyperPerfect Add-in
     </a>
     
     <div class="fallback">
-        <h3 class="text-2xl font-semibold mb-4">Manual Installation</h3>
-        <p class="text-white/90 mb-4">If the automatic installation doesn't work, you can install the add-in manually:</p>
-        <ol class="text-white/90 space-y-2 list-decimal list-inside">
+        <h3>Manual Installation</h3>
+        <p>If the automatic installation doesn't work, you can install the add-in manually:</p>
+        <ol>
             <li>Open Microsoft Excel</li>
             <li>Go to the "Insert" tab</li>
             <li>Click "Office Add-ins"</li>
             <li>Select "Upload My Add-in"</li>
-            <li>Enter this URL: <code class="bg-white/10 px-2 py-1 rounded">https://hyperperfect.ai/assets/manifest.xml</code></li>
+            <li>Enter this URL: <code>https://hyperperfect.ai/assets/manifest.xml</code></li>
         </ol>
     </div>
 
