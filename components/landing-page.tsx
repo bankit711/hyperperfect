@@ -56,7 +56,7 @@ export default function LandingPage() {
                 Features
               </Link>
               <Link 
-                href="https://appsource.microsoft.com/" 
+                href="https://www.hyperperfect.ai/install.html" 
                 className="text-white/90 hover:text-white text-lg font-medium transition-colors"
               >
                 Download
@@ -112,7 +112,7 @@ export default function LandingPage() {
                 Features
               </Link>
               <Link 
-                href="https://appsource.microsoft.com/" 
+                href="https://www.hyperperfect.ai/install.html" 
                 className="text-white text-3xl font-medium" 
                 onClick={() => setIsMenuOpen(false)}
               >
