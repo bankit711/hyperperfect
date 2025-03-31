@@ -56,10 +56,10 @@ export default function LandingPage() {
                 Features
               </Link>
               <Link 
-                href="https://www.hyperperfect.ai/install.html" 
+                href="/install" 
                 className="text-white/90 hover:text-white text-lg font-medium transition-colors"
               >
-                Download
+                Install
               </Link>
               {/* Pricing link temporarily disabled
               <Link href="#" className="text-white/90 hover:text-white text-base font-medium transition-colors">
@@ -112,11 +112,11 @@ export default function LandingPage() {
                 Features
               </Link>
               <Link 
-                href="https://www.hyperperfect.ai/install.html" 
+                href="/install" 
                 className="text-white text-3xl font-medium" 
                 onClick={() => setIsMenuOpen(false)}
               >
-                Download
+                Install
               </Link>
               {/* Pricing link temporarily disabled
               <Link href="#" className="text-white text-2xl font-medium" onClick={() => setIsMenuOpen(false)}>
@@ -184,4 +184,4 @@ export default function LandingPage() {
       </footer>
     </div>
   )
-} 
+}
