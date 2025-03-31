@@ -8,7 +8,7 @@ export default function InstallPage() {
       <p className="mb-6">Click the button below to install the HyperPerfect add-in for Microsoft Excel:</p>
       
       <a 
-        href="ms-excel:ofe|u|https://hyperperfect.ai/assets/manifest.xml" 
+        href="ms-excel:ofe|u|https://hyperperfect-prod.azurewebsites.net/manifest.xml" 
         className="install-button inline-block bg-[#1a7bff] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#1666db] transition-colors"
       >
         Install HyperPerfect Add-in
@@ -22,7 +22,7 @@ export default function InstallPage() {
           <li>Go to the "Insert" tab</li>
           <li>Click "Office Add-ins"</li>
           <li>Select "Upload My Add-in"</li>
-          <li>Enter this URL: <code className="bg-gray-200 px-1 py-0.5 rounded">https://hyperperfect.ai/assets/manifest.xml</code></li>
+          <li>Enter this URL: <code className="bg-gray-200 px-1 py-0.5 rounded">https://hyperperfect-prod.azurewebsites.net/manifest.xml</code></li>
         </ol>
       </div>
     </div>
