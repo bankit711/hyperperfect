@@ -1,6 +1,34 @@
 "use client"
 
 export default function InstallPage() {
+  const handleDownload = async () => {
+    try {
+      const response = await fetch('https://hyperperfect-prod.azurewebsites.net/manifest.xml');
+      const text = await response.text();
+      
+      // Create a Blob from the XML text
+      const blob = new Blob([text], { type: 'application/xml' });
+      
+      // Create a temporary URL for the Blob
+      const url = window.URL.createObjectURL(blob);
+      
+      // Create a temporary link element
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'manifest.xml';
+      
+      // Append to the document, click it, and remove it
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      // Release the URL object
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Error downloading manifest file:', error);
+      alert('There was an error downloading the manifest file. Please try again.');
+    }
+  };
   return (
     <div className="font-sans text-gray-800 max-w-3xl mx-auto px-5 py-10">
       <h1 className="text-3xl font-bold mb-6">Install HyperPerfect Excel Add-in</h1>
@@ -49,13 +77,12 @@ export default function InstallPage() {
             <li>
               Download your add-in manifest XML file into the shared folder (e.g., <code className="bg-gray-200 px-1 py-0.5 rounded">C:\ExcelAddins</code>):
               <div className="mt-2 mb-2">
-                <a 
-                  href="https://hyperperfect-prod.azurewebsites.net/manifest.xml" 
-                  download="manifest.xml"
+                <button 
+                  onClick={handleDownload}
                   className="inline-block bg-[#1a7bff] text-white px-4 py-2 rounded font-medium hover:bg-[#1666db] transition-colors"
                 >
                   Download Manifest File
-                </a>
+                </button>
               </div>
             </li>
             <li>Open Excel and go to <strong>Insert</strong> &gt; <strong>My Add-ins</strong> &gt; <strong>Shared Folder</strong> in the ribbon.</li>
