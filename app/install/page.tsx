@@ -1,8 +1,44 @@
 "use client"
 
 export default function InstallPage() {
+  const handleDownload = async () => {
+    try {
+      const response = await fetch('https://hyperperfect-prod.azurewebsites.net/manifest.xml');
+      const text = await response.text();
+      
+      // Create a Blob from the XML text
+      const blob = new Blob([text], { type: 'application/xml' });
+      
+      // Create a temporary URL for the Blob
+      const url = window.URL.createObjectURL(blob);
+      
+      // Create a temporary link element
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'manifest.xml';
+      
+      // Append to the document, click it, and remove it
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      // Release the URL object
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Error downloading manifest file:', error);
+      alert('There was an error downloading the manifest file. Please try again.');
+    }
+  };
   return (
-    <div className="font-sans text-gray-800 max-w-3xl mx-auto px-5 py-10">
+    <div className="font-sans text-gray-800 max-w-3xl mx-auto px-5 py-10 relative">
+      <div className="absolute top-0 right-0 mt-2 mr-2">
+        <a 
+          href="/" 
+          className="inline-block bg-gray-200 text-gray-800 px-3 py-1 rounded font-medium hover:bg-gray-300 transition-colors text-sm"
+        >
+          Return to HyperPerfect
+        </a>
+      </div>
       <h1 className="text-3xl font-bold mb-6">Install HyperPerfect Excel Add-in</h1>
       
 
