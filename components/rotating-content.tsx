@@ -4,7 +4,11 @@ import { useState, useEffect } from "react"
 import { ErrorService } from "../services/error-service"
 
 const componentId = "RotatingContent";
-ErrorService.registerLogging(componentId, { enabled: true, verbose: false });
+
+// Only register logging on client-side
+if (typeof window !== 'undefined') {
+  ErrorService.registerLogging(componentId, { enabled: true, verbose: false });
+}
 
 interface RotatingContentProps {
   imageSrc: string;
@@ -23,7 +27,14 @@ export default function RotatingContent({
   const [isVisible, setIsVisible] = useState(true);
   
   useEffect(() => {
-    ErrorService.logInfo("Initializing rotating content", { 
+    // Safe logging that works on both server and client
+    const logInfo = (message: string, context: any, isVerbose = false) => {
+      if (typeof window !== 'undefined') {
+        ErrorService.logInfo(message, context, componentId, isVerbose);
+      }
+    };
+    
+    logInfo("Initializing rotating content", { 
       operation: "initialize", 
       details: { 
         phraseCount: phrases.length,
@@ -31,7 +42,7 @@ export default function RotatingContent({
         transitionDuration,
         timestamp: Date.now()
       }
-    }, componentId);
+    });
     
     const rotationInterval = setInterval(() => {
       // Start fade out
@@ -41,15 +52,17 @@ export default function RotatingContent({
       setTimeout(() => {
         setCurrentIndex(prevIndex => {
           const nextIndex = prevIndex >= phrases.length - 1 ? -1 : prevIndex + 1;
-          ErrorService.logInfo("Rotating to next content", { 
-            operation: "rotate", 
-            details: { 
-              prevIndex, 
-              nextIndex,
-              content: nextIndex === -1 ? "image" : phrases[nextIndex],
-              timestamp: Date.now()
-            }
-          }, componentId, true);
+          if (typeof window !== 'undefined') {
+            logInfo("Rotating to next content", { 
+              operation: "rotate", 
+              details: { 
+                prevIndex, 
+                nextIndex,
+                content: nextIndex === -1 ? "image" : phrases[nextIndex],
+                timestamp: Date.now()
+              }
+            }, true);
+          }
           return nextIndex;
         });
         setIsVisible(true);
@@ -59,10 +72,12 @@ export default function RotatingContent({
     
     return () => {
       clearInterval(rotationInterval);
-      ErrorService.logInfo("Cleaning up rotating content", { 
-        operation: "cleanup", 
-        details: { timestamp: Date.now() }
-      }, componentId);
+      if (typeof window !== 'undefined') {
+        logInfo("Cleaning up rotating content", { 
+          operation: "cleanup", 
+          details: { timestamp: Date.now() }
+        });
+      }
     };
   }, [phrases, displayDuration, transitionDuration]);
   
