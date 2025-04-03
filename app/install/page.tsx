@@ -33,14 +33,18 @@ export default function InstallPage() {
     <div className="font-sans text-gray-800 max-w-3xl mx-auto px-5 py-10">
       <h1 className="text-3xl font-bold mb-6">Install HyperPerfect Excel Add-in</h1>
       
+
+      {/* 
       <p className="mb-6">Click the button below to install the HyperPerfect add-in for Microsoft Excel:</p>
       
       <a 
         href="ms-excel:ofe|u|https://hyperperfect-prod.azurewebsites.net/manifest.xml" 
         className="install-button inline-block bg-[#1a7bff] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#1666db] transition-colors"
+        download="manifest.xml"
       >
         Install HyperPerfect Add-in
       </a>
+      */}
       
       <div className="mt-8 p-5 bg-gray-100 rounded-md">
         <h2 className="text-2xl font-semibold mb-4">Installing HyperPerfect on Windows</h2>
