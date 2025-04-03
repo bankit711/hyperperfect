@@ -30,7 +30,15 @@ export default function InstallPage() {
     }
   };
   return (
-    <div className="font-sans text-gray-800 max-w-3xl mx-auto px-5 py-10">
+    <div className="font-sans text-gray-800 max-w-3xl mx-auto px-5 py-10 relative">
+      <div className="absolute top-0 right-0 mt-2 mr-2">
+        <a 
+          href="/" 
+          className="inline-block bg-gray-200 text-gray-800 px-3 py-1 rounded font-medium hover:bg-gray-300 transition-colors text-sm"
+        >
+          Return to HyperPerfect
+        </a>
+      </div>
       <h1 className="text-3xl font-bold mb-6">Install HyperPerfect Excel Add-in</h1>
       
 
