@@ -25,23 +25,25 @@ export default function InstallPage() {
           <h3 className="text-xl font-semibold mb-3">Step 1: Create and Share a Folder</h3>
           <ol className="list-decimal pl-5 space-y-2">
             <li>Open <strong>File Explorer</strong> and navigate to the parent folder or drive where you want to create your shared folder.</li>
-            <li>Create a new folder (e.g., <code className="bg-gray-200 px-1 py-0.5 rounded">C:\ExcelAddins</code>).</li>
+            <li>Create a new folder (e.g., <code className="bg-gray-200 px-1 py-0.5 rounded">C:\HyperPerfect AddIn</code>).</li>
             <li>Right-click the folder and select <strong>Properties</strong>.</li>
             <li>Go to the <strong>Sharing</strong> tab and click <strong>Share</strong>.</li>
-            <li>In the <strong>Network access</strong> dialog, add yourself and any other users/groups with whom you want to share the folder. Ensure they have at least <strong>Read/Write</strong> permissions.</li>
-            <li>Click <strong>Share</strong>, then note the full network path displayed (e.g., <code className="bg-gray-200 px-1 py-0.5 rounded">\\YourComputerName\ExcelAddins</code>). You will need this path later.</li>
-            <li>Click <strong>Done</strong>, then close the <strong>Properties</strong> dialog.</li>
+            <li>In the <strong>Network access</strong> dialog, use the dropdown menu to add yourself to share the folder.</li>
+            <li>Click <strong>Share</strong>, then Click <strong>Done</strong>.</li>
+            <li>Then copy the full network path displayed (e.g., <code className="bg-gray-200 px-1 py-0.5 rounded">\\YourComputerName\HyperPerfect Manifest</code>).</li>
+            <li>Click <strong>Close</strong>.</li>
           </ol>
         </div>
         
         <div className="mb-6">
           <h3 className="text-xl font-semibold mb-3">Step 2: Configure the Shared Folder as a Trusted Catalog</h3>
           <ol className="list-decimal pl-5 space-y-2">
-            <li>Open Excel and create a new blank workbook.</li>
+            <li>Open any Excel workbook.</li>
             <li>Go to <strong>File</strong> &gt; <strong>Options</strong> &gt; <strong>Trust Center</strong> &gt; <strong>Trust Center Settings</strong>.</li>
             <li>Select <strong>Trusted Add-in Catalogs</strong>.</li>
-            <li>In the <strong>Catalog Url</strong> box, enter the full network path of the shared folder (e.g., <code className="bg-gray-200 px-1 py-0.5 rounded">\\YourComputerName\ExcelAddins</code>).</li>
-            <li>Click <strong>Add catalog</strong>, then check the box for <strong>Show in Menu</strong>.</li>
+            <li>In the <strong>Catalog Url</strong> box, paste the full network path of the shared folder (e.g., <code className="bg-gray-200 px-1 py-0.5 rounded">\\YourComputerName\HyperPerfect Manifest</code>).</li>
+            <li>Click <strong>Add catalog</strong>.</li>
+            <li>IMPORTANT: Before closing, check the <strong>Show in Menu</strong> box.</li>
             <li>Click <strong>OK</strong> to close all dialog boxes.</li>
             <li>Restart Excel for changes to take effect.</li>
           </ol>
@@ -53,18 +55,31 @@ export default function InstallPage() {
             <li>
               Download your add-in manifest XML file into the shared folder (e.g., <code className="bg-gray-200 px-1 py-0.5 rounded">C:\ExcelAddins</code>):
               <div className="mt-2 mb-2">
-                <a 
-                  href="https://hyperperfect-prod.azurewebsites.net/manifest.xml" 
-                  download
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button 
+                  onClick={async () => {
+                    try {
+                      const response = await fetch('https://hyperperfect-prod.azurewebsites.net/manifest.xml');
+                      const blob = await response.blob();
+                      const url = window.URL.createObjectURL(blob);
+                      const link = document.createElement('a');
+                      link.href = url;
+                      link.download = 'manifest.xml';
+                      document.body.appendChild(link);
+                      link.click();
+                      document.body.removeChild(link);
+                      window.URL.revokeObjectURL(url);
+                    } catch (error) {
+                      console.error('Download failed:', error);
+                      alert('Failed to download manifest file. Please try again.');
+                    }
+                  }}
                   className="inline-block bg-[#1a7bff] text-white px-4 py-2 rounded font-medium hover:bg-[#1666db] transition-colors"
                 >
                   Download Manifest File
-                </a>
+                </button>
               </div>
             </li>
-            <li>Open Excel and go to <strong>Insert</strong> &gt; <strong>My Add-ins</strong> &gt; <strong>Shared Folder</strong> in the ribbon.</li>
+            <li>Open Excel and go to <strong>Home Ribbon</strong> &gt; <strong>Add-ins</strong>  <strong>More Add-ins</strong> &gt; <strong>Shared Folder</strong>.</li>
             <li>Select your add-in from the list and click <strong>Add</strong> to load it.</li>
           </ol>
         </div>
