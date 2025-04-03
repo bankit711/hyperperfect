@@ -10,6 +10,7 @@ export default function InstallPage() {
       <a 
         href="ms-excel:ofe|u|https://hyperperfect-prod.azurewebsites.net/manifest.xml" 
         className="install-button inline-block bg-[#1a7bff] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#1666db] transition-colors"
+        download="manifest.xml"
       >
         Install HyperPerfect Add-in
       </a>
