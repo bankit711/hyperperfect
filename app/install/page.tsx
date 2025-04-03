@@ -61,12 +61,12 @@ export default function InstallPage() {
           <h3 className="text-xl font-semibold mb-3">Step 1: Create and Share a Folder</h3>
           <ol className="list-decimal pl-5 space-y-2">
             <li>Open <strong>File Explorer</strong> and navigate to the parent folder or drive where you want to create your shared folder.</li>
-            <li>Create a new folder (e.g., <code className="bg-gray-200 px-1 py-0.5 rounded">C:\HyperPerfect AddIn</code>).</li>
+            <li>Create a new folder (e.g., <code className="bg-gray-200 px-1 py-0.5 rounded">C:\HyperPerfect_Folder</code>).</li>
             <li>Right-click the folder and select <strong>Properties</strong>.</li>
             <li>Go to the <strong>Sharing</strong> tab and click <strong>Share</strong>.</li>
             <li>In the <strong>Network access</strong> dialog, use the dropdown menu to add yourself to share the folder.</li>
             <li>Click <strong>Share</strong>, then Click <strong>Done</strong>.</li>
-            <li>Then copy the full network path displayed (e.g., <code className="bg-gray-200 px-1 py-0.5 rounded">\\YourComputerName\HyperPerfect Manifest</code>).</li>
+            <li>Then copy the full network path displayed (e.g., <code className="bg-gray-200 px-1 py-0.5 rounded">\\YourComputerName\HyperPerfect_Folder</code>).</li>
             <li>Click <strong>Close</strong>.</li>
           </ol>
         </div>
@@ -77,7 +77,7 @@ export default function InstallPage() {
             <li>Open any Excel workbook.</li>
             <li>Go to <strong>File</strong> &gt; <strong>Options</strong> &gt; <strong>Trust Center</strong> &gt; <strong>Trust Center Settings</strong>.</li>
             <li>Select <strong>Trusted Add-in Catalogs</strong>.</li>
-            <li>In the <strong>Catalog Url</strong> box, paste the full network path of the shared folder (e.g., <code className="bg-gray-200 px-1 py-0.5 rounded">\\YourComputerName\HyperPerfect Manifest</code>).</li>
+            <li>In the <strong>Catalog Url</strong> box, paste the full network path of the shared folder (e.g., <code className="bg-gray-200 px-1 py-0.5 rounded">\\YourComputerName\HyperPerfect_Folder</code>).</li>
             <li>Click <strong>Add catalog</strong>.</li>
             <li>IMPORTANT: Before closing, check the <strong>Show in Menu</strong> box.</li>
             <li>Click <strong>OK</strong> to close all dialog boxes.</li>
@@ -89,7 +89,7 @@ export default function InstallPage() {
           <h3 className="text-xl font-semibold mb-3">Step 3: Sideload Your Add-in</h3>
           <ol className="list-decimal pl-5 space-y-2">
             <li>
-              Download your add-in manifest XML file into the shared folder (e.g., <code className="bg-gray-200 px-1 py-0.5 rounded">C:\ExcelAddins</code>):
+              Download your add-in manifest XML file into the shared folder (e.g., <code className="bg-gray-200 px-1 py-0.5 rounded">C:\HyperPerfect_Folder</code>):
               <div className="mt-2 mb-2">
                 <button 
                   onClick={async () => {
