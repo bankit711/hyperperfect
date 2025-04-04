@@ -23,7 +23,7 @@ export default function RotatingContent({
   displayDuration = 3000, // 3 seconds default
   transitionDuration = 500, // 0.5 seconds default
 }: RotatingContentProps) {
-  const [currentIndex, setCurrentIndex] = useState(-1); // -1 means show the image
+  const [currentIndex, setCurrentIndex] = useState(imageSrc ? -1 : 0); // -1 means show the image, 0 means show first phrase
   const [isVisible, setIsVisible] = useState(true);
   
   useEffect(() => {
@@ -84,13 +84,13 @@ export default function RotatingContent({
   return (
     <div className="relative w-full h-full flex items-center justify-center">
       <div 
-        className="transition-opacity duration-500 flex items-center justify-center"
+        className="transition-opacity duration-500 flex items-center justify-center w-full h-full"
         style={{ 
           opacity: isVisible ? 1 : 0,
           transitionDuration: `${transitionDuration}ms`
         }}
       >
-        {currentIndex === -1 ? (
+        {imageSrc && currentIndex === -1 ? (
           <div 
             className="w-full h-full"
             style={{
@@ -101,7 +101,7 @@ export default function RotatingContent({
             }}
           />
         ) : (
-          <div className="text-white text-3xl md:text-4xl font-bold text-center">
+          <div className="text-inherit font-inherit text-center w-full" style={{ lineHeight: 1 }}>
             {phrases[currentIndex]}
           </div>
         )}

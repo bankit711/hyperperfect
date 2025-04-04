@@ -24,23 +24,16 @@ export default function LandingPage() {
       {/* Background */}
       <div className="absolute inset-0 z-0 bg-[#1a7bff]">
         <div className="absolute inset-0 container mx-auto px-4 md:px-6 flex items-center justify-end">
-          <div className="w-1/2 h-full opacity-30">
-            <RotatingContent
-              imageSrc="/images/symbol.svg"
-              phrases={[
-                "Clean data",
-                "Revenue walks",
-                "Fiscal Periods",
-                "Custom filtering",
-                "Cohorts",
-                "100% formulas",
-                "AI-enabled (coming soon)",
-                "Large datasets"
-              ]}
-              displayDuration={3000} // 3 seconds
-              transitionDuration={500} // 0.5 seconds fade
-            />
-          </div>
+          <div
+            className="w-[49%] h-full opacity-40"
+            style={{
+              backgroundImage:
+                "url(/images/symbol.svg)",
+              backgroundSize: "80%",
+              backgroundPosition: "right center",
+              backgroundRepeat: "no-repeat",
+            }}
+          ></div>
         </div>
       </div>
 
@@ -58,14 +51,14 @@ export default function LandingPage() {
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
               <Link 
-                href="https://publish.obsidian.md/hyperperfect/Website/Features" 
-                className="text-white/90 hover:text-white text-lg font-medium transition-colors"
+                href="https://publish.obsidian.md/hyperperfect/Website/Quick+Start" 
+                className="text-white/90 hover:text-white text-xl font-medium transition-colors"
               >
-                Features
+                Quick Start
               </Link>
               <Link 
                 href="/install" 
-                className="text-white/90 hover:text-white text-lg font-medium transition-colors"
+                className="text-white/90 hover:text-white text-xl font-medium transition-colors"
               >
                 Install
               </Link>
@@ -76,7 +69,7 @@ export default function LandingPage() {
               */}
               <Link 
                 href="https://publish.obsidian.md/hyperperfect/Website/Help" 
-                className="text-white/90 hover:text-white text-lg font-medium transition-colors"
+                className="text-white/90 hover:text-white text-xl font-medium transition-colors"
               >
                 Help
               </Link>
@@ -95,7 +88,7 @@ export default function LandingPage() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Get Started
+                Book Demo
               </Link>
             </div>
 
@@ -113,11 +106,11 @@ export default function LandingPage() {
           <div className="container mx-auto px-4 py-8">
             <nav className="flex flex-col space-y-6">
               <Link 
-                href="https://publish.obsidian.md/hyperperfect/Website/Features" 
+                href="https://publish.obsidian.md/hyperperfect/Website/Quick+Start" 
                 className="text-white text-3xl font-medium" 
                 onClick={() => setIsMenuOpen(false)}
               >
-                Features
+                Quick Start
               </Link>
               <Link 
                 href="/install" 
@@ -152,7 +145,7 @@ export default function LandingPage() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Get Started
+                Book Demo
               </Link>
             </nav>
           </div>
@@ -164,7 +157,25 @@ export default function LandingPage() {
         <div className="container mx-auto px-4 md:px-6 -mt-16">
           <div className="max-w-2xl md:max-w-3xl">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-16">
-              Automate your Excel workflow for customer revenue analysis.
+              Automate your <br />
+              <span className="inline-block h-[1.2em] overflow-hidden">
+                <RotatingContent
+                  imageSrc=""
+                  phrases={[
+                    "Excel workflow",
+                    "data cleaning",
+                    "revenue walks",
+                    "fiscal periods",
+                    "custom filtering",
+                    "cohort analyses",
+                    "SaaS metrics"
+                  ]}
+                  displayDuration={3000} // 3 seconds
+                  transitionDuration={500} // 0.5 seconds fade
+                />
+              </span> <br />
+              for customer <br />
+              revenue analytics.
             </h1>
             <p className="text-2xl md:text-3xl text-white/90 mb-8 max-w-xl">
               Instantly clean data and create revenue waterfalls and cohort analyses — all built with auditable formulas directly in Excel.
