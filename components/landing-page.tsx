@@ -178,7 +178,7 @@ export default function LandingPage() {
               revenue analytics.
             </h1>
             <p className="text-2xl md:text-3xl text-white/90 mb-8 max-w-xl">
-              Instantly clean data and create revenue waterfalls and cohort analyses — all built with auditable formulas directly in Excel.
+              Instantly clean data and create revenue waterfalls and cohort analyses — all built with auditable formulas in Excel.
             </p>
           </div>
         </div>
