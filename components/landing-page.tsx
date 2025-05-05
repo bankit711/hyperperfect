@@ -14,7 +14,6 @@ export default function LandingPage() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10)
     }
-
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -27,8 +26,7 @@ export default function LandingPage() {
           <div
             className="w-[49%] h-full opacity-40"
             style={{
-              backgroundImage:
-                "url(/images/symbol.svg)",
+              backgroundImage: "url(/images/symbol.svg)",
               backgroundSize: "80%",
               backgroundPosition: "right center",
               backgroundRepeat: "no-repeat",
@@ -56,12 +54,6 @@ export default function LandingPage() {
               >
                 Quick Start
               </Link>
-              {/* <Link 
-                href="/install" 
-                className="text-white/90 hover:text-white text-xl font-medium transition-colors"
-              >
-                Install
-              </Link> */}
               {/* Pricing link temporarily disabled
               <Link href="#" className="text-white/90 hover:text-white text-base font-medium transition-colors">
                 Pricing
@@ -112,13 +104,6 @@ export default function LandingPage() {
               >
                 Quick Start
               </Link>
-              {/* <Link 
-                href="/install" 
-                className="text-white text-3xl font-medium" 
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Install
-              </Link> */}
               {/* Pricing link temporarily disabled
               <Link href="#" className="text-white text-2xl font-medium" onClick={() => setIsMenuOpen(false)}>
                 Pricing
