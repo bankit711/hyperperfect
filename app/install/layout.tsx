@@ -1,5 +1,4 @@
 /*
-/*
 import React from 'react'
 
 export const metadata = {
@@ -10,5 +9,4 @@ export const metadata = {
 export default function InstallLayout({ children }: { children: React.ReactNode }) {
   return children
 }
-*/
 */
