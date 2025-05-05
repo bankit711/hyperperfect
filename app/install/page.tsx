@@ -53,7 +53,7 @@ export default function InstallPage() {
       >
         Install HyperPerfect Add-in
       </a>
-      */}
+      }
       
       <div className="mt-8 p-5 bg-gray-100 rounded-md">
         <h2 className="text-2xl font-semibold mb-4">Installing HyperPerfect on Windows</h2>
