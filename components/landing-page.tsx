@@ -56,12 +56,12 @@ export default function LandingPage() {
               >
                 Quick Start
               </Link>
-              <Link 
+              {/* <Link 
                 href="/install" 
                 className="text-white/90 hover:text-white text-xl font-medium transition-colors"
               >
                 Install
-              </Link>
+              </Link> */}
               {/* Pricing link temporarily disabled
               <Link href="#" className="text-white/90 hover:text-white text-base font-medium transition-colors">
                 Pricing
@@ -112,13 +112,13 @@ export default function LandingPage() {
               >
                 Quick Start
               </Link>
-              <Link 
+              {/* <Link 
                 href="/install" 
                 className="text-white text-3xl font-medium" 
                 onClick={() => setIsMenuOpen(false)}
               >
                 Install
-              </Link>
+              </Link> */}
               {/* Pricing link temporarily disabled
               <Link href="#" className="text-white text-2xl font-medium" onClick={() => setIsMenuOpen(false)}>
                 Pricing

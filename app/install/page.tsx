@@ -1,3 +1,4 @@
+/*
 "use client"
 
 export default function InstallPage() {
@@ -128,3 +129,4 @@ export default function InstallPage() {
     </div>
   )
 }
+*/

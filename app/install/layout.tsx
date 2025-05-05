@@ -1,3 +1,4 @@
+/*
 import React from 'react'
 
 export const metadata = {
@@ -12,3 +13,4 @@ export default function InstallLayout({
 }) {
   return children
 }
+*/
