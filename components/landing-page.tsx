@@ -76,7 +76,7 @@ export default function LandingPage() {
               */}
               <Link 
                 href="https://calendly.com/di-hyperperfect/30min"
-                className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-xl font-bold transition-colors focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none bg-white text-[#1a7bff] hover:bg-white/90 px-8 py-4"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-lg font-medium transition-colors focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none border-2 border-white text-white hover:bg-white hover:text-[#1a7bff] px-6 py-3"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -125,7 +125,7 @@ export default function LandingPage() {
               </div>
               <Link
                 href="https://calendly.com/di-hyperperfect/30min"
-                className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-lg font-bold transition-colors focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none bg-white text-[#1a7bff] hover:bg-white/90 py-6 w-full text-center"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-lg font-medium transition-colors focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none border-2 border-white text-white hover:bg-white hover:text-[#1a7bff] py-4 w-full text-center"
                 onClick={() => setIsMenuOpen(false)}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -165,6 +165,15 @@ export default function LandingPage() {
             <p className="text-2xl md:text-3xl text-white/90 mb-8 max-w-xl">
               Instantly clean data and create revenue waterfalls and cohort analyses — all built with auditable formulas in Excel.
             </p>
+            <button
+              data-tally-open="w8yjZx"
+              data-tally-layout="modal"
+              data-tally-width="450"
+              data-tally-auto-close="1000"
+              className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-xl font-bold transition-colors focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none bg-white text-[#1a7bff] hover:bg-white/90 px-8 py-4"
+            >
+              Sign Up for Early Access
+            </button>
           </div>
         </div>
       </div>
