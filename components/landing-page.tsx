@@ -5,10 +5,12 @@ import Link from "next/link"
 import { Menu, X } from "lucide-react"
 import { Button } from "./ui/button"
 import RotatingContent from "./rotating-content"
+import SignupModal from "./signup-modal"
 
 export default function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isSignupOpen, setIsSignupOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -166,10 +168,7 @@ export default function LandingPage() {
               Instantly clean data and create revenue waterfalls and cohort analyses — all built with auditable formulas in Excel.
             </p>
             <button
-              data-tally-open="w8yjZx"
-              data-tally-layout="modal"
-              data-tally-width="450"
-              data-tally-auto-close="1000"
+              onClick={() => setIsSignupOpen(true)}
               className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-xl font-bold transition-colors focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none bg-white text-[#1a7bff] hover:bg-white/90 px-8 py-4"
             >
               Sign Up for Early Access
@@ -195,6 +194,9 @@ export default function LandingPage() {
           </Link>
         </div>
       </footer>
+
+      {/* Signup Modal */}
+      <SignupModal isOpen={isSignupOpen} onClose={() => setIsSignupOpen(false)} />
     </div>
   )
 }
