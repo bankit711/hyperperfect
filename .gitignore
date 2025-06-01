@@ -30,4 +30,8 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts 
+next-env.d.ts
+
+# obsidian
+project_docs/.obsidian 
+project_docs/.obsidian/workspace.json
