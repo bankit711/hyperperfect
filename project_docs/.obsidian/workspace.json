@@ -41,7 +41,7 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": true
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -169,7 +169,7 @@
       "publish:Publish changes...": false
     }
   },
-  "active": "670fc82a9efab604",
+  "active": "6bbcea52662bedea",
   "lastOpenFiles": [
     "Terms of Service.md",
     "Quick Start.md",
