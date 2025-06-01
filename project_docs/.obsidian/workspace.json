@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Contact Us.md",
+                "file": "contact-us.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Contact Us"
+              "title": "contact-us"
             }
           }
         ]
@@ -171,11 +171,13 @@
   },
   "active": "6bbcea52662bedea",
   "lastOpenFiles": [
+    "terms-of-service.md",
+    "privacy-policy.md",
+    "contact-us.md",
     "analyze_formula_replacer_prompt.md",
     "airtable_testing_plan.md",
-    "Quick Start.md",
+    "quick-start.md",
     "Old Pages/Features.md",
-    "Contact Us.md",
     "other/touch-compatibility-report.md",
     "other/touch-compatibility-implementation.md",
     "other/requirements.md",
@@ -196,8 +198,6 @@
     "other",
     "ai-project/aiPhaseThreePlan.md",
     "ai-project/aiPhaseTwoPlan.md",
-    "ai-project/aiPhaseFourPlan.md",
-    "ai-project/aiFileRequirements.md",
     "ai-project",
     "symbol.svg",
     "Old Pages",
