@@ -51,7 +51,7 @@ export default function LandingPage() {
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
               <Link 
-                href="https://publish.obsidian.md/hyperperfect/Website/Quick+Start" 
+                href="https://publish.obsidian.md/hyperperfect/Quick+Start" 
                 className="text-white/90 hover:text-white text-xl font-medium transition-colors"
               >
                 Quick Start
@@ -62,7 +62,7 @@ export default function LandingPage() {
               </Link>
               */}
               <Link 
-                href="https://publish.obsidian.md/hyperperfect/Website/Help" 
+                href="https://publish.obsidian.md/hyperperfect/Help" 
                 className="text-white/90 hover:text-white text-xl font-medium transition-colors"
               >
                 Help
@@ -100,7 +100,7 @@ export default function LandingPage() {
           <div className="container mx-auto px-4 py-8">
             <nav className="flex flex-col space-y-6">
               <Link 
-                href="https://publish.obsidian.md/hyperperfect/Website/Quick+Start" 
+                href="https://publish.obsidian.md/hyperperfect/Quick+Start" 
                 className="text-white text-3xl font-medium" 
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -112,7 +112,7 @@ export default function LandingPage() {
               </Link>
               */}
               <Link 
-                href="https://publish.obsidian.md/hyperperfect/Website/Help" 
+                href="https://publish.obsidian.md/hyperperfect/Help" 
                 className="text-white text-3xl font-medium" 
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -181,13 +181,13 @@ export default function LandingPage() {
       <footer className="absolute bottom-0 left-0 right-0 p-6 z-10">
         <div className="container mx-auto flex justify-end gap-8">
           <Link 
-            href="https://publish.obsidian.md/hyperperfect/Website/Terms+of+Service" 
+            href="https://publish.obsidian.md/hyperperfect/Terms+of+Service" 
             className="text-white/90 hover:text-white flex items-center text-xl"
           >
             <span className="mr-2 text-2xl">→</span> Terms
           </Link>
           <Link 
-            href="https://publish.obsidian.md/hyperperfect/Website/Privacy+Policy" 
+            href="https://publish.obsidian.md/hyperperfect/Privacy+Policy" 
             className="text-white/90 hover:text-white flex items-center text-xl"
           >
             <span className="mr-2 text-2xl">→</span> Privacy

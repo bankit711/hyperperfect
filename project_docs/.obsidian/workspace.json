@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Website/Contact Us.md",
+                "file": "Contact Us.md",
                 "mode": "source",
                 "source": false
               },
@@ -169,13 +169,13 @@
       "publish:Publish changes...": false
     }
   },
-  "active": "670fc82a9efab604",
+  "active": "6bbcea52662bedea",
   "lastOpenFiles": [
     "analyze_formula_replacer_prompt.md",
     "airtable_testing_plan.md",
-    "Website/Quick Start.md",
-    "Website/Features.md",
-    "Website/Contact Us.md",
+    "Quick Start.md",
+    "Old Pages/Features.md",
+    "Contact Us.md",
     "other/touch-compatibility-report.md",
     "other/touch-compatibility-implementation.md",
     "other/requirements.md",
@@ -200,7 +200,7 @@
     "ai-project/aiFileRequirements.md",
     "ai-project",
     "symbol.svg",
-    "Website",
+    "Old Pages",
     "Untitled.canvas",
     "loginProject",
     "Website/noBgColor.svg",
