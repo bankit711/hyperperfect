@@ -60,7 +60,9 @@ External documentation is hosted on Obsidian Publish and linked from the site.
 
 When the user says "publish" or "let's publish", follow these steps:
 1. Commit any pending changes to the current branch (if needed)
-2. Push the current branch to the `gh-pages` branch using: `git push origin <current-branch>:gh-pages --force`
+2. Run `npm run deploy` which will:
+   - Build the static site with `next build`
+   - Copy the CNAME file to the output directory
+   - Create .nojekyll file for GitHub Pages
+   - Deploy the `/out` directory to the `gh-pages` branch using gh-pages package
 3. Stay on the original working branch (do not switch branches)
-
-This deploys the site directly without needing to build, as the repository is configured for GitHub Pages.
