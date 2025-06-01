@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "../styles/globals.css";
 
 // Initialize the Inter font with swap display and optional subset
@@ -27,7 +28,21 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script async src="https://tally.so/widgets/embed.js"></script>
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-BYW8TCVBDR"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-BYW8TCVBDR');
+          `}
+        </Script>
+        {children}
+      </body>
     </html>
   );
 } 
