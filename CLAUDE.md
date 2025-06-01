@@ -55,3 +55,12 @@ The site deploys to GitHub Pages with a custom domain. The deployment process:
 4. Uses `gh-pages` package to push the `/out` directory
 
 External documentation is hosted on Obsidian Publish and linked from the site.
+
+## Publishing Workflow
+
+When the user says "publish" or "let's publish", follow these steps:
+1. Commit any pending changes to the current branch (if needed)
+2. Push the current branch to the `gh-pages` branch using: `git push origin <current-branch>:gh-pages --force`
+3. Stay on the original working branch (do not switch branches)
+
+This deploys the site directly without needing to build, as the repository is configured for GitHub Pages.
