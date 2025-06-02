@@ -67,6 +67,14 @@ export default function LandingPage() {
               >
                 Help
               </Link>
+              <Link 
+                href="https://publish.obsidian.md/hyperperfect/Resources" 
+                className="text-white/90 hover:text-white text-xl font-medium transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Resources
+              </Link>
             </nav>
 
             {/* Desktop CTA */}
@@ -117,6 +125,15 @@ export default function LandingPage() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Help
+              </Link>
+              <Link 
+                href="https://publish.obsidian.md/hyperperfect/Resources" 
+                className="text-white text-3xl font-medium" 
+                onClick={() => setIsMenuOpen(false)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Resources
               </Link>
               <div className="pt-6 border-t border-white/20">
                 {/* Sign In link temporarily disabled
