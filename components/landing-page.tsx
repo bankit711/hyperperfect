@@ -167,12 +167,14 @@ export default function LandingPage() {
             <p className="text-2xl md:text-3xl text-white/90 mb-8 max-w-xl">
               Instantly clean data and create revenue waterfalls and cohort analyses — all built with auditable formulas in Excel.
             </p>
-            <button
-              onClick={() => setIsSignupOpen(true)}
+            <a
+              href="https://publish.obsidian.md/hyperperfect/Sign+Up"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-xl font-bold transition-colors focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none bg-white text-[#1a7bff] hover:bg-white/90 px-8 py-4"
             >
-              Sign Up for Early Access
-            </button>
+              Sign Up for Instant Access
+            </a>
           </div>
         </div>
       </div>
