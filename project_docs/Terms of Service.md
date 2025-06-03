@@ -283,3 +283,6 @@ The Services are subject to U.S. export controls administered by various U.S. ag
 ---
 
 *This Terms of Service document is part of the Agreement between HyperPerfect and Client and is binding upon acceptance and continued use of the Services.*
+
+
+Go back to [HyperPerfect's Home Page](https://www.hyperperfect.ai/).

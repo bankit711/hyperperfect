@@ -20,8 +20,23 @@
               "icon": "lucide-file",
               "title": "Quick Start"
             }
+          },
+          {
+            "id": "a20a7f2cb8c9adad",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Resources.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Resources"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -169,12 +184,18 @@
       "publish:Publish changes...": false
     }
   },
-  "active": "6bbcea52662bedea",
+  "active": "a20a7f2cb8c9adad",
   "lastOpenFiles": [
-    "Terms of Service.md",
     "Quick Start.md",
+    "Resources.md",
+    "Terms of Service.md",
+    "Sign Up.md",
     "Privacy Policy.md",
+    "Help.md",
     "Contact Us.md",
+    "Go to HyperPerfect.ai.md",
+    "Sign+Up.md",
+    "Sign%20Up.md",
     "analyze_formula_replacer_prompt.md",
     "airtable_testing_plan.md",
     "Old Pages/Features.md",
@@ -191,13 +212,7 @@
     "other/Revenue_Waterfall_Formula_Instructions.md",
     "other/Revenue Waterfall Prompt.md",
     "other/Revenue Waterfall Pre-Prompt.md",
-    "other/Plan to create single pass processing.md",
-    "other/HyperPerfect Tickets.md",
-    "other/Formulas.md",
-    "other/Fixing Quarters & Years Calculations.md",
     "other",
-    "ai-project/aiPhaseThreePlan.md",
-    "ai-project/aiPhaseTwoPlan.md",
     "ai-project",
     "symbol.svg",
     "Old Pages",

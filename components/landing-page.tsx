@@ -68,7 +68,7 @@ export default function LandingPage() {
                 Help
               </Link>
               <Link 
-                href="https://publish.obsidian.md/hyperperfect/Resources" 
+                href="https://dingraham.gumroad.com/l/quarterlyretentionfile" 
                 className="text-white/90 hover:text-white text-xl font-medium transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -127,7 +127,7 @@ export default function LandingPage() {
                 Help
               </Link>
               <Link 
-                href="https://publish.obsidian.md/hyperperfect/Resources" 
+                href="https://dingraham.gumroad.com/l/quarterlyretentionfile" 
                 className="text-white text-3xl font-medium" 
                 onClick={() => setIsMenuOpen(false)}
                 target="_blank"

@@ -2,9 +2,17 @@
 
 Our Excel add-in automate your Excel workflow for customer revenue analysis.  You can Instantly clean data and create revenue waterfalls and cohort analyses — all built with auditable formulas directly in Excel.
 
-## Core Functionality Testing Steps
+## Get Started
 
-### 1. Install and Open the Add-in
+### 1. Register for Free
+- Signup required to get access to the add-in.
+
+<a href="Sign Up.md" class="internal-link" style="background-color: #2196F3; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">Sign Up For Instant Access</a>
+
+
+
+
+### 2. Install and Open the Add-in
 - Install and launch the HyperPerfect Add-in by running Excel Desktop and clicking **Home** (in the ribbon) -> **Add-ins** -> **More Add-ins** -> **Store** -> Search for "HyperPerfect" -> **Add**
 
 #### If Admin installation is required, send these instructions to your IT department
@@ -14,7 +22,7 @@ Our Excel add-in automate your Excel workflow for customer revenue analysis.  Yo
 - Assign Users or Groups
 - Review your choices and click **Finish deployment**
 
-### 2. Overview
+### 3. Overview
 - After sign-in, the add-in’s task pane loads.
 - The app has three main menu pages accessible via the top menu bar:
   - **Clean**: Cleans customer revenue data for normalization prior to analysis.
@@ -26,7 +34,7 @@ Here's a quick look at how the functionality works:
 
 <iframe width="640" height="423" src="https://www.loom.com/embed/4ec4b69c39ab45c2bfc80a5ea914a3f7?sid=925b97a6-408b-4fad-8521-014dba1771b4" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
-### 3. Use the Clean Dashboard
+### 4. Use the Clean Dashboard
 - Select an Excel worksheet from the **"Choose Input Sheet" dropdown**, containing dimensional data columns (e.g., customer names, attributes) and monthly revenue data.
 - Monthly revenue data headers should be date-formatted
 - The data table should start in cell A1
@@ -43,13 +51,13 @@ Example source data table:
 - Multiple adjustments can be applied simultaneously.
 - Click **"Clean Source Data with Formulas"** to create a new sheet with cleaned data.
 
-### 4. Use the Analyze Dashboard to Build a Revenue Data Table
+### 5. Use the Analyze Dashboard to Build a Revenue Data Table
 - Navigate to the **Analyze Dashboard**.
 - Select an Excel worksheet via the **"Choose Input Sheet" dropdown** containing dimensional and monthly revenue data (the cleaned data output from the previous step or a similar data table with dimensions and month revenue).
 - Choose fiscal year-end from dropdown if other than December.
 - Build a revenue data table that includes cohort details and quarterly/annual summaries, outputting results to a new sheet.
 
-### 5. Use the Analyze Dashboard to Build a Revenue Waterfall
+### 6. Use the Analyze Dashboard to Build a Revenue Waterfall
 - After building the revenue data table, construct a Revenue or Customer Count Waterfall using the output:
   - Segregate data by Revenue Type (start, new, upgrade, cancel, etc.) and Cohort groupings.
   - Click **"Revenue Waterfall"** to display results in a new sheet.
@@ -59,5 +67,9 @@ Example source data table:
 - **Cohorts**: Waterfalls can be grouped by monthly, quarterly, and annual cohorts if desired
 - **Filters**: Waterfalls can be filtered by any dimension from the source sheet.  Output results will only include Chosen , which can be helpful when wanting to analyze performance for a parti
 
-Please contact us at help@hyperperfect.ai if further assistance is required. Thank you for using our software!
+Please contact us at help@hyperperfect.ai or sign up for a [training session](https://calendly.com/di-hyperperfect/30min) if further assistance is required. Thank you for using our software!
+
+
+
+Go back to [HyperPerfect's Home Page](https://www.hyperperfect.ai/).
 

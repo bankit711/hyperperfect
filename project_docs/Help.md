@@ -197,3 +197,7 @@ The Revenue Waterfall operation creates a detailed analysis of how your revenue 
 - If you encounter errors in the waterfall analysis about missing columns, check that your data includes the required 'Start Month' and 'Cancel Month' columns.
 - If the add-in seems unresponsive, check for error messages at the bottom of the add-in panel.
 - For best results, ensure your Excel data is formatted as a proper table with headers.
+
+
+
+Go back to [HyperPerfect's Home Page](https://www.hyperperfect.ai/).

@@ -200,3 +200,5 @@ For any questions about this Privacy Policy, please contact us:
 
 📧 Email: [help@hyperperfect.ai](mailto:help@hyperperfect.ai)    
 📍 Address: 600 California St, Floor 11, San Francisco, CA 94108  
+
+Go back to [HyperPerfect's Home Page](https://www.hyperperfect.ai/).

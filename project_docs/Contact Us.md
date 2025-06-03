@@ -18,3 +18,6 @@ Need one-on-one assistance? Book a 30-minute help call with one of our experts! 
 We strive to respond to all inquiries as quickly as possible—typically within 24 hours during business days.  Your satisfaction is our priority, and we’re committed to ensuring you have a smooth, productive experience with our Microsoft Web Add-in.
 
 Thank you for being a valued user. We look forward to assisting you!
+
+
+Go back to [HyperPerfect's Home Page](https://www.hyperperfect.ai/).
