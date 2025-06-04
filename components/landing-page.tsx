@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react"
 import { Button } from "./ui/button"
 import RotatingContent from "./rotating-content"
 import SignupModal from "./signup-modal"
+import Script from "next/script"
 
 export default function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -22,6 +23,13 @@ export default function LandingPage() {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
+      {/* Brevo SDK Script */}
+      <Script
+        id="brevo-sdk"
+        src="https://cdn.brevo.com/js/sdk-loader.js"
+        strategy="afterInteractive"
+      />
+      
       {/* Background */}
       <div className="absolute inset-0 z-0 bg-[#1a7bff]">
         <div className="absolute inset-0 container mx-auto px-4 md:px-6 flex items-center justify-end">

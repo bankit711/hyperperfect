@@ -11,13 +11,32 @@
             "id": "aa29066f108cea96",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Quick Start.md",
+                "mode": "preview",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Quick Start"
+            }
+          },
+          {
+            "id": "94d132c5c8e67ec9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Quick Start.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Quick Start"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -165,14 +184,15 @@
       "publish:Publish changes...": false
     }
   },
-  "active": "aa29066f108cea96",
+  "active": "94d132c5c8e67ec9",
   "lastOpenFiles": [
+    "Sign Up.md",
     "Quick Start.md",
+    "User Guide.md",
+    "Why HyperPerfect?.md",
     "Old Pages/Resources.md",
     "Terms of Service.md",
-    "Sign Up.md",
     "Privacy Policy.md",
-    "Help.md",
     "Contact Us.md",
     "Go to HyperPerfect.ai.md",
     "Sign+Up.md",
@@ -192,7 +212,6 @@
     "other/Revenue_Waterfall_Implementation_Plan.md",
     "other/Revenue_Waterfall_Formula_Instructions.md",
     "other/Revenue Waterfall Prompt.md",
-    "other/Revenue Waterfall Pre-Prompt.md",
     "other",
     "ai-project",
     "symbol.svg",
