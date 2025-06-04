@@ -29,6 +29,21 @@ export default function LandingPage() {
         src="https://cdn.brevo.com/js/sdk-loader.js"
         strategy="afterInteractive"
       />
+      <Script
+        id="brevo-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.Brevo = window.Brevo || [];
+            Brevo.push([
+              "init",
+              {
+                client_key: "834d6ouos53ws47l1a1btz8l"
+              }
+            ]);
+          `
+        }}
+      />
       
       {/* Background */}
       <div className="absolute inset-0 z-0 bg-[#1a7bff]">
