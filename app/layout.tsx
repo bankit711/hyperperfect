@@ -27,6 +27,21 @@ export default function RootLayout({
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script async src="https://tally.so/widgets/embed.js"></script>
+        <script src="https://cdn.brevo.com/js/sdk-loader.js" async></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              // Version: 2.0
+              window.Brevo = window.Brevo || [];
+              Brevo.push([
+                "init",
+                {
+                  client_key: "834d6ouos53ws47l1a1btz8l"
+                }
+              ]);
+            `
+          }}
+        />
       </head>
       <body className={inter.className}>
         <Script
