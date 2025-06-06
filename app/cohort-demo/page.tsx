@@ -11,7 +11,7 @@ export default function CohortDemoPage() {
   const [email, setEmail] = useState("")
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
-  const [acceptMarketing, setAcceptMarketing] = useState(false)
+  const [acceptMarketing, setAcceptMarketing] = useState(true)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
 
@@ -64,19 +64,7 @@ export default function CohortDemoPage() {
   return (
     <div className="relative min-h-screen overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 z-0 bg-[#1a7bff]">
-        <div className="absolute inset-0 container mx-auto px-4 md:px-6 flex items-center justify-end">
-          <div
-            className="w-[49%] h-full opacity-40"
-            style={{
-              backgroundImage: "url(/images/symbol.svg)",
-              backgroundSize: "80%",
-              backgroundPosition: "right center",
-              backgroundRepeat: "no-repeat",
-            }}
-          ></div>
-        </div>
-      </div>
+      <div className="absolute inset-0 z-0 bg-[#1a7bff]"></div>
 
       {/* Navigation */}
       <header
@@ -183,12 +171,12 @@ export default function CohortDemoPage() {
           <div className="max-w-4xl mx-auto">
             {/* Hero Section */}
             <div className="text-center mb-8">
-              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight mb-4 whitespace-nowrap">
-                Your Free Cohort Analysis File is Ready
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">
+                Your Cohort Analysis File is Ready
               </h1>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl px-6 py-4 max-w-4xl mx-auto">
-                <p className="text-xl md:text-2xl lg:text-3xl text-white font-bold whitespace-nowrap">
-                  But first: Are you interested in automation?
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl px-8 py-6 max-w-3xl mx-auto">
+                <p className="text-lg md:text-xl text-white font-semibold">
+                  But first: Want to build your own in 90 seconds?
                 </p>
               </div>
             </div>
@@ -247,7 +235,7 @@ export default function CohortDemoPage() {
               {/* Download Form */}
               <div className="bg-gray-50 rounded-lg p-8">
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-                  📬 Receive Your Cohort Analysis
+                  📬 Receive Your Cohort Analysis File
                 </h2>
                 
                 {!showSuccess ? (
