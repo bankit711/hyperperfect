@@ -28,31 +28,36 @@ export default function CohortDemoPage() {
     setIsSubmitting(true)
     
     try {
-      const response = await fetch('/api/cohort-demo', {
+      // Prepare form data for Formspree
+      const formData = new FormData()
+      formData.append('firstName', firstName)
+      formData.append('lastName', lastName)
+      formData.append('email', email)
+      formData.append('acceptMarketing', acceptMarketing.toString())
+      formData.append('_redirect', acceptMarketing 
+        ? 'https://publish.obsidian.md/hyperperfect/User+Guide'
+        : 'https://hyperperfect.ai')
+
+      const response = await fetch('https://formspree.io/f/mdkzadzk', {
         method: 'POST',
+        body: formData,
         headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email,
-          firstName,
-          lastName,
-          acceptMarketing,
-        }),
+          'Accept': 'application/json'
+        }
       })
 
-      const data = await response.json()
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to submit form')
+      if (response.ok) {
+        setShowSuccess(true)
+        
+        // Redirect based on user choice after showing success message
+        setTimeout(() => {
+          window.location.href = acceptMarketing 
+            ? 'https://publish.obsidian.md/hyperperfect/User+Guide'
+            : 'https://hyperperfect.ai'
+        }, 2000)
+      } else {
+        throw new Error('Form submission failed')
       }
-      
-      setShowSuccess(true)
-      
-      // Redirect based on user choice after showing success message
-      setTimeout(() => {
-        window.location.href = data.redirectUrl || "https://hyperperfect.ai"
-      }, 2000)
     } catch (error) {
       console.error('Form submission error:', error)
       alert('There was an error processing your request. Please try again.')
