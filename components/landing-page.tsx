@@ -56,22 +56,21 @@ export default function LandingPage() {
               >
                 Quick Start
               </Link>
-              {/* Pricing link temporarily disabled
-              <Link href="#" className="text-white/90 hover:text-white text-base font-medium transition-colors">
-                Pricing
-              </Link>
-              */}
               <Link 
-                href="https://publish.obsidian.md/hyperperfect/Help" 
+                href="https://publish.obsidian.md/hyperperfect/Why+HyperPerfect%3F" 
+                className="text-white/90 hover:text-white text-xl font-medium transition-colors"
+              >
+                Benefits
+              </Link>
+              <Link 
+                href="https://publish.obsidian.md/hyperperfect/User+Guide" 
                 className="text-white/90 hover:text-white text-xl font-medium transition-colors"
               >
                 Help
               </Link>
               <Link 
-                href="https://dingraham.gumroad.com/l/quarterlyretentionfile" 
+                href="/cohort-demo" 
                 className="text-white/90 hover:text-white text-xl font-medium transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 Resources
               </Link>
@@ -114,24 +113,24 @@ export default function LandingPage() {
               >
                 Quick Start
               </Link>
-              {/* Pricing link temporarily disabled
-              <Link href="#" className="text-white text-2xl font-medium" onClick={() => setIsMenuOpen(false)}>
-                Pricing
-              </Link>
-              */}
               <Link 
-                href="https://publish.obsidian.md/hyperperfect/Help" 
+                href="https://publish.obsidian.md/hyperperfect/Why+HyperPerfect%3F" 
+                className="text-white text-3xl font-medium" 
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Benefits
+              </Link>
+              <Link 
+                href="https://publish.obsidian.md/hyperperfect/User+Guide" 
                 className="text-white text-3xl font-medium" 
                 onClick={() => setIsMenuOpen(false)}
               >
                 Help
               </Link>
               <Link 
-                href="https://dingraham.gumroad.com/l/quarterlyretentionfile" 
+                href="/cohort-demo" 
                 className="text-white text-3xl font-medium" 
                 onClick={() => setIsMenuOpen(false)}
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 Resources
               </Link>
