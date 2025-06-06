@@ -5,8 +5,8 @@ const brevoApiKey = process.env.BREVO_API_KEY || ''
 const marketingListId = process.env.BREVO_MARKETING_LIST_ID ? parseInt(process.env.BREVO_MARKETING_LIST_ID) : 0
 const fileOnlyListId = process.env.BREVO_FILE_ONLY_LIST_ID ? parseInt(process.env.BREVO_FILE_ONLY_LIST_ID) : 0
 
-// File download URL - this should be the direct download link for the cohort analysis file
-const COHORT_FILE_URL = 'https://dingraham.gumroad.com/l/quarterlyretentionfile'
+// File download URL - direct download from our domain
+const COHORT_FILE_URL = 'https://hyperperfect.ai/files/cohort-analysis.xlsx'
 
 export async function POST(request: NextRequest) {
   try {
