@@ -165,7 +165,7 @@ export default function BrevoForm() {
                         <label className="entry__label" style={{fontWeight: 700, textAlign: 'left', fontSize: '16px', fontFamily: 'Helvetica, sans-serif', color: '#050505'}} htmlFor="FIRSTNAME" data-required="*">First Name</label>
 
                         <div className="entry__field">
-                          <input className="input " maxLength="200" type="text" id="FIRSTNAME" name="FIRSTNAME" autoComplete="off" data-required="true" required />
+                          <input className="input " maxLength={200} type="text" id="FIRSTNAME" name="FIRSTNAME" autoComplete="off" data-required="true" required />
                         </div>
                       </div>
 
@@ -180,7 +180,7 @@ export default function BrevoForm() {
                         <label className="entry__label" style={{fontWeight: 700, textAlign: 'left', fontSize: '16px', fontFamily: 'Helvetica, sans-serif', color: '#050505'}} htmlFor="LASTNAME" data-required="*">Last Name</label>
 
                         <div className="entry__field">
-                          <input className="input " maxLength="200" type="text" id="LASTNAME" name="LASTNAME" autoComplete="off" data-required="true" required />
+                          <input className="input " maxLength={200} type="text" id="LASTNAME" name="LASTNAME" autoComplete="off" data-required="true" required />
                         </div>
                       </div>
 
