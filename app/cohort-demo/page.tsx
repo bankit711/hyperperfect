@@ -143,7 +143,7 @@ export default function CohortDemoPage() {
               </h1>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl px-8 py-6 max-w-3xl mx-auto">
                 <p className="text-lg md:text-xl text-white font-semibold">
-                  But first: Want to build your own in 90 seconds?
+                  But first: Want to learn to build your own in 90 seconds?
                 </p>
               </div>
             </div>

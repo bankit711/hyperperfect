@@ -22,6 +22,36 @@ export default function BrevoForm() {
         }
       };
       (window as any).AUTOHIDE = Boolean(0);
+
+      // Custom success handler
+      const handleFormSuccess = () => {
+        const successMessage = document.getElementById('success-message');
+        const formContainer = document.getElementById('sib-container');
+        
+        if (successMessage && formContainer) {
+          formContainer.style.display = 'none';
+          successMessage.style.display = 'block';
+          
+          // Redirect after 3 seconds
+          setTimeout(() => {
+            window.location.href = '/';
+          }, 3000);
+        }
+      };
+
+      // Listen for form submission success
+      const checkForSuccess = () => {
+        const successMessage = document.getElementById('success-message');
+        if (successMessage && successMessage.style.display !== 'none') {
+          handleFormSuccess();
+        }
+      };
+
+      // Check every 500ms for success state
+      const interval = setInterval(checkForSuccess, 500);
+
+      // Cleanup interval on unmount
+      return () => clearInterval(interval);
     }
   }, [])
 
@@ -136,14 +166,16 @@ export default function BrevoForm() {
             </div>
           </div>
           <div></div>
-          <div id="success-message" className="sib-form-message-panel" style={{fontSize: '16px', textAlign: 'left', fontFamily: 'Helvetica, sans-serif', color: '#085229', backgroundColor: '#e7faf0', borderRadius: '3px', borderColor: '#13ce66', maxWidth: '540px'}}>
+          <div id="success-message" className="sib-form-message-panel" style={{fontSize: '16px', textAlign: 'center', fontFamily: 'Helvetica, sans-serif', color: '#085229', backgroundColor: '#e7faf0', borderRadius: '8px', borderColor: '#13ce66', maxWidth: '540px', padding: '32px', display: 'none'}}>
             <div className="sib-form-message-panel__text sib-form-message-panel__text--center">
-              <svg viewBox="0 0 512 512" className="sib-icon sib-notification__icon">
+              <svg viewBox="0 0 512 512" className="sib-icon sib-notification__icon" style={{width: '48px', height: '48px', marginBottom: '16px'}}>
                 <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z" />
               </svg>
-              <span className="sib-form-message-panel__inner-text">
-                Thank you!
-              </span>
+              <div>
+                <h3 style={{fontSize: '24px', fontWeight: 'bold', margin: '0 0 8px 0', color: '#085229'}}>Success!</h3>
+                <p style={{fontSize: '16px', margin: '0 0 16px 0', color: '#065f20'}}>Your information has been submitted successfully.</p>
+                <p style={{fontSize: '14px', margin: '0', color: '#065f20'}}>You'll receive your cohort analysis file soon. Redirecting to home page...</p>
+              </div>
             </div>
           </div>
           <div></div>
