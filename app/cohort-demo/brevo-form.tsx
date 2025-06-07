@@ -7,13 +7,13 @@ export default function BrevoForm() {
   useEffect(() => {
     // Set up global variables that Brevo form expects
     if (typeof window !== 'undefined') {
-      window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
-      window.LOCALE = 'en';
-      window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";
-      window.REQUIRED_ERROR_MESSAGE = "This field cannot be left blank. ";
-      window.GENERIC_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";
-      window.REQUIRED_MULTISELECT_MESSAGE = 'Please select at least 1 option';
-      window.translation = {
+      (window as any).REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+      (window as any).LOCALE = 'en';
+      (window as any).EMAIL_INVALID_MESSAGE = (window as any).SMS_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";
+      (window as any).REQUIRED_ERROR_MESSAGE = "This field cannot be left blank. ";
+      (window as any).GENERIC_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";
+      (window as any).REQUIRED_MULTISELECT_MESSAGE = 'Please select at least 1 option';
+      (window as any).translation = {
         common: {
           selectedList: '{quantity} list selected',
           selectedLists: '{quantity} lists selected',
@@ -21,7 +21,7 @@ export default function BrevoForm() {
           selectedOptions: '{quantity} selected',
         }
       };
-      window.AUTOHIDE = Boolean(0);
+      (window as any).AUTOHIDE = Boolean(0);
     }
   }, [])
 
