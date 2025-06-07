@@ -25,38 +25,160 @@ export default function BrevoForm() {
 
       // Custom success handler
       const handleFormSuccess = () => {
-        const successMessage = document.getElementById('success-message');
-        const formContainer = document.getElementById('sib-container');
+        console.log('[Brevo Form] handleFormSuccess called');
         
-        if (successMessage && formContainer) {
-          formContainer.style.display = 'none';
-          successMessage.style.display = 'block';
+        const cohortCheckbox = document.querySelector('input[value="12"]') as HTMLInputElement;
+        const hyperperfectCheckbox = document.querySelector('input[value="11"]') as HTMLInputElement;
+        
+        // Get the main Brevo form component
+        const brevoFormComponent = document.querySelector('div[data-brevo-form]')?.parentElement || 
+                                  document.querySelector('.sib-form')?.parentElement ||
+                                  document.getElementById('__next');
+        
+        if (!brevoFormComponent) {
+          console.error('[Brevo Form] Could not find form container');
+          return;
+        }
+        
+        // Create success message HTML
+        let successHTML = '';
+        
+        if (cohortCheckbox && cohortCheckbox.checked) {
+          successHTML = `
+            <div style="text-align: center; padding: 60px 20px; max-width: 600px; margin: 0 auto;">
+              <div style="font-size: 72px; margin-bottom: 30px;">📧</div>
+              <h1 style="font-size: 36px; font-weight: bold; margin: 0 0 20px 0; color: #085229;">Check Your Email!</h1>
+              <p style="font-size: 20px; margin: 0 0 30px 0; color: #065f20; line-height: 1.6;">
+                We've sent the Cohort Analysis Excel file to your email address.
+              </p>
+              <p style="font-size: 18px; margin: 0 0 20px 0; color: #065f20;">
+                Please check your inbox (and spam folder).
+              </p>
+              <p style="font-size: 16px; margin: 0; color: #666;">
+                Redirecting to home page in 5 seconds...
+              </p>
+            </div>
+          `;
+          setTimeout(() => window.location.href = '/', 5000);
+        } else {
+          successHTML = `
+            <div style="text-align: center; padding: 60px 20px; max-width: 600px; margin: 0 auto;">
+              <div style="font-size: 72px; margin-bottom: 30px;">✅</div>
+              <h1 style="font-size: 36px; font-weight: bold; margin: 0 0 20px 0; color: #085229;">Welcome to HyperPerfect!</h1>
+              <p style="font-size: 20px; margin: 0 0 30px 0; color: #065f20; line-height: 1.6;">
+                Check your email for more information about HyperPerfect.
+              </p>
+              <p style="font-size: 16px; margin: 0; color: #666;">
+                Redirecting to home page in 5 seconds...
+              </p>
+            </div>
+          `;
+          setTimeout(() => window.location.href = '/', 5000);
+        }
+        
+        // Replace entire form component with success message
+        brevoFormComponent.innerHTML = successHTML;
+        
+        // Scroll to top
+        window.scrollTo(0, 0);
+      };
+
+      // Enhanced form handling that works even if Brevo scripts are blocked
+      setTimeout(() => {
+        const form = document.getElementById('sib-form') as HTMLFormElement;
+        const submitButton = form?.querySelector('button[type="submit"]') as HTMLButtonElement;
+        
+        if (form && submitButton) {
+          console.log('[Brevo Form] Setting up form handler');
           
-          // Redirect after 3 seconds
-          setTimeout(() => {
-            window.location.href = '/';
-          }, 3000);
+          // Track if we've already shown success
+          let successShown = false;
+          
+          // Add click handler to submit button for immediate feedback
+          submitButton.addEventListener('click', (e) => {
+            // Quick validation check
+            const email = (form.querySelector('#EMAIL') as HTMLInputElement)?.value;
+            const firstName = (form.querySelector('#FIRSTNAME') as HTMLInputElement)?.value;
+            const lastName = (form.querySelector('#LASTNAME') as HTMLInputElement)?.value;
+            const hasCheckedOption = form.querySelectorAll('input[name="lists_40[]"]:checked').length > 0;
+            
+            if (email && firstName && lastName && hasCheckedOption && !successShown) {
+              console.log('[Brevo Form] All fields valid, will show success after submission');
+              successShown = true;
+              
+              // Prevent default form behavior
+              e.preventDefault();
+              e.stopPropagation();
+              
+              // Submit form data in background
+              const formData = new FormData(form);
+              fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors'
+              }).then(() => {
+                console.log('[Brevo Form] Form data sent');
+              }).catch(err => {
+                console.error('[Brevo Form] Submit error:', err);
+              });
+              
+              // Show success immediately
+              handleFormSuccess();
+              
+              return false;
+            }
+          });
+          
+          // Intercept form submission with capture to run first
+          form.addEventListener('submit', (e) => {
+            console.log('[Brevo Form] Form submit event');
+            
+            // Get form data
+            const formData = new FormData(form);
+            const cohortCheckbox = form.querySelector('input[value="12"]') as HTMLInputElement;
+            const isRequestingCohortFile = cohortCheckbox?.checked;
+            
+            // Validate required fields client-side
+            const email = formData.get('EMAIL') as string;
+            const firstName = formData.get('FIRSTNAME') as string;
+            const lastName = formData.get('LASTNAME') as string;
+            const hasCheckedOption = formData.getAll('lists_40[]').length > 0;
+            
+            if (!email || !firstName || !lastName || !hasCheckedOption) {
+              console.log('[Brevo Form] Validation failed');
+              return; // Let Brevo handle the validation UI
+            }
+            
+            // If we reach here with valid data, prevent default and show success
+            if (!successShown) {
+              e.preventDefault();
+              e.stopPropagation();
+              e.stopImmediatePropagation();
+              successShown = true;
+              
+              // Disable submit button
+              if (submitButton) {
+                submitButton.disabled = true;
+              }
+              
+              // Submit in background
+              fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors'
+              });
+              
+              handleFormSuccess();
+              return false;
+            }
+          }, true); // Use capture phase
         }
-      };
-
-      // Listen for form submission success
-      const checkForSuccess = () => {
-        const successMessage = document.getElementById('success-message');
-        if (successMessage && successMessage.style.display !== 'none') {
-          handleFormSuccess();
-        }
-      };
-
-      // Check every 500ms for success state
-      const interval = setInterval(checkForSuccess, 500);
-
-      // Cleanup interval on unmount
-      return () => clearInterval(interval);
+      }, 1000); // Wait for DOM to be ready
     }
   }, [])
 
   return (
-    <>
+    <div data-brevo-form="true">
       <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css" />
       <Script 
         src="https://sibforms.com/forms/end-form/build/main.js" 
@@ -166,15 +288,17 @@ export default function BrevoForm() {
             </div>
           </div>
           <div></div>
-          <div id="success-message" className="sib-form-message-panel" style={{fontSize: '16px', textAlign: 'center', fontFamily: 'Helvetica, sans-serif', color: '#085229', backgroundColor: '#e7faf0', borderRadius: '8px', borderColor: '#13ce66', maxWidth: '540px', padding: '32px', display: 'none'}}>
+          <div id="success-message" className="sib-form-message-panel" style={{fontSize: '16px', textAlign: 'center', fontFamily: 'Helvetica, sans-serif', color: '#085229', backgroundColor: '#e7faf0', borderRadius: '12px', borderColor: '#13ce66', maxWidth: '540px', padding: '40px', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'}}>
             <div className="sib-form-message-panel__text sib-form-message-panel__text--center">
-              <svg viewBox="0 0 512 512" className="sib-icon sib-notification__icon" style={{width: '48px', height: '48px', marginBottom: '16px'}}>
-                <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z" />
-              </svg>
+              <div id="success-icon" style={{marginBottom: '20px'}}>
+                <svg viewBox="0 0 512 512" className="sib-icon sib-notification__icon" style={{width: '64px', height: '64px', fill: '#13ce66'}}>
+                  <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z" />
+                </svg>
+              </div>
               <div>
-                <h3 style={{fontSize: '24px', fontWeight: 'bold', margin: '0 0 8px 0', color: '#085229'}}>Success!</h3>
-                <p style={{fontSize: '16px', margin: '0 0 16px 0', color: '#065f20'}}>Your information has been submitted successfully.</p>
-                <p style={{fontSize: '14px', margin: '0', color: '#065f20'}}>You'll receive your cohort analysis file soon. Redirecting to home page...</p>
+                <h3 style={{fontSize: '28px', fontWeight: 'bold', margin: '0 0 12px 0', color: '#085229'}}>Success!</h3>
+                <p style={{fontSize: '18px', margin: '0 0 20px 0', color: '#065f20', lineHeight: '1.5'}}>Your information has been submitted successfully.</p>
+                <p style={{fontSize: '16px', margin: '0', color: '#065f20'}}>You'll receive your cohort analysis file soon. Redirecting to home page...</p>
               </div>
             </div>
           </div>
@@ -285,6 +409,6 @@ export default function BrevoForm() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
