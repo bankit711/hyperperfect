@@ -150,7 +150,7 @@ export default function BrevoForm() {
           <div id="sib-container" className="sib-container--large sib-container--vertical" style={{textAlign: 'center', backgroundColor: 'transparent', maxWidth: '540px', borderRadius: '3px', borderWidth: '0px', borderColor: 'transparent', borderStyle: 'none', direction: 'ltr'}}>
             <form id="sib-form" method="POST" action="https://8f7f9936.sibforms.com/serve/MUIFAJUvy7WhtLBEr2d20otfwu-OK3La12ZYigq98-1Y97BHBX3nwFfBZ2qAaexqlhxhBxzycK3VuuO7Ihxnf5WHhQsxVjfzDNQTeDtycEAVLJnz3RTvHg6FcJtwmKCiBQ66fZuWWGb6wwgP4Ntl7pjhcohEdNxA9Fp6N8q_Ael283EfaGwa0Gj6hnzoVTdjMrGyNWP-Pz2011eV" data-type="subscription">
               <div style={{padding: '16px 0'}}>
-                <div className="sib-form-block" style={{fontSize: '25px', textAlign: 'left', fontWeight: '700', fontFamily: 'Helvetica, sans-serif', color: '#050505', backgroundColor: 'transparent', textAlign: 'left'}}>
+                <div className="sib-form-block" style={{fontSize: '25px', textAlign: 'left', fontWeight: '700', fontFamily: 'Helvetica, sans-serif', color: '#050505', backgroundColor: 'transparent'}}>
                   <div className="sib-text-form-block">
                     <p>📬 Receive Your Cohort Analysis File</p>
                   </div>
@@ -162,7 +162,7 @@ export default function BrevoForm() {
                   <div className="sib-input sib-form-block" style={{flex: 1}}>
                     <div className="form__entry entry_block">
                       <div className="form__label-row ">
-                        <label className="entry__label" style={{fontWeight: 700, textAlign: 'left', fontSize: '16px', textAlign: 'left', fontWeight: 700, fontFamily: 'Helvetica, sans-serif', color: '#050505'}} htmlFor="FIRSTNAME" data-required="*">First Name</label>
+                        <label className="entry__label" style={{fontWeight: 700, textAlign: 'left', fontSize: '16px', fontFamily: 'Helvetica, sans-serif', color: '#050505'}} htmlFor="FIRSTNAME" data-required="*">First Name</label>
 
                         <div className="entry__field">
                           <input className="input " maxLength="200" type="text" id="FIRSTNAME" name="FIRSTNAME" autoComplete="off" data-required="true" required />
@@ -177,7 +177,7 @@ export default function BrevoForm() {
                   <div className="sib-input sib-form-block" style={{flex: 1}}>
                     <div className="form__entry entry_block">
                       <div className="form__label-row ">
-                        <label className="entry__label" style={{fontWeight: 700, textAlign: 'left', fontSize: '16px', textAlign: 'left', fontWeight: 700, fontFamily: 'Helvetica, sans-serif', color: '#050505'}} htmlFor="LASTNAME" data-required="*">Last Name</label>
+                        <label className="entry__label" style={{fontWeight: 700, textAlign: 'left', fontSize: '16px', fontFamily: 'Helvetica, sans-serif', color: '#050505'}} htmlFor="LASTNAME" data-required="*">Last Name</label>
 
                         <div className="entry__field">
                           <input className="input " maxLength="200" type="text" id="LASTNAME" name="LASTNAME" autoComplete="off" data-required="true" required />
@@ -194,7 +194,7 @@ export default function BrevoForm() {
                 <div className="sib-input sib-form-block">
                   <div className="form__entry entry_block">
                     <div className="form__label-row ">
-                      <label className="entry__label" style={{fontWeight: 700, textAlign: 'left', fontSize: '16px', textAlign: 'left', fontWeight: 700, fontFamily: 'Helvetica, sans-serif', color: '#050505'}} htmlFor="EMAIL" data-required="*">Email</label>
+                      <label className="entry__label" style={{fontWeight: 700, textAlign: 'left', fontSize: '16px', fontFamily: 'Helvetica, sans-serif', color: '#050505'}} htmlFor="EMAIL" data-required="*">Email</label>
 
                       <div className="entry__field">
                         <input className="input " type="text" id="EMAIL" name="EMAIL" autoComplete="off" data-required="true" required />
@@ -203,7 +203,7 @@ export default function BrevoForm() {
 
                     <label className="entry__error entry__error--primary" style={{fontSize: '16px', textAlign: 'left', fontFamily: 'Helvetica, sans-serif', color: '#661d1d', backgroundColor: '#ffeded', borderRadius: '3px', borderColor: '#ff4949'}}>
                     </label>
-                    <label className="entry__specification" style={{fontSize: '12px', textAlign: 'left', fontFamily: 'Helvetica, sans-serif', color: '#8390A4', textAlign: 'left'}}>
+                    <label className="entry__specification" style={{fontSize: '12px', textAlign: 'left', fontFamily: 'Helvetica, sans-serif', color: '#8390A4'}}>
                       Enter the same email you use for Excel if you want to try HyperPerfect
                     </label>
                   </div>
@@ -213,7 +213,7 @@ export default function BrevoForm() {
                 <div className="sib-checkbox-group sib-form-block" data-required="true">
                   <div className="form__entry entry_mcq">
                     <div className="form__label-row ">
-                      <label className="entry__label" style={{fontWeight: 700, textAlign: 'left', fontSize: '16px', textAlign: 'left', fontWeight: 700, fontFamily: 'Helvetica, sans-serif', color: '#050505'}} data-required="*">What do you want?</label>
+                      <label className="entry__label" style={{fontWeight: 700, textAlign: 'left', fontSize: '16px', fontFamily: 'Helvetica, sans-serif', color: '#050505'}} data-required="*">What do you want?</label>
                       <div style={{}}>
                         <div className="entry__choice">
                           <label className="checkbox__label">
