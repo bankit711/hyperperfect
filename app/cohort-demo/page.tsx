@@ -4,16 +4,11 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Menu, X, Download, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import BrevoForm from "./brevo-form"
 
 export default function CohortDemoPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [email, setEmail] = useState("")
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
-  const [acceptMarketing, setAcceptMarketing] = useState(true)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [showSuccess, setShowSuccess] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,48 +18,6 @@ export default function CohortDemoPage() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    
-    try {
-      // Prepare form data for Formspree
-      const formData = new FormData()
-      formData.append('firstName', firstName)
-      formData.append('lastName', lastName)
-      formData.append('email', email)
-      formData.append('acceptMarketing', acceptMarketing.toString())
-      formData.append('_redirect', acceptMarketing 
-        ? 'https://publish.obsidian.md/hyperperfect/User+Guide'
-        : 'https://hyperperfect.ai')
-
-      const response = await fetch('https://formspree.io/f/mdkzadzk', {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      })
-
-      if (response.ok) {
-        setShowSuccess(true)
-        
-        // Redirect based on user choice after showing success message
-        setTimeout(() => {
-          window.location.href = acceptMarketing 
-            ? 'https://publish.obsidian.md/hyperperfect/User+Guide'
-            : 'https://hyperperfect.ai'
-        }, 2000)
-      } else {
-        throw new Error('Form submission failed')
-      }
-    } catch (error) {
-      console.error('Form submission error:', error)
-      alert('There was an error processing your request. Please try again.')
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
 
   return (
     <div className="relative min-h-screen overflow-hidden">
@@ -248,110 +201,7 @@ export default function CohortDemoPage() {
 
               {/* Download Form */}
               <div className="bg-gray-50 rounded-lg p-8">
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-                  📬 Receive Your Cohort Analysis File
-                </h2>
-                
-                {!showSuccess ? (
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                        <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
-                          First Name
-                        </label>
-                        <input
-                          type="text"
-                          id="firstName"
-                          value={firstName}
-                          onChange={(e) => setFirstName(e.target.value)}
-                          required
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1a7bff] focus:border-transparent outline-none transition"
-                          placeholder="First name"
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
-                          Last Name
-                        </label>
-                        <input
-                          type="text"
-                          id="lastName"
-                          value={lastName}
-                          onChange={(e) => setLastName(e.target.value)}
-                          required
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1a7bff] focus:border-transparent outline-none transition"
-                          placeholder="Last name"
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                        Email Address (Enter the same one you use for Excel if you want to try HyperPerfect)
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1a7bff] focus:border-transparent outline-none transition"
-                        placeholder="your@email.com"
-                      />
-                    </div>
-
-                    <div className="space-y-3">
-                      <label className="flex items-start cursor-pointer p-3 border-2 border-gray-200 rounded-lg hover:border-[#1a7bff] transition">
-                        <input
-                          type="radio"
-                          name="downloadOption"
-                          checked={acceptMarketing}
-                          onChange={() => setAcceptMarketing(true)}
-                          className="mt-1 mr-3 h-4 w-4 text-[#1a7bff] focus:ring-[#1a7bff]"
-                        />
-                        <div>
-                          <span className="text-sm font-semibold text-gray-900">
-                            Send me the file + tell me how to try HyperPerfect free
-                          </span>
-                          <p className="text-xs text-gray-600 mt-1">
-                            Get the cohort analysis and learn how HyperPerfect can automate your workflow
-                          </p>
-                        </div>
-                      </label>
-                      
-                      <label className="flex items-start cursor-pointer p-3 border-2 border-gray-200 rounded-lg hover:border-[#1a7bff] transition">
-                        <input
-                          type="radio"
-                          name="downloadOption"
-                          checked={!acceptMarketing}
-                          onChange={() => setAcceptMarketing(false)}
-                          className="mt-1 mr-3 h-4 w-4 text-[#1a7bff] focus:ring-[#1a7bff]"
-                        />
-                        <div>
-                          <span className="text-sm font-semibold text-gray-900">
-                            Just send me the file
-                          </span>
-                          <p className="text-xs text-gray-600 mt-1">
-                            Get the cohort analysis without additional information
-                          </p>
-                        </div>
-                      </label>
-                    </div>
-
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full bg-[#1a7bff] text-white font-bold py-4 px-6 rounded-lg hover:bg-[#1560d8] transition disabled:opacity-50 disabled:cursor-not-allowed text-lg"
-                    >
-                      {isSubmitting ? "Processing..." : "Submit"}
-                    </button>
-                  </form>
-                ) : (
-                  <div className="text-center py-8">
-                    <CheckCircle className="text-green-500 mx-auto mb-4" size={64} />
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Success!</h3>
-                    <p className="text-gray-600">Redirecting you to download your cohort analysis...</p>
-                  </div>
-                )}
+                <BrevoForm />
               </div>
 
               {/* Quick Links */}
