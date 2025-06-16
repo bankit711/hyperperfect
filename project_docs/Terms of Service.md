@@ -1,6 +1,6 @@
 # Terms of Service
 
-**Last revised – AUG 2024**
+**Last revised – Mar 2025**
 
 These Terms and Conditions form a part of the Agreement between HyperPerfect and Client, as defined in an applicable Service Order. HyperPerfect and Client are sometimes referred to collectively as the “Parties” and individually as a “Party.”
 
