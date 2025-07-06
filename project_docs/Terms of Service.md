@@ -238,9 +238,9 @@ Client agrees that an electronic signature is legally binding and has the same e
 HyperPerfect may modify these Terms and Conditions at any time by posting updates on its website or notifying Client by other reasonable means. Continued use of the Services constitutes acceptance of any changes. HyperPerfect may also change or discontinue the Services or any Software Product, in whole or in part.
 
 **13.3 Choice of Law and Jurisdiction**  
-- The Agreement is governed by the laws of the State of Delaware (without regard to conflict of law principles).  
-- Disputes not subject to arbitration shall be resolved in the state or federal courts nearest Salt Lake City, Utah, and the Parties consent to the jurisdiction of those courts.  
-- The prevailing party in any dispute shall be entitled to recover reasonable attorneys’ fees and costs.
+- The Agreement is governed by the laws of the State of California (without regard to conflict of law principles).
+- Disputes not subject to arbitration shall be resolved in the state or federal courts located in San Francisco County, California, and the Parties consent to the jurisdiction of those courts.
+- The prevailing party in any dispute shall be entitled to recover reasonable attorneys' fees and costs.
 
 **13.4 Assignment**  
 Neither Party may assign the Agreement without the prior written consent of the other, except HyperPerfect may assign it to its successor in a merger, acquisition, or change of control.

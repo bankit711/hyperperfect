@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Azure Enterprise SSO Quick Reference.md",
+                "file": "Terms of Service.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Azure Enterprise SSO Quick Reference"
+              "title": "Terms of Service"
             }
           }
         ],
@@ -212,10 +212,10 @@
       "publish:Publish changes...": false
     }
   },
-  "active": "6bbcea52662bedea",
+  "active": "6929687be88fd2e4",
   "lastOpenFiles": [
-    "Data Security.md",
     "Azure Enterprise SSO Quick Reference.md",
+    "Data Security.md",
     "User Guide.md",
     "Azure Enterprise SSO Setup Guide.md",
     "Untitled.md",

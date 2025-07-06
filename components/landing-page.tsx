@@ -167,9 +167,9 @@ export default function LandingPage() {
                   phrases={[
                     "Excel workflow",
                     "data cleaning",
-                    "revenue walks",
+                    "manual tasks",
                     "fiscal periods",
-                    "custom filtering",
+                    "research",
                     "cohort analyses",
                     "SaaS metrics"
                   ]}
@@ -177,11 +177,10 @@ export default function LandingPage() {
                   transitionDuration={500} // 0.5 seconds fade
                 />
               </span> <br />
-              for customer <br />
-              revenue analytics.
+              with AI.
             </h1>
             <p className="text-2xl md:text-3xl text-white/90 mb-8 max-w-xl">
-              Instantly clean data and create revenue waterfalls and cohort analyses — all built with auditable formulas in Excel.
+              Built to make you extraordinarily productive in Excel, without the mistakes.
             </p>
             <a
               href="https://publish.obsidian.md/hyperperfect/Sign+Up"
