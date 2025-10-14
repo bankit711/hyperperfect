@@ -33,5 +33,8 @@ yarn-error.log*
 next-env.d.ts
 
 # obsidian
-project_docs/.obsidian 
+project_docs/.obsidian
 project_docs/.obsidian/workspace.json
+
+# temporary files
+.tmp.driveupload
