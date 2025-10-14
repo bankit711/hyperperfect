@@ -12,8 +12,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "HyperPerfect - Accelerate Insights, Eliminate Mistakes",
-  description: "Automate data cleaning, revenue waterfalls, cohort analyses, and pivot tables—all seamlessly built with auditable formulas directly in Excel.",
+  title: "HyperPerfect: Your AI Financial Analyst in Excel",
+  description: "AI-powered financial modeling and Excel automation. Build auditable models, automate data analysis, and eliminate spreadsheet errors without lifting a finger.",
 };
 
 export default function RootLayout({

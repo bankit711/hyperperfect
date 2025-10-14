@@ -1,14 +1,14 @@
 # HyperPerfect Quick Start Guide
 
-**Transform your revenue analysis workflow in 5 minutes.** Our Excel add-in automates customer revenue analysis, letting you instantly clean data and create revenue waterfalls and cohort analyses — all built with auditable formulas directly in Excel.
+**Transform your Excel workflow in 5 minutes.** Your new AI assistant lives right inside Excel. Just chat naturally about what you need, and watch it happen instantly. No more wrestling with formulas or hunting through menus.
 
 **What You'll Experience:**
 
-- ⚡ **2-minute cohort analyses** (instead of 2-day manual builds)
-- 🎯 **Zero calculation errors** (every formula mathematically perfect)
-- 📊 **Automatic quarterly/annual summaries** (fiscal year aware)
-- 🔧 **Dynamic filtering by segment** (Product, region, etc.)
-- 💡 **Focus on insights, not busywork** (finally analyze instead of calculate)
+- 💬 **Chat naturally** - "Add a sum total row" or "Create a pie chart"
+- ⚡ **Instant results** - AI reads and write to your Excel sheet in real-time
+- 🧠 **Smart assistance** - Track and adjust AI's thinking process as it works
+- 📊 **Any Excel task** - Formulas, formatting, clean data, charts, etc.
+- 🔄 **Iterative refinement** - Follow up to adjust and build upon your work
 
 ---
 
@@ -37,152 +37,142 @@ Signup required to get access to the add-in, and you must enter the email that y
 - Assign Users or Groups
 - Review choices and click **Finish deployment**
 
-### Step 3: Try the Welcome Demo (30 seconds)
+### Step 3: Start Your First Chat (1 minute)
 
-The **Welcome Demo** opens automatically the first few times you use HyperPerfect. Watch as we build a complete cohort analysis instantly using sample data. This 30-second demo shows you exactly what's possible.
-
-_(If it doesn't open automatically, you can start it manually from the **Settings** tab.)_
+1. **Open HyperPerfect** - the AI chat opens automatically
+2. **Select some data** in your Excel spreadsheet
+3. **Type a request** like "Analyze this data and create a summary chart"
+4. **Watch the magic** as the AI reads your data and creates your chart
+5. **Type "@"** or the commands menu (clear chat, help menu, balance information)
 
 ---
 
 ## Understanding the Interface
 
-After sign-in, the add-in's task pane loads with three main sections:
+After sign-in, the AI chat interface opens automatically with:
 
-### 🎯 **Clean Dashboard**
+### **Chat Components**
 
-**Purpose**: Cleans customer revenue data for normalization prior to analysis  
-**Solves**: Messy billing data with refunds, partial periods, and format inconsistencies  
-**Time Saved**: Hours of manual data cleaning → Minutes of automated processing
+**Messages Area**:
 
-### 📊 **Analyze Dashboard**
+- Your messages appear with a white background
+- AI responses appear with no background
+- System messages and thinking show in gray with expanded detail available
 
-**Purpose**: Adds context to revenue data and creates revenue waterfall analyses  
-**Solves**: Manual cohort building and quarterly summary errors  
-**Time Saved**: Days of manual analysis → 2-minute automated builds
+**Input Area**:
 
-### 🤖 **AI & Settings**
-
-**Purpose**: Future AI features and configuration options  
-**Coming Soon**: Smart customer segmentation, intelligent data matching, anomaly detection
+- **Text box** for typing messages (auto-resizes)
+- **Send button (▶)** or press return to submit messages
+- **Pause button (⏸)** appears during AI processing
+- **Context indicator** shows memory usage (0-100%)
+- **@ Commands** Clear chat, ask for help, check your balance
 
 ---
 
-## Your First Analysis (5 Minutes)
+## Your First Conversation (5 Minutes)
 
 ### Quick Demo Video
 
-See how the complete workflow works:
+See the AI chat in action - building an income statement:
 
-<iframe width="640" height="423" src="https://www.loom.com/embed/4ec4b69c39ab45c2bfc80a5ea914a3f7?sid=925b97a6-408b-4fad-8521-014dba1771b4" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<div style="position: relative; padding-bottom: 74.27785419532324%; height: 0;"><iframe src="https://www.loom.com/embed/0671b08848a242069c7be3d75283d382?sid=baba9c5e-494e-43a7-8c3f-cc6a96bc3bad" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
-### Sample Data Format
+### Example Requests
 
-Your data should look like this, starting in cell A1:
+Try these with any Excel data:
 
-|Customer|Product|1/1/25|2/1/25|3/1/25|4/1/25|5/1/25|6/1/25|
-|---|---|--:|--:|--:|--:|--:|--:|
-|Microsoft|Excel|1,430|1,501|1,504|1,509|1,540|1,539|
-|Apple|Numbers|101|102|115|110|109|112|
-|Google|Sheets|556|575|599|625|655|689|
+**Data Analysis**:
 
-**Requirements:**
+```
+"Add FY columns to this monthly income statement"
+```
 
-- Dimensional data columns (customer names, attributes)
-- Monthly revenue data with date-formatted headers
-- Data table starting in cell A1
+**Chart Creation**:
+
+```
+"Create a column chart from this data"
+```
+
+**Formatting**:
+
+```
+"Format this data table with borders and colors"
+```
 
 ---
 
-## Step-by-Step Workflow
+## How the AI Works with Excel
 
-### 1. Clean Your Data (Optional but Recommended)
+### 1. Select Your Data
 
-**Why Clean First?** Most revenue analysis gets derailed by messy datasets full of refunds, partial billing periods, and format inconsistencies. Manual cleaning takes hours and is error-prone.
+**Before asking for help:**
 
-**How to Clean:**
+1. Click and drag to select the range you want to analyze
+2. Excel will highlight the selected cells
+3. Return to the chat - AI automatically detects your selection
 
-1. Navigate to the **Clean Dashboard**
-2. Select your source worksheet from **"Choose Input Sheet"** dropdown
-3. Configure cleaning options:
-    - **Monthly to Annual Adjustment**: Convert between revenue types
-    - **Unit Conversion**: Standardize to thousands/millions
-    - **Adjust Partial Periods**: Fix partial month amounts
-    - **Plug Revenue Gaps**: Fill missing periods automatically
-    - **Remove Overlapping Values**: Eliminate double-counting
-4. Click **"Clean Source Data with Formulas"**
-5. New worksheet created: `[SourceSheet]_Clean`
+### 2. Ask Naturally
 
-**Pro Tip**: Multiple adjustments can be applied simultaneously. All cleaning uses dynamic formulas, so changes flow through automatically.
+**The AI understands requests like:**
 
-### 2. Build Revenue Context
+- "What patterns do you see in this data?"
+- "Create a pivot table showing sales by region"
+- "Add a yellow background to highlight values over 100"
+- "Add a year-over-year growth column using formulas"
+- "Make a professional-looking dashboard from this data"
 
-**Why This Step Matters:** Raw data doesn't have the context needed for cohort analysis. This step adds fiscal year awareness and quarterly summaries.
+### 3. Watch the AI Work
 
-**How to Build:**
+**You'll see:**
 
-1. Navigate to the **Analyze Dashboard**
-2. Select your worksheet (cleaned data or original) from **"Choose Input Sheet"** dropdown
-3. Choose fiscal year-end from dropdown (if other than December)
-4. Click **"Build Revenue Data"**
-5. New worksheet created: `[SourceSheet]_Revenue`
+1. **Thinking blocks** showing the AI's reasoning process
+2. **Excel execution** AI reads and write directly to your spreadsheet
+3. **Real-time results** appearing directly in your Excel workbook
+4. **Adjust as needed** pause work and redirect AI at anytime
 
-**What You Get:**
+### 4. Refine and Iterate
 
-- Cohort details for each customer
-- Quarterly and annual summaries (fiscal year aware)
-- Start/cancel month context for waterfall analysis
+**Continue the conversation:**
 
-### 3. Create Revenue Waterfall
+- "Now add summary period columns showing quarterly results"
+- "Redo the formulas to show average instead of median"
+- "Make the formatting better"
+- "Doublecheck all the formulas"
 
-**Why Waterfalls Are Powerful:** Revenue waterfalls show how your revenue changes over time, breaking down growth into new business, expansion, contraction, and churn components.
-
-**How to Build:**
-
-1. After building revenue data, stay in **Analyze Dashboard**
-2. Configure waterfall options:
-    - **Metric**: Choose Revenue or Customer Count
-    - **Show Cohorts**: Group by Monthly, Quarterly, Annual, or All
-    - **Dimension Filter**: Filter by Product, Region, etc. (optional)
-    - **Select Values**: Choose specific segments to include
-3. Click **"Revenue Waterfall"**
-4. New worksheet created: `[SourceSheet]_Waterfall`
-
-**Advanced Feature - Dynamic Filtering:**
-
-- Use dimension columns to compare segments (Enterprise vs. Starter)
-- Pick multiple values to compare simultaneously
-- Adjust results on the fly using spreadsheet filter columns
+The AI remembers context and builds on previous work until you clear the conversation.
 
 ---
 
 ## Advanced Tips & Features
 
-### Performance Optimization
+### Complex Multi-Step Tasks
 
-**For Large Datasets (1000+ rows):**
+**Make AI work better:**
 
-1. Go to **General Settings**
-2. Enable **"Convert output formulas to values"**
-3. Eliminates thousands of slow-running formulas
-4. Keeps first-row formulas intact for copying/modification
+- As HyperPerfect for the prompt to do the task you want
+- Build up AI's context before allowing it to work
+- Complete complex work in manageable steps
 
-### Quarterly Summary Accuracy
+**Example request:**
 
-**HyperPerfect automatically handles:**
+```
+"What would be a good prompt to have AI build a balance sheet with this data?"
+```
 
-- Fiscal vs. calendar year differences
-- Smart revenue walk logic (first month vs. sum vs. last month)
-- Perfect month mapping with zero errors
-- Instant quarterly and annual summaries
+### Context Memory
 
-### Dashboard Integration
+**The AI remembers:**
 
-**Dynamic Updates:**
+- Your previous questions in the conversation
+- Data you've selected and worked with
+- Formatting preferences you've expressed
+- Analysis goals you've mentioned
 
-- Change cleaning rules → Results flow to dashboards automatically
-- Modify fiscal year settings → All summaries update instantly
-- Add new data → Append without rebuilding entire analysis
+**This enables natural follow-ups:**
+
+- "Now do the same for last quarter"
+- "Apply that to the entire dataset"
+- "Create a similar chart for revenue"
 
 ---
 
@@ -192,20 +182,21 @@ Your data should look like this, starting in cell A1:
 
 **Installation Problems:**
 
-- **Add-in not appearing**: Use Excel Desktop (not Excel Online)
+- **Chat not able to respond**: Make sure you are signed into Excel with the right email
 - **Store access issues**: Check organization's add-in permissions
 
-**Data Issues:**
+**Chat Issues:**
 
-- **Missing columns error**: Include 'Start Month' and 'Cancel Month' columns for waterfall analysis
-- **Inconsistent results**: Ensure consistent formatting and headers
-- **Performance slow**: Enable "Convert output formulas to values" in Settings
+- **AI not responding**: Check your internet connection
+- **Can't read data**: Make sure you've selected cells before asking
+- **Unexpected results**: Be more specific in your request or provide additional context
+- **Slow performance**: Break complex requests into smaller steps
 
-**Analysis Problems:**
+**Excel Operation Issues:**
 
-- **Unexpected quarterly results**: Verify fiscal year settings match your business calendar
-- **Missing waterfall data**: Use revenue build output as input for waterfall analysis
-- **Dimension filter not working**: Ensure dimension columns have consistent values
+- **Changes not appearing**: Check if the correct worksheet is active
+- **Format not applied**: Verify the data range was correctly selected
+- **Chart in wrong location**: Specify where you want the chart placed
 
 ### Getting Help
 
@@ -213,7 +204,7 @@ Your data should look like this, starting in cell A1:
 
 - 📧 **Email**: [help@hyperperfect.ai](mailto:help@hyperperfect.ai) - Direct help from our team
 - 📅 **Training Session**: [Schedule a 30-min demo](https://calendly.com/di-hyperperfect/30min) - Personal walkthrough
-- 🎥 **Demo Video**: [Watch complete workflow](https://www.loom.com/embed/4ec4b69c39ab45c2bfc80a5ea914a3f7?sid=925b97a6-408b-4fad-8521-014dba1771b4)
+- 🎥 **Demo Video**: [Watch AI build an income statement](https://www.loom.com/share/0671b08848a242069c7be3d75283d382?sid=598f5fdc-90ef-46f9-b737-ffa2309db382)
 
 **Feature Requests:** We want to build what you actually need. Email us with:
 
@@ -225,36 +216,42 @@ Your data should look like this, starting in cell A1:
 
 ## What's Next?
 
-### Download Demo Data
+### Practice with Your Own Data
 
-Get our comprehensive demo file from the **Resources** section at [HyperPerfect.ai](https://hyperperfect.ai/):
+**Start simple:**
 
-- **50 customers** with 28 months of revenue data
-- **Multiple product tiers** (Premium, Legacy, Subscription)
-- **Perfect for testing** all features risk-free
+1. Open a workbook with data you work with regularly
+2. Select a small range to start
+3. Ask the AI to analyze or visualize it
+4. Build confidence with follow-up requests
 
-### Explore Advanced Features
+### Explore What's Possible
 
-- **Cohort Analysis**: Monthly, quarterly, and annual groupings
-- **Segment Filtering**: Compare performance by any dimension
-- **Performance Mode**: Handle enterprise-scale datasets
-- **Fiscal Year Support**: Any fiscal calendar configuration
+**Try progressively complex requests:**
 
-### Future AI Features
+- Start with basic analysis and charts
+- Move to formatting and calculations
+- Ask for help building complex formulas
+- Discover new Excel features through conversation
 
-We're developing AI features that enhance your workflow without letting mistakes creep into your analyses:
+### Master Advanced Techniques
 
-- **Smart Customer Segmentation**: AI categorizes customers automatically
-- **Intelligent Data Matching**: Recognizes similar company names
-- **Anomaly Detection**: Flags unusual patterns for investigation
+**Ask the AI to teach you:**
+
+- "Show me how to create a pivot table"
+- "Explain this formula you just created"
+- "What's the best way to visualize this data?"
+- "How can I automate this task?"
+
+The AI can be both your assistant and your Excel tutor.
 
 ---
 
 **Ready to transform your workflow?**
 
-If you're not building cohort analyses in less than 5 minutes, we need to talk! Contact us at [help@hyperperfect.ai](mailto:help@hyperperfect.ai) and let us help you streamline your revenue analysis process.
+If you're not transforming your Excel workflow through simple conversation, we need to talk! Contact us at [help@hyperperfect.ai](mailto:help@hyperperfect.ai) and let us help you discover what's possible.
 
-_Stop rebuilding the same analysis over and over. Focus on what you're really good at: turning data into insights that drive business results._
+_Stop wrestling with Excel menus and formulas. Just chat naturally about what you need, and watch it happen._
 
 ---
 
