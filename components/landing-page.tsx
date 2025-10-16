@@ -180,7 +180,7 @@ export default function LandingPage() {
               with AI.
             </h1>
             <p className="text-2xl md:text-3xl text-white/90 mb-8 max-w-xl">
-              Built to make you extraordinarily productive in Excel, without the mistakes.
+              Your AI partner inside Excel. Builds anything, fixes everything.
             </p>
             <a
               href="https://publish.obsidian.md/hyperperfect/Sign+Up"
