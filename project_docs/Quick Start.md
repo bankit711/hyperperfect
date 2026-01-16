@@ -4,21 +4,28 @@
 
 **What You'll Experience:**
 
-- 💬 **Chat naturally** - "Add a sum total row" or "Create a pie chart"
-- ⚡ **Instant results** - AI reads and write to your Excel sheet in real-time
-- 🧠 **Smart assistance** - Track and adjust AI's thinking process as it works
-- 📊 **Any Excel task** - Formulas, formatting, clean data, charts, etc.
-- 🔄 **Iterative refinement** - Follow up to adjust and build upon your work
+- Chat naturally - "Add a sum total row" or "Create a summary table"
+- Instant results - AI reads and writes to your Excel sheet in real-time
+- Smart assistance - Track the AI's thinking process as it works
+- Any Excel task - Formulas, formatting, data cleaning, analysis, and more
+- Iterative refinement - Follow up to adjust and build upon your work
 
 ---
 
 ## Get Started
 
-### Step 1: Register for Free
+### Step 1: Install and Start Using
 
-Signup required to get access to the add-in, and you must enter the email that you use to sign into Excel.
+**You can start using HyperPerfect immediately** - no signup required. Just install the add-in and open it in Excel. You'll sign in automatically through your Microsoft account.
 
-<a href="Sign Up.md" class="internal-link" style="background-color: #2196F3; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">Sign Up For Instant Access</a>
+**Want to unlock premium benefits? Sign up here:**
+
+<a href="Sign Up.md" class="internal-link" style="background-color: #2196F3; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">Sign Up For Free Benefits</a>
+
+**What you get:**
+- 30-day free trial - Full access to all features at no cost
+- Beta feature access - Try new capabilities before general release
+- Priority support - Direct help from our team when you need it
 
 ### Step 2: Install the Excel Add-in (2 minutes)
 
@@ -37,39 +44,79 @@ Signup required to get access to the add-in, and you must enter the email that y
 - Assign Users or Groups
 - Review choices and click **Finish deployment**
 
-### Step 3: Start Your First Chat (1 minute)
+### Step 3: Sign In (Automatic)
 
-1. **Open HyperPerfect** - the AI chat opens automatically
+When you first open HyperPerfect, you'll automatically sign in using your Microsoft account. No extra steps needed - it happens seamlessly in the background.
+
+### Step 4: Start Your First Chat (1 minute)
+
+1. **Open HyperPerfect** - the AI chat opens automatically after sign-in
 2. **Select some data** in your Excel spreadsheet
-3. **Type a request** like "Analyze this data and create a summary chart"
-4. **Watch the magic** as the AI reads your data and creates your chart
-5. **Type "@"** or the commands menu (clear chat, help menu, balance information)
+3. **Type a request** like "Analyze this data and create a summary table"
+4. **Watch the magic** as the AI reads your data and creates the summary
+5. **Use @ commands** to access additional features (see below)
 
 ---
 
 ## Understanding the Interface
 
-After sign-in, the AI chat interface opens automatically with:
+Once you're signed in, the AI chat interface opens with these components:
 
-### **Chat Components**
+### Messages Area
 
-**Messages Area**:
+- **Your messages** appear with a white background
+- **AI responses** appear with no background
+- **System messages** appear in gray (mode changes, notifications)
+- **Thinking blocks** show the AI's reasoning process (click to expand)
+- **Tool cards** show which Excel operations the AI performed
 
-- Your messages appear with a white background
-- AI responses appear with no background
-- System messages and thinking show in gray with expanded detail available
+### Input Area
 
-**Input Area**:
+- **Text box** for typing messages (auto-resizes as you type)
+- **Send button** to submit messages
+- **Stop button** appears during AI processing (click to cancel)
+- **@ button** opens the command menu
+- **Attach button** for uploading files
+- **Mode button** shows current AI mode (Fast or Power)
+- **Clear button** resets the conversation
+- **Help button** opens documentation
 
-- **Text box** for typing messages (auto-resizes)
-- **Send button (▶)** or press return to submit messages
-- **Pause button (⏸)** appears during AI processing
-- **Context indicator** shows memory usage (0-100%)
-- **@ Commands** Clear chat, ask for help, check your balance
+### Context Indicator
+
+The context indicator shows how much of the AI's memory is being used:
+- **Green (0-70%)** - Plenty of room for conversation
+- **Orange (70-85%)** - Consider using @compact to free space
+- **Red (85%+)** - System will auto-compact to free memory
+
+### Keyboard Shortcuts
+
+| Action | Shortcut |
+|--------|----------|
+| Send message | **Enter** |
+| New line in message | **Shift + Enter** |
+| Cancel AI request | **Escape** |
+| Open @ menu | Type **@** |
+| Navigate @ menu | **Arrow Up/Down** |
+| Select @ command | **Enter** |
+| Close @ menu | **Escape** |
 
 ---
 
-## Your First Conversation (5 Minutes)
+## @ Commands
+
+Type **@** or click the @ button to access these commands:
+
+| Command | What it does |
+|---------|--------------|
+| **@clear** | Delete all messages and start fresh |
+| **@compact** | Free up memory by summarizing old messages |
+| **@mode** | Toggle between Fast (Haiku) and Power (Sonnet) AI models |
+| **@attach** | Upload files (images or PDFs) for the AI to analyze |
+| **@help** | Open the help documentation |
+
+---
+
+## Your First Conversation
 
 ### Quick Demo Video
 
@@ -82,21 +129,23 @@ See the AI chat in action - building an income statement:
 Try these with any Excel data:
 
 **Data Analysis**:
-
 ```
 "Add FY columns to this monthly income statement"
 ```
 
-**Chart Creation**:
-
+**Report Creation**:
 ```
-"Create a column chart from this data"
+"Create a professional summary table from this data"
 ```
 
 **Formatting**:
-
 ```
 "Format this data table with borders and colors"
+```
+
+**Calculations**:
+```
+"Add a row with sum totals at the bottom"
 ```
 
 ---
@@ -116,19 +165,19 @@ Try these with any Excel data:
 **The AI understands requests like:**
 
 - "What patterns do you see in this data?"
-- "Create a pivot table showing sales by region"
+- "Create a summary table showing sales by region"
 - "Add a yellow background to highlight values over 100"
 - "Add a year-over-year growth column using formulas"
-- "Make a professional-looking dashboard from this data"
+- "Create a professional P&L statement from this data"
 
 ### 3. Watch the AI Work
 
 **You'll see:**
 
 1. **Thinking blocks** showing the AI's reasoning process
-2. **Excel execution** AI reads and write directly to your spreadsheet
+2. **Tool cards** showing Excel operations as they happen
 3. **Real-time results** appearing directly in your Excel workbook
-4. **Adjust as needed** pause work and redirect AI at anytime
+4. **Stop button** - click anytime to pause and redirect the AI
 
 ### 4. Refine and Iterate
 
@@ -137,9 +186,25 @@ Try these with any Excel data:
 - "Now add summary period columns showing quarterly results"
 - "Redo the formulas to show average instead of median"
 - "Make the formatting better"
-- "Doublecheck all the formulas"
+- "Double-check all the formulas"
 
 The AI remembers context and builds on previous work until you clear the conversation.
+
+---
+
+## File Attachments
+
+You can upload files for the AI to analyze alongside your Excel data:
+
+**Supported formats:**
+- **Images**: PNG, JPEG, GIF, WebP (max 5 MB each)
+- **Documents**: PDF (max 32 MB, 100 pages)
+
+**How to attach:**
+1. Click the **paperclip icon** or use **@attach**
+2. Or drag and drop files onto the chat
+3. Attached files appear above the input box
+4. Click **X** on any file to remove it from context
 
 ---
 
@@ -149,12 +214,11 @@ The AI remembers context and builds on previous work until you clear the convers
 
 **Make AI work better:**
 
-- As HyperPerfect for the prompt to do the task you want
+- Ask HyperPerfect for the prompt to do the task you want
 - Build up AI's context before allowing it to work
 - Complete complex work in manageable steps
 
 **Example request:**
-
 ```
 "What would be a good prompt to have AI build a balance sheet with this data?"
 ```
@@ -174,37 +238,42 @@ The AI remembers context and builds on previous work until you clear the convers
 - "Apply that to the entire dataset"
 - "Create a similar chart for revenue"
 
+### Managing Context
+
+When your conversation gets long, the context indicator will show higher percentages. You can:
+
+- Use **@compact** to summarize old messages and free space
+- Use **@clear** to start completely fresh
+- The system will auto-compact at 85% to prevent issues
+
 ---
 
 ## Troubleshooting
 
-### Common Issues
+### Quick Fixes
 
-**Installation Problems:**
+**AI not responding?**
+- Check your internet connection
+- Press Escape and try again
+- Refresh the add-in panel
 
-- **Chat not able to respond**: Make sure you are signed into Excel with the right email
-- **Store access issues**: Check organization's add-in permissions
+**Excel operations failing?**
+- Make sure you've selected cells before asking
+- Verify you're on the correct worksheet
+- Check if the sheet is protected
 
-**Chat Issues:**
+**Unexpected results?**
+- Be more specific in your request
+- Provide additional context
+- Break complex requests into smaller steps
 
-- **AI not responding**: Check your internet connection
-- **Can't read data**: Make sure you've selected cells before asking
-- **Unexpected results**: Be more specific in your request or provide additional context
-- **Slow performance**: Break complex requests into smaller steps
-
-**Excel Operation Issues:**
-
-- **Changes not appearing**: Check if the correct worksheet is active
-- **Format not applied**: Verify the data range was correctly selected
-- **Chart in wrong location**: Specify where you want the chart placed
+For detailed troubleshooting, see the [Troubleshooting Guide](ai_chat/troubleshooting.md).
 
 ### Getting Help
 
-**Immediate Support:**
-
-- 📧 **Email**: [help@hyperperfect.ai](mailto:help@hyperperfect.ai) - Direct help from our team
-- 📅 **Training Session**: [Schedule a 30-min demo](https://calendly.com/di-hyperperfect/30min) - Personal walkthrough
-- 🎥 **Demo Video**: [Watch AI build an income statement](https://www.loom.com/share/0671b08848a242069c7be3d75283d382?sid=598f5fdc-90ef-46f9-b737-ffa2309db382)
+- **Email**: [help@hyperperfect.ai](mailto:help@hyperperfect.ai) - Direct help from our team
+- **Training Session**: [Schedule a 30-min demo](https://calendly.com/di-hyperperfect/30min) - Personal walkthrough
+- **Demo Video**: [Watch AI build an income statement](https://www.loom.com/share/0671b08848a242069c7be3d75283d382?sid=598f5fdc-90ef-46f9-b737-ffa2309db382)
 
 **Feature Requests:** We want to build what you actually need. Email us with:
 

@@ -6,9 +6,9 @@ Working with AI for Excel analysis doesn't have to be complicated. With a few si
 
 Whether you're creating your first dashboard or building complex financial models, these friendly hints will help you communicate more effectively with HyperPerfect's AI and get the Excel solutions you really need.
 
-## Understanding How Claude Works Best
+## Understanding How the AI Works Best
 
-Claude responds to clear, explicit instructions about reasoning and validation. The more specific you are about *how* you want it to approach the problem, the better your results.
+HyperPerfect's AI responds to clear, explicit instructions about reasoning and validation. The more specific you are about *how* you want it to approach the problem, the better your results.
 
 **Effective instructions:**
 - "Show your reasoning step by step"
@@ -16,7 +16,7 @@ Claude responds to clear, explicit instructions about reasoning and validation. 
 - "Validate each step before moving forward"
 - "Double-check your logic and explain how"
 
-These phrases tell Claude exactly *how* to process your request, leading to more thorough and reliable solutions.
+These phrases tell the AI exactly *how* to process your request, leading to more thorough and reliable solutions.
 
 ## The Basics: Better Requests Get Better Results
 
@@ -46,7 +46,7 @@ For multi-step challenges: "Explain your thought process and validate each step 
 - Simple: "Create a summary table for monthly sales by region"
 - Complex: "Show your reasoning step by step as you design a revenue analysis system. Explain why you chose each approach and validate the logic before implementing."
 
-**Why it helps:** Claude 4.5 responds to clear instructions about *how* to think, not magic words. Asking for explicit reasoning gets you more thorough, validated solutions.
+**Why it helps:** The AI responds to clear instructions about *how* to think, not magic words. Asking for explicit reasoning gets you more thorough, validated solutions.
 
 ### 3. Ask AI to Test Its Own Work
 
@@ -174,7 +174,7 @@ You'll know these techniques are working when you get:
 ## Advanced Techniques for Power Users
 
 ### Use Role-Based Prompting
-Tell Claude what perspective to take:
+Tell the AI what perspective to take:
 ```
 "Act as an experienced Excel financial analyst. Review this dashboard design and identify potential issues that might cause problems in quarterly reporting."
 ```
@@ -214,6 +214,6 @@ The best AI collaborations happen when you stay actively involved. Don't hesitat
 - Be specific about reasoning processes you want to see
 - Use clear, direct instructions about how to approach problems
 
-AI is incredibly powerful, but it works best when you guide it toward solutions that fit your specific needs and business context. Claude particularly excels when you give it clear instructions about *how* to think through problems, not just *what* to create.
+AI is incredibly powerful, but it works best when you guide it toward solutions that fit your specific needs and business context. The AI particularly excels when you give it clear instructions about *how* to think through problems, not just *what* to create.
 
-*Happy analyzing!* 📊
+*Happy analyzing!*

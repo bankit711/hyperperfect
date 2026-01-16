@@ -1,7 +1,9 @@
 
-# Instant Access
+# Get Started with HyperPerfect
 
-Our Excel add-in automate your Excel workflow for customer revenue analysis.  You can Instantly start using AI to help automate your Excel tasks.
+Your AI assistant for Excel is now available. HyperPerfect brings conversational AI directly into Excel, letting you analyze data, create reports, and automate tasks through simple chat.
+
+Get instant access with your **30-day free trial**—no credit card required. You'll get full feature access, priority support, and early access to beta features.
 
 
 <div style="max-width: 800px; padding: 0 20px;">
