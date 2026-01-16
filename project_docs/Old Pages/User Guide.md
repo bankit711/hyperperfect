@@ -355,7 +355,7 @@ Working with thousands of rows? Most Excel users hit a wall when spreadsheets ge
 
 **Need immediate help?**
 
-- 📖 **[Quick Start Guide](https://publish.obsidian.md/hyperperfect/Quick+Start)** - Comprehensive setup instructions
+- 📖 **[Quick Start Guide](https://help.hyperperfect.ai/Quick+Start)** - Comprehensive setup instructions
 - 🎥 **[Demo Videos](https://www.loom.com/share/4ec4b69c39ab45c2bfc80a5ea914a3f7?sid=a36dbc55-6efb-4a90-bee8-7a6d3b2d3bba)** - See features in action
 - 📅 **[Schedule a Demo](https://calendly.com/di-hyperperfect/30min)** - Personal walkthrough
 - 💬 **[Email Support](mailto:help@hyperperfect.ai)** - Direct help from our team

@@ -50,20 +50,20 @@ export default function LandingPage() {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
-              <Link 
-                href="https://publish.obsidian.md/hyperperfect/Quick+Start" 
+              <Link
+                href="https://help.hyperperfect.ai/Quick+Start"
                 className="text-white/90 hover:text-white text-xl font-medium transition-colors"
               >
                 Quick Start
               </Link>
-              <Link 
-                href="https://publish.obsidian.md/hyperperfect/Why+HyperPerfect%3F" 
+              <Link
+                href="https://help.hyperperfect.ai/Why+HyperPerfect%3F"
                 className="text-white/90 hover:text-white text-xl font-medium transition-colors"
               >
                 Benefits
               </Link>
-              <Link 
-                href="https://publish.obsidian.md/hyperperfect/User+Guide" 
+              <Link
+                href="https://help.hyperperfect.ai/Quick+Start"
                 className="text-white/90 hover:text-white text-xl font-medium transition-colors"
               >
                 Help
@@ -106,23 +106,23 @@ export default function LandingPage() {
         <div className="fixed inset-0 z-40 bg-black pt-16">
           <div className="container mx-auto px-4 py-8">
             <nav className="flex flex-col space-y-6">
-              <Link 
-                href="https://publish.obsidian.md/hyperperfect/Quick+Start" 
-                className="text-white text-3xl font-medium" 
+              <Link
+                href="https://help.hyperperfect.ai/Quick+Start"
+                className="text-white text-3xl font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Quick Start
               </Link>
-              <Link 
-                href="https://publish.obsidian.md/hyperperfect/Why+HyperPerfect%3F" 
-                className="text-white text-3xl font-medium" 
+              <Link
+                href="https://help.hyperperfect.ai/Why+HyperPerfect%3F"
+                className="text-white text-3xl font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Benefits
               </Link>
-              <Link 
-                href="https://publish.obsidian.md/hyperperfect/User+Guide" 
-                className="text-white text-3xl font-medium" 
+              <Link
+                href="https://help.hyperperfect.ai/Quick+Start"
+                className="text-white text-3xl font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Help
@@ -183,7 +183,7 @@ export default function LandingPage() {
               Your AI partner inside Excel. Builds anything, fixes everything.
             </p>
             <a
-              href="https://publish.obsidian.md/hyperperfect/Sign+Up"
+              href="https://help.hyperperfect.ai/Sign+Up"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-xl font-bold transition-colors focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none bg-white text-[#1a7bff] hover:bg-white/90 px-8 py-4"
@@ -197,14 +197,14 @@ export default function LandingPage() {
       {/* Footer */}
       <footer className="absolute bottom-0 left-0 right-0 p-6 z-10">
         <div className="container mx-auto flex justify-end gap-8">
-          <Link 
-            href="https://publish.obsidian.md/hyperperfect/Terms+of+Service" 
+          <Link
+            href="https://help.hyperperfect.ai/Terms+of+Service"
             className="text-white/90 hover:text-white flex items-center text-xl"
           >
             <span className="mr-2 text-2xl">→</span> Terms
           </Link>
-          <Link 
-            href="https://publish.obsidian.md/hyperperfect/Privacy+Policy" 
+          <Link
+            href="https://help.hyperperfect.ai/Privacy+Policy"
             className="text-white/90 hover:text-white flex items-center text-xl"
           >
             <span className="mr-2 text-2xl">→</span> Privacy

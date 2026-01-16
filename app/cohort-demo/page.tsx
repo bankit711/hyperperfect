@@ -37,20 +37,20 @@ export default function CohortDemoPage() {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
-              <Link 
-                href="https://publish.obsidian.md/hyperperfect/Quick+Start" 
+              <Link
+                href="https://help.hyperperfect.ai/Quick+Start"
                 className="text-white/90 hover:text-white text-xl font-medium transition-colors"
               >
                 Quick Start
               </Link>
-              <Link 
-                href="https://publish.obsidian.md/hyperperfect/Why+HyperPerfect%3F" 
+              <Link
+                href="https://help.hyperperfect.ai/Why+HyperPerfect%3F"
                 className="text-white/90 hover:text-white text-xl font-medium transition-colors"
               >
                 Benefits
               </Link>
-              <Link 
-                href="https://publish.obsidian.md/hyperperfect/User+Guide" 
+              <Link
+                href="https://help.hyperperfect.ai/Quick+Start"
                 className="text-white/90 hover:text-white text-xl font-medium transition-colors"
               >
                 Help
@@ -88,23 +88,23 @@ export default function CohortDemoPage() {
         <div className="fixed inset-0 z-40 bg-black pt-16">
           <div className="container mx-auto px-4 py-8">
             <nav className="flex flex-col space-y-6">
-              <Link 
-                href="https://publish.obsidian.md/hyperperfect/Quick+Start" 
-                className="text-white text-3xl font-medium" 
+              <Link
+                href="https://help.hyperperfect.ai/Quick+Start"
+                className="text-white text-3xl font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Quick Start
               </Link>
-              <Link 
-                href="https://publish.obsidian.md/hyperperfect/Why+HyperPerfect%3F" 
-                className="text-white text-3xl font-medium" 
+              <Link
+                href="https://help.hyperperfect.ai/Why+HyperPerfect%3F"
+                className="text-white text-3xl font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Benefits
               </Link>
-              <Link 
-                href="https://publish.obsidian.md/hyperperfect/User+Guide" 
-                className="text-white text-3xl font-medium" 
+              <Link
+                href="https://help.hyperperfect.ai/Quick+Start"
+                className="text-white text-3xl font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Help
@@ -207,7 +207,7 @@ export default function CohortDemoPage() {
               {/* Quick Links */}
               <div className="mt-8 pt-8 border-t border-gray-200 text-center">
                 <div className="flex flex-wrap justify-center gap-4 text-sm">
-                  <a href="https://publish.obsidian.md/hyperperfect/Quick+Start" className="text-[#1a7bff] hover:underline" target="_blank" rel="noopener noreferrer">
+                  <a href="https://help.hyperperfect.ai/Quick+Start" className="text-[#1a7bff] hover:underline" target="_blank" rel="noopener noreferrer">
                     📖 Quick Start Guide
                   </a>
                   <span className="text-gray-400">•</span>
@@ -233,14 +233,14 @@ export default function CohortDemoPage() {
               © 2024 HyperPerfect. All rights reserved.
             </p>
             <div className="flex gap-6">
-              <Link 
-                href="https://publish.obsidian.md/hyperperfect/Terms+of+Service" 
+              <Link
+                href="https://help.hyperperfect.ai/Terms+of+Service"
                 className="text-white/80 hover:text-white text-sm"
               >
                 Terms
               </Link>
-              <Link 
-                href="https://publish.obsidian.md/hyperperfect/Privacy+Policy" 
+              <Link
+                href="https://help.hyperperfect.ai/Privacy+Policy"
                 className="text-white/80 hover:text-white text-sm"
               >
                 Privacy

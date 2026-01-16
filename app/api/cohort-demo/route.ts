@@ -70,8 +70,8 @@ export async function POST(request: NextRequest) {
     // Email automation will be handled by Brevo workflows
 
     // Determine redirect URL based on user choice
-    const redirectUrl = acceptMarketing 
-      ? 'https://publish.obsidian.md/hyperperfect/User+Guide'  // Marketing opt-in → User Guide
+    const redirectUrl = acceptMarketing
+      ? 'https://help.hyperperfect.ai/Quick+Start'  // Marketing opt-in → Quick Start
       : 'https://hyperperfect.ai'  // File only → Main site
 
     return NextResponse.json({ 

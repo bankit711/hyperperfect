@@ -143,7 +143,7 @@ You didn't become an analyst to spend hours fighting with Excel formulas and VLO
 
 ## 📚 Resources
 
-- **📖 [Quick Start Guide](https://publish.obsidian.md/hyperperfect/Quick+Start)** - Get up and running in 5 minutes
+- **📖 [Quick Start Guide](https://help.hyperperfect.ai/Quick+Start)** - Get up and running in 5 minutes
 - **🎥 [Demo Videos](https://www.loom.com/share/4ec4b69c39ab45c2bfc80a5ea914a3f7?sid=a36dbc55-6efb-4a90-bee8-7a6d3b2d3bba)** - See HyperPerfect in action
 - **📅 [Schedule a Demo](https://calendly.com/di-hyperperfect/30min)** - Personal walkthrough
 - **💬 [Contact Support](mailto:help@hyperperfect.ai)** - Get help or share feedback
