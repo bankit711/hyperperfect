@@ -10,7 +10,7 @@ PAPERCLIP_IMG = plt.imread('paperclip.png')
 # Setup the figure and axis
 # 1200x600 pixels (8x4 inches at 75 DPI) - optimized for email
 fig, ax = plt.subplots(figsize=(8, 4), dpi=75)
-fig.patch.set_facecolor('#f0f4f8')
+fig.patch.set_facecolor('#ffffff')
 # Remove all margins/padding around the plot
 fig.subplots_adjust(left=0, right=1, top=1, bottom=0)
 ax.set_xlim(0, 1400)
@@ -836,7 +836,7 @@ ani.save('dcf_apple_demo.gif', writer=PillowWriter(fps=10))
 
 # Generate final frame as PNG
 update(frames[-1])
-plt.savefig('dcf_apple_demo_final.png', dpi=150, bbox_inches='tight', facecolor='#f0f4f8')
+plt.savefig('dcf_apple_demo_final.png', dpi=150, bbox_inches='tight', facecolor='#ffffff')
 plt.close()
 
 print("✓ DCF animation generated successfully: dcf_apple_demo.gif")
