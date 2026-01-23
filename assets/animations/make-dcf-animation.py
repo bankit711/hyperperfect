@@ -369,7 +369,7 @@ projection_data = {
 # --- PHASE 1: User Input (0-30 frames) ---
 input_text = "Do a quick Apple valuation"
 apple_typed_index = input_text.lower().find("apple") + len("apple")  # Show after "Apple" is typed
-for i in range(0, len(input_text) + 1, 1):
+for i in range(0, len(input_text) + 1, 2):
     frames.append({
         'phase': 'input_typing',
         'input_text': input_text[:min(i, len(input_text))],
@@ -380,7 +380,7 @@ for i in range(0, len(input_text) + 1, 1):
     })
 
 # Brief pause
-for i in range(3):
+for i in range(2):
     frames.append({
         'phase': 'input_pause',
         'input_text': input_text,
@@ -404,7 +404,7 @@ for i in range(5):
 # First bot message streams
 first_response = "Researching assumptions online"
 first_response_height = 55  # Shorter text, no wrapping needed
-for i in range(5, len(first_response) + 1, 5):
+for i in range(5, len(first_response) + 1, 10):
     frames.append({
         'phase': 'bot_responding',
         'input_text': '',
@@ -416,7 +416,7 @@ for i in range(5, len(first_response) + 1, 5):
     })
 
 # Pause after first bot response
-for i in range(20):
+for i in range(6):
     frames.append({
         'phase': 'bot_complete',
         'input_text': '',
@@ -427,9 +427,9 @@ for i in range(20):
         'excel_content': [],
     })
 
-# --- PHASE 3: Basic Assumptions in Excel (104-150) ---
-# Terminal Growth row appears
-for step in range(2):
+# --- PHASE 3: Basic Assumptions in Excel ---
+# All assumptions appear at once
+for i in range(1):
     frames.append({
         'phase': 'excel_assumptions',
         'input_text': '',
@@ -438,40 +438,12 @@ for step in range(2):
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height}
         ],
         'excel_content': [
-            {'type': 'assumptions', 'rows': 1 if step == 1 else 0}
-        ],
-    })
-
-# Pause
-for i in range(3):
-    frames.append({
-        'phase': 'excel_assumptions',
-        'input_text': '',
-        'chat_messages': [
-            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
-            {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height}
-        ],
-        'excel_content': [
-            {'type': 'assumptions', 'rows': 1}
-        ],
-    })
-
-# Discount Rate row appears
-for step in range(2):
-    frames.append({
-        'phase': 'excel_assumptions',
-        'input_text': '',
-        'chat_messages': [
-            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
-            {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height}
-        ],
-        'excel_content': [
-            {'type': 'assumptions', 'rows': 2 if step == 1 else 1}
+            {'type': 'assumptions', 'rows': 2}
         ],
     })
 
 # Pause after assumptions section complete
-for i in range(25):
+for i in range(6):
     frames.append({
         'phase': 'excel_assumptions',
         'input_text': '',
@@ -488,7 +460,7 @@ for i in range(25):
 second_response = "Adding financials from PDF"
 second_response_height = 55  # Shorter text, no wrapping needed
 
-for i in range(5, len(second_response) + 1, 5):
+for i in range(5, len(second_response) + 1, 10):
     frames.append({
         'phase': 'bot_responding',
         'input_text': '',
@@ -503,7 +475,7 @@ for i in range(5, len(second_response) + 1, 5):
     })
 
 # Pause after second bot response
-for i in range(20):
+for i in range(6):
     frames.append({
         'phase': 'bot_complete',
         'input_text': '',
@@ -517,9 +489,9 @@ for i in range(20):
         ],
     })
 
-# --- PHASE 5: Projections in Excel (198-270) ---
-# Year headers appear
-for year_idx in range(len(years) + 1):
+# --- PHASE 5: Projections in Excel ---
+# All financials appear at once
+for i in range(1):
     frames.append({
         'phase': 'excel_projections',
         'input_text': '',
@@ -530,44 +502,12 @@ for year_idx in range(len(years) + 1):
         ],
         'excel_content': [
             {'type': 'assumptions', 'rows': 2},
-            {'type': 'projections', 'year_count': year_idx, 'data_rows': 0}
-        ],
-    })
-
-# Revenue row appears cell by cell
-for val_idx in range(len(years) + 1):
-    frames.append({
-        'phase': 'excel_projections',
-        'input_text': '',
-        'chat_messages': [
-            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
-            {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
-            {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height}
-        ],
-        'excel_content': [
-            {'type': 'assumptions', 'rows': 2},
-            {'type': 'projections', 'year_count': len(years), 'data_rows': 1, 'revenue_cells': val_idx}
-        ],
-    })
-
-# FCF row appears cell by cell
-for val_idx in range(len(years) + 1):
-    frames.append({
-        'phase': 'excel_projections',
-        'input_text': '',
-        'chat_messages': [
-            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
-            {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
-            {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height}
-        ],
-        'excel_content': [
-            {'type': 'assumptions', 'rows': 2},
-            {'type': 'projections', 'year_count': len(years), 'data_rows': 2, 'revenue_cells': len(years), 'fcf_cells': val_idx}
+            {'type': 'projections', 'year_count': len(years), 'data_rows': 2, 'revenue_cells': len(years), 'fcf_cells': len(years)}
         ],
     })
 
 # Pause after projections section complete
-for i in range(25):
+for i in range(6):
     frames.append({
         'phase': 'excel_complete',
         'input_text': '',
@@ -586,7 +526,7 @@ for i in range(25):
 third_response = "Building Excel formulas"
 third_response_height = 55  # Shorter text, no wrapping needed
 
-for i in range(5, len(third_response) + 1, 5):
+for i in range(5, len(third_response) + 1, 10):
     frames.append({
         'phase': 'bot_responding',
         'input_text': '',
@@ -603,7 +543,7 @@ for i in range(5, len(third_response) + 1, 5):
     })
 
 # Pause after third bot response
-for i in range(20):
+for i in range(6):
     frames.append({
         'phase': 'bot_complete',
         'input_text': '',
@@ -639,7 +579,7 @@ for step in range(4):
     })
 
 # Pause with Terminal Value and PV of FCF values appearing
-for step in range(8):
+for step in range(4):
     frames.append({
         'phase': 'excel_formulas',
         'input_text': '',
@@ -659,7 +599,7 @@ for step in range(8):
 
 # Enterprise Value formula types out (1 frame per 2 characters)
 enterprise_formula = "=PV(C4, 5, 0, -G9 * C3) + NPV(C4, C9:G9)"
-for i in range(0, len(enterprise_formula) + 1, 5):
+for i in range(0, len(enterprise_formula) + 1, 10):
     frames.append({
         'phase': 'excel_formulas',
         'input_text': '',
@@ -676,8 +616,8 @@ for i in range(0, len(enterprise_formula) + 1, 5):
         ],
     })
 
-# Pause on complete formula so viewer can read it (1 second at 25fps)
-for i in range(25):
+# Pause on complete formula so viewer can read it (1 second at 8fps)
+for i in range(8):
     frames.append({
         'phase': 'excel_formulas',
         'input_text': '',
@@ -695,7 +635,7 @@ for i in range(25):
     })
 
 # Pause on final formula before it converts to value (longer pause to see complete formula)
-for i in range(50):
+for i in range(25):
     frames.append({
         'phase': 'excel_formulas',
         'input_text': '',
@@ -732,7 +672,7 @@ for step in range(2):
     })
 
 # Hold with final result (longer pause for user to read)
-for i in range(50):
+for i in range(25):
     frames.append({
         'phase': 'hold',
         'input_text': '',
@@ -892,7 +832,7 @@ def update(frame_data):
 
 # Generate animation
 ani = FuncAnimation(fig, update, frames=frames, interval=67, repeat=True)
-ani.save('dcf_apple_demo.gif', writer=PillowWriter(fps=15))
+ani.save('dcf_apple_demo.gif', writer=PillowWriter(fps=10))
 
 # Generate final frame as PNG
 update(frames[-1])
@@ -901,5 +841,5 @@ plt.close()
 
 print("✓ DCF animation generated successfully: dcf_apple_demo.gif")
 print(f"✓ Total frames: {len(frames)}")
-print(f"✓ Duration: ~{len(frames) / 25:.1f} seconds at 25fps")
+print(f"✓ Duration: ~{len(frames) / 10:.1f} seconds at 10fps")
 print("✓ Final frame saved as: dcf_apple_demo_final.png")
