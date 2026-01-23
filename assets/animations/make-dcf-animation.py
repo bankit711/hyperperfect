@@ -1,7 +1,11 @@
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.animation import FuncAnimation, PillowWriter
+from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 import numpy as np
+
+# Load paperclip icon
+PAPERCLIP_IMG = plt.imread('paperclip.png')
 
 # Setup the figure and axis
 # 1600x800 pixels (8x4 inches at 100 DPI with 2x retina scaling)
@@ -36,12 +40,13 @@ def draw_ui_layout():
 
     # Chat Panel (high zorder to appear in front of Excel grid and cell highlights)
     draw_rounded_rect(ax, chat_x, chat_y, chat_w, chat_h, 15, 'white', '#dbe2e8', lw=2, zorder=10)
-    # Chat Header
-    draw_rounded_rect(ax, chat_x, chat_y + chat_h - header_h, chat_w, header_h, 15, '#f8f9fa', '#dbe2e8', zorder=10)
-    rect_chat = patches.Rectangle((chat_x, chat_y + chat_h - header_h), chat_w, header_h/2, facecolor='#f8f9fa', zorder=50)
+    # Chat Header (same border width as chat panel)
+    draw_rounded_rect(ax, chat_x, chat_y + chat_h - header_h, chat_w, header_h, 15, '#f8f9fa', '#dbe2e8', lw=2, zorder=10)
+    # Cover bottom of header to square off corners where it meets the chat body
+    rect_chat = patches.Rectangle((chat_x + 2, chat_y + chat_h - header_h), chat_w - 4, header_h/2, facecolor='#f8f9fa', edgecolor='none', zorder=50)
     ax.add_patch(rect_chat)
-    ax.text(chat_x + 20, chat_y + chat_h - 32, "HyperPerfect", fontsize=13, fontweight='bold', color='#212529', zorder=51)
-    ax.text(chat_x + chat_w - 20, chat_y + chat_h - 32, "AI Chat", fontsize=10, color='#6c757d', zorder=51, ha='right')
+    ax.text(chat_x + 20, chat_y + chat_h - header_h/2, "HyperPerfect", fontsize=13, fontweight='bold', color='#212529', zorder=51, va='center')
+    ax.text(chat_x + chat_w - 20, chat_y + chat_h - header_h/2, "AI Chat", fontsize=10, color='#6c757d', zorder=51, ha='right', va='center')
 
     # Input Box Area
     draw_rounded_rect(ax, chat_x + 15, chat_y + 15, chat_w - 30, input_h, 20, '#ffffff', '#ced4da', lw=1.5, zorder=10)
@@ -127,16 +132,12 @@ def draw_file_attachment():
     base_y = chat_y + 85
     pill_h = 28
 
-    # Paperclip icon (outside the pill)
+    # Lucide paperclip icon (outside the pill)
     icon_x = base_x + 12
-    icon_y = base_y + 14
-    # Vertical line on left
-    ax.plot([icon_x, icon_x], [icon_y + 4, icon_y - 2], color='#999999', linewidth=2.5, zorder=16)
-    # Curved loop on right (horseshoe shape)
-    theta = np.linspace(np.pi/2, 3*np.pi/2, 50)
-    loop_x = icon_x + 3 + 2.5 * np.cos(theta)
-    loop_y = icon_y + 2.5 * np.sin(theta)
-    ax.plot(loop_x, loop_y, color='#999999', linewidth=2.5, zorder=16)
+    icon_y = base_y + pill_h/2
+    imagebox = OffsetImage(PAPERCLIP_IMG, zoom=0.18)
+    ab = AnnotationBbox(imagebox, (icon_x, icon_y), frameon=False, zorder=16)
+    ax.add_artist(ab)
 
     # "File Uploaded:" label (outside the pill, thin, grey)
     ax.text(base_x + 28, base_y + pill_h/2, "File Uploaded:", fontsize=8, color='#888888',
