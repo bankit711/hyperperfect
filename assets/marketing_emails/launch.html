@@ -5,69 +5,112 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="x-apple-disable-message-reformatting">
   <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no">
-  <title>HyperPerfect — Supercharge Excel</title>
-
+  <meta name="color-scheme" content="light dark">
+  <meta name="supported-color-schemes" content="light dark">
+  <title>Newsflash: ChatGPT is bad at Excel</title>
   <style>
+    /* Resets */
     html, body { margin:0 !important; padding:0 !important; width:100% !important; height:100% !important; }
     * { -ms-text-size-adjust:100%; -webkit-text-size-adjust:100%; }
     table, td { mso-table-lspace:0pt !important; mso-table-rspace:0pt !important; border-collapse:collapse !important; }
     img { -ms-interpolation-mode:bicubic; border:0; outline:none; text-decoration:none; }
     a { text-decoration:none; }
-    .preheader { display:none !important; visibility:hidden; opacity:0; color:transparent; height:0; width:0; overflow:hidden; mso-hide:all; }
-
-    .container { width:600px; max-width:600px; }
-    .px { padding-left:28px; padding-right:28px; }
-
-    .font { font-family:-apple-system, Segoe UI, Roboto, Arial, sans-serif; }
-    .h1 { font-size:34px; line-height:40px; letter-spacing:-0.3px; }
-    .h2 { font-size:18px; line-height:24px; }
-    .p  { font-size:16px; line-height:24px; }
+    
+    /* Typography */
+    .font { font-family:-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+    .h1 { font-size:32px; line-height:38px; letter-spacing:-0.5px; font-weight: 800; }
+    .h2 { font-size:18px; line-height:24px; font-weight: 800; }
+    .p  { font-size:16px; line-height:26px; }
     .small { font-size:13px; line-height:18px; }
-    .muted { color:#5b6472; }
-    .ink { color:#0f172a; }
 
-    .divider { height:1px; background:#e7e9ee; line-height:1px; font-size:1px; }
-    .card { border:1px solid #e7e9ee; border-radius:16px; background:#ffffff; }
-    .soft { background:#f8fafc; border:1px solid #e7e9ee; border-radius:16px; }
-    .shadow { box-shadow:0 10px 30px rgba(15, 23, 42, 0.08); }
+    /* Layout */
+    .container { width:600px; max-width:600px; }
+    .px { padding-left:32px; padding-right:32px; }
+    .divider { height:1px; background:#e2e8f0; line-height:1px; font-size:1px; }
 
-    .btn a { display:inline-block; padding:14px 18px; border-radius:12px; font-weight:800; }
-    .btn-primary { background:#0b5fff; }
-    .btn-primary a { color:#ffffff; }
-    .btn-secondary a { color:#0f172a; font-weight:800; }
+    /* Light Mode Default Colors */
+    .bg-body { background-color:#f1f5f9; }
+    .bg-card { background-color:#ffffff; }
+    .bg-soft { background-color:#f8fafc; }
+    .ink-head { color:#1e293b; }
+    .ink-body { color:#0f172a; }
+    .ink-muted { color:#64748b; }
+    .border-color { border-color: #e2e8f0; }
 
-    /* Mobile Stacking */
+    /* Utilities */
+    .card { border:1px solid #e2e8f0; border-radius:12px; }
+    .soft { border:1px solid #e2e8f0; border-radius:12px; }
+    .shadow { box-shadow:0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+
+    /* CTA Buttons */
+    .btn-primary a { 
+      background-color: #2563eb; 
+      color: #ffffff; 
+      display: inline-block; 
+      padding: 14px 24px; 
+      border-radius: 8px; 
+      font-weight: 700; 
+      font-size: 16px;
+      mso-padding-alt: 0;
+      text-align: center;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    }
+    .btn-primary a:hover {
+      background-color: #1d4ed8 !important;
+    }
+
+    /* DARK MODE OVERRIDES */
+    @media (prefers-color-scheme: dark) {
+      .bg-body { background-color:#0f172a !important; }
+      .bg-card { background-color:#1e293b !important; }
+      .bg-soft { background-color:#334155 !important; }
+      .ink-head { color:#f8fafc !important; }
+      .ink-body { color:#f1f5f9 !important; }
+      .ink-muted { color:#cbd5e1 !important; }
+      .divider { background:#334155 !important; }
+      .card { border-color:#334155 !important; background-color:#1e293b !important; }
+      .soft { border-color:#334155 !important; background-color:#1e293b !important; }
+      .border-color { border-color:#334155 !important; }
+      .footer-bg { background-color:#020617 !important; }
+      .btn-primary a { background-color: #3b82f6 !important; color:#ffffff !important; }
+    }
+
+    /* Mobile Responsive */
     @media screen and (max-width: 620px) {
       .container { width:100% !important; max-width:100% !important; }
-      .px { padding-left:18px !important; padding-right:18px !important; }
-      .stack { display:block !important; width:100% !important; }
+      .px { padding-left:20px !important; padding-right:20px !important; }
+      .stack { display:block !important; width:100% !important; box-sizing: border-box; }
       .center-sm { text-align:center !important; }
       .hide-sm { display:none !important; }
-      .pad-sm { padding-left:10px !important; padding-right:10px !important; }
-      .mobile-pad-top { padding-top: 16px !important; }
+      .pad-sm { padding-left:12px !important; padding-right:12px !important; }
+      .mobile-pad-top { padding-top: 12px !important; }
+      .h1 { font-size: 28px !important; line-height: 34px !important; }
     }
   </style>
 </head>
 
-<body style="background:#f6f7fb; margin:0; padding:0;">
-  <div class="preheader">
-    HyperPerfect has been rebuilt from the ground up—workbook-wide AI, report/table builders, safer automation, and more inside Excel.
+<body class="bg-body" style="margin:0; padding:0; word-spacing:normal;">
+  
+  <div style="display:none;font-size:1px;color:#333333;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">
+    Chatbots weren't built for spreadsheets. This one is.
   </div>
 
-  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background:#f6f7fb;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="bg-body">
     <tr>
-      <td align="center" style="padding:26px 12px;">
+      <td align="center" style="padding:24px 12px;">
 
-        <table role="presentation" class="container shadow" width="600" cellspacing="0" cellpadding="0" border="0"
-               style="background:#ffffff; border-radius:22px; overflow:hidden;">
+        <table role="presentation" class="container shadow bg-card" width="600" cellspacing="0" cellpadding="0" border="0"
+               style="border-radius:16px; overflow:hidden;">
 
           <tr>
-            <td class="px font" style="padding:22px 28px 10px 28px;">
+            <td class="px font" style="padding-top:32px; padding-bottom:12px;">
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tr>
                   <td align="left" valign="middle" class="center-sm">
-                    <a href="https://www.hyperperfect.ai/?utm_source=brevo&utm_medium=email&utm_campaign=rewrite_launch" target="_blank">
-                      <img src="https://app.hyperperfect.ai/static/icons/icon-64.png" width="64" alt="HyperPerfect" style="display:block; height:auto;">
+                    <a href="https://www.hyperperfect.ai/?utm_source=brevo" target="_blank">
+                      <img src="https://img.mailinblue.com/9358748/images/content_library/original/6973cdec1d1f95f6a276552e.png" 
+                           width="54" alt="HyperPerfect" 
+                           style="display:block; height:auto; border:0; font-family:sans-serif; font-weight:bold; color:#2563eb;">
                     </a>
                   </td>
                 </tr>
@@ -76,37 +119,47 @@
           </tr>
 
           <tr>
-            <td class="px font ink" style="padding:8px 28px 18px 28px;">
-              <div class="h1" style="font-weight:900; margin:0 0 10px 0;">
-                Supercharge Excel with AI.
+            <td class="px font ink-body" style="padding-bottom:24px;">
+              
+              <div class="h1 ink-head" style="margin:0 0 16px 0;">
+                Stop uploading Excel files to ChatGPT like it's still 2025
               </div>
 
-              <div class="p muted" style="margin:0 0 16px 0;">
-                Stop copy-pasting from chatbots. HyperPerfect lives in your grid to build models, clean data, and iterate in real-time—giving you absolute superpowers without taking the wheel.
+              <div class="p ink-muted" style="margin:0 0 24px 0;">
+                AI models struggle with spreadsheets. You've likely asked ChatGPT to build one, and received a file back that was riddled with errors and not exactly what you requested.
+                <br><br>
+                Here's the deal: You need to be <em>in</em> the spreadsheet, working alongside the AI, so you maintain control while it does the heavy lifting.
+                <br><br>
+                <strong>HyperPerfect</strong> changes the game by bringing world-class AI models right into your Excel software.
+                <br><br>
+                <strong class="ink-body">Turn Excel into an AI agent that builds models, cleans messy data, finds errors and makes dashboards look professional.</strong>
               </div>
 
-              <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin:14px 0 18px 0;">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                 <tr>
-                  <td class="btn btn-primary" valign="middle" style="border-radius:12px;">
-                    <a href="https://marketplace.microsoft.com/en-us/product/saas/wa200008526?tab=overview&utm_source=brevo&utm_medium=email&utm_campaign=rewrite_launch"
-                       target="_blank">
-                      Get HyperPerfect in Excel
-                    </a>
-                  </td>
-                  <td width="14"></td>
-                  <td class="btn btn-secondary" valign="middle">
-                    <a href="https://help.hyperperfect.ai/Changelog?utm_source=brevo&utm_medium=email&utm_campaign=rewrite_launch" target="_blank">
-                      What’s new →
-                    </a>
+                  <td align="left">
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                      <tr>
+                        <td class="btn-primary" valign="middle">
+                          <a href="https://marketplace.microsoft.com/en-us/product/saas/wa200008526?tab=overview" target="_blank">
+                            <span style="mso-text-raise: 15pt;">Try for Free in Excel</span>
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
                   </td>
                 </tr>
               </table>
 
-              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-top:16px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-top:24px;">
                 <tr>
-                  <td class="soft" style="border-radius:18px; overflow:hidden;">
-                    <img src="https://app.hyperperfect.ai/static/animations/dcf_apple_demo.gif" width="600" alt="HyperPerfect inside Excel"
-                         style="display:block; width:100%; height:auto;">
+                  <td class="soft border-color" style="border-radius:12px; overflow:hidden; border-width:1px; border-style:solid;">
+                    <a href="https://marketplace.microsoft.com/en-us/product/saas/wa200008526?tab=overview" target="_blank" style="text-decoration:none;">
+                        <img src="https://img.mailinblue.com/9358748/images/content_library/original/6973cdd2d0835287b209d076.gif" 
+                             width="600" 
+                             alt="▶ Demo: See HyperPerfect automate a financial report"
+                             style="display:block; width:100%; max-width:100%; height:auto; color:#2563eb; font-family:sans-serif; font-weight:bold; font-size:18px; line-height:32px; text-align:center; background-color:#f1f5f9;">
+                    </a>
                   </td>
                 </tr>
               </table>
@@ -117,34 +170,34 @@
           <tr><td class="divider"></td></tr>
 
           <tr>
-            <td class="px font ink" style="padding:18px 28px 6px 28px;">
-              <div class="h2" style="font-weight:900; margin:0 0 6px 0;">What you can do now</div>
-              <div class="p muted" style="margin:0;">Three big upgrades that show up immediately in real Excel work.</div>
+            <td class="px font ink-body" style="padding-top:24px; padding-bottom:8px;">
+              <div class="h2 ink-head" style="margin:0 0 6px 0;">You control the outcome</div>
+              <div class="p ink-muted" style="margin:0; font-size:15px;">Use AI to enhance your workflow in real-time.</div>
             </td>
           </tr>
 
           <tr>
-            <td class="px pad-sm" style="padding:10px 28px 28px 28px;">
+            <td class="px pad-sm" style="padding-bottom:32px;">
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tr>
-                  <td class="stack" width="33.33%" valign="top" style="padding:8px;">
-                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="card">
+                  
+                  <td class="stack" width="33.3%" valign="top" style="padding:4px;">
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="card border-color" style="height:100%; border-width:1px; border-style:solid;">
                       <tr>
-                        <td class="font ink" style="padding:18px 12px;">
-                          <div class="h2" style="font-weight:900; margin:0 0 6px 0;">Powerful</div>
-                          <div class="small" style="margin:0 0 12px 0; color:#475569;">Next-gen complexity.</div>
+                        <td class="font ink-body" style="padding:16px 8px;">
+                          <div class="h2" style="font-size:15px; margin:0 0 10px 0; text-align:center;">Accurate</div>
                           <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
                             <tr>
-                              <td width="12" valign="top" class="small" style="padding-bottom:4px; line-height:18px;">•</td>
-                              <td class="small ink" valign="top" style="padding-bottom:4px; line-height:18px;">Upgraded AI models</td>
+                              <td width="12" valign="top" style="color:#2563eb; font-weight:bold;">•</td>
+                              <td class="small ink-body" valign="top">Best-in-class AI</td>
                             </tr>
                             <tr>
-                              <td width="12" valign="top" class="small" style="padding-bottom:4px; line-height:18px;">•</td>
-                              <td class="small ink" valign="top" style="padding-bottom:4px; line-height:18px;">Multi-step processes</td>
+                              <td width="12" valign="top" style="color:#2563eb; font-weight:bold;">•</td>
+                              <td class="small ink-body" valign="top">Built-in error checks</td>
                             </tr>
                             <tr>
-                              <td width="12" valign="top" class="small" style="padding-bottom:0; line-height:18px;">•</td>
-                              <td class="small ink" valign="top" style="padding-bottom:0; line-height:18px;">Full workbook access</td>
+                              <td width="12" valign="top" style="color:#2563eb; font-weight:bold;">•</td>
+                              <td class="small ink-body" valign="top">Real-time control</td>
                             </tr>
                           </table>
                         </td>
@@ -152,24 +205,23 @@
                     </table>
                   </td>
 
-                  <td class="stack mobile-pad-top" width="33.33%" valign="top" style="padding:8px;">
-                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="card">
+                  <td class="stack mobile-pad-top" width="33.3%" valign="top" style="padding:4px;">
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="card border-color" style="height:100%; border-width:1px; border-style:solid;">
                       <tr>
-                        <td class="font ink" style="padding:18px 12px;">
-                          <div class="h2" style="font-weight:900; margin:0 0 6px 0;">Accurate</div>
-                          <div class="small" style="margin:0 0 12px 0; color:#475569;">Trust the output.</div>
+                        <td class="font ink-body" style="padding:16px 8px;">
+                          <div class="h2" style="font-size:15px; margin:0 0 10px 0; text-align:center;">Fast</div>
                           <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
                             <tr>
-                              <td width="12" valign="top" class="small" style="padding-bottom:4px; line-height:18px;">•</td>
-                              <td class="small ink" valign="top" style="padding-bottom:4px; line-height:18px;">Auto-error correction</td>
+                              <td width="12" valign="top" style="color:#2563eb; font-weight:bold;">•</td>
+                              <td class="small ink-body" valign="top">PDF extractions</td>
                             </tr>
                             <tr>
-                              <td width="12" valign="top" class="small" style="padding-bottom:4px; line-height:18px;">•</td>
-                              <td class="small ink" valign="top" style="padding-bottom:4px; line-height:18px;">Real-time redirection</td>
+                              <td width="12" valign="top" style="color:#2563eb; font-weight:bold;">•</td>
+                              <td class="small ink-body" valign="top">Web search</td>
                             </tr>
                             <tr>
-                              <td width="12" valign="top" class="small" style="padding-bottom:0; line-height:18px;">•</td>
-                              <td class="small ink" valign="top" style="padding-bottom:0; line-height:18px;">Intelligent verification</td>
+                              <td width="12" valign="top" style="color:#2563eb; font-weight:bold;">•</td>
+                              <td class="small ink-body" valign="top">Large datasets</td>
                             </tr>
                           </table>
                         </td>
@@ -177,30 +229,30 @@
                     </table>
                   </td>
 
-                  <td class="stack mobile-pad-top" width="33.33%" valign="top" style="padding:8px;">
-                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="card">
+                  <td class="stack mobile-pad-top" width="33.3%" valign="top" style="padding:4px;">
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="card border-color" style="height:100%; border-width:1px; border-style:solid;">
                       <tr>
-                        <td class="font ink" style="padding:18px 12px;">
-                          <div class="h2" style="font-weight:900; margin:0 0 6px 0;">Practical</div>
-                          <div class="small" style="margin:0 0 12px 0; color:#475569;">Connect real data.</div>
+                        <td class="font ink-body" style="padding:16px 8px;">
+                          <div class="h2" style="font-size:15px; margin:0 0 10px 0; text-align:center;">Secure</div>
                           <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
                             <tr>
-                              <td width="12" valign="top" class="small" style="padding-bottom:4px; line-height:18px;">•</td>
-                              <td class="small ink" valign="top" style="padding-bottom:4px; line-height:18px;">Upload PDF data</td>
+                              <td width="12" valign="top" style="color:#2563eb; font-weight:bold;">•</td>
+                              <td class="small ink-body" valign="top">Enterprise security</td>
                             </tr>
                             <tr>
-                              <td width="12" valign="top" class="small" style="padding-bottom:4px; line-height:18px;">•</td>
-                              <td class="small ink" valign="top" style="padding-bottom:4px; line-height:18px;">Live web search</td>
+                              <td width="12" valign="top" style="color:#2563eb; font-weight:bold;">•</td>
+                              <td class="small ink-body" valign="top">No training on data</td>
                             </tr>
                             <tr>
-                              <td width="12" valign="top" class="small" style="padding-bottom:0; line-height:18px;">•</td>
-                              <td class="small ink" valign="top" style="padding-bottom:0; line-height:18px;">Large dataset support</td>
+                              <td width="12" valign="top" style="color:#2563eb; font-weight:bold;">•</td>
+                              <td class="small ink-body" valign="top">IT Dept approved</td>
                             </tr>
                           </table>
                         </td>
                       </tr>
                     </table>
                   </td>
+
                 </tr>
               </table>
             </td>
@@ -209,21 +261,20 @@
           <tr><td class="divider"></td></tr>
 
           <tr>
-            <td class="px font ink" style="padding:18px 28px 28px 28px;">
-              <div class="h2" style="font-weight:900; margin:0 0 10px 0;">Start building in seconds</div>
+            <td class="px font ink-body" style="padding:24px 32px 32px 32px;">
+              <div class="h2 ink-head" style="margin:0 0 12px 0;">Start building today</div>
 
-              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="card">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="soft border-color" style="border-width:1px; border-style:solid;">
                 <tr>
-                  <td style="padding:22px 24px;">
-                    <div class="p" style="margin:0 0 16px 0;">
-                      <strong>Standard Install:</strong> HyperPerfect is a certified Microsoft add-in that completely integrates with your current Excel.
+                  <td style="padding:20px 24px;">
+                    <div class="p ink-muted" style="margin:0 0 16px 0; font-size:15px;">
+                      <strong class="ink-head">Standard Install:</strong> HyperPerfect is a certified Microsoft add-in that is completely integrated into Excel.
                     </div>
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0">
                       <tr>
-                        <td class="btn btn-primary" valign="middle" style="border-radius:12px;">
-                          <a href="https://marketplace.microsoft.com/en-us/product/saas/wa200008526?tab=overview&utm_source=brevo&utm_medium=email&utm_campaign=rewrite_launch"
-                             target="_blank">
-                            Get HyperPerfect in Excel
+                        <td class="btn-primary" valign="middle">
+                          <a href="https://marketplace.microsoft.com/en-us/product/saas/wa200008526?tab=overview" target="_blank">
+                            Try for Free in Excel
                           </a>
                         </td>
                       </tr>
@@ -232,9 +283,9 @@
                 </tr>
                 <tr><td class="divider"></td></tr>
                 <tr>
-                  <td class="soft" style="padding:14px 24px; background:#f8fafc; border-bottom-left-radius:16px; border-bottom-right-radius:16px;">
-                    <div class="small" style="margin:0; color:#5b6472; line-height:20px;">
-                      <strong>Blocked by IT restrictions?</strong> No problem. You can easily use HyperPerfect by creating a free <a href="https://help.hyperperfect.ai/Quick%2BStart?utm_source=brevo&utm_medium=email&utm_campaign=rewrite_launch" target="_blank" style="color:#0b5fff; font-weight:800; text-decoration:none;">Excel Online account</a>.
+                  <td class="bg-soft" style="padding:16px 24px;">
+                    <div class="small ink-muted" style="margin:0;">
+                      <strong>Excel software on lockdown?</strong> No problem. Use HyperPerfect in minutes by creating a free <a href="https://help.hyperperfect.ai/Quick%2BStart" target="_blank" style="color:#2563eb; font-weight:700; text-decoration:underline;">Excel Online account</a>.
                     </div>
                   </td>
                 </tr>
@@ -243,17 +294,25 @@
           </tr>
 
           <tr>
-            <td style="background:#0b1220; padding:18px 28px;" class="font">
-              <div style="color:#e5e7eb; font-size:14px; line-height:20px; font-weight:900; margin-bottom:6px;">
-                Want help automating a specific Excel workflow?
+            <td class="footer-bg font" style="background:#0f172a; padding:24px 32px;">
+              <div style="color:#f8fafc; font-size:15px; line-height:22px; font-weight:700; margin-bottom:8px;">
+                Claim a free 1:1 AI Strategy Session
               </div>
-              <div style="color:#cbd5e1; font-size:13px; line-height:19px;">
-                Reply to this email with what you’re working on—we’ll point you to the fastest way to do it in HyperPerfect.
+              <div style="color:#cbd5e1; font-size:14px; line-height:20px; margin-bottom:16px;">
+                We'll teach you the expert workflows to automate your specific data challenges using HyperPerfect.
               </div>
-              <div style="margin-top:14px; color:#94a3b8; font-size:12px; line-height:18px;">
-                Questions? Visit <a href="https://www.hyperperfect.ai/?utm_source=brevo&utm_medium=email&utm_campaign=rewrite_launch" target="_blank" style="color:#cbd5e1; text-decoration:underline;">hyperperfect.ai</a>.
+              
+              <div style="margin-bottom:20px;">
+                <a href="https://calendly.com/di-hyperperfect/30min" target="_blank" style="color:#ffffff; font-weight:700; text-decoration:underline; font-size:14px;">
+                  Book your 30-minute session here &rarr;
+                </a>
+                <span style="color:#64748b; font-size:13px;"> or reply to this email.</span>
+              </div>
+
+              <div style="color:#94a3b8; font-size:12px; line-height:18px;">
+                Questions? Visit <a href="https://www.hyperperfect.ai/" target="_blank" style="color:#e2e8f0; text-decoration:underline;">hyperperfect.ai</a>.
                 &nbsp;•&nbsp;
-                <a href="{{ unsubscribe }}" style="color:#cbd5e1; text-decoration:underline;">Unsubscribe</a>
+                <a href="{{ unsubscribe }}" style="color:#e2e8f0; text-decoration:underline;">Unsubscribe</a>
               </div>
             </td>
           </tr>
@@ -261,7 +320,7 @@
         </table>
 
         <table role="presentation" class="container" width="600" cellspacing="0" cellpadding="0" border="0">
-          <tr><td style="height:18px; line-height:18px;">&nbsp;</td></tr>
+          <tr><td style="height:32px; line-height:32px;">&nbsp;</td></tr>
         </table>
 
       </td>
