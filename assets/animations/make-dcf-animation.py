@@ -3,9 +3,12 @@ import matplotlib.patches as patches
 from matplotlib.animation import FuncAnimation, PillowWriter
 import numpy as np
 
-# Setup the figure and axis with higher DPI for quality
-fig, ax = plt.subplots(figsize=(14, 7), dpi=150)
+# Setup the figure and axis
+# 1600x800 pixels (8x4 inches at 100 DPI with 2x retina scaling)
+fig, ax = plt.subplots(figsize=(8, 4), dpi=100)
 fig.patch.set_facecolor('#f0f4f8')
+# Remove all margins/padding around the plot
+fig.subplots_adjust(left=0, right=1, top=1, bottom=0)
 ax.set_xlim(0, 1400)
 ax.set_ylim(0, 700)
 ax.axis('off')
@@ -29,14 +32,7 @@ def draw_ui_layout():
     excel_bg = patches.Rectangle((excel_x, excel_y), excel_w, excel_h, facecolor='#f9f9f9', edgecolor='none', zorder=0)
     ax.add_patch(excel_bg)
 
-    # Blue background overlay for year headers (extends under chat window to create overlay effect)
-    # Positioned to appear underneath the chat window
-    blue_bg = patches.Rectangle((start_x, start_y), 900, cell_h, facecolor='#1e5a96', edgecolor='none', zorder=1)
-    ax.add_patch(blue_bg)
-
-    # Add title text to blue background
-    ax.text(start_x + 10, start_y + cell_h/2, 'Apple Computer DCF', fontsize=10, color='white',
-            ha='left', va='center', fontweight='bold', zorder=4, fontfamily='Menlo')
+    # Row 1 is intentionally left blank (no title)
 
     # Chat Panel (high zorder to appear in front of Excel grid and cell highlights)
     draw_rounded_rect(ax, chat_x, chat_y, chat_w, chat_h, 15, 'white', '#dbe2e8', lw=2, zorder=10)
@@ -44,7 +40,7 @@ def draw_ui_layout():
     draw_rounded_rect(ax, chat_x, chat_y + chat_h - header_h, chat_w, header_h, 15, '#f8f9fa', '#dbe2e8', zorder=10)
     rect_chat = patches.Rectangle((chat_x, chat_y + chat_h - header_h), chat_w, header_h/2, facecolor='#f8f9fa', zorder=50)
     ax.add_patch(rect_chat)
-    ax.text(chat_x + 20, chat_y + chat_h - 32, "HyperPerfect", fontsize=14, fontweight='bold', color='#212529', zorder=51)
+    ax.text(chat_x + 20, chat_y + chat_h - 32, "HyperPerfect", fontsize=13, fontweight='bold', color='#212529', zorder=51)
     ax.text(chat_x + chat_w - 20, chat_y + chat_h - 32, "AI Chat", fontsize=10, color='#6c757d', zorder=51, ha='right')
 
     # Input Box Area
@@ -58,8 +54,8 @@ def draw_ui_layout():
 
 def draw_user_message(text, y_pos):
     """Draw a user message (right-aligned, gray background)"""
-    bubble_w = 420
-    bubble_h = 60
+    bubble_w = 480
+    bubble_h = 65
     bubble_x = chat_x + chat_w - bubble_w - 20
 
     # Higher zorder for user bubble to appear in GIF
@@ -104,7 +100,7 @@ def draw_bot_message(text, y_pos, final_height=None):
     ax.add_patch(bubble)
 
     # HyperPerfect label
-    ax.text(bubble_x + 10, y_pos + bubble_h - 18, "HyperPerfect", fontsize=8, color='#0d6efd', zorder=61, fontweight='bold')
+    ax.text(bubble_x + 10, y_pos + bubble_h - 18, "HyperPerfect", fontsize=7, color='#0d6efd', zorder=61, fontweight='bold')
     # Text with manual wrapping to prevent bleeding outside bubble
     wrapped_text = wrap_text(text)
     ax.text(bubble_x + 15, y_pos + bubble_h - 32, wrapped_text, fontsize=13, color='#212529', zorder=61, va='top', fontweight='500')
@@ -116,7 +112,7 @@ def draw_thinking_indicator(y_pos):
     bubble_x = chat_x + 20
 
     draw_rounded_rect(ax, bubble_x, y_pos, bubble_w, bubble_h, 15, '#ffffff')
-    ax.text(bubble_x + 10, y_pos + 32, "HyperPerfect", fontsize=8, color='#0d6efd', zorder=3, fontweight='bold')
+    ax.text(bubble_x + 10, y_pos + 32, "HyperPerfect", fontsize=7, color='#0d6efd', zorder=3, fontweight='bold')
     ax.text(bubble_x + 15, y_pos + 18, "Thinking...", fontsize=9, color='#666666', zorder=3, va='top', style='italic')
 
 def draw_input_placeholder(text, show_cursor=True):
@@ -125,7 +121,42 @@ def draw_input_placeholder(text, show_cursor=True):
     # zorder must be higher than input box background (zorder=10)
     ax.text(chat_x + 30, chat_y + 40, text + cursor, fontsize=11, color='#212529', zorder=15, fontweight='normal')
 
-def draw_excel_cell(x, y, w, h, text, color='white', text_color='#212529', fontweight='normal', fontsize=10, highlight=False, is_formula=False, align='center'):
+def draw_file_attachment():
+    """Draw a file attachment indicator above the input box"""
+    base_x = chat_x + 25
+    base_y = chat_y + 85
+    pill_h = 28
+
+    # Paperclip icon (outside the pill)
+    icon_x = base_x + 12
+    icon_y = base_y + 14
+    # Vertical line on left
+    ax.plot([icon_x, icon_x], [icon_y + 4, icon_y - 2], color='#999999', linewidth=2.5, zorder=16)
+    # Curved loop on right (horseshoe shape)
+    theta = np.linspace(np.pi/2, 3*np.pi/2, 50)
+    loop_x = icon_x + 3 + 2.5 * np.cos(theta)
+    loop_y = icon_y + 2.5 * np.sin(theta)
+    ax.plot(loop_x, loop_y, color='#999999', linewidth=2.5, zorder=16)
+
+    # "File Uploaded:" label (outside the pill, thin, grey)
+    ax.text(base_x + 28, base_y + pill_h/2, "File Uploaded:", fontsize=8, color='#888888',
+            ha='left', va='center', zorder=16, fontweight='300')
+
+    # Pill only around the filename
+    pill_x = base_x + 175
+    pill_w = 220
+
+    # Light blue background pill (only around filename)
+    pill = patches.FancyBboxPatch((pill_x, base_y), pill_w, pill_h,
+                                   boxstyle="round,pad=0,rounding_size=8",
+                                   facecolor='#e7f1ff', edgecolor='#b6d4fe', linewidth=1, zorder=15)
+    ax.add_patch(pill)
+
+    # Filename (blue, normal weight, inside the pill)
+    ax.text(pill_x + 10, base_y + pill_h/2, "Apple Financials.pdf", fontsize=8, color='#0d6efd',
+            ha='left', va='center', zorder=16, fontweight='500')
+
+def draw_excel_cell(x, y, w, h, text, color='white', text_color='#212529', fontweight='normal', fontsize=10, highlight=False, is_formula=False, align='center', fontfamily='sans-serif'):
     """Draw an Excel cell"""
     border_color = '#2d6a4f' if highlight else 'none'
     border_width = 2.5 if highlight else 0
@@ -141,50 +172,49 @@ def draw_excel_cell(x, y, w, h, text, color='white', text_color='#212529', fontw
         else:  # center
             text_x = x + w/2
 
-        if is_formula:
-            ax.text(text_x, y + h/2, str(text), fontsize=fontsize - 1, color='#d9534f',
-                    ha=align, va='center', fontweight=fontweight, zorder=3, fontfamily='Menlo')
-        else:
-            ax.text(text_x, y + h/2, str(text), fontsize=fontsize, color=text_color,
-                    ha=align, va='center', fontweight=fontweight, zorder=3, fontfamily='Menlo')
+        # Add white background behind text to hide cell borders
+        text_obj = ax.text(text_x, y + h/2, str(text), fontsize=fontsize if not is_formula else fontsize - 1,
+                          color='#d9534f' if is_formula else text_color,
+                          ha=align, va='center', fontweight=fontweight, zorder=3, fontfamily=fontfamily,
+                          bbox=dict(boxstyle='square,pad=0.4', facecolor='white', edgecolor='none', zorder=2))
 
 # Cell reference colors for formula highlighting
 CELL_REF_COLORS = {
     'C4': '#0d6efd',    # Blue - Discount Rate
     'G9': '#dc3545',    # Red - FCF 2028E
-    'C12': '#6f42c1',   # Purple - Terminal Multiple
+    'C3': '#6f42c1',    # Purple - Terminal Multiple (moved to row 3)
     'C9:G9': '#198754', # Green - FCF range
 }
 
 # Cell positions in our grid (column index, row index from top)
-# Row 1 = title, Row 2 = Major Assumptions header, Row 3 = Terminal Growth, Row 4 = Discount Rate
-# Row 7 = PROJECTIONS header, Row 8 = Revenue, Row 9 = FCF
-# Row 12 = Terminal Multiple, Row 13 = Enterprise Value
+# Row 1 = title, Row 2 = Major Assumptions header, Row 3 = Terminal Multiple, Row 4 = Discount Rate
+# Row 7 = Projections header, Row 8 = Revenue, Row 9 = FCF
+# Row 10 = Enterprise Value
 CELL_POSITIONS = {
+    'C3': (2, 2),   # Column C (index 2), Row 3 (Terminal Multiple - 10x)
     'C4': (2, 3),   # Column C (index 2), Row 4 (Discount Rate - 8%)
     'G9': (6, 8),   # Column G (index 6), Row 9 (FCF 2028E - 154B)
-    'C12': (2, 11), # Column C (index 2), Row 12 (Terminal Multiple - 10x)
     'C9': (2, 8),   # Start of FCF range
     'G9_range': (6, 8),  # End of FCF range
 }
 
 def draw_colored_formula(ax, x, y, formula_text, fontsize=9):
     """Draw formula character by character with colored cell references"""
-    # Formula: =PV(C4, 5, 0, -G9 x C12) + NPV(C4, C9:G9)
-    # Total length: 41 characters
-    full_formula = "=PV(C4, 5, 0, -G9 x C12) + NPV(C4, C9:G9)"
+    # Formula: =PV(C4, 5, 0, -G9 * C3) + NPV(C4, C9:G9)
+    # Total length: 40 characters
+    full_formula = "=PV(C4, 5, 0, -G9 * C3) + NPV(C4, C9:G9)"
 
     # Define character ranges for each colored reference (start, end exclusive, color)
     # Verified positions from formula analysis
     color_ranges = [
         (4, 6, CELL_REF_COLORS['C4']),      # First C4 at positions 4-5
         (15, 17, CELL_REF_COLORS['G9']),    # G9 at positions 15-16
-        (20, 23, CELL_REF_COLORS['C12']),   # C12 at positions 20-22
-        (31, 33, CELL_REF_COLORS['C4']),    # Second C4 at positions 31-32
-        (35, 40, CELL_REF_COLORS['C9:G9']), # C9:G9 at positions 35-39
+        (20, 22, CELL_REF_COLORS['C3']),    # C3 at positions 20-21
+        (30, 32, CELL_REF_COLORS['C4']),    # Second C4 at positions 30-31
+        (34, 39, CELL_REF_COLORS['C9:G9']), # C9:G9 at positions 34-38
     ]
 
-    char_width = 8.0  # Character width for monospace font (Menlo at fontsize 9)
+    char_width = 11.0  # Character width for monospace font (Menlo at fontsize 9)
 
     for i, char in enumerate(formula_text):
         if i >= len(full_formula):
@@ -209,14 +239,14 @@ def draw_cell_reference_highlights(ax, formula_text, start_x, start_y, cell_w, c
     # Check which complete references are in the formula text
     refs_to_highlight = []
 
-    # Formula: =PV(C4, 5, 0, -G9 x C12) + NPV(C4, C9:G9)
-    # Total length: 41 characters
+    # Formula: =PV(C4, 5, 0, -G9 * C3) + NPV(C4, C9:G9)
+    # Total length: 40 characters
     # Verified positions:
     # - First C4 at positions 4-5 (need length >= 6)
     # - G9 at positions 15-16 (need length >= 17)
-    # - C12 at positions 20-22 (need length >= 23)
-    # - Second C4 at positions 31-32 (need length >= 33)
-    # - C9:G9 at positions 35-39 (need length >= 40)
+    # - C3 at positions 20-21 (need length >= 22)
+    # - Second C4 at positions 30-31 (need length >= 32)
+    # - C9:G9 at positions 34-38 (need length >= 39)
 
     # First C4 at positions 4-5 (need length >= 6)
     if len(formula_text) >= 6:
@@ -226,12 +256,12 @@ def draw_cell_reference_highlights(ax, formula_text, start_x, start_y, cell_w, c
     if len(formula_text) >= 17:
         refs_to_highlight.append(('G9', CELL_REF_COLORS['G9']))
 
-    # C12 at positions 20-22 (need length >= 23)
-    if len(formula_text) >= 23:
-        refs_to_highlight.append(('C12', CELL_REF_COLORS['C12']))
+    # C3 at positions 20-21 (need length >= 22)
+    if len(formula_text) >= 22:
+        refs_to_highlight.append(('C3', CELL_REF_COLORS['C3']))
 
-    # C9:G9 at positions 35-39 (need length >= 40 for complete reference)
-    if len(formula_text) >= 40:
+    # C9:G9 at positions 34-38 (need length >= 39 for complete reference)
+    if len(formula_text) >= 39:
         refs_to_highlight.append(('C9:G9', CELL_REF_COLORS['C9:G9']))
 
     for ref, color in refs_to_highlight:
@@ -242,7 +272,7 @@ def draw_cell_reference_highlights(ax, formula_text, start_x, start_y, cell_w, c
             range_width = 5 * cell_w  # 5 columns (C, D, E, F, G)
             highlight_rect = patches.Rectangle(
                 (range_x, range_y), range_width, cell_h,
-                facecolor='none', edgecolor=color, linewidth=2.5, zorder=5
+                facecolor='none', edgecolor=color, linewidth=1.5, zorder=5
             )
             ax.add_patch(highlight_rect)
         elif ref in CELL_POSITIONS:
@@ -251,7 +281,7 @@ def draw_cell_reference_highlights(ax, formula_text, start_x, start_y, cell_w, c
             cell_y = start_y - row * (cell_h + 1)
             highlight_rect = patches.Rectangle(
                 (cell_x, cell_y), cell_w, cell_h,
-                facecolor='none', edgecolor=color, linewidth=2.5, zorder=5
+                facecolor='none', edgecolor=color, linewidth=1.5, zorder=5
             )
             ax.add_patch(highlight_rect)
 
@@ -261,14 +291,14 @@ def draw_excel_header_cell(x, y, w, h, text, bg_color='none', text_color='#21252
     header_rect = patches.Rectangle((x, y), w, h, facecolor=bg_color, edgecolor='none', linewidth=0, zorder=0)
     ax.add_patch(header_rect)
     ax.text(x + w/2, y + h/2, text, fontsize=9, color=text_color,
-            ha='center', va='center', fontweight='bold', zorder=3, fontfamily='Menlo')
+            ha='center', va='center', fontweight='bold', zorder=3, fontfamily='sans-serif')
 
-def draw_section_header(x, y, w, h, text):
-    """Draw section header cell (text only, no background)"""
+def draw_section_header(x, y, w, h, text, fontweight='normal'):
+    """Draw section header cell (text only, no background, left aligned)"""
     header_rect = patches.Rectangle((x, y), w, h, facecolor='none', edgecolor='none', linewidth=0, zorder=2)
     ax.add_patch(header_rect)
-    ax.text(x + w/2, y + h/2, text, fontsize=8, color='#212529',
-            ha='center', va='center', fontweight='bold', zorder=3, fontfamily='Menlo')
+    ax.text(x + 5, y + h/2, text, fontsize=8, color='#212529',
+            ha='left', va='center', fontweight=fontweight, zorder=3, fontfamily='sans-serif')
 
 def draw_excel_grid():
     """Draw the Excel grid background with column letters and row numbers"""
@@ -276,29 +306,32 @@ def draw_excel_grid():
     col_letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
     col_width = cell_w
 
-    # Top column header (gray background)
+    # Top column header (gray background, high zorder)
     header_bg = patches.Rectangle((start_x, start_y + cell_h), len(col_letters) * col_width, cell_h,
-                                   facecolor='#d3d3d3', edgecolor='#999999', linewidth=1, zorder=0)
+                                   facecolor='#d3d3d3', edgecolor='#999999', linewidth=1, zorder=6)
     ax.add_patch(header_bg)
 
-    # Draw column letters
+    # Draw column letters with faint vertical dividers
     for i, letter in enumerate(col_letters):
         col_x = start_x + i * col_width
         ax.text(col_x + col_width/2, start_y + cell_h + cell_h/2, letter, fontsize=8, color='#212529',
-                ha='center', va='center', fontweight='bold', zorder=3, fontfamily='Menlo')
+                ha='center', va='center', fontweight='bold', zorder=7, fontfamily='sans-serif')
+        # Draw faint vertical line between columns (except before first column)
+        if i > 0:
+            ax.plot([col_x, col_x], [start_y + cell_h, start_y + cell_h * 2], color='#b0b0b0', linewidth=0.5, zorder=1)
 
     # Row numbers on the left (gray background)
     for row_num in range(1, 16):
         row_y = start_y - (row_num - 1) * (cell_h + 1)
 
-        # Row number background
+        # Row number background (high zorder to appear on top of cell text backgrounds)
         row_bg = patches.Rectangle((start_x - 40, row_y), 40, cell_h,
-                                   facecolor='#d3d3d3', edgecolor='#999999', linewidth=1, zorder=0)
+                                   facecolor='#d3d3d3', edgecolor='#999999', linewidth=1, zorder=6)
         ax.add_patch(row_bg)
 
         # Row number text
         ax.text(start_x - 20, row_y + cell_h/2, str(row_num), fontsize=7, color='#212529',
-                ha='center', va='center', fontweight='bold', zorder=3, fontfamily='Menlo')
+                ha='center', va='center', fontweight='bold', zorder=7, fontfamily='sans-serif')
 
     # Draw vertical and horizontal grid lines
     for i in range(len(col_letters) + 1):
@@ -324,7 +357,7 @@ start_x = excel_x + 50  # Start after row numbers column
 start_y = excel_y + excel_h - header_h - 25  # Top data row
 
 # Years
-years = ['2024E', '2025E', '2026E', '2027E', '2028E']
+years = ['2025A', '2026E', '2027E', '2028E', '2029E']
 
 # Data
 projection_data = {
@@ -333,12 +366,13 @@ projection_data = {
 }
 
 # --- PHASE 1: User Input (0-30 frames) ---
-input_text = "Build a DCF for Apple Computer."
+input_text = "How much is Apple worth?"
 for i in range(len(input_text) + 1):
     frames.append({
         'phase': 'input_typing',
         'input_text': input_text[:i],
         'show_cursor': i < len(input_text),
+        'show_file_attachment': True,
         'chat_messages': [],
         'excel_content': [],
     })
@@ -349,6 +383,7 @@ for i in range(3):
         'phase': 'input_pause',
         'input_text': input_text,
         'show_cursor': False,
+        'show_file_attachment': True,
         'chat_messages': [],
         'excel_content': [],
     })
@@ -359,20 +394,20 @@ for i in range(5):
         'phase': 'message_sent',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Build a DCF for Apple Computer.', 'is_user': True, 'order': 0}
+            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0}
         ],
         'excel_content': [],
     })
 
 # First bot message streams
-first_response = "Using the Web to find assumptions for terminal growth and discount rates."
-first_response_height = max(60, len(first_response) // 35 * 20 + 40)
+first_response = "Researching assumptions online"
+first_response_height = 55  # Shorter text, no wrapping needed
 for i in range(1, len(first_response) + 1):
     frames.append({
         'phase': 'bot_responding',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Build a DCF for Apple Computer.', 'is_user': True, 'order': 0},
+            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
             {'text': first_response[:i], 'is_user': False, 'order': 1, 'final_height': first_response_height}
         ],
         'excel_content': [],
@@ -384,7 +419,7 @@ for i in range(20):
         'phase': 'bot_complete',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Build a DCF for Apple Computer.', 'is_user': True, 'order': 0},
+            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height}
         ],
         'excel_content': [],
@@ -397,7 +432,7 @@ for step in range(2):
         'phase': 'excel_assumptions',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Build a DCF for Apple Computer.', 'is_user': True, 'order': 0},
+            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height}
         ],
         'excel_content': [
@@ -411,7 +446,7 @@ for i in range(3):
         'phase': 'excel_assumptions',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Build a DCF for Apple Computer.', 'is_user': True, 'order': 0},
+            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height}
         ],
         'excel_content': [
@@ -425,7 +460,7 @@ for step in range(2):
         'phase': 'excel_assumptions',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Build a DCF for Apple Computer.', 'is_user': True, 'order': 0},
+            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height}
         ],
         'excel_content': [
@@ -439,7 +474,7 @@ for i in range(25):
         'phase': 'excel_assumptions',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Build a DCF for Apple Computer.', 'is_user': True, 'order': 0},
+            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height}
         ],
         'excel_content': [
@@ -448,15 +483,15 @@ for i in range(25):
     })
 
 # --- PHASE 4: Second Bot Response (155-195) ---
-second_response = "Adding the financial projections from the PDF you uploaded."
-second_response_height = 80  # Fixed height to account for wrapped text
+second_response = "Adding financials from PDF"
+second_response_height = 55  # Shorter text, no wrapping needed
 
 for i in range(1, len(second_response) + 1):
     frames.append({
         'phase': 'bot_responding',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Build a DCF for Apple Computer.', 'is_user': True, 'order': 0},
+            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response[:i], 'is_user': False, 'order': 2, 'final_height': second_response_height}
         ],
@@ -471,7 +506,7 @@ for i in range(20):
         'phase': 'bot_complete',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Build a DCF for Apple Computer.', 'is_user': True, 'order': 0},
+            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height}
         ],
@@ -487,7 +522,7 @@ for year_idx in range(len(years) + 1):
         'phase': 'excel_projections',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Build a DCF for Apple Computer.', 'is_user': True, 'order': 0},
+            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height}
         ],
@@ -503,7 +538,7 @@ for val_idx in range(len(years) + 1):
         'phase': 'excel_projections',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Build a DCF for Apple Computer.', 'is_user': True, 'order': 0},
+            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height}
         ],
@@ -519,7 +554,7 @@ for val_idx in range(len(years) + 1):
         'phase': 'excel_projections',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Build a DCF for Apple Computer.', 'is_user': True, 'order': 0},
+            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height}
         ],
@@ -535,7 +570,7 @@ for i in range(25):
         'phase': 'excel_complete',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Build a DCF for Apple Computer.', 'is_user': True, 'order': 0},
+            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height}
         ],
@@ -546,15 +581,15 @@ for i in range(25):
     })
 
 # --- PHASE 6: Third Bot Response (280-320) ---
-third_response = "Calculating enterprise value using Excel formulas."
-third_response_height = 80  # Fixed height to account for wrapped text
+third_response = "Building Excel formulas"
+third_response_height = 55  # Shorter text, no wrapping needed
 
 for i in range(1, len(third_response) + 1):
     frames.append({
         'phase': 'bot_responding',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Build a DCF for Apple Computer.', 'is_user': True, 'order': 0},
+            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height},
             {'text': third_response[:i], 'is_user': False, 'order': 3, 'final_height': third_response_height}
@@ -571,7 +606,7 @@ for i in range(20):
         'phase': 'bot_complete',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Build a DCF for Apple Computer.', 'is_user': True, 'order': 0},
+            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height},
             {'text': third_response, 'is_user': False, 'order': 3, 'final_height': third_response_height}
@@ -589,7 +624,7 @@ for step in range(4):
         'phase': 'excel_formulas',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Build a DCF for Apple Computer.', 'is_user': True, 'order': 0},
+            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height},
             {'text': third_response, 'is_user': False, 'order': 3, 'final_height': third_response_height}
@@ -607,7 +642,7 @@ for step in range(8):
         'phase': 'excel_formulas',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Build a DCF for Apple Computer.', 'is_user': True, 'order': 0},
+            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height},
             {'text': third_response, 'is_user': False, 'order': 3, 'final_height': third_response_height}
@@ -620,14 +655,14 @@ for step in range(8):
     })
 
 
-# Enterprise Value formula types out slowly (4 frames per character)
-enterprise_formula = "=PV(C4, 5, 0, -G9 x C12) + NPV(C4, C9:G9)"
-for i in range((len(enterprise_formula) + 1) * 4):
+# Enterprise Value formula types out (1 frame per character)
+enterprise_formula = "=PV(C4, 5, 0, -G9 * C3) + NPV(C4, C9:G9)"
+for i in range(len(enterprise_formula) + 1):
     frames.append({
         'phase': 'excel_formulas',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Build a DCF for Apple Computer.', 'is_user': True, 'order': 0},
+            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height},
             {'text': third_response, 'is_user': False, 'order': 3, 'final_height': third_response_height}
@@ -635,7 +670,7 @@ for i in range((len(enterprise_formula) + 1) * 4):
         'excel_content': [
             {'type': 'assumptions', 'rows': 2},
             {'type': 'projections', 'year_count': len(years), 'data_rows': 2, 'revenue_cells': len(years), 'fcf_cells': len(years)},
-            {'type': 'formulas', 'formula_step': 6, 'enterprise_formula_progress': i // 4}
+            {'type': 'formulas', 'formula_step': 6, 'enterprise_formula_progress': i}
         ],
     })
 
@@ -645,7 +680,7 @@ for i in range(25):
         'phase': 'excel_formulas',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Build a DCF for Apple Computer.', 'is_user': True, 'order': 0},
+            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height},
             {'text': third_response, 'is_user': False, 'order': 3, 'final_height': third_response_height}
@@ -663,7 +698,7 @@ for i in range(50):
         'phase': 'excel_formulas',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Build a DCF for Apple Computer.', 'is_user': True, 'order': 0},
+            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height},
             {'text': third_response, 'is_user': False, 'order': 3, 'final_height': third_response_height}
@@ -682,7 +717,7 @@ for step in range(2):
         'phase': 'excel_final',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Build a DCF for Apple Computer.', 'is_user': True, 'order': 0},
+            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height},
             {'text': third_response, 'is_user': False, 'order': 3, 'final_height': third_response_height}
@@ -700,7 +735,7 @@ for i in range(50):
         'phase': 'hold',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Build a DCF for Apple Computer.', 'is_user': True, 'order': 0},
+            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height},
             {'text': third_response, 'is_user': False, 'order': 3, 'final_height': third_response_height}
@@ -724,19 +759,22 @@ def update(frame_data):
     if frame_data.get('input_text'):
         draw_input_placeholder(frame_data['input_text'], frame_data.get('show_cursor', False))
 
+    # --- Draw File Attachment indicator (always show) ---
+    draw_file_attachment()
+
     # --- Draw Chat Messages (top to bottom) ---
     chat_messages = frame_data.get('chat_messages', [])
-    chat_start_y = chat_y + chat_h - header_h - 80  # Start lower to add space above first message
+    chat_start_y = chat_y + chat_h - header_h - 90  # Start position for first message (70 + 20px spacing above)
 
     for msg in sorted(chat_messages, key=lambda m: m.get('order', 0)):
         if msg['is_user']:
             draw_user_message(msg['text'], chat_start_y)
-            chat_start_y -= max(65, len(msg['text']) // 40 * 20 + 45) + 20  # Add 20px gap
+            chat_start_y -= 105  # User bubble height (65) + 40px spacing
         else:
-            # Use pre-calculated final_height if available, otherwise calculate
-            final_height = msg.get('final_height', max(60, len(msg['text']) // 35 * 20 + 40))
+            # Use pre-calculated final_height if available
+            final_height = msg.get('final_height', 55)
             draw_bot_message(msg['text'], chat_start_y, final_height=final_height)
-            chat_start_y -= final_height + 35  # Add 35px gap between bot messages
+            chat_start_y -= final_height + 40  # Bot message height + 40px spacing
 
     # --- Draw Excel Grid Background ---
     draw_excel_grid()
@@ -756,14 +794,14 @@ def update(frame_data):
             draw_excel_cell(start_x, current_excel_y, cell_w, cell_h, '', 'white', fontsize=8)
             current_excel_y -= cell_h + 1
 
-            # Header: Major Assumptions
-            draw_excel_cell(start_x, current_excel_y, cell_w, cell_h, 'Major Assumptions', '#e8e8e8', fontsize=9, fontweight='bold', align='left')
+            # Header: Major Assumptions (always bold)
+            draw_excel_cell(start_x, current_excel_y, cell_w, cell_h, 'Major Assumptions', '#e8e8e8', fontsize=8, fontweight='bold', align='left')
             current_excel_y -= cell_h + 1
 
-            # Row 1: Terminal Growth
+            # Row 1: Terminal Multiple (moved from row 12)
             if rows_shown >= 1:
-                draw_excel_cell(start_x, current_excel_y, cell_w, cell_h, 'Terminal Growth', '#f5f5f5', fontsize=8, align='left')
-                draw_excel_cell(start_x + cell_w * 2, current_excel_y, cell_w, cell_h, '5%', '#f5f5f5', text_color='#0d6efd', fontsize=9)
+                draw_excel_cell(start_x, current_excel_y, cell_w, cell_h, 'Terminal Multiple', '#f5f5f5', fontsize=8, align='left')
+                draw_excel_cell(start_x + cell_w * 2, current_excel_y, cell_w, cell_h, '10x', '#f5f5f5', text_color='#0d6efd', fontsize=9)
                 current_excel_y -= cell_h + 1
 
             # Row 2: Discount Rate
@@ -785,8 +823,8 @@ def update(frame_data):
             year_count = content.get('year_count', 0)
             data_rows = content.get('data_rows', 0)
 
-            # Section header
-            draw_section_header(start_x, current_excel_y, cell_w, cell_h, 'PROJECTIONS')
+            # Section header (always bold)
+            draw_section_header(start_x, current_excel_y, cell_w, cell_h, 'Projections', fontweight='bold')
             for i in range(year_count):
                 draw_excel_header_cell(start_x + cell_w * 2 + i * cell_w, current_excel_y, cell_w, cell_h, years[i], bg_color='#1e5a96', text_color='white')
             current_excel_y -= cell_h + 1
@@ -811,24 +849,18 @@ def update(frame_data):
             # Draw formula section
             formula_step = content.get('formula_step', 0)
 
-            # Two blank rows before Terminal Multiple (rows 10-11)
+            # Two blank rows before Enterprise Value (rows 10-11)
             draw_excel_cell(start_x, current_excel_y, cell_w, cell_h, '', '#f5f5f5', fontsize=8)
             current_excel_y -= cell_h + 1
             draw_excel_cell(start_x, current_excel_y, cell_w, cell_h, '', 'white', fontsize=8)
             current_excel_y -= cell_h + 1
 
-            # Terminal Multiple (row 12)
-            draw_excel_cell(start_x, current_excel_y, cell_w, cell_h, 'Terminal Multiple', '#f5f5f5', fontsize=8, align='left')
-            if formula_step >= 1:
-                draw_excel_cell(start_x + cell_w * 2, current_excel_y, cell_w, cell_h, '10x', '#f5f5f5', text_color='#0d6efd', fontsize=9)
-            current_excel_y -= cell_h + 1
-
-            # Enterprise Value (row 13) - directly after Terminal Multiple
+            # Enterprise Value row (row 12)
             if formula_step >= 3:
                 draw_excel_cell(start_x, current_excel_y, cell_w, cell_h, 'Enterprise Value', '#fff3cd', fontsize=8, fontweight='bold', align='left')
                 # Show formula as it types out character by character
                 if formula_step == 6:
-                    enterprise_formula = "=PV(C4, 5, 0, -G9 x C12) + NPV(C4, C9:G9)"
+                    enterprise_formula = "=PV(C4, 5, 0, -G9 * C3) + NPV(C4, C9:G9)"
                     progress = content.get('enterprise_formula_progress', 0)
                     partial_formula = enterprise_formula[:progress]
                     # Draw white background to cover cell borders as formula expands
@@ -840,29 +872,24 @@ def update(frame_data):
                     # Draw colored outlines on referenced cells
                     draw_cell_reference_highlights(ax, partial_formula, start_x, start_y, cell_w, cell_h)
                 elif formula_step >= 7:
-                    # Show calculated value (no cell highlights, black unbolded text)
-                    draw_excel_cell(start_x + cell_w * 2, current_excel_y, cell_w, cell_h, '$2.1T', 'white', text_color='#212529', fontsize=10, fontweight='normal', highlight=False)
+                    # Show calculated value (no cell highlights, black bold text)
+                    draw_excel_cell(start_x + cell_w * 2, current_excel_y, cell_w, cell_h, '$2.1T', 'white', text_color='#212529', fontsize=10, fontweight='bold', highlight=False, fontfamily='sans-serif')
 
         elif content_type == 'final':
             # Draw final result (all calculations complete)
-            # Two blank rows before Terminal Multiple (rows 10-11)
+            # Two blank rows before Enterprise Value (rows 10-11)
             draw_excel_cell(start_x, current_excel_y, cell_w, cell_h, '', '#f5f5f5', fontsize=8)
             current_excel_y -= cell_h + 1
             draw_excel_cell(start_x, current_excel_y, cell_w, cell_h, '', 'white', fontsize=8)
             current_excel_y -= cell_h + 1
 
-            # Terminal Multiple (row 12)
-            draw_excel_cell(start_x, current_excel_y, cell_w, cell_h, 'Terminal Multiple', '#f5f5f5', fontsize=8, align='left')
-            draw_excel_cell(start_x + cell_w * 2, current_excel_y, cell_w, cell_h, '10x', '#f5f5f5', text_color='#0d6efd', fontsize=9)
-            current_excel_y -= cell_h + 1
-
-            # Enterprise Value (row 13) - black unbolded value
+            # Enterprise Value row (row 12, always bold)
             draw_excel_cell(start_x, current_excel_y, cell_w, cell_h, 'Enterprise Value', '#fff3cd', fontsize=8, fontweight='bold', align='left')
-            draw_excel_cell(start_x + cell_w * 2, current_excel_y, cell_w, cell_h, '$2.1T', 'white', text_color='#212529', fontsize=10, fontweight='normal', highlight=False)
+            draw_excel_cell(start_x + cell_w * 2, current_excel_y, cell_w, cell_h, '$2.1T', 'white', text_color='#212529', fontsize=10, fontweight='bold', highlight=False, fontfamily='sans-serif')
 
 # Generate animation
-ani = FuncAnimation(fig, update, frames=frames, interval=40, repeat=True)
-ani.save('dcf_apple_demo.gif', writer=PillowWriter(fps=25))
+ani = FuncAnimation(fig, update, frames=frames, interval=67, repeat=True)
+ani.save('dcf_apple_demo.gif', writer=PillowWriter(fps=15))
 
 # Generate final frame as PNG
 update(frames[-1])
