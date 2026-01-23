@@ -18,9 +18,9 @@ input_h = 60
 
 # --- Helper Functions ---
 
-def draw_rounded_rect(ax, x, y, w, h, r, color, ec=None, lw=1):
+def draw_rounded_rect(ax, x, y, w, h, r, color, ec=None, lw=1, zorder=1):
     box = patches.FancyBboxPatch((x, y), w, h, boxstyle=f"round,pad=0,rounding_size={r}",
-                                 facecolor=color, edgecolor=ec if ec else "none", linewidth=lw, zorder=1)
+                                 facecolor=color, edgecolor=ec if ec else "none", linewidth=lw, zorder=zorder)
     ax.add_patch(box)
     return box
 
@@ -36,19 +36,19 @@ def draw_ui_layout():
 
     # Add title text to blue background
     ax.text(start_x + 10, start_y + cell_h/2, 'Apple Computer DCF', fontsize=10, color='white',
-            ha='left', va='center', fontweight='bold', zorder=4, fontfamily='monospace')
+            ha='left', va='center', fontweight='bold', zorder=4, fontfamily='Menlo')
 
-    # Chat Panel (high zorder to appear in front of Excel grid)
-    draw_rounded_rect(ax, chat_x, chat_y, chat_w, chat_h, 15, 'white', '#dbe2e8', lw=2)
+    # Chat Panel (high zorder to appear in front of Excel grid and cell highlights)
+    draw_rounded_rect(ax, chat_x, chat_y, chat_w, chat_h, 15, 'white', '#dbe2e8', lw=2, zorder=10)
     # Chat Header
-    draw_rounded_rect(ax, chat_x, chat_y + chat_h - header_h, chat_w, header_h, 15, '#f8f9fa', '#dbe2e8')
+    draw_rounded_rect(ax, chat_x, chat_y + chat_h - header_h, chat_w, header_h, 15, '#f8f9fa', '#dbe2e8', zorder=10)
     rect_chat = patches.Rectangle((chat_x, chat_y + chat_h - header_h), chat_w, header_h/2, facecolor='#f8f9fa', zorder=50)
     ax.add_patch(rect_chat)
     ax.text(chat_x + 20, chat_y + chat_h - 32, "HyperPerfect", fontsize=14, fontweight='bold', color='#212529', zorder=51)
     ax.text(chat_x + chat_w - 20, chat_y + chat_h - 32, "AI Chat", fontsize=10, color='#6c757d', zorder=51, ha='right')
 
     # Input Box Area
-    draw_rounded_rect(ax, chat_x + 15, chat_y + 15, chat_w - 30, input_h, 20, '#ffffff', '#ced4da', lw=1.5)
+    draw_rounded_rect(ax, chat_x + 15, chat_y + 15, chat_w - 30, input_h, 20, '#ffffff', '#ced4da', lw=1.5, zorder=10)
 
     # Send Button
     circle = patches.Circle((chat_x + chat_w - 45, chat_y + 45), 18, color='#0d6efd', zorder=52)
@@ -63,9 +63,10 @@ def draw_user_message(text, y_pos):
     bubble_x = chat_x + chat_w - bubble_w - 20
 
     # Higher zorder for user bubble to appear in GIF
+    # Use a more distinct gray (#e5e5e5) so it doesn't get quantized to white in the GIF's 256-color palette
     bubble = patches.FancyBboxPatch((bubble_x, y_pos), bubble_w, bubble_h,
                                      boxstyle="round,pad=0,rounding_size=15",
-                                     facecolor='#f0f0f0', edgecolor='#e0e0e0', linewidth=1, zorder=60)
+                                     facecolor='#e5e5e5', edgecolor='#d0d0d0', linewidth=1, zorder=60)
     ax.add_patch(bubble)
     # User label
     ax.text(bubble_x + 15, y_pos + bubble_h - 18, "User", fontsize=8, color='#212529', zorder=61, fontweight='bold')
@@ -121,7 +122,8 @@ def draw_thinking_indicator(y_pos):
 def draw_input_placeholder(text, show_cursor=True):
     """Draw input text in the input box"""
     cursor = "|" if show_cursor else ""
-    ax.text(chat_x + 30, chat_y + 40, text + cursor, fontsize=11, color='#212529', zorder=5, fontweight='normal')
+    # zorder must be higher than input box background (zorder=10)
+    ax.text(chat_x + 30, chat_y + 40, text + cursor, fontsize=11, color='#212529', zorder=15, fontweight='normal')
 
 def draw_excel_cell(x, y, w, h, text, color='white', text_color='#212529', fontweight='normal', fontsize=10, highlight=False, is_formula=False, align='center'):
     """Draw an Excel cell"""
@@ -141,10 +143,10 @@ def draw_excel_cell(x, y, w, h, text, color='white', text_color='#212529', fontw
 
         if is_formula:
             ax.text(text_x, y + h/2, str(text), fontsize=fontsize - 1, color='#d9534f',
-                    ha=align, va='center', fontweight=fontweight, zorder=3, fontfamily='monospace')
+                    ha=align, va='center', fontweight=fontweight, zorder=3, fontfamily='Menlo')
         else:
             ax.text(text_x, y + h/2, str(text), fontsize=fontsize, color=text_color,
-                    ha=align, va='center', fontweight=fontweight, zorder=3, fontfamily='monospace')
+                    ha=align, va='center', fontweight=fontweight, zorder=3, fontfamily='Menlo')
 
 # Cell reference colors for formula highlighting
 CELL_REF_COLORS = {
@@ -182,7 +184,7 @@ def draw_colored_formula(ax, x, y, formula_text, fontsize=9):
         (35, 40, CELL_REF_COLORS['C9:G9']), # C9:G9 at positions 35-39
     ]
 
-    char_width = 6.5  # Character width for monospace font
+    char_width = 8.0  # Character width for monospace font (Menlo at fontsize 9)
 
     for i, char in enumerate(formula_text):
         if i >= len(full_formula):
@@ -200,7 +202,7 @@ def draw_colored_formula(ax, x, y, formula_text, fontsize=9):
 
         char_x = x + i * char_width
         ax.text(char_x, y, char, fontsize=fontsize, color=char_color,
-                ha='left', va='center', zorder=4, fontfamily='monospace', fontweight='bold')
+                ha='left', va='center', zorder=4, fontfamily='Menlo', fontweight='bold')
 
 def draw_cell_reference_highlights(ax, formula_text, start_x, start_y, cell_w, cell_h):
     """Draw colored outlines on referenced cells only when reference is fully typed"""
@@ -259,14 +261,14 @@ def draw_excel_header_cell(x, y, w, h, text, bg_color='none', text_color='#21252
     header_rect = patches.Rectangle((x, y), w, h, facecolor=bg_color, edgecolor='none', linewidth=0, zorder=0)
     ax.add_patch(header_rect)
     ax.text(x + w/2, y + h/2, text, fontsize=9, color=text_color,
-            ha='center', va='center', fontweight='bold', zorder=3, fontfamily='monospace')
+            ha='center', va='center', fontweight='bold', zorder=3, fontfamily='Menlo')
 
 def draw_section_header(x, y, w, h, text):
     """Draw section header cell (text only, no background)"""
     header_rect = patches.Rectangle((x, y), w, h, facecolor='none', edgecolor='none', linewidth=0, zorder=2)
     ax.add_patch(header_rect)
     ax.text(x + w/2, y + h/2, text, fontsize=8, color='#212529',
-            ha='center', va='center', fontweight='bold', zorder=3, fontfamily='monospace')
+            ha='center', va='center', fontweight='bold', zorder=3, fontfamily='Menlo')
 
 def draw_excel_grid():
     """Draw the Excel grid background with column letters and row numbers"""
@@ -283,7 +285,7 @@ def draw_excel_grid():
     for i, letter in enumerate(col_letters):
         col_x = start_x + i * col_width
         ax.text(col_x + col_width/2, start_y + cell_h + cell_h/2, letter, fontsize=8, color='#212529',
-                ha='center', va='center', fontweight='bold', zorder=3, fontfamily='monospace')
+                ha='center', va='center', fontweight='bold', zorder=3, fontfamily='Menlo')
 
     # Row numbers on the left (gray background)
     for row_num in range(1, 16):
@@ -296,7 +298,7 @@ def draw_excel_grid():
 
         # Row number text
         ax.text(start_x - 20, row_y + cell_h/2, str(row_num), fontsize=7, color='#212529',
-                ha='center', va='center', fontweight='bold', zorder=3, fontfamily='monospace')
+                ha='center', va='center', fontweight='bold', zorder=3, fontfamily='Menlo')
 
     # Draw vertical and horizontal grid lines
     for i in range(len(col_letters) + 1):
@@ -634,6 +636,24 @@ for i in range((len(enterprise_formula) + 1) * 4):
             {'type': 'assumptions', 'rows': 2},
             {'type': 'projections', 'year_count': len(years), 'data_rows': 2, 'revenue_cells': len(years), 'fcf_cells': len(years)},
             {'type': 'formulas', 'formula_step': 6, 'enterprise_formula_progress': i // 4}
+        ],
+    })
+
+# Pause on complete formula so viewer can read it (1 second at 25fps)
+for i in range(25):
+    frames.append({
+        'phase': 'excel_formulas',
+        'input_text': '',
+        'chat_messages': [
+            {'text': 'Build a DCF for Apple Computer.', 'is_user': True, 'order': 0},
+            {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
+            {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height},
+            {'text': third_response, 'is_user': False, 'order': 3, 'final_height': third_response_height}
+        ],
+        'excel_content': [
+            {'type': 'assumptions', 'rows': 2},
+            {'type': 'projections', 'year_count': len(years), 'data_rows': 2, 'revenue_cells': len(years), 'fcf_cells': len(years)},
+            {'type': 'formulas', 'formula_step': 6, 'enterprise_formula_progress': len(enterprise_formula)}
         ],
     })
 
