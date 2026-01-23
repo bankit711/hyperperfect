@@ -29,20 +29,56 @@
 
 ### Step 2: Install the Excel Add-in (2 minutes)
 
-**For Individual Users:**
+**For Individual Users & Home Use:**
+
+#### Windows Desktop
 
 1. Open **Excel Desktop**
-2. Click **Home** → **Add-ins** → **More Add-ins** → **Store**
-3. Search for **"HyperPerfect"** and click **Add**
-4. You'll see the HyperPerfect panel appear in Excel
+2. Click **Home** → **Add-ins** (or **File > Get Add-ins** in some versions)
+3. Search for **"HyperPerfect"**
+4. Click **Add**
+5. You'll see the HyperPerfect panel appear in Excel
 
-**For IT Administrators:** If admin installation is required, send these instructions to your IT department:
+#### Mac Desktop
 
-- Must be a Global Admin or Office Apps Admin
-- Go to the [Microsoft 365 Admin Center](https://admin.microsoft.com/)
-- Navigate to **Settings** → **Integrated apps** → **Get apps** → Search for "HyperPerfect"
-- Assign Users or Groups
-- Review choices and click **Finish deployment**
+1. Open **Excel Desktop**
+2. Click **Tools** > **Excel Add-ins**
+3. Search for **"HyperPerfect"** in the Office Store
+4. Click **Get**
+5. Grant any requested permissions
+6. You'll see the HyperPerfect panel appear in the sidebar
+
+#### Excel Online (Office 365 Web)
+
+1. Open **Excel Online** in your browser (office.com)
+2. Open or create a spreadsheet
+3. Click **Home** → **Add-ins**
+4. Select the **Store** tab and search for **"HyperPerfect"**
+5. Click **Add**
+6. HyperPerfect will appear in the task pane on the right
+
+**Note:** Excel Online works on any browser (Chrome, Edge, Safari, Firefox) on any device. Changes sync automatically to your OneDrive or SharePoint.
+
+**For Company/Enterprise Users:**
+
+If you're using Excel at work:
+
+1. **Check if it's already installed** - HyperPerfect might already be deployed by your IT department. Look in the **Add-ins** menu to see if it's there.
+2. **If you don't see it** - Contact your IT department and request they install HyperPerfect. You can point them to these [IT Admin Instructions](#for-it-administrators).
+3. **Work Microsoft accounts** - Installation happens through your work Microsoft account automatically.
+4. **All platforms supported** - Your IT department can deploy to Windows, Mac, and web (Excel Online).
+
+**For IT Administrators:**
+
+Use the [Microsoft 365 Admin Center](https://admin.microsoft.com/) for centralized deployment:
+
+1. Go to **Settings** > **Integrated apps**
+2. Click **Deploy Add-in**
+3. Search for **"HyperPerfect"** in the Office Store
+4. Specify who to deploy to (Everyone, specific users/groups, or just yourself)
+5. Complete the deployment
+
+**Important:** Add-ins can take **24-72 hours** to appear on users' ribbons after deployment.
 
 ### Step 3: Sign In (Automatic)
 

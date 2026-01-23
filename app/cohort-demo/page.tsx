@@ -142,61 +142,150 @@ export default function CohortDemoPage() {
                 Your Cohort Analysis File is Ready
               </h1>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl px-8 py-6 max-w-3xl mx-auto">
-                <p className="text-lg md:text-xl text-white font-semibold">
-                  But first: Want to learn to build your own in 90 seconds?
+                <p className="text-lg md:text-xl text-white font-semibold mb-2">
+                  But here's something better:
+                </p>
+                <p className="text-xl md:text-2xl text-white font-bold">
+                  What if you could just ask for it in Excel?
                 </p>
               </div>
             </div>
 
             {/* Content Card */}
             <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12 mb-12">
-              {/* What is HyperPerfect - Quick Hit */}
+              {/* What is HyperPerfect - AI Chat Focused */}
               <div className="text-center mb-10 pb-10 border-b border-gray-200">
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                  HyperPerfect is a FREE Excel Add-in That:
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                  HyperPerfect is AI-Powered Chat Inside Excel
                 </h2>
+                <p className="text-lg text-gray-700 mb-6 max-w-2xl mx-auto">
+                  Chat naturally to create cohort analyses. AI reads and writes to Excel in real-time. You control what you want, Excel does the work.
+                </p>
                 <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto text-left">
-                  <div className="flex items-center">
-                    <span className="text-[#1a7bff] mr-3 text-2xl">🧹</span>
-                    <span className="text-lg">Cleans messy data with automation</span>
+                  <div className="flex items-start">
+                    <span className="text-[#1a7bff] mr-3 text-2xl flex-shrink-0">💬</span>
+                    <div>
+                      <span className="font-semibold text-gray-900">Chat Naturally</span>
+                      <p className="text-gray-600">"Create a cohort analysis from this data" — and it's done</p>
+                    </div>
                   </div>
-                  <div className="flex items-center">
-                    <span className="text-[#1a7bff] mr-3 text-2xl">⚡</span>
-                    <span className="text-lg">Instantly build cohort analyses in Excel</span>
+                  <div className="flex items-start">
+                    <span className="text-[#1a7bff] mr-3 text-2xl flex-shrink-0">⚡</span>
+                    <div>
+                      <span className="font-semibold text-gray-900">Instant Execution</span>
+                      <p className="text-gray-600">AI writes formulas and builds tables in real-time</p>
+                    </div>
                   </div>
-                  <div className="flex items-center">
-                    <span className="text-[#1a7bff] mr-3 text-2xl">📊</span>
-                    <span className="text-lg">Works underneath dashboard overlays</span>
+                  <div className="flex items-start">
+                    <span className="text-[#1a7bff] mr-3 text-2xl flex-shrink-0">🧹</span>
+                    <div>
+                      <span className="font-semibold text-gray-900">Cleans Messy Data</span>
+                      <p className="text-gray-600">Automatically fixes formatting and validation issues</p>
+                    </div>
                   </div>
-                  <div className="flex items-center">
-                    <span className="text-[#1a7bff] mr-3 text-2xl">🔍</span>
-                    <span className="text-lg">100% auditable with formulas</span>
+                  <div className="flex items-start">
+                    <span className="text-[#1a7bff] mr-3 text-2xl flex-shrink-0">✓</span>
+                    <div>
+                      <span className="font-semibold text-gray-900">Checks Your Work</span>
+                      <p className="text-gray-600">Verifies formulas and calculations for accuracy</p>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* The Comparison - Simplified */}
+              {/* Stop Wasting Time Building - Pain Point Comparison */}
               <div className="mb-10">
+                <h3 className="text-2xl font-bold text-gray-900 text-center mb-6">
+                  Spend Less Time Building, More Time Using
+                </h3>
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">❌ Manual Excel = Time Wasted</h3>
-                    <ul className="space-y-2 text-gray-600">
-                      <li>• Building & debugging formulas</li>
-                      <li>• Hours fixing data</li>
-                      <li>• Formula errors are common</li>
-                      <li>• Excel struggles with large datasets</li>
+                  <div className="border-2 border-red-200 rounded-lg p-6 bg-red-50">
+                    <h4 className="text-lg font-bold text-gray-900 mb-4">❌ The Old Way</h4>
+                    <ul className="space-y-3 text-gray-700">
+                      <li className="flex items-start">
+                        <span className="mr-2">•</span>
+                        <span>Build a new analysis from scratch or hunt for one</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="mr-2">•</span>
+                        <span>Spend hours checking formulas to make sure they work</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="mr-2">•</span>
+                        <span>Fix mistakes and debug errors constantly</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="mr-2">•</span>
+                        <span>Tailor everything for what you really need</span>
+                      </li>
                     </ul>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">✅ HyperPerfect = Focus on Results</h3>
-                    <ul className="space-y-2 text-gray-600">
-                      <li>• Automated formula generation</li>
-                      <li>• Instant/adjustable data cleansing</li>
-                      <li>• 100% accuracy guaranteed</li>
-                      <li>• Makes Excel run faster</li>
+                  <div className="border-2 border-green-500 rounded-lg p-6 bg-green-50">
+                    <h4 className="text-lg font-bold text-gray-900 mb-4">✅ With HyperPerfect</h4>
+                    <ul className="space-y-3 text-gray-700">
+                      <li className="flex items-start">
+                        <span className="mr-2">•</span>
+                        <span><strong>Guide the AI</strong> Tell it what you want and iterate in real time</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="mr-2">•</span>
+                        <span><strong>AI handles the hard work</strong> Figures out complex formulas for you</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="mr-2">•</span>
+                        <span><strong>AI audits the work</strong> Verifies formulas and ensures accuracy</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="mr-2">•</span>
+                        <span><strong>Beautiful results</strong> — professionally-formatted analysis ready to use immediately</span>
+                      </li>
                     </ul>
                   </div>
                 </div>
+              </div>
+
+              {/* How It Works Section */}
+              <div className="mb-10 bg-blue-50 rounded-lg p-8">
+                <h3 className="text-2xl font-bold text-gray-900 text-center mb-8">
+                  How It Works in 3 Steps
+                </h3>
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="text-center">
+                    <div className="flex items-center justify-center w-12 h-12 bg-[#1a7bff] text-white rounded-full font-bold mx-auto mb-4">
+                      1
+                    </div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Select Your Data</h4>
+                    <p className="text-gray-700">Load raw customer data in Excel</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="flex items-center justify-center w-12 h-12 bg-[#1a7bff] text-white rounded-full font-bold mx-auto mb-4">
+                      2
+                    </div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Chat Naturally</h4>
+                    <p className="text-gray-700">"Create a cohort analysis by signup month"</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="flex items-center justify-center w-12 h-12 bg-[#1a7bff] text-white rounded-full font-bold mx-auto mb-4">
+                      3
+                    </div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Watch It Build</h4>
+                    <p className="text-gray-700">AI generates formulas and tables instantly</p>
+                  </div>
+                </div>
+                <p className="text-center text-lg text-gray-800 font-semibold mt-8 italic">
+                  "You control the creation of what you want, but Excel does all the work"
+                </p>
+              </div>
+
+              {/* Try It Yourself Section */}
+              <div className="mb-6 text-center">
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                  Try It Yourself
+                </h3>
+                <p className="text-lg text-gray-700 max-w-2xl mx-auto">
+                  Download the sample file below to see a finished cohort analysis.
+                  Then sign up to get HyperPerfect and create your own with AI chat.
+                </p>
               </div>
 
               {/* Download Form */}

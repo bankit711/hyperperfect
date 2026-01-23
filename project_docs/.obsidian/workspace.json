@@ -156,9 +156,23 @@
               "icon": "lucide-file",
               "title": "Why HyperPerfect?"
             }
+          },
+          {
+            "id": "ae1b2dfa50cc28ed",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Why HyperPerfect?.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Why HyperPerfect?"
+            }
           }
         ],
-        "currentTab": 9
+        "currentTab": 10
       }
     ],
     "direction": "vertical"
@@ -307,13 +321,13 @@
       "publish:Publish changes...": false
     }
   },
-  "active": "cce6efd6d3af8120",
+  "active": "ae1b2dfa50cc28ed",
   "lastOpenFiles": [
+    "Quick Start.md",
     "Trouble with Enterprise Access?.md",
     "Why HyperPerfect?.md",
     "Terms of Service.md",
     "Sign Up.md",
-    "Quick Start.md",
     "Privacy Policy.md",
     "Data Security.md",
     "Contact Us.md",
