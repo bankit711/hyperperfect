@@ -8,8 +8,8 @@ import numpy as np
 PAPERCLIP_IMG = plt.imread('paperclip.png')
 
 # Setup the figure and axis
-# 1600x800 pixels (8x4 inches at 100 DPI with 2x retina scaling)
-fig, ax = plt.subplots(figsize=(8, 4), dpi=100)
+# 1200x600 pixels (8x4 inches at 75 DPI) - optimized for email
+fig, ax = plt.subplots(figsize=(8, 4), dpi=75)
 fig.patch.set_facecolor('#f0f4f8')
 # Remove all margins/padding around the plot
 fig.subplots_adjust(left=0, right=1, top=1, bottom=0)
@@ -60,7 +60,7 @@ def draw_ui_layout():
 def draw_user_message(text, y_pos):
     """Draw a user message (right-aligned, gray background)"""
     bubble_w = 480
-    bubble_h = 65
+    bubble_h = 75
     bubble_x = chat_x + chat_w - bubble_w - 20
 
     # Higher zorder for user bubble to appear in GIF
@@ -70,8 +70,8 @@ def draw_user_message(text, y_pos):
                                      facecolor='#e5e5e5', edgecolor='#d0d0d0', linewidth=1, zorder=60)
     ax.add_patch(bubble)
     # User label
-    ax.text(bubble_x + 15, y_pos + bubble_h - 18, "User", fontsize=8, color='#212529', zorder=61, fontweight='bold')
-    ax.text(bubble_x + 15, y_pos + bubble_h - 32, text, fontsize=13, color='#212529', zorder=61, va='top', fontweight='500')
+    ax.text(bubble_x + 15, y_pos + bubble_h - 25, "User", fontsize=8, color='#212529', zorder=61, fontweight='bold')
+    ax.text(bubble_x + 15, y_pos + bubble_h - 36, text, fontsize=13, color='#212529', zorder=61, va='top', fontweight='500')
 
 def wrap_text(text, max_chars=38):
     """Manually wrap text at word boundaries"""
@@ -319,7 +319,7 @@ def draw_excel_grid():
                 ha='center', va='center', fontweight='bold', zorder=7, fontfamily='sans-serif')
         # Draw faint vertical line between columns (except before first column)
         if i > 0:
-            ax.plot([col_x, col_x], [start_y + cell_h, start_y + cell_h * 2], color='#b0b0b0', linewidth=0.5, zorder=1)
+            ax.plot([col_x, col_x], [start_y + cell_h, start_y + cell_h * 2], color='#b0b0b0', linewidth=1, zorder=7)
 
     # Row numbers on the left (gray background)
     for row_num in range(1, 16):
@@ -367,13 +367,14 @@ projection_data = {
 }
 
 # --- PHASE 1: User Input (0-30 frames) ---
-input_text = "How much is Apple worth?"
-for i in range(len(input_text) + 1):
+input_text = "Do a quick Apple valuation"
+apple_typed_index = input_text.lower().find("apple") + len("apple")  # Show after "Apple" is typed
+for i in range(0, len(input_text) + 1, 1):
     frames.append({
         'phase': 'input_typing',
-        'input_text': input_text[:i],
+        'input_text': input_text[:min(i, len(input_text))],
         'show_cursor': i < len(input_text),
-        'show_file_attachment': True,
+        'show_file_attachment': i >= apple_typed_index,
         'chat_messages': [],
         'excel_content': [],
     })
@@ -395,7 +396,7 @@ for i in range(5):
         'phase': 'message_sent',
         'input_text': '',
         'chat_messages': [
-            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0}
+            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0}
         ],
         'excel_content': [],
     })
@@ -403,13 +404,13 @@ for i in range(5):
 # First bot message streams
 first_response = "Researching assumptions online"
 first_response_height = 55  # Shorter text, no wrapping needed
-for i in range(1, len(first_response) + 1):
+for i in range(5, len(first_response) + 1, 5):
     frames.append({
         'phase': 'bot_responding',
         'input_text': '',
         'chat_messages': [
-            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
-            {'text': first_response[:i], 'is_user': False, 'order': 1, 'final_height': first_response_height}
+            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
+            {'text': first_response[:min(i, len(first_response))], 'is_user': False, 'order': 1, 'final_height': first_response_height}
         ],
         'excel_content': [],
     })
@@ -420,7 +421,7 @@ for i in range(20):
         'phase': 'bot_complete',
         'input_text': '',
         'chat_messages': [
-            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
+            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height}
         ],
         'excel_content': [],
@@ -433,7 +434,7 @@ for step in range(2):
         'phase': 'excel_assumptions',
         'input_text': '',
         'chat_messages': [
-            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
+            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height}
         ],
         'excel_content': [
@@ -447,7 +448,7 @@ for i in range(3):
         'phase': 'excel_assumptions',
         'input_text': '',
         'chat_messages': [
-            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
+            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height}
         ],
         'excel_content': [
@@ -461,7 +462,7 @@ for step in range(2):
         'phase': 'excel_assumptions',
         'input_text': '',
         'chat_messages': [
-            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
+            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height}
         ],
         'excel_content': [
@@ -475,7 +476,7 @@ for i in range(25):
         'phase': 'excel_assumptions',
         'input_text': '',
         'chat_messages': [
-            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
+            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height}
         ],
         'excel_content': [
@@ -487,14 +488,14 @@ for i in range(25):
 second_response = "Adding financials from PDF"
 second_response_height = 55  # Shorter text, no wrapping needed
 
-for i in range(1, len(second_response) + 1):
+for i in range(5, len(second_response) + 1, 5):
     frames.append({
         'phase': 'bot_responding',
         'input_text': '',
         'chat_messages': [
-            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
+            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
-            {'text': second_response[:i], 'is_user': False, 'order': 2, 'final_height': second_response_height}
+            {'text': second_response[:min(i, len(second_response))], 'is_user': False, 'order': 2, 'final_height': second_response_height}
         ],
         'excel_content': [
             {'type': 'assumptions', 'rows': 2}
@@ -507,7 +508,7 @@ for i in range(20):
         'phase': 'bot_complete',
         'input_text': '',
         'chat_messages': [
-            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
+            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height}
         ],
@@ -523,7 +524,7 @@ for year_idx in range(len(years) + 1):
         'phase': 'excel_projections',
         'input_text': '',
         'chat_messages': [
-            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
+            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height}
         ],
@@ -539,7 +540,7 @@ for val_idx in range(len(years) + 1):
         'phase': 'excel_projections',
         'input_text': '',
         'chat_messages': [
-            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
+            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height}
         ],
@@ -555,7 +556,7 @@ for val_idx in range(len(years) + 1):
         'phase': 'excel_projections',
         'input_text': '',
         'chat_messages': [
-            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
+            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height}
         ],
@@ -571,7 +572,7 @@ for i in range(25):
         'phase': 'excel_complete',
         'input_text': '',
         'chat_messages': [
-            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
+            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height}
         ],
@@ -585,15 +586,15 @@ for i in range(25):
 third_response = "Building Excel formulas"
 third_response_height = 55  # Shorter text, no wrapping needed
 
-for i in range(1, len(third_response) + 1):
+for i in range(5, len(third_response) + 1, 5):
     frames.append({
         'phase': 'bot_responding',
         'input_text': '',
         'chat_messages': [
-            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
+            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height},
-            {'text': third_response[:i], 'is_user': False, 'order': 3, 'final_height': third_response_height}
+            {'text': third_response[:min(i, len(third_response))], 'is_user': False, 'order': 3, 'final_height': third_response_height}
         ],
         'excel_content': [
             {'type': 'assumptions', 'rows': 2},
@@ -607,7 +608,7 @@ for i in range(20):
         'phase': 'bot_complete',
         'input_text': '',
         'chat_messages': [
-            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
+            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height},
             {'text': third_response, 'is_user': False, 'order': 3, 'final_height': third_response_height}
@@ -625,7 +626,7 @@ for step in range(4):
         'phase': 'excel_formulas',
         'input_text': '',
         'chat_messages': [
-            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
+            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height},
             {'text': third_response, 'is_user': False, 'order': 3, 'final_height': third_response_height}
@@ -643,7 +644,7 @@ for step in range(8):
         'phase': 'excel_formulas',
         'input_text': '',
         'chat_messages': [
-            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
+            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height},
             {'text': third_response, 'is_user': False, 'order': 3, 'final_height': third_response_height}
@@ -656,14 +657,14 @@ for step in range(8):
     })
 
 
-# Enterprise Value formula types out (1 frame per character)
+# Enterprise Value formula types out (1 frame per 2 characters)
 enterprise_formula = "=PV(C4, 5, 0, -G9 * C3) + NPV(C4, C9:G9)"
-for i in range(len(enterprise_formula) + 1):
+for i in range(0, len(enterprise_formula) + 1, 5):
     frames.append({
         'phase': 'excel_formulas',
         'input_text': '',
         'chat_messages': [
-            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
+            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height},
             {'text': third_response, 'is_user': False, 'order': 3, 'final_height': third_response_height}
@@ -671,7 +672,7 @@ for i in range(len(enterprise_formula) + 1):
         'excel_content': [
             {'type': 'assumptions', 'rows': 2},
             {'type': 'projections', 'year_count': len(years), 'data_rows': 2, 'revenue_cells': len(years), 'fcf_cells': len(years)},
-            {'type': 'formulas', 'formula_step': 6, 'enterprise_formula_progress': i}
+            {'type': 'formulas', 'formula_step': 6, 'enterprise_formula_progress': min(i, len(enterprise_formula))}
         ],
     })
 
@@ -681,7 +682,7 @@ for i in range(25):
         'phase': 'excel_formulas',
         'input_text': '',
         'chat_messages': [
-            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
+            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height},
             {'text': third_response, 'is_user': False, 'order': 3, 'final_height': third_response_height}
@@ -699,7 +700,7 @@ for i in range(50):
         'phase': 'excel_formulas',
         'input_text': '',
         'chat_messages': [
-            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
+            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height},
             {'text': third_response, 'is_user': False, 'order': 3, 'final_height': third_response_height}
@@ -718,7 +719,7 @@ for step in range(2):
         'phase': 'excel_final',
         'input_text': '',
         'chat_messages': [
-            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
+            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height},
             {'text': third_response, 'is_user': False, 'order': 3, 'final_height': third_response_height}
@@ -736,7 +737,7 @@ for i in range(50):
         'phase': 'hold',
         'input_text': '',
         'chat_messages': [
-            {'text': 'How much is Apple worth?', 'is_user': True, 'order': 0},
+            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height},
             {'text': third_response, 'is_user': False, 'order': 3, 'final_height': third_response_height}
@@ -760,8 +761,9 @@ def update(frame_data):
     if frame_data.get('input_text'):
         draw_input_placeholder(frame_data['input_text'], frame_data.get('show_cursor', False))
 
-    # --- Draw File Attachment indicator (always show) ---
-    draw_file_attachment()
+    # --- Draw File Attachment indicator (show after "Apple" is typed) ---
+    if frame_data.get('show_file_attachment', True):
+        draw_file_attachment()
 
     # --- Draw Chat Messages (top to bottom) ---
     chat_messages = frame_data.get('chat_messages', [])
