@@ -141,7 +141,7 @@ export default function LandingPage() {
         </div>
 
         {/* Animation - Hero Centerpiece */}
-        <div className="w-full max-w-[900px] mb-8">
+        <div className="w-full max-w-[900px] mb-16">
           <div className="rounded-2xl overflow-hidden bg-white shadow-[0_25px_60px_-12px_rgba(0,0,0,0.4)]">
             <img
               src="/images/dcf_apple_demo.gif"
