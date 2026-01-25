@@ -174,45 +174,45 @@ export default function LandingPage() {
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {/* Accurate */}
-            <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+            <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
               <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">Accurate</h3>
               <ul className="space-y-3">
                 <li className="flex items-start">
                   <span className="text-[#1a7bff] font-bold mr-2">•</span>
-                  <span className="text-gray-700">Best-in-class AI</span>
+                  <span className="text-gray-700">Best-in-class AI for task</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#1a7bff] font-bold mr-2">•</span>
-                  <span className="text-gray-700">Built-in error checks</span>
+                  <span className="text-gray-700">Built-in error protection</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#1a7bff] font-bold mr-2">•</span>
-                  <span className="text-gray-700">Real-time control</span>
+                  <span className="text-gray-700">Real-time task control</span>
                 </li>
               </ul>
             </div>
 
             {/* Fast */}
-            <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+            <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
               <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">Fast</h3>
               <ul className="space-y-3">
                 <li className="flex items-start">
                   <span className="text-[#1a7bff] font-bold mr-2">•</span>
-                  <span className="text-gray-700">PDF extractions</span>
+                  <span className="text-gray-700">Accurate PDF extractions</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#1a7bff] font-bold mr-2">•</span>
-                  <span className="text-gray-700">Web search</span>
+                  <span className="text-gray-700">Integrated Web search</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#1a7bff] font-bold mr-2">•</span>
-                  <span className="text-gray-700">Large datasets</span>
+                  <span className="text-gray-700">Handles large datasets</span>
                 </li>
               </ul>
             </div>
 
             {/* Secure */}
-            <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+            <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
               <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">Secure</h3>
               <ul className="space-y-3">
                 <li className="flex items-start">
