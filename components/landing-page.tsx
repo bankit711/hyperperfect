@@ -221,7 +221,7 @@ export default function LandingPage() {
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#1a7bff] font-bold mr-2">•</span>
-                  <span className="text-gray-700">No training on data</span>
+                  <span className="text-gray-700">Data stays private</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#1a7bff] font-bold mr-2">•</span>
@@ -243,7 +243,7 @@ export default function LandingPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-xl font-bold transition-colors focus-visible:outline-none bg-[#1a7bff] text-white hover:bg-[#1565d8] px-8 py-4"
             >
-              Try for Free in Excel
+              Get Started Free
             </a>
             <p className="text-sm text-gray-500 mt-4">
               Excel on lockdown? Use HyperPerfect in minutes with a free{" "}
