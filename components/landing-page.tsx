@@ -129,7 +129,7 @@ export default function LandingPage() {
       )}
 
       {/* Hero Content - Centered Layout */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen pt-24 pb-20 px-4 bg-[#1a7bff]">
+      <div className="relative z-10 flex flex-col items-center justify-center pt-28 pb-12 px-4 bg-[#1a7bff]">
         {/* Headline */}
         <div className="text-center mb-8 w-full">
           <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-4">
@@ -160,6 +160,48 @@ export default function LandingPage() {
         >
           Try for Free in Excel
         </a>
+      </div>
+
+      {/* Why Section */}
+      <div className="relative z-10 bg-gray-50 py-20 px-4">
+        <div className="container mx-auto max-w-3xl">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-8">
+            Why AI fails at spreadsheets
+          </h2>
+          <div className="space-y-6 text-lg text-gray-700">
+            <p>
+              AI models are notoriously bad at spreadsheets. You've likely asked ChatGPT to build one, and received a file back that was riddled with errors and not exactly what you requested.
+            </p>
+            <p>
+              <strong className="text-gray-900">Why?</strong> AI was built using natural language, not spreadsheet formulas. Sending a firehose of Excel formulas, cell references, and formatting details causes internal chaos, which leads to hallucinations and errors.
+            </p>
+            <p>
+              We fixed this by bringing AI inside of Excel and adding a data translation layer that fundamentally changes how AI communicates with spreadsheets.
+            </p>
+          </div>
+
+          <div className="mt-12">
+            <h3 className="text-xl font-bold text-gray-900 mb-6 text-center">Here's how it works:</h3>
+            <div className="space-y-4">
+              <div className="flex items-start">
+                <span className="text-[#1a7bff] font-bold text-xl mr-4">1.</span>
+                <span className="text-gray-700">We bring the absolute best AI models into Excel software and workflows</span>
+              </div>
+              <div className="flex items-start">
+                <span className="text-[#1a7bff] font-bold text-xl mr-4">2.</span>
+                <span className="text-gray-700">Our proprietary indexing engine prevents 95% of hallucination errors</span>
+              </div>
+              <div className="flex items-start">
+                <span className="text-[#1a7bff] font-bold text-xl mr-4">3.</span>
+                <span className="text-gray-700">Data transformation and enrichment improves AI comprehension by 10x</span>
+              </div>
+            </div>
+          </div>
+
+          <p className="mt-12 text-xl font-bold text-gray-900 text-center">
+            Turn Excel into an AI agent that flawlessly builds models, cleans messy data, finds errors and makes dashboards look professional.
+          </p>
+        </div>
       </div>
 
       {/* Features Section */}
