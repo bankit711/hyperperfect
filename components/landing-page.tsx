@@ -198,9 +198,6 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <p className="mt-12 text-xl font-bold text-gray-900 text-center">
-            Turn Excel into an AI agent that flawlessly builds models, cleans messy data, finds errors and makes dashboards look professional.
-          </p>
         </div>
       </div>
 
