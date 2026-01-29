@@ -1,14 +1,13 @@
+# Learn How to Use Claude with Excel
 
-# Get Started with HyperPerfect
+Finance teams are getting incredible results with Claude — but only when they know the right workflows. Sign up to get free tutorials, prompts, and techniques that turn Claude into your most powerful Excel tool.
 
-Your AI assistant for Excel is now available. HyperPerfect brings conversational AI directly into Excel, letting you analyze data, create reports, and automate tasks through simple chat.
-
-Get instant access with your **30-day free trial**—no credit card required. You'll get full feature access, priority support, and early access to beta features.
+Join now for **free access** to our learning resources. You'll also get **beta feature access** and **priority support** from our team.
 
 
 <div style="max-width: 800px; padding: 0 20px;">
   <iframe width="540" height="850" 
-  src="https://sibforms.com/serve/MUIFAIXgmfE9DUPV3I5jeFDIlSIqO6weQRZlNkgCdDxnbF_Ga-e7Y-Otob41LRNxu_ykssaGl5swW8cFYDQegH5F7EC3uMj3x6H8vxR_RHK0d8UVZe8pA5Mjib0pu89V3ZBEvUXXQ4Dg4CW06sG5JqZ-umRMm4TktH3m3C6QhUfxg5DSLhgo7-TWGL071XaJzWtBbN6KyIVi9cPe" 
+  src="https://8f7f9936.sibforms.com/serve/MUIFAGwktt2Fh4ezTGALcCLuE9Ac1ScCm7wb21JAbUOnh8AmpSoMtslQtbV3IQhTMddz3SR7834-NiK41J9GHWiu3jlzRh2avoISXJCzrUO2kVKHUVchTjUHy69JCU4pM-3i7uZAjJT2XCykNx2ajHaa1AJ75HW6xBuqcuWzYelodK2gSKeTKBvuwV4cKdm0epkzTkBce7IwTfJU" 
   frameborder="0" 
   scrolling="auto" 
   allowfullscreen 

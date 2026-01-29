@@ -129,19 +129,19 @@ export default function LandingPage() {
       )}
 
       {/* Hero Content - Centered Layout */}
-      <div className="relative z-10 flex flex-col items-center justify-center pt-28 pb-12 px-4 bg-[#1a7bff]">
+      <div className="relative z-10 flex flex-col items-center justify-center pt-32 pb-20 px-4 bg-[#1a7bff]">
         {/* Headline */}
-        <div className="text-center mb-8 w-full">
+        <div className="text-center mb-12 w-full">
           <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-4">
-            Newsflash: ChatGPT is bad at Excel
+            Give Claude superpowers in Excel
           </h1>
           <p className="text-xl md:text-2xl text-white/90">
-            Chatbots weren't built for spreadsheets. This one is.
+            Eliminate errors and increase comprehension so your work is audit-ready
           </p>
         </div>
 
         {/* Animation - Hero Centerpiece */}
-        <div className="w-full max-w-[900px] mb-16">
+        <div className="w-full max-w-[900px] mb-12">
           <div className="rounded-2xl overflow-hidden bg-white shadow-[0_25px_60px_-12px_rgba(0,0,0,0.4)]">
             <img
               src="/images/dcf_apple_demo.gif"
@@ -166,14 +166,14 @@ export default function LandingPage() {
       <div className="relative z-10 bg-gray-50 py-20 px-4">
         <div className="container mx-auto max-w-3xl">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-8">
-            Why AI fails at spreadsheets
+            Why AI struggles with spreadsheets
           </h2>
           <div className="space-y-6 text-lg text-gray-700">
             <p>
-              AI models are notoriously bad at spreadsheets. You've likely asked ChatGPT to build one, and received a file back that was riddled with errors and not exactly what you requested.
+              AI models are notoriously bad at spreadsheets. You've likely asked it to build one, and received a file back that was riddled with errors and not exactly what you requested.
             </p>
             <p>
-              <strong className="text-gray-900">Why?</strong> AI was built using natural language, not spreadsheet formulas. Sending a firehose of Excel formulas, cell references, and formatting details causes internal chaos, which leads to hallucinations and errors.
+              <strong className="text-gray-900">Why?</strong> Claude, ChatGPT and other leading models were built using natural language, not spreadsheet formulas. Sending a firehose of Excel formulas, cell references, and formatting details causes internal chaos, which leads to hallucinations and errors.
             </p>
             <p>
               We fixed this by bringing AI inside of Excel and adding a data translation layer that fundamentally changes how AI communicates with spreadsheets.
@@ -207,12 +207,10 @@ export default function LandingPage() {
       {/* Features Section */}
       <div className="relative z-10 bg-white py-20 px-4">
         <div className="container mx-auto max-w-5xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">
-            You control the outcome
-          </h2>
-          <p className="text-xl text-gray-600 text-center mb-12">
-            Use AI to enhance your workflow in real-time.
+          <p className="text-xl md:text-2xl font-semibold text-center text-gray-900 mb-4 max-w-3xl mx-auto">
+            Turn Excel into an AI agent that flawlessly builds models, cleans messy data, finds errors and makes dashboards look professional.
           </p>
+          <div className="mb-12"></div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {/* Accurate */}
@@ -221,15 +219,15 @@ export default function LandingPage() {
               <ul className="space-y-3">
                 <li className="flex items-start">
                   <span className="text-[#1a7bff] font-bold mr-2">•</span>
-                  <span className="text-gray-700">Best-in-class AI for task</span>
+                  <span className="text-gray-700">Best in class AI for task</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#1a7bff] font-bold mr-2">•</span>
-                  <span className="text-gray-700">Built-in error protection</span>
+                  <span className="text-gray-700">Built in error protection</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#1a7bff] font-bold mr-2">•</span>
-                  <span className="text-gray-700">Real-time task control</span>
+                  <span className="text-gray-700">Real time task control</span>
                 </li>
               </ul>
             </div>
@@ -275,9 +273,9 @@ export default function LandingPage() {
 
           {/* Second CTA */}
           <div className="text-center">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Start building today</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Learn how to use Claude with Excel</h3>
             <p className="text-gray-600 mb-6 max-w-xl mx-auto">
-              HyperPerfect is a certified Microsoft add-in that integrates directly into Excel.
+              Get free tutorials, prompts, and techniques that turn Claude into your most powerful Excel tool.
             </p>
             <a
               href="https://help.hyperperfect.ai/Sign+Up"
@@ -285,7 +283,7 @@ export default function LandingPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-xl font-bold transition-colors focus-visible:outline-none bg-[#1a7bff] text-white hover:bg-[#1565d8] px-8 py-4"
             >
-              Get Started Free
+              Start Learning Free
             </a>
             <p className="text-sm text-gray-500 mt-4">
               Excel on lockdown? Use HyperPerfect in minutes with a free{" "}

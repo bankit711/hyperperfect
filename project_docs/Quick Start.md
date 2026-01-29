@@ -18,12 +18,12 @@
 
 **You can start using HyperPerfect immediately** - no signup required. Just install the add-in and open it in Excel. You'll sign in automatically through your Microsoft account.
 
-**Want to unlock premium benefits? Sign up here:**
+**Want to learn how to use Claude with Excel? Sign up here:**
 
-<a href="Sign Up.md" class="internal-link" style="background-color: #2196F3; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">Sign Up For Free Benefits</a>
+<a href="Sign Up.md" class="internal-link" style="background-color: #2196F3; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">Start Learning Free</a>
 
 **What you get:**
-- 30-day free trial - Full access to all features at no cost
+- Free tutorials, prompts, and techniques for using Claude with Excel
 - Beta feature access - Try new capabilities before general release
 - Priority support - Direct help from our team when you need it
 
