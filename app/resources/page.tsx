@@ -8,7 +8,7 @@ const resources = [
   {
     title: "AI Excel Challenge",
     description:
-      "How good is AI at Excel, really? Watch 9 tools attempt the same financial model from scratch — real builds, real errors, real results.",
+      "How good is AI at Excel, really? Watch Claude tackle a three-statement model solo, then see HyperPerfect eliminate its remaining errors.",
     icon: Trophy,
     href: "/resources/ai-excel-challenge/",
     tag: "Comparison",

@@ -184,9 +184,21 @@
               "icon": "lucide-file",
               "title": "Sign Up"
             }
+          },
+          {
+            "id": "5d78275e8db7af9c",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.11.5"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.11.5"
+            }
           }
         ],
-        "currentTab": 11
+        "currentTab": 12
       }
     ],
     "direction": "vertical"
@@ -335,7 +347,7 @@
       "publish:Publish changes...": false
     }
   },
-  "active": "6389d7be697a7d48",
+  "active": "5d78275e8db7af9c",
   "lastOpenFiles": [
     "Sign Up.md",
     "Sign Up.md",

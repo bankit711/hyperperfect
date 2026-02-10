@@ -16,13 +16,11 @@ import {
   FileSpreadsheet,
   Zap,
   Download,
-  Play,
   ExternalLink,
 } from "lucide-react"
 import {
   slides,
   contestants,
-  fieldEntries,
   successCriteria,
 } from "@/data/ai-excel-challenge-content"
 import type { Contestant } from "@/data/ai-excel-challenge-content"
@@ -36,13 +34,6 @@ const rankColors: Record<string, string> = {
   silver: "#C0C0C0",
   bronze: "#CD7F32",
   dnp: "#6B7280",
-}
-
-const rankBg: Record<string, string> = {
-  gold: "rgba(255, 215, 0, 0.08)",
-  silver: "rgba(192, 192, 192, 0.08)",
-  bronze: "rgba(205, 127, 50, 0.08)",
-  dnp: "rgba(107, 114, 128, 0.08)",
 }
 
 const bottomLineColors: Record<string, { color: string; bg: string; border: string }> = {
@@ -95,7 +86,7 @@ function TitleSlide() {
           The Three-Statement Model Challenge
         </p>
         <p className="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-          Watch the nine leading AI-for-Excel tools go head-to-head in a challenge to build a working three-statement model with a single prompt.
+          Claude is the best AI model for Excel. See what happens when you add HyperPerfect&apos;s indexing engine to eliminate its remaining errors.
         </p>
       </motion.div>
 
@@ -105,7 +96,7 @@ function TitleSlide() {
         transition={{ delay: 0.4, duration: 0.5 }}
         className="flex flex-wrap justify-center gap-4 mt-4"
       >
-        {["9 Leading Tools Tested", "Real Models, Real Errors", "Watch Every Attempt"].map((tag) => (
+        {["Same Prompt, Same Data", "Claude vs. HyperPerfect", "Watch Both Attempts"].map((tag) => (
           <span
             key={tag}
             className="px-5 py-2.5 rounded-full text-sm font-semibold border"
@@ -162,7 +153,7 @@ function ChallengeSlide() {
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">The Challenge</h2>
         <p className="text-xl text-gray-400 mb-10">
-          Same prompt &bull; Same data &bull; Same criteria &mdash; 9 AI-for-Excel tools put to the test
+          Same prompt &bull; Same data &bull; Same criteria &mdash; Claude alone vs. Claude + HyperPerfect
         </p>
       </motion.div>
 
@@ -257,7 +248,7 @@ function ChallengeSlide() {
         transition={{ delay: 0.65 }}
         className="text-sm text-gray-600 mt-6 text-center"
       >
-        HyperPerfect and Claude in Excel were tested independently. The remaining 7 tools were tested by the Mod Squad on the Financial Modelers Corner podcast, using the same challenge.
+        Both tools were tested independently under the same conditions: same Excel file, same prompt, same success criteria.
       </motion.p>
     </div>
   )
@@ -281,7 +272,7 @@ function ResultsSlide() {
   const criteria = [
     { label: "Balance Sheet", key: "balanceSheet" as const, statusKey: "balanceSheetStatus" as const },
     { label: "Formulas", key: "formulas" as const, statusKey: "formulasStatus" as const },
-    { label: "Critical Errors", key: "criticalErrors" as const, statusKey: "criticalErrorsStatus" as const },
+    { label: "Time Elapsed", key: "timeElapsed" as const, statusKey: "timeElapsedStatus" as const },
   ]
 
   return (
@@ -289,7 +280,7 @@ function ResultsSlide() {
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">The Results</h2>
         <p className="text-xl text-gray-400 mb-10">
-          Head-to-head comparison of the four industry-leading tools
+          Side-by-side: Claude alone vs. Claude + HyperPerfect
         </p>
       </motion.div>
 
@@ -300,11 +291,17 @@ function ResultsSlide() {
         transition={{ delay: 0.15 }}
         className="overflow-x-auto"
       >
-        <table className="w-full border-collapse min-w-[720px]">
+        <table className="w-full border-collapse table-fixed min-w-[720px]">
+          <colgroup>
+            <col className="w-[170px]" />
+            {contestants.map((c) => (
+              <col key={c.name} style={{ width: `${(100 - 17) / contestants.length}%` }} />
+            ))}
+          </colgroup>
           {/* Column headers — tool names with rank badges & website links */}
           <thead>
             <tr className="align-bottom">
-              <th className="w-[170px]" />
+              <th />
               {contestants.map((c, i) => (
                 <motion.th
                   key={c.name}
@@ -328,22 +325,19 @@ function ResultsSlide() {
                       {c.rank === "dnp" ? "DNP" : c.label}
                     </span>
                     <div className="text-xl font-bold text-white">{c.name}</div>
-                    <div className="text-xs mt-1 min-h-[1.25rem] font-medium" style={{ color: bottomLineColors[c.bottomLineColor].color }}>
-                      {c.bottomLineTitle}
-                    </div>
                     {c.websiteUrl && (
                       <a
                         href={c.websiteUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-xs font-medium mt-1.5 transition-colors hover:text-white"
-                        style={{ color: `${ACCENT}99` }}
+                        className="inline-flex items-center gap-1 text-xs font-medium mt-2.5 transition-colors hover:text-white"
+                        style={{ color: ACCENT }}
                       >
                         <ExternalLink size={10} />
                         Website
                       </a>
                     )}
-                    {!c.websiteUrl && <div className="h-5 mt-1.5" />}
+                    {!c.websiteUrl && <div className="h-5 mt-2.5" />}
                   </div>
                 </motion.th>
               ))}
@@ -433,7 +427,7 @@ function ResultsSlide() {
         transition={{ delay: 0.8 }}
         className="text-sm text-gray-600 mt-8 text-center"
       >
-        Source of challenge: Mod Squad podcast series &bull; Shortcut and Copilot Agent results from Mod Squad podcast &bull; HyperPerfect &amp; Claude tests performed independently under same test conditions
+        Both tools tested independently under the same conditions: same Excel file, same prompt, same success criteria.
       </motion.p>
     </div>
   )
@@ -447,7 +441,7 @@ function DetailSlide({ contestant }: { contestant: Contestant }) {
   const metrics = [
     { label: "Balance Sheet", value: contestant.balanceSheet, status: contestant.balanceSheetStatus },
     { label: "Formulas", value: contestant.formulas, status: contestant.formulasStatus },
-    { label: "Critical Errors", value: contestant.criticalErrors, status: contestant.criticalErrorsStatus },
+    { label: "Time Elapsed", value: contestant.timeElapsed, status: contestant.timeElapsedStatus },
   ]
 
   return (
@@ -554,148 +548,24 @@ function DetailSlide({ contestant }: { contestant: Contestant }) {
   )
 }
 
-// ─── Field Slide ─────────────────────────────────────────────────
-
-function FieldSlide() {
-  return (
-    <div className="max-w-5xl mx-auto px-4 md:px-8 py-8">
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">The Rest of the Field</h2>
-        <p className="text-xl text-gray-400 mb-10">
-          Every other AI-for-Excel tool tested failed to balance the balance sheet
-        </p>
-      </motion.div>
-
-      {/* Table */}
-      <div className="overflow-x-auto">
-        <motion.table
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="w-full text-left"
-        >
-          <thead>
-            <tr className="border-b border-white/10">
-              {["Rank", "Tool", "Forecast", "Formulas", "Balance Sheet", "Key Issues", ""].map((h, i) => (
-                <th key={i} className="px-4 py-3 text-xs text-gray-500 uppercase tracking-wider font-semibold">
-                  {h}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {fieldEntries.map((entry, i) => {
-              const rankLabel = entry.rank === "dnp" ? "DNP" : entry.rank.charAt(0).toUpperCase() + entry.rank.slice(1)
-              return (
-                <motion.tr
-                  key={entry.tool}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.25 + i * 0.08 }}
-                  className="border-b border-white/5 hover:bg-white/[0.02] transition-colors"
-                >
-                  <td className="px-4 py-4">
-                    <span
-                      className="inline-block px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest"
-                      style={{
-                        backgroundColor: rankColors[entry.rank],
-                        color: entry.rank === "gold" || entry.rank === "bronze" ? "#000" : "#fff",
-                      }}
-                    >
-                      {rankLabel}
-                    </span>
-                  </td>
-                  <td className="px-4 py-4">
-                    <span className="text-lg font-semibold text-white">{entry.tool}</span>
-                  </td>
-                  <td className="px-4 py-4">
-                    <span className={`text-sm font-medium ${
-                      entry.forecastComplete === "Yes" ? "text-green-400" :
-                      entry.forecastComplete === "Partial" ? "text-yellow-400" :
-                      "text-red-400"
-                    }`}>
-                      {entry.forecastComplete}
-                    </span>
-                  </td>
-                  <td className="px-4 py-4">
-                    <span className={`text-sm font-medium ${
-                      entry.dynamicFormulas === "Yes" ? "text-green-400" :
-                      entry.dynamicFormulas === "Mix" ? "text-yellow-400" :
-                      "text-red-400"
-                    }`}>
-                      {entry.dynamicFormulas}
-                    </span>
-                  </td>
-                  <td className="px-4 py-4">
-                    <StatusBadge
-                      status="fail"
-                      text={entry.balanceSheet}
-                    />
-                  </td>
-                  <td className="px-4 py-4 text-sm text-gray-400 max-w-xs">{entry.keyIssues}</td>
-                  <td className="px-4 py-4">
-                    {entry.videoUrl && (
-                      <a
-                        href={entry.videoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-sm font-medium transition-colors hover:text-white"
-                        style={{ color: ACCENT }}
-                      >
-                        Watch <ExternalLink size={13} />
-                      </a>
-                    )}
-                  </td>
-                </motion.tr>
-              )
-            })}
-          </tbody>
-        </motion.table>
-      </div>
-
-      {/* Stat callout */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6 }}
-        className="mt-10 bg-[#1A1A24] border border-white/5 rounded-xl p-8 text-center"
-      >
-        <p className="text-5xl md:text-6xl font-bold mb-3" style={{ color: ACCENT }}>0 / 7</p>
-        <p className="text-xl text-gray-400">
-          Rest of the field failed to produce balanced balance sheets across the board
-        </p>
-      </motion.div>
-
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.7 }}
-        className="text-sm text-gray-600 mt-6 text-center"
-      >
-        All results sourced from Mod Squad podcast transcripts (Financial Modelers Corner)
-      </motion.p>
-    </div>
-  )
-}
-
 // ─── Takeaway Slide ──────────────────────────────────────────────
 
 function TakeawaySlide() {
   const points = [
     {
       icon: <Trophy size={24} />,
-      title: "HyperPerfect: The Only 100% Clean Model",
-      text: "Zero critical errors. Balanced balance sheet. All dynamic formulas. The only tool that produced client-ready financial results.",
-    },
-    {
-      icon: <AlertTriangle size={24} />,
-      title: "Most AI Tools Fail at Financial Rigor",
-      text: "8 out of 9 tools produced forecasts with critical errors. The vast majority of models couldn\u2019t produce a balanced balance sheet.",
+      title: "Claude Is the Best AI Model for Excel",
+      text: "Claude Opus 4.6 produced a balanced balance sheet with correct formulas and reasonable assumptions \u2014 something most AI tools can\u2019t do at all.",
     },
     {
       icon: <Zap size={24} />,
-      title: "Domain Expertise Matters",
-      text: "General-purpose AI can write formulas, but building a structurally sound three-statement model requires deep financial modeling knowledge baked into the tool.",
+      title: "HyperPerfect\u2019s Indexing Engine Closes the Gap",
+      text: "Claude\u2019s two remaining errors \u2014 negative cash and missing interest expense \u2014 were eliminated by HyperPerfect\u2019s data translation layer, which prevents the hallucinations that trip up even the best models.",
+    },
+    {
+      icon: <CheckCircle2 size={24} />,
+      title: "The Result: Zero Critical Errors",
+      text: "Claude + HyperPerfect is the only combination that produced a fully client-ready three-statement model with zero critical errors, all dynamic formulas, and a balanced balance sheet.",
     },
   ]
 
@@ -816,15 +686,11 @@ export default function AIExcelChallengePage() {
         return <ResultsSlide />
       case "detail": {
         const detailMap: Record<string, Contestant> = {
-          "detail-gold": contestants[0],
-          "detail-silver": contestants[1],
-          "detail-bronze": contestants[2],
-          "detail-dnp": contestants[3],
+          "detail-claude": contestants[0],
+          "detail-hyperperfect": contestants[1],
         }
         return <DetailSlide contestant={detailMap[slide.id]} />
       }
-      case "field":
-        return <FieldSlide />
       case "takeaway":
         return <TakeawaySlide />
       default:

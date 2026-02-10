@@ -135,8 +135,8 @@ export default function LandingPage() {
           href="/resources/ai-excel-challenge"
           className="group inline-flex items-center gap-3 mb-8 px-6 py-3 rounded-full bg-white/15 border border-white/30 hover:bg-white/25 transition-all duration-200"
         >
-          <span className="inline-flex items-center gap-1.5 bg-yellow-400 text-black text-sm font-extrabold px-3 py-1 rounded-full">🏆 #1 Ranked</span>
-          <span className="text-white text-sm md:text-base font-medium">See HyperPerfect beat the eight leading AI-for-Excel tools in a head-to-head modeling challenge.</span>
+          <span className="inline-flex items-center gap-1.5 bg-yellow-400 text-black text-sm font-extrabold px-3 py-1 rounded-full">✅ See the Proof</span>
+          <span className="text-white text-sm md:text-base font-medium">Watch HyperPerfect eliminate Claude's errors in a heads-up Excel challenge.</span>
           <span className="text-white/70 group-hover:text-white group-hover:translate-x-0.5 transition-all text-sm font-semibold whitespace-nowrap">→ See Results</span>
         </Link>
 
@@ -163,7 +163,7 @@ export default function LandingPage() {
 
         {/* CTA */}
         <a
-          href="https://help.hyperperfect.ai/Sign+Up"
+          href="https://help.hyperperfect.ai/Quick+Start"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-xl font-bold transition-colors focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none bg-white text-[#1a7bff] hover:bg-white/90 px-8 py-4"
