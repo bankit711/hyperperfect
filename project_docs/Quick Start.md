@@ -1,35 +1,29 @@
 # HyperPerfect Quick Start Guide
 
-**Transform your Excel workflow in 5 minutes.** Your new AI assistant lives right inside Excel. Just chat naturally about what you need, and watch it happen instantly. No more wrestling with formulas or hunting through menus.
+**Transform your Excel workflow in 5 minutes.** Your new AI assistant lives right inside Excel and your life just got a lot easier.
 
 **What You'll Experience:**
-
 - Chat naturally - "Add a sum total row" or "Create a summary table"
 - Instant results - AI reads and writes to your Excel sheet in real-time
 - Smart assistance - Track the AI's thinking process as it works
-- Any Excel task - Formulas, formatting, data cleaning, analysis, and more
-- Iterative refinement - Follow up to adjust and build upon your work
+- Supercharge Excel tasks - Checking analyses, cleaning data, building models, and more
+- Iterative refinement - Follow up to adjust and build upon your work in real time
 
 ---
 
 ## Get Started
 
-### Step 1: Install and Start Using
+### Step 1: Install the Excel Add-in (2 minutes)
 
 **You can start using HyperPerfect immediately** - no signup required. Just install the add-in and open it in Excel. You'll sign in automatically through your Microsoft account.
 
-**Want to learn how to use Claude with Excel? Sign up here:**
-
-<a href="Sign Up.md" class="internal-link" style="background-color: #2196F3; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">Start Learning Free</a>
-
-**What you get:**
-- Free tutorials, prompts, and techniques for using Claude with Excel
-- Beta feature access - Try new capabilities before general release
-- Priority support - Direct help from our team when you need it
-
-### Step 2: Install the Excel Add-in (2 minutes)
-
 **For Individual Users & Home Use:**
+
+#### Microsoft AppSource Store Download (Recommended)
+
+Install directly from the Microsoft AppSource store:
+
+<a href="https://marketplace.microsoft.com/en-us/product/saas/wa200008526" style="background-color: #2196F3; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">Get HyperPerfect on AppSource</a>
 
 #### Windows Desktop
 
@@ -80,17 +74,13 @@ Use the [Microsoft 365 Admin Center](https://admin.microsoft.com/) for centraliz
 
 **Important:** Add-ins can take **24-72 hours** to appear on users' ribbons after deployment.
 
-### Step 3: Sign In (Automatic)
 
-When you first open HyperPerfect, you'll automatically sign in using your Microsoft account. No extra steps needed - it happens seamlessly in the background.
-
-### Step 4: Start Your First Chat (1 minute)
+### Step 2: Start Your First Chat (1 minute)
 
 1. **Open HyperPerfect** - the AI chat opens automatically after sign-in
-2. **Select some data** in your Excel spreadsheet
-3. **Type a request** like "Analyze this data and create a summary table"
-4. **Watch the magic** as the AI reads your data and creates the summary
-5. **Use @ commands** to access additional features (see below)
+2. **Type a request** like "Analyze this data and create a summary table"
+3. **Watch the magic** as the AI reads your data and creates the summary
+4. **Use @ commands** to access additional features (see below)
 
 ---
 
@@ -104,24 +94,23 @@ Once you're signed in, the AI chat interface opens with these components:
 - **AI responses** appear with no background
 - **System messages** appear in gray (mode changes, notifications)
 - **Thinking blocks** show the AI's reasoning process (click to expand)
-- **Tool cards** show which Excel operations the AI performed
+- **Tool cards** show which Excel operations the AI performed with lots of context
 
 ### Input Area
 
-- **Text box** for typing messages (auto-resizes as you type)
 - **Send button** to submit messages
-- **Stop button** appears during AI processing (click to cancel)
-- **@ button** opens the command menu
+- **Stop button** Send button turns red during process and can be used to abort process (also works with Esc key)
+- **@ button** opens the command menu (aslo opens automatically if you type "@" in chat)
 - **Attach button** for uploading files
-- **Mode button** shows current AI mode (Fast or Power)
+- **Mode button** shows current AI mode (Smart or Fast)
 - **Clear button** resets the conversation
 - **Help button** opens documentation
 
-### Context Indicator
+### Memory Indicator
 
-The context indicator shows how much of the AI's memory is being used:
+The Memory indicator shows how much of the AI's memory is being used:
 - **Green (0-70%)** - Plenty of room for conversation
-- **Orange (70-85%)** - Consider using @compact to free space
+- **Orange (70-85%)** - Consider using @compact command to free space
 - **Red (85%+)** - System will auto-compact to free memory
 
 ### Keyboard Shortcuts
@@ -158,7 +147,7 @@ Type **@** or click the @ button to access these commands:
 
 See the AI chat in action - building an income statement:
 
-<div style="position: relative; padding-bottom: 74.27785419532324%; height: 0;"><iframe src="https://www.loom.com/embed/0671b08848a242069c7be3d75283d382?sid=baba9c5e-494e-43a7-8c3f-cc6a96bc3bad" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/6e094485c53d47b3b4968a2b518e09f9" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ### Example Requests
 
@@ -188,13 +177,13 @@ Try these with any Excel data:
 
 ## How the AI Works with Excel
 
-### 1. Select Your Data
+### 1. Planning is key
 
-**Before asking for help:**
+**Before asking HyperPerfect to execute on tasks:**
 
-1. Click and drag to select the range you want to analyze
-2. Excel will highlight the selected cells
-3. Return to the chat - AI automatically detects your selection
+1. AI can't read your mind, and does much better when it has lots of context.  Spend a prompt or two telling it what you want and asking it to come up with a plan.  Once agreed, then you can ask it to move forward.
+2. DO NOT expect AI to magically build huge spreadsheets in one shot.  Experts know that AI does best with manageable, discrete tasks.  Iteration is your friend.
+3. HyperPerfect will natrually focuse on your current sheet, but can see others as well.  If you want it to focus on certain data, refert to it specifically and/or highlight it before entering your prompt
 
 ### 2. Ask Naturally
 
@@ -309,7 +298,7 @@ For detailed troubleshooting, see the [Troubleshooting Guide](ai_chat/troublesho
 
 - **Email**: [help@hyperperfect.ai](mailto:help@hyperperfect.ai) - Direct help from our team
 - **Training Session**: [Schedule a 30-min demo](https://calendly.com/di-hyperperfect/30min) - Personal walkthrough
-- **Demo Video**: [Watch AI build an income statement](https://www.loom.com/share/0671b08848a242069c7be3d75283d382?sid=598f5fdc-90ef-46f9-b737-ffa2309db382)
+- **Demo Video**: [Watch AI build a three-statement model](https://www.loom.com/share/6e094485c53d47b3b4968a2b518e09f9)
 
 **Feature Requests:** We want to build what you actually need. Email us with:
 
