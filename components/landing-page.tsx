@@ -52,7 +52,7 @@ export default function LandingPage() {
                 Help
               </Link>
               <Link
-                href="/cohort-demo"
+                href="/resources"
                 className="text-white/90 hover:text-white text-xl font-medium transition-colors"
               >
                 Resources
@@ -106,7 +106,7 @@ export default function LandingPage() {
                 Help
               </Link>
               <Link
-                href="/cohort-demo"
+                href="/resources"
                 className="text-white text-3xl font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -130,13 +130,23 @@ export default function LandingPage() {
 
       {/* Hero Content - Centered Layout */}
       <div className="relative z-10 flex flex-col items-center justify-center pt-32 pb-20 px-4 bg-[#1a7bff]">
+        {/* Announcement Banner */}
+        <Link
+          href="/resources/ai-excel-challenge"
+          className="group inline-flex items-center gap-3 mb-8 px-6 py-3 rounded-full bg-white/15 border border-white/30 hover:bg-white/25 transition-all duration-200"
+        >
+          <span className="inline-flex items-center gap-1.5 bg-yellow-400 text-black text-sm font-extrabold px-3 py-1 rounded-full">🏆 #1 Ranked</span>
+          <span className="text-white text-sm md:text-base font-medium">See HyperPerfect beat the eight leading AI-for-Excel tools in a head-to-head modeling challenge.</span>
+          <span className="text-white/70 group-hover:text-white group-hover:translate-x-0.5 transition-all text-sm font-semibold whitespace-nowrap">→ See Results</span>
+        </Link>
+
         {/* Headline */}
         <div className="text-center mb-12 w-full">
           <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-4">
             Give Claude superpowers in Excel
           </h1>
           <p className="text-xl md:text-2xl text-white/90">
-            Eliminate errors and increase comprehension so your work is audit-ready
+            Now powered by Claude Opus 4.6, the world's leading model for Excel performance
           </p>
         </div>
 
