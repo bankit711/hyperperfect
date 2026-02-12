@@ -4,11 +4,63 @@
 
 @layer base {
   :root {
-    /* Keep only essential variables */
-    --hyperperfect-blue: #1a7bff;
+    /* Brand */
+    --color-brand: #1a7bff;
+    --color-brand-hover: #1565d8;
+
+    /* Text hierarchy */
+    --color-text-primary: #374151;
+    --color-text-secondary: #6b7280;
+    --color-text-tertiary: #9ca3af;
+
+    /* Surfaces */
+    --color-surface-primary: #ffffff;
+    --color-surface-secondary: #f8f9fa;
+    --color-surface-tertiary: #f1f3f5;
+    --color-surface-elevated: #eceef2;
+
+    /* Borders */
+    --color-border: #e2e5eb;
+    --color-border-subtle: #eceef2;
+
+    /* Shadows */
+    --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-input: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --shadow-hero: 0 25px 60px -12px rgba(0, 0, 0, 0.25);
+
+    /* Radii */
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+
+    /* Glass */
+    --glass-bg: rgba(255, 255, 255, 0.8);
+    --glass-blur: 12px;
+    --glass-saturate: 150%;
   }
-  
+
   body {
-    @apply bg-white text-black;
+    @apply bg-white;
+    color: var(--color-text-primary);
   }
-} 
+}
+
+@keyframes messageIn {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  }
+}

@@ -30,14 +30,14 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
         onClick={onClose}
       />
       
-      <div className="relative bg-white rounded-lg shadow-xl w-full max-w-2xl h-[550px] overflow-hidden">
+      <div className="relative bg-white rounded-lg shadow-card-hover w-full max-w-2xl h-[550px] overflow-hidden">
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+          className="absolute top-4 right-4 z-10 p-2 rounded-full bg-surface-elevated hover:bg-surface-secondary transition-all duration-150"
           aria-label="Close modal"
         >
-          <X size={20} className="text-gray-600" />
+          <X size={20} className="text-hp-text-secondary" />
         </button>
         
         <iframe 

@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Work_Sans } from "next/font/google";
+import { GeistMono } from "geist/font/mono";
 import Script from "next/script";
 import "../styles/globals.css";
 
-// Initialize the Inter font with swap display and optional subset
-// This helps with font loading on GitHub Pages
-const inter = Inter({ 
+const workSans = Work_Sans({
   subsets: ["latin"],
   display: 'swap',
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-work-sans',
   fallback: ['system-ui', 'Arial', 'sans-serif'],
 });
 
@@ -43,7 +44,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={inter.className}>
+      <body className={`${workSans.variable} ${GeistMono.variable} font-sans`}>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-BYW8TCVBDR"
           strategy="afterInteractive"
@@ -60,4 +61,4 @@ export default function RootLayout({
       </body>
     </html>
   );
-} 
+}

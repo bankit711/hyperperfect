@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from "framer-motion"
 import {
   ArrowLeft,
   ArrowRight,
-  Home,
   Trophy,
   Target,
   CheckCircle2,
@@ -610,18 +609,30 @@ function TakeawaySlide() {
         transition={{ delay: 0.6 }}
         className="text-center"
       >
-        <Link
-          href="https://calendly.com/di-hyperperfect/30min"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-lg font-semibold text-white transition-all hover:brightness-110"
-          style={{ backgroundColor: ACCENT }}
-        >
-          Book a Demo
-          <ChevronRight size={20} />
-        </Link>
+        <div className="flex flex-col sm:flex-row items-center gap-4">
+          <Link
+            href="/help/quick-start"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-lg font-semibold text-white transition-all hover:brightness-110"
+            style={{ backgroundColor: ACCENT }}
+          >
+            Try for Free in Excel
+            <ChevronRight size={20} />
+          </Link>
+          <Link
+            href="https://calendly.com/di-hyperperfect/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-lg font-semibold text-gray-300
+                       border border-white/10 hover:text-white hover:bg-white/5 hover:border-white/20 transition-all"
+          >
+            Book a Demo
+            <ChevronRight size={20} />
+          </Link>
+        </div>
         <p className="text-gray-500 text-sm mt-4">
-          See HyperPerfect build a three-statement model live
+          Get started in 15 minutes, or see a live walkthrough
         </p>
       </motion.div>
     </div>
@@ -792,12 +803,14 @@ export default function AIExcelChallengePage() {
             </button>
           ) : (
             <Link
-              href="/"
+              href="/help/quick-start"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 px-6 py-3 rounded-lg text-lg font-medium text-white
                          transition-all hover:brightness-110"
               style={{ backgroundColor: ACCENT }}
             >
-              Finish <Home size={20} />
+              Try for Free <ChevronRight size={20} />
             </Link>
           )}
         </div>

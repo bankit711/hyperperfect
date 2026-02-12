@@ -38,19 +38,19 @@ export default function CohortDemoPage() {
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
               <Link
-                href="https://help.hyperperfect.ai/Quick+Start"
+                href="/help/quick-start"
                 className="text-white/90 hover:text-white text-xl font-medium transition-colors"
               >
                 Quick Start
               </Link>
               <Link
-                href="https://help.hyperperfect.ai/Why+HyperPerfect%3F"
+                href="/help/why-hyperperfect"
                 className="text-white/90 hover:text-white text-xl font-medium transition-colors"
               >
                 Benefits
               </Link>
               <Link
-                href="https://help.hyperperfect.ai/Quick+Start"
+                href="/help"
                 className="text-white/90 hover:text-white text-xl font-medium transition-colors"
               >
                 Help
@@ -89,21 +89,21 @@ export default function CohortDemoPage() {
           <div className="container mx-auto px-4 py-8">
             <nav className="flex flex-col space-y-6">
               <Link
-                href="https://help.hyperperfect.ai/Quick+Start"
+                href="/help/quick-start"
                 className="text-white text-3xl font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Quick Start
               </Link>
               <Link
-                href="https://help.hyperperfect.ai/Why+HyperPerfect%3F"
+                href="/help/why-hyperperfect"
                 className="text-white text-3xl font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Benefits
               </Link>
               <Link
-                href="https://help.hyperperfect.ai/Quick+Start"
+                href="/help"
                 className="text-white text-3xl font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -296,9 +296,9 @@ export default function CohortDemoPage() {
               {/* Quick Links */}
               <div className="mt-8 pt-8 border-t border-gray-200 text-center">
                 <div className="flex flex-wrap justify-center gap-4 text-sm">
-                  <a href="https://help.hyperperfect.ai/Quick+Start" className="text-[#1a7bff] hover:underline" target="_blank" rel="noopener noreferrer">
-                    📖 Quick Start Guide
-                  </a>
+                  <Link href="/help/quick-start" className="text-[#1a7bff] hover:underline">
+                    Quick Start Guide
+                  </Link>
                   <span className="text-gray-400">•</span>
                   <a href="https://www.loom.com/share/4ec4b69c39ab45c2bfc80a5ea914a3f7?sid=a36dbc55-6efb-4a90-bee8-7a6d3b2d3bba" className="text-[#1a7bff] hover:underline" target="_blank" rel="noopener noreferrer">
                     🎥 3-min Demo
@@ -323,13 +323,13 @@ export default function CohortDemoPage() {
             </p>
             <div className="flex gap-6">
               <Link
-                href="https://help.hyperperfect.ai/Terms+of+Service"
+                href="/help/terms-of-service"
                 className="text-white/80 hover:text-white text-sm"
               >
                 Terms
               </Link>
               <Link
-                href="https://help.hyperperfect.ai/Privacy+Policy"
+                href="/help/privacy-policy"
                 className="text-white/80 hover:text-white text-sm"
               >
                 Privacy

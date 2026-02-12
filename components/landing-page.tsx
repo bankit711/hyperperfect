@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
+import { motion } from "framer-motion"
 import SignupModal from "./signup-modal"
 
 export default function LandingPage() {
@@ -22,48 +23,56 @@ export default function LandingPage() {
     <div className="relative">
       {/* Navigation */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-black/80 backdrop-blur-sm" : "bg-transparent"}`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? "glass border-b border-hp-border shadow-card"
+            : "bg-transparent"
+        }`}
       >
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex items-center justify-between h-20 md:h-24">
             {/* Logo */}
             <Link href="/" className="flex items-center">
-              <span className="text-white font-bold text-3xl md:text-4xl">HyperPerfect</span>
+              <span
+                className={`font-bold text-3xl md:text-4xl transition-colors duration-300 ${
+                  isScrolled ? "text-hp-text-primary" : "text-white"
+                }`}
+              >
+                HyperPerfect
+              </span>
             </Link>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
-              <Link
-                href="https://help.hyperperfect.ai/Quick+Start"
-                className="text-white/90 hover:text-white text-xl font-medium transition-colors"
-              >
-                Quick Start
-              </Link>
-              <Link
-                href="https://help.hyperperfect.ai/Why+HyperPerfect%3F"
-                className="text-white/90 hover:text-white text-xl font-medium transition-colors"
-              >
-                Benefits
-              </Link>
-              <Link
-                href="https://help.hyperperfect.ai/Quick+Start"
-                className="text-white/90 hover:text-white text-xl font-medium transition-colors"
-              >
-                Help
-              </Link>
-              <Link
-                href="/resources"
-                className="text-white/90 hover:text-white text-xl font-medium transition-colors"
-              >
-                Resources
-              </Link>
+              {[
+                { href: "/help/quick-start", label: "Quick Start" },
+                { href: "/help/why-hyperperfect", label: "Benefits" },
+                { href: "/help", label: "Help" },
+                { href: "/resources", label: "Resources" },
+              ].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`text-xl font-medium transition-colors duration-300 ${
+                    isScrolled
+                      ? "text-hp-text-secondary hover:text-hp-text-primary"
+                      : "text-white/90 hover:text-white"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
             </nav>
 
             {/* Desktop CTA */}
             <div className="hidden md:flex items-center space-x-4">
               <Link
                 href="https://calendly.com/di-hyperperfect/30min"
-                className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-lg font-medium transition-colors focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none border-2 border-white text-white hover:bg-white hover:text-[#1a7bff] px-6 py-3"
+                className={`inline-flex items-center justify-center whitespace-nowrap rounded-lg text-lg font-medium transition-all duration-150 focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none border-2 px-6 py-3 ${
+                  isScrolled
+                    ? "border-brand text-brand hover:bg-brand hover:text-white"
+                    : "border-white text-white hover:bg-white hover:text-brand"
+                }`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -72,7 +81,12 @@ export default function LandingPage() {
             </div>
 
             {/* Mobile Menu Button */}
-            <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <button
+              className={`md:hidden transition-colors duration-300 ${
+                isScrolled ? "text-hp-text-primary" : "text-white"
+              }`}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -85,21 +99,21 @@ export default function LandingPage() {
           <div className="container mx-auto px-4 py-8">
             <nav className="flex flex-col space-y-6">
               <Link
-                href="https://help.hyperperfect.ai/Quick+Start"
+                href="/help/quick-start"
                 className="text-white text-3xl font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Quick Start
               </Link>
               <Link
-                href="https://help.hyperperfect.ai/Why+HyperPerfect%3F"
+                href="/help/why-hyperperfect"
                 className="text-white text-3xl font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Benefits
               </Link>
               <Link
-                href="https://help.hyperperfect.ai/Quick+Start"
+                href="/help"
                 className="text-white text-3xl font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -116,7 +130,7 @@ export default function LandingPage() {
               </div>
               <Link
                 href="https://calendly.com/di-hyperperfect/30min"
-                className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-lg font-medium transition-colors focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none border-2 border-white text-white hover:bg-white hover:text-[#1a7bff] py-4 w-full text-center"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-lg text-lg font-medium transition-all duration-150 focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none border-2 border-white text-white hover:bg-white hover:text-brand py-4 w-full text-center"
                 onClick={() => setIsMenuOpen(false)}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -129,84 +143,122 @@ export default function LandingPage() {
       )}
 
       {/* Hero Content - Centered Layout */}
-      <div className="relative z-10 flex flex-col items-center justify-center pt-32 pb-20 px-4 bg-[#1a7bff]">
+      <div className="relative z-10 flex flex-col items-center justify-center pt-32 pb-20 px-4 bg-brand">
         {/* Announcement Banner */}
-        <Link
-          href="/resources/ai-excel-challenge"
-          className="group inline-flex items-center gap-3 mb-8 px-6 py-3 rounded-full bg-white/15 border border-white/30 hover:bg-white/25 transition-all duration-200"
+        <motion.div
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
         >
-          <span className="inline-flex items-center gap-1.5 bg-yellow-400 text-black text-sm font-extrabold px-3 py-1 rounded-full">✅ See the Proof</span>
-          <span className="text-white text-sm md:text-base font-medium">Watch HyperPerfect eliminate Claude's errors in a heads-up Excel challenge.</span>
-          <span className="text-white/70 group-hover:text-white group-hover:translate-x-0.5 transition-all text-sm font-semibold whitespace-nowrap">→ See Results</span>
-        </Link>
+          <Link
+            href="/resources/ai-excel-challenge"
+            className="group inline-flex items-center gap-3 mb-8 px-6 py-3 rounded-full bg-white/15 border border-white/30 hover:bg-white/25 transition-all duration-200"
+          >
+            <span className="inline-flex items-center gap-1.5 bg-yellow-400 text-black text-sm font-extrabold px-3 py-1 rounded-full">See the Proof</span>
+            <span className="text-white text-sm md:text-base font-medium">Watch HyperPerfect eliminate Claude&apos;s errors in a heads-up Excel challenge.</span>
+            <span className="text-white/70 group-hover:text-white group-hover:translate-x-0.5 transition-all text-sm font-semibold whitespace-nowrap">&rarr; See Results</span>
+          </Link>
+        </motion.div>
 
         {/* Headline */}
-        <div className="text-center mb-12 w-full">
+        <motion.div
+          className="text-center mb-12 w-full"
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
+        >
           <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-4">
             Give Claude superpowers in Excel
           </h1>
           <p className="text-xl md:text-2xl text-white/90">
-            Now powered by Claude Opus 4.6, the world's leading model for Excel performance
+            Now powered by Claude Opus 4.6, the world&apos;s leading model for Excel performance
           </p>
-        </div>
+        </motion.div>
 
         {/* Animation - Hero Centerpiece */}
-        <div className="w-full max-w-[900px] mb-12">
-          <div className="rounded-2xl overflow-hidden bg-white shadow-[0_25px_60px_-12px_rgba(0,0,0,0.4)]">
+        <motion.div
+          className="w-full max-w-[900px] mb-12"
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
+        >
+          <div className="rounded-lg overflow-hidden bg-white shadow-hero">
             <img
               src="/images/dcf_apple_demo.gif"
               alt="HyperPerfect AI automating Excel DCF analysis"
               className="w-full"
             />
           </div>
-        </div>
+        </motion.div>
 
         {/* CTA */}
-        <a
-          href="https://help.hyperperfect.ai/Quick+Start"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-xl font-bold transition-colors focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none bg-white text-[#1a7bff] hover:bg-white/90 px-8 py-4"
+        <motion.div
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.3, ease: "easeOut" }}
         >
-          Try for Free in Excel
-        </a>
+          <Link
+            href="/help/quick-start"
+            className="inline-flex items-center justify-center whitespace-nowrap rounded-lg text-xl font-bold transition-all duration-150 focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none bg-white text-brand hover:bg-white/90 px-8 py-4"
+          >
+            Try for Free in Excel
+          </Link>
+        </motion.div>
       </div>
 
       {/* Why Section */}
-      <div className="relative z-10 bg-gray-50 py-20 px-4">
+      <div className="relative z-10 bg-surface-secondary py-20 px-4">
         <div className="container mx-auto max-w-3xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-8">
+          <motion.h2
+            className="text-3xl md:text-4xl font-bold text-center text-hp-text-primary mb-8"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
             Why AI struggles with spreadsheets
-          </h2>
-          <div className="space-y-6 text-lg text-gray-700">
+          </motion.h2>
+          <motion.div
+            className="space-y-6 text-lg text-hp-text-secondary"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
+          >
             <p>
-              AI models are notoriously bad at spreadsheets. You've likely asked it to build one, and received a file back that was riddled with errors and not exactly what you requested.
+              AI models are notoriously bad at spreadsheets. You&apos;ve likely asked it to build one, and received a file back that was riddled with errors and not exactly what you requested.
             </p>
             <p>
-              <strong className="text-gray-900">Why?</strong> Claude, ChatGPT and other leading models were built using natural language, not spreadsheet formulas. Sending a firehose of Excel formulas, cell references, and formatting details causes internal chaos, which leads to hallucinations and errors.
+              <strong className="text-hp-text-primary">Why?</strong> Claude, ChatGPT and other leading models were built using natural language, not spreadsheet formulas. Sending a firehose of Excel formulas, cell references, and formatting details causes internal chaos, which leads to hallucinations and errors.
             </p>
             <p>
               We fixed this by bringing AI inside of Excel and adding a data translation layer that fundamentally changes how AI communicates with spreadsheets.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="mt-12">
-            <h3 className="text-xl font-bold text-gray-900 mb-6 text-center">Here's how it works:</h3>
+          <motion.div
+            className="mt-12"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
+          >
+            <h3 className="text-xl font-bold text-hp-text-primary mb-6 text-center">Here&apos;s how it works:</h3>
             <div className="space-y-4">
               <div className="flex items-start">
-                <span className="text-[#1a7bff] font-bold text-xl mr-4">1.</span>
-                <span className="text-gray-700">We bring the absolute best AI models into Excel software and workflows</span>
+                <span className="text-brand font-bold text-xl mr-4">1.</span>
+                <span className="text-hp-text-secondary">We bring the absolute best AI models into Excel software and workflows</span>
               </div>
               <div className="flex items-start">
-                <span className="text-[#1a7bff] font-bold text-xl mr-4">2.</span>
-                <span className="text-gray-700">Our proprietary indexing engine prevents 95% of hallucination errors</span>
+                <span className="text-brand font-bold text-xl mr-4">2.</span>
+                <span className="text-hp-text-secondary">Our proprietary indexing engine prevents 95% of hallucination errors</span>
               </div>
               <div className="flex items-start">
-                <span className="text-[#1a7bff] font-bold text-xl mr-4">3.</span>
-                <span className="text-gray-700">Data transformation and enrichment improves AI comprehension by 10x</span>
+                <span className="text-brand font-bold text-xl mr-4">3.</span>
+                <span className="text-hp-text-secondary">Data transformation and enrichment improves AI comprehension by 10x</span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </div>
@@ -214,96 +266,81 @@ export default function LandingPage() {
       {/* Features Section */}
       <div className="relative z-10 bg-white py-20 px-4">
         <div className="container mx-auto max-w-5xl">
-          <p className="text-xl md:text-2xl font-semibold text-center text-gray-900 mb-4 max-w-3xl mx-auto">
+          <motion.p
+            className="text-xl md:text-2xl font-semibold text-center text-hp-text-primary mb-4 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
             Turn Excel into an AI agent that flawlessly builds models, cleans messy data, finds errors and makes dashboards look professional.
-          </p>
+          </motion.p>
           <div className="mb-12"></div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
-            {/* Accurate */}
-            <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
-              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">Accurate</h3>
-              <ul className="space-y-3">
-                <li className="flex items-start">
-                  <span className="text-[#1a7bff] font-bold mr-2">•</span>
-                  <span className="text-gray-700">Best in class AI for task</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-[#1a7bff] font-bold mr-2">•</span>
-                  <span className="text-gray-700">Built in error protection</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-[#1a7bff] font-bold mr-2">•</span>
-                  <span className="text-gray-700">Real time task control</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Fast */}
-            <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
-              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">Fast</h3>
-              <ul className="space-y-3">
-                <li className="flex items-start">
-                  <span className="text-[#1a7bff] font-bold mr-2">•</span>
-                  <span className="text-gray-700">Accurate PDF extractions</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-[#1a7bff] font-bold mr-2">•</span>
-                  <span className="text-gray-700">Integrated Web search</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-[#1a7bff] font-bold mr-2">•</span>
-                  <span className="text-gray-700">Handles large datasets</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Secure */}
-            <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
-              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">Secure</h3>
-              <ul className="space-y-3">
-                <li className="flex items-start">
-                  <span className="text-[#1a7bff] font-bold mr-2">•</span>
-                  <span className="text-gray-700">Enterprise security</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-[#1a7bff] font-bold mr-2">•</span>
-                  <span className="text-gray-700">Data stays private</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-[#1a7bff] font-bold mr-2">•</span>
-                  <span className="text-gray-700">IT Dept approved</span>
-                </li>
-              </ul>
-            </div>
+            {[
+              {
+                title: "Accurate",
+                items: ["Best in class AI for task", "Built in error protection", "Real time task control"],
+              },
+              {
+                title: "Fast",
+                items: ["Accurate PDF extractions", "Integrated Web search", "Handles large datasets"],
+              },
+              {
+                title: "Secure",
+                items: ["Enterprise security", "Data stays private", "IT Dept approved"],
+              },
+            ].map((card, i) => (
+              <motion.div
+                key={card.title}
+                className="bg-surface-secondary rounded-lg p-8 border border-hp-border shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-150"
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.1, ease: "easeOut" }}
+              >
+                <h3 className="text-xl font-bold text-hp-text-primary mb-4 text-center">{card.title}</h3>
+                <ul className="space-y-3">
+                  {card.items.map((item) => (
+                    <li key={item} className="flex items-start">
+                      <span className="text-brand font-bold mr-2">&bull;</span>
+                      <span className="text-hp-text-secondary">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
           </div>
 
           {/* Second CTA */}
-          <div className="text-center">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Learn how to use Claude with Excel</h3>
-            <p className="text-gray-600 mb-6 max-w-xl mx-auto">
+          <motion.div
+            className="text-center"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
+            <h3 className="text-2xl font-bold text-hp-text-primary mb-4">Learn how to use Claude with Excel</h3>
+            <p className="text-hp-text-secondary mb-6 max-w-xl mx-auto">
               Get free tutorials, prompts, and techniques that turn Claude into your most powerful Excel tool.
             </p>
-            <a
-              href="https://help.hyperperfect.ai/Sign+Up"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-xl font-bold transition-colors focus-visible:outline-none bg-[#1a7bff] text-white hover:bg-[#1565d8] px-8 py-4"
+            <Link
+              href="/help/sign-up"
+              className="inline-flex items-center justify-center whitespace-nowrap rounded-lg text-xl font-bold transition-all duration-150 focus-visible:outline-none bg-brand text-white hover:bg-brand-hover px-8 py-4"
             >
               Start Learning Free
-            </a>
-            <p className="text-sm text-gray-500 mt-4">
+            </Link>
+            <p className="text-sm text-hp-text-tertiary mt-4">
               Excel on lockdown? Use HyperPerfect in minutes with a free{" "}
-              <a
-                href="https://help.hyperperfect.ai/Quick+Start"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#1a7bff] underline hover:no-underline"
+              <Link
+                href="/help/quick-start"
+                className="text-brand underline hover:no-underline"
               >
                 Excel Online account
-              </a>.
+              </Link>.
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
 
@@ -313,13 +350,13 @@ export default function LandingPage() {
           <span className="text-white font-bold text-xl">HyperPerfect</span>
           <div className="flex gap-8">
             <Link
-              href="https://help.hyperperfect.ai/Terms+of+Service"
+              href="/help/terms-of-service"
               className="text-gray-400 hover:text-white transition-colors"
             >
               Terms
             </Link>
             <Link
-              href="https://help.hyperperfect.ai/Privacy+Policy"
+              href="/help/privacy-policy"
               className="text-gray-400 hover:text-white transition-colors"
             >
               Privacy

@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
 
     // Determine redirect URL based on user choice
     const redirectUrl = acceptMarketing
-      ? 'https://help.hyperperfect.ai/Quick+Start'  // Marketing opt-in → Quick Start
+      ? 'https://hyperperfect.ai/help/quick-start'  // Marketing opt-in → Quick Start
       : 'https://hyperperfect.ai'  // File only → Main site
 
     return NextResponse.json({ 
