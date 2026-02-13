@@ -155,7 +155,7 @@ export default function LandingPage() {
             className="group inline-flex items-center gap-3 mb-8 px-6 py-3 rounded-full bg-white/15 border border-white/30 hover:bg-white/25 transition-all duration-200"
           >
             <span className="inline-flex items-center gap-1.5 bg-yellow-400 text-black text-sm font-extrabold px-3 py-1 rounded-full">See the Proof</span>
-            <span className="text-white text-sm md:text-base font-medium">Watch HyperPerfect eliminate Claude&apos;s errors in a heads-up Excel challenge.</span>
+            <span className="text-white text-sm md:text-base font-medium">Watch HyperPerfect eliminate Claude&apos;s errors in a heads-up Excel challenge with Claude in Excel.</span>
             <span className="text-white/70 group-hover:text-white group-hover:translate-x-0.5 transition-all text-sm font-semibold whitespace-nowrap">&rarr; See Results</span>
           </Link>
         </motion.div>
@@ -168,10 +168,10 @@ export default function LandingPage() {
           transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
         >
           <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-4">
-            Give Claude superpowers in Excel
+            Reliable AI for Excel has Arrived
           </h1>
           <p className="text-xl md:text-2xl text-white/90">
-            Now powered by Claude Opus 4.6, the world&apos;s leading model for Excel performance
+            Claude Opus 4.6 changed the game. HyperPerfect makes it flawless in Excel.
           </p>
         </motion.div>
 
@@ -183,9 +183,12 @@ export default function LandingPage() {
           transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
         >
           <div className="rounded-lg overflow-hidden bg-white shadow-hero">
-            <img
-              src="/images/dcf_apple_demo.gif"
-              alt="HyperPerfect AI automating Excel DCF analysis"
+            <video
+              src="/images/dcf_apple_demo.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
               className="w-full"
             />
           </div>
@@ -321,9 +324,9 @@ export default function LandingPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            <h3 className="text-2xl font-bold text-hp-text-primary mb-4">Learn how to use Claude with Excel</h3>
+            <h3 className="text-2xl font-bold text-hp-text-primary mb-4">Learn how to use HyperPerfect&apos;s AI in Excel</h3>
             <p className="text-hp-text-secondary mb-6 max-w-xl mx-auto">
-              Get free tutorials, prompts, and techniques that turn Claude into your most powerful Excel tool.
+              Get free tutorials, prompts, and techniques that turn AI into your most powerful Excel tool.
             </p>
             <Link
               href="/help/sign-up"

@@ -1,13 +1,13 @@
 ---
 title: "Sign Up"
-description: "Get free tutorials, prompts, and techniques that turn Claude into your most powerful Excel tool."
+description: "Get free tutorials, prompts, and techniques that turn AI into your most powerful Excel tool."
 order: 3
 category: "Getting Started"
 ---
 
-## Learn How to Use Claude with Excel
+## Learn How to Use HyperPerfect in Excel
 
-Finance teams are getting incredible results with Claude — but only when they know the right workflows. Sign up to get free tutorials, prompts, and techniques that turn Claude into your most powerful Excel tool.
+Finance teams are getting incredible results with AI in Excel — but only when they know the right workflows. Sign up to get free tutorials, prompts, and techniques that turn AI into your most powerful Excel tool.
 
 Join now for **free access** to our learning resources. You'll also get **beta feature access** and **priority support** from our team.
 

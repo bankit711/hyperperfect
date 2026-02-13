@@ -5,7 +5,7 @@ order: 12
 category: "Legal"
 ---
 
-**Last revised – MAR 2025**
+**Last revised – Mar 2025**
 
 HyperPerfect ("HyperPerfect," "we" or "us") is committed to protecting the privacy of its clients ("Client," "you" or "your"). This Privacy Policy explains how HyperPerfect collects, uses, and shares the personal information we collect from visitors to our website ("Website").
 

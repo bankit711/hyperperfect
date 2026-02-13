@@ -53,21 +53,31 @@ If your account has been cancelled, you'll see an "Account Cancelled" message.
 
 ## Context and Memory
 
+### Why AI Performance Drops Over Long Conversations
+
+AI models have a finite working memory called a **context window**. Every message you send and every response AI generates consumes part of it. As the context fills up, AI becomes less accurate — it's more likely to make errors, forget earlier instructions, or produce lower-quality work.
+
+**The single best thing you can do to improve AI performance is keep conversations short and focused.** Reset often and give clear, specific instructions each time.
+
 ### Understanding the Context Indicator
+
+The percentage shows how full the AI's context window is:
 
 | Color | Percentage | What to Do |
 |-------|------------|------------|
-| Green | 0-70% | No action needed |
-| Orange | 70-85% | Consider using @compact |
-| Red | 85%+ | System will auto-compact |
+| **Green** | 0-70% | No action needed |
+| **Orange** | 70-85% | Consider using **@compact** or **@clear** |
+| **Red** | 85%+ | System will auto-compact automatically |
+
+At 100%, AI loses access to the earliest parts of the conversation entirely. Auto-compact at 85% prevents this by summarizing the conversation and starting fresh. The high-level context is preserved, but specific details from earlier messages are lost.
 
 ### What is @compact?
 
-The `@compact` command summarizes your conversation history to free up memory while preserving important context. Use it when the context indicator turns orange or the AI seems to forget earlier instructions.
+The `@compact` command summarizes your conversation history into a concise handoff and starts a new conversation. The summary preserves what you were working on and what's been done, while freeing up context for better AI performance.
 
 ### Starting Fresh
 
-Use `@clear` to delete all messages and start a completely new conversation. This is useful when switching to an unrelated task or when the AI seems confused.
+Use `@clear` to delete all messages and start a completely new conversation. This is the best option when switching to an unrelated task, or whenever you want AI at peak performance. Don't be afraid to clear often — it's the most effective way to get better results.
 
 ---
 

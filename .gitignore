@@ -36,5 +36,10 @@ next-env.d.ts
 project_docs/.obsidian
 project_docs/.obsidian/workspace.json
 
+# animation build outputs (source script stays, outputs go to public/images/)
+assets/animations/*.gif
+assets/animations/*.mp4
+assets/animations/*.png
+
 # temporary files
 .tmp.driveupload

@@ -9,69 +9,56 @@ HyperPerfect is designed for financial professionals who need AI-powered Excel a
 
 ## Key Security Principles
 
-**Your Excel Data Never Leaves Your Control**
-- Spreadsheet data is never stored on our servers
+**You Control What the AI Sees**
 - AI processes only what you explicitly send
+- HyperPerfect never scans or accesses your entire workbook
 - Powered by Anthropic, the industry leader in data protection
 - Your data is never used for training
 
 **Enterprise-Grade Authentication**
 - Microsoft Single Sign-On (SSO) integration
-- OAuth 2.0 authentication
+- JWT token validation on every request
 - Compatible with existing Microsoft 365 security policies
 
-**Encrypted Storage for Settings**
-- API keys encrypted with AES-256-CBC
-- Database hosted on Azure with enterprise security
-- User settings isolated and protected
-
-**You Control Your Data**
-- Delete your data anytime
-- Transparent about what data flows where
+**Data Isolation**
+- Each user's data is completely isolated by account
+- User settings and conversations accessible only to authenticated account owner
 - Your data is never used to train AI models
 
 ---
 
 ## What Data Does HyperPerfect Store?
 
-| Data Type | Purpose | Storage Location | Retention |
-|-----------|---------|------------------|-----------|
-| **Email Address** | User authentication and authorization | Azure-hosted secure database | Until account deletion |
-| **Chat History** | Maintain conversation context | Azure-hosted secure database | Clear it anytime |
+| Data Type | Purpose | Retention |
+|-----------|---------|-----------|
+| **Email Address** | User authentication and account identity | Until account deletion |
+| **Conversation History** | Maintain chat context, including any spreadsheet data you send to the AI | 30 days |
+| **Workbook Metadata** | Sheet names and active range info for accurate tool execution | 30 days (stored with conversations) |
+| **Usage Records** | Token counts and cost tracking for billing | Until account deletion |
+| **Custom Instructions** | Your personalized AI preferences | Until account deletion |
+| **Uploaded Files** | Images and PDFs you attach to conversations | 30 days |
+
+**Important:** When you send spreadsheet data to the AI (by selecting cells and asking a question), that data is included in your conversation history and stored on our servers for up to 30 days. Data you do not send to the AI is never accessed or stored.
 
 ---
 
-## How Your Data is Protected
+## How Your Data Flows
 
-### For Business Users
-
-**When You Use HyperPerfect:**
+### The Request Lifecycle
 
 1. **You authenticate with Microsoft SSO** - same secure login you use for Office 365
-2. **You select data in Excel** - HyperPerfect only sees what it needs for your requests
-3. **You choose to send it to AI** - data goes directly to AI provider
-4. **AI responds and modifies your workbook** - results stay in your Excel file
+2. **You select data in Excel and send a message** - only your selected data and message are transmitted
+3. **HyperPerfect server receives your request** - your message and any spreadsheet data are stored in conversation history
+4. **Server forwards your conversation to Anthropic Claude** - the AI processes your request
+5. **AI responds** - results stream back through our server and are applied to your workbook
 
-### For IT Administrators
+### Data Destinations
 
-**Microsoft 365 Integration:**
-- Runs as native Office Add-in within Excel security sandbox
-- Respects existing Conditional Access policies
-- Admin consent available for organizational deployment
-- Compatible with Azure AD authentication requirements
-
-**Data Residency:**
-- Backend hosted on Azure App Service
-- Database storage on Azure Files (persistent, backed up)
-- No data stored outside Microsoft Azure infrastructure
-- Compatible with Microsoft compliance boundaries
-
-**Network Security:**
-- All communications over HTTPS/TLS 1.2+
-- Direct connection to Anthropic Claude API
-- No data proxy or man-in-the-middle storage
-- JWT token validation on every API request
-- Data deleted from Anthropic within 30 days
+| Destination | What is Sent | Retention |
+|-------------|-------------|-----------|
+| **HyperPerfect Server** | Messages, spreadsheet data you send, workbook metadata, file attachments | 30 days |
+| **Anthropic Claude** | Conversation history, system instructions, file content | Deleted within 30 days per Anthropic policy |
+| **Analytics (Mixpanel)** | Anonymized usage events (feature usage, error counts) — no spreadsheet data | Per Mixpanel retention policy |
 
 ---
 
@@ -89,7 +76,7 @@ HyperPerfect exclusively uses **Anthropic Claude** for AI processing, chosen spe
 
 **Enterprise-Grade Security:**
 - **SOC 2 Type II certified** with annual third-party audits
-- **AES-256 encryption** for data at rest
+- **AES-256 encryption** for data at rest on Anthropic's infrastructure
 - **TLS 1.2+ encryption** for all data in transit
 - **48-hour breach notification** commitment
 - Annual penetration testing and vulnerability assessments
@@ -109,81 +96,85 @@ HyperPerfect exclusively uses **Anthropic Claude** for AI processing, chosen spe
 **Business Users:**
 - Sign in with your work Microsoft account
 - No separate passwords to manage
-- Automatic logout when Office session ends
+- Session expires after 24 hours of inactivity
 
 **IT Administrators:**
 - Integrated with Microsoft Identity Platform
-- OAuth 2.0 authorization flows
+- JWT tokens validated against Microsoft JWKS on every request
 - Email-based authorization lists (optional)
 - Admin consent workflow for organizational deployment
 
-### API Key Security
+---
 
-- Stored encrypted (AES-256-CBC with unique initialization vectors)
-- Never shared between users
-- Decrypted only when making requests to Anthropic
-- You can delete or rotate keys anytime
-- Keys never logged or exposed in error messages
+## For IT Administrators
+
+**Microsoft 365 Integration:**
+- Runs as native Office Add-in within Excel security sandbox
+- Respects existing Conditional Access policies
+- Admin consent available for organizational deployment
+- Compatible with Azure AD authentication requirements
+
+**Infrastructure:**
+- Backend hosted on Azure App Service
+- PostgreSQL database hosted on Azure
+- File storage on Azure Blob Storage
+- All communications over HTTPS/TLS 1.2+
+
+**Network Security:**
+- TLS 1.2+ encryption for all data in transit
+- JWT token validation on every API request
+- Outbound connections only to Anthropic Claude API and Mixpanel analytics
+
+**Application Security:**
+- Parameterized database queries via sqlc (SQL injection prevention)
+- Input validation and sanitization on all tool parameters
+- Regular security dependency updates
 
 ---
 
 ## Compliance & Standards
 
-### Security Standards
-
-**Infrastructure:**
-- Hosted on Microsoft Azure (SOC 2, ISO 27001 compliant)
-- Azure App Service with enterprise security features
-- TLS 1.2+ encryption for all communications
-
-**Application Security:**
-- Parameterized database queries (SQL injection prevention)
-- Input validation and sanitization
-- Content Security Policy (CSP) headers
-- Regular security dependency updates
-
 ### Data Privacy
 
-- No collection of personal financial data
-- User data processed only with explicit actions
+- User data processed only with explicit user actions
 - Right to access your data (contact support)
-- Right to deletion (complete data removal available)
-- No data sharing with third parties (except chosen AI providers)
+- Right to deletion (complete account and data removal available)
+- No data sharing with third parties beyond Anthropic (AI provider) and Mixpanel (anonymized analytics)
 
 ---
 
 ## Common Security Questions
 
 ### Can HyperPerfect access my spreadsheet data?
-**Only what you explicitly send to the AI.** When you select cells and ask the AI a question, only that selected data is processed. HyperPerfect never scans or stores your entire workbook.
+**Only what you explicitly send to the AI.** When you select cells and ask the AI a question, only that selected data is processed. HyperPerfect never scans or accesses your entire workbook.
 
-### Where is my data stored?
-**Your spreadsheet data is never stored by HyperPerfect.** Only your settings (API keys, preferences, chat history) are stored in an encrypted Azure database.
+### Is my spreadsheet data stored?
+**Yes, as part of your conversation history.** Any data you send to the AI is stored in your conversation history for up to 30 days. Data you do not send to the AI is never accessed or stored by HyperPerfect.
 
 ### Can other users see my data?
-**No.** User data is completely isolated. Each user's API keys, settings, and chat history are accessible only to their authenticated account.
+**No.** User data is completely isolated. Each user's settings and conversation history are accessible only to their authenticated account.
 
 ### Do you train AI models on my data?
 **Absolutely not.** This is contractually guaranteed by both HyperPerfect and Anthropic Claude.
 
 ### Can HyperPerfect be used with sensitive financial data?
-**Yes.** Anthropic Claude's data protection makes it suitable for sensitive financial work including P&L analysis, customer revenue analysis, financial modeling, and board reporting.
+**Yes.** Anthropic Claude's data protection (SOC 2 Type II, zero-training guarantee, 30-day deletion) makes it suitable for sensitive financial work. Be mindful that any data you send to the AI will be transmitted to and temporarily stored by both HyperPerfect and Anthropic.
+
+### How long is my data retained?
+**Conversation data is retained for 30 days**, then automatically deleted. Account information (email, preferences) is retained until you request account deletion.
 
 ---
 
 ## Data Deletion & User Rights
 
-### Self-Service Options
+### Conversation Management
 
-**Users Can Delete:**
-- Individual API keys (per provider)
-- Chat conversation history
-- Preferences and settings
-- Browser session tokens
+- **Start fresh anytime** - use the `@clear` command to start a new conversation
+- Previous conversations are retained for up to 30 days, then automatically deleted
 
 ### Complete Account Deletion
 
-**Contact:** [help@hyperperfect.ai](mailto:help@hyperperfect.ai) for complete data removal including all API keys, chat history, usage tracking, and account records.
+**Contact:** [help@hyperperfect.ai](mailto:help@hyperperfect.ai) for complete data removal including all conversation history, usage records, and account information.
 
 ---
 

@@ -2,14 +2,33 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.animation import FuncAnimation, PillowWriter
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
+from matplotlib import font_manager
 import numpy as np
+
+# Register Work Sans fonts from the actual app
+_font_dir = '/Users/davidingraham/hyperperfect7/static'
+for weight in ['400', '500', '600', '700']:
+    font_manager.fontManager.addfont(f'{_font_dir}/work-sans-{weight}.ttf')
 
 # Load paperclip icon
 PAPERCLIP_IMG = plt.imread('paperclip.png')
 
+# --- Design System Colors (from HyperPerfect app) ---
+COLOR_TEXT_PRIMARY = '#374151'
+COLOR_TEXT_SECONDARY = '#6b7280'
+COLOR_TEXT_TERTIARY = '#9ca3af'
+COLOR_BRAND = '#1a7bff'
+COLOR_BG_USER = '#eff1f5'
+COLOR_BG_PAGE = '#ffffff'
+COLOR_BG_ELEVATED = '#f9fafb'
+COLOR_BG_TOOL = '#f2f3f6'
+COLOR_BORDER = '#e2e5eb'
+COLOR_BORDER_LIGHT = '#eceef2'
+FONT_FAMILY = 'Work Sans'
+
 # Setup the figure and axis
 # 1200x600 pixels (8x4 inches at 75 DPI) - optimized for email
-fig, ax = plt.subplots(figsize=(8, 4), dpi=75)
+fig, ax = plt.subplots(figsize=(8, 4), dpi=150)
 fig.patch.set_facecolor('#ffffff')
 # Remove all margins/padding around the plot
 fig.subplots_adjust(left=0, right=1, top=1, bottom=0)
@@ -18,8 +37,8 @@ ax.set_ylim(0, 700)
 ax.axis('off')
 
 # --- Design Constants ---
-excel_x, excel_y, excel_w, excel_h = 20, 20, 700, 620
-chat_x, chat_y, chat_w, chat_h = 750, 20, 630, 620
+excel_x, excel_y, excel_w, excel_h = 10, 40, 710, 620
+chat_x, chat_y, chat_w, chat_h = 750, 40, 630, 620
 header_h = 50
 input_h = 60
 
@@ -33,45 +52,46 @@ def draw_rounded_rect(ax, x, y, w, h, r, color, ec=None, lw=1, zorder=1):
 
 def draw_ui_layout():
     # Just light background, no container box
-    excel_bg = patches.Rectangle((excel_x, excel_y), excel_w, excel_h, facecolor='#f9f9f9', edgecolor='none', zorder=0)
+    excel_bg = patches.Rectangle((excel_x, excel_y), excel_w, excel_h, facecolor='#ffffff', edgecolor='none', zorder=0)
     ax.add_patch(excel_bg)
 
     # Row 1 is intentionally left blank (no title)
 
-    # Chat Panel (high zorder to appear in front of Excel grid and cell highlights)
-    draw_rounded_rect(ax, chat_x, chat_y, chat_w, chat_h, 15, 'white', '#dbe2e8', lw=2, zorder=10)
-    # Chat Header (same border width as chat panel)
-    draw_rounded_rect(ax, chat_x, chat_y + chat_h - header_h, chat_w, header_h, 15, '#f8f9fa', '#dbe2e8', lw=2, zorder=10)
-    # Cover bottom of header to square off corners where it meets the chat body
-    rect_chat = patches.Rectangle((chat_x + 2, chat_y + chat_h - header_h), chat_w - 4, header_h/2, facecolor='#f8f9fa', edgecolor='none', zorder=50)
-    ax.add_patch(rect_chat)
-    ax.text(chat_x + 20, chat_y + chat_h - header_h/2, "HyperPerfect", fontsize=13, fontweight='bold', color='#212529', zorder=51, va='center')
-    ax.text(chat_x + chat_w - 20, chat_y + chat_h - header_h/2, "AI Chat", fontsize=10, color='#6c757d', zorder=51, ha='right', va='center')
+    # Chat Panel — single rounded rect for clean border
+    draw_rounded_rect(ax, chat_x, chat_y, chat_w, chat_h, 12, COLOR_BG_PAGE, COLOR_BORDER, lw=1, zorder=10)
+    # Header background — match panel edges exactly so no gap at top
+    header_bg = draw_rounded_rect(ax, chat_x, chat_y + chat_h - header_h, chat_w, header_h, 12, COLOR_BG_ELEVATED, zorder=50)
+    # Cover the bottom rounded corners of the header bg so it's flat where it meets the body
+    header_cover = patches.Rectangle((chat_x, chat_y + chat_h - header_h), chat_w, header_h/2, facecolor=COLOR_BG_ELEVATED, edgecolor='none', zorder=50)
+    ax.add_patch(header_cover)
+    # Header divider line
+    ax.plot([chat_x, chat_x + chat_w], [chat_y + chat_h - header_h, chat_y + chat_h - header_h], color=COLOR_BORDER, linewidth=1, zorder=50)
+    ax.text(chat_x + 20, chat_y + chat_h - header_h/2, "HyperPerfect", fontsize=11, fontweight=700, color=COLOR_TEXT_PRIMARY, zorder=51, va='center', fontfamily=FONT_FAMILY)
+    ax.text(chat_x + chat_w - 20, chat_y + chat_h - header_h/2, "AI Chat", fontsize=10, color=COLOR_TEXT_SECONDARY, zorder=51, ha='right', va='center', fontfamily=FONT_FAMILY)
 
     # Input Box Area
-    draw_rounded_rect(ax, chat_x + 15, chat_y + 15, chat_w - 30, input_h, 20, '#ffffff', '#ced4da', lw=1.5, zorder=10)
+    draw_rounded_rect(ax, chat_x + 15, chat_y + 15, chat_w - 30, input_h, 12, COLOR_BG_PAGE, COLOR_BORDER, lw=1, zorder=10)
 
     # Send Button
-    circle = patches.Circle((chat_x + chat_w - 45, chat_y + 45), 18, color='#0d6efd', zorder=52)
+    circle = patches.Circle((chat_x + chat_w - 45, chat_y + 45), 18, color=COLOR_BRAND, zorder=52)
     ax.add_patch(circle)
     triangle = patches.Polygon([[chat_x + chat_w - 49, chat_y + 52], [chat_x + chat_w - 49, chat_y + 38], [chat_x + chat_w - 37, chat_y + 45]], color='white', zorder=53)
     ax.add_patch(triangle)
 
 def draw_user_message(text, y_pos):
-    """Draw a user message (right-aligned, gray background)"""
+    """Draw a user message (right-aligned, matching app design)"""
     bubble_w = 480
-    bubble_h = 75
+    bubble_h = 55
     bubble_x = chat_x + chat_w - bubble_w - 20
 
-    # Higher zorder for user bubble to appear in GIF
-    # Use a more distinct gray (#e5e5e5) so it doesn't get quantized to white in the GIF's 256-color palette
+    # User bubble: #eff1f5 bg, 8px radius, no border
     bubble = patches.FancyBboxPatch((bubble_x, y_pos), bubble_w, bubble_h,
-                                     boxstyle="round,pad=0,rounding_size=15",
-                                     facecolor='#e5e5e5', edgecolor='#d0d0d0', linewidth=1, zorder=60)
+                                     boxstyle="round,pad=0,rounding_size=8",
+                                     facecolor=COLOR_BG_USER, edgecolor='none', linewidth=0, zorder=60)
     ax.add_patch(bubble)
     # User label
-    ax.text(bubble_x + 15, y_pos + bubble_h - 25, "User", fontsize=8, color='#212529', zorder=61, fontweight='bold')
-    ax.text(bubble_x + 15, y_pos + bubble_h - 36, text, fontsize=13, color='#212529', zorder=61, va='top', fontweight='500')
+    ax.text(bubble_x + 15, y_pos + bubble_h - 20, "User", fontsize=8, color=COLOR_TEXT_PRIMARY, zorder=61, fontweight=600, fontfamily=FONT_FAMILY)
+    ax.text(bubble_x + 15, y_pos + bubble_h - 31, text, fontsize=8, color=COLOR_TEXT_PRIMARY, zorder=61, va='top', fontweight=400, fontfamily=FONT_FAMILY)
 
 def wrap_text(text, max_chars=38):
     """Manually wrap text at word boundaries"""
@@ -90,7 +110,7 @@ def wrap_text(text, max_chars=38):
     return "\n".join(lines)
 
 def draw_bot_message(text, y_pos, final_height=None):
-    """Draw a bot message (left-aligned, white background, no outline)"""
+    """Draw a bot message (left-aligned, transparent bg, matching app design)"""
     bubble_w = 380
     if final_height is not None:
         bubble_h = final_height
@@ -98,17 +118,18 @@ def draw_bot_message(text, y_pos, final_height=None):
         bubble_h = max(60, len(text) // 35 * 20 + 40)
     bubble_x = chat_x + 20
 
-    # Higher zorder for bot bubble
+    # Assistant messages: transparent background, no bubble (matches app)
+    # Invisible rect just for layout spacing
     bubble = patches.FancyBboxPatch((bubble_x, y_pos), bubble_w, bubble_h,
-                                     boxstyle="round,pad=0,rounding_size=15",
-                                     facecolor='#ffffff', edgecolor='none', linewidth=0, zorder=60)
+                                     boxstyle="round,pad=0,rounding_size=8",
+                                     facecolor=COLOR_BG_PAGE, edgecolor='none', linewidth=0, zorder=60)
     ax.add_patch(bubble)
 
-    # HyperPerfect label
-    ax.text(bubble_x + 10, y_pos + bubble_h - 18, "HyperPerfect", fontsize=7, color='#0d6efd', zorder=61, fontweight='bold')
-    # Text with manual wrapping to prevent bleeding outside bubble
+    # HyperPerfect label - brand color, semibold
+    ax.text(bubble_x + 10, y_pos + bubble_h - 18, "HyperPerfect", fontsize=7, color=COLOR_BRAND, zorder=61, fontweight=600, fontfamily=FONT_FAMILY)
+    # Text with manual wrapping
     wrapped_text = wrap_text(text)
-    ax.text(bubble_x + 15, y_pos + bubble_h - 32, wrapped_text, fontsize=13, color='#212529', zorder=61, va='top', fontweight='500')
+    ax.text(bubble_x + 15, y_pos + bubble_h - 32, wrapped_text, fontsize=8, color=COLOR_TEXT_PRIMARY, zorder=61, va='top', fontweight=400, fontfamily=FONT_FAMILY)
 
 def draw_thinking_indicator(y_pos):
     """Draw thinking indicator"""
@@ -116,15 +137,15 @@ def draw_thinking_indicator(y_pos):
     bubble_h = 50
     bubble_x = chat_x + 20
 
-    draw_rounded_rect(ax, bubble_x, y_pos, bubble_w, bubble_h, 15, '#ffffff')
-    ax.text(bubble_x + 10, y_pos + 32, "HyperPerfect", fontsize=7, color='#0d6efd', zorder=3, fontweight='bold')
-    ax.text(bubble_x + 15, y_pos + 18, "Thinking...", fontsize=9, color='#666666', zorder=3, va='top', style='italic')
+    draw_rounded_rect(ax, bubble_x, y_pos, bubble_w, bubble_h, 8, COLOR_BG_PAGE)
+    ax.text(bubble_x + 10, y_pos + 32, "HyperPerfect", fontsize=7, color=COLOR_BRAND, zorder=3, fontweight=600, fontfamily=FONT_FAMILY)
+    ax.text(bubble_x + 15, y_pos + 18, "Thinking...", fontsize=9, color=COLOR_TEXT_SECONDARY, zorder=3, va='top', style='italic', fontfamily=FONT_FAMILY)
 
 def draw_input_placeholder(text, show_cursor=True):
     """Draw input text in the input box"""
     cursor = "|" if show_cursor else ""
     # zorder must be higher than input box background (zorder=10)
-    ax.text(chat_x + 30, chat_y + 40, text + cursor, fontsize=11, color='#212529', zorder=15, fontweight='normal')
+    ax.text(chat_x + 30, chat_y + 40, text + cursor, fontsize=8, color=COLOR_TEXT_PRIMARY, zorder=15, fontweight=400, fontfamily=FONT_FAMILY)
 
 def draw_file_attachment():
     """Draw a file attachment indicator above the input box"""
@@ -139,23 +160,23 @@ def draw_file_attachment():
     ab = AnnotationBbox(imagebox, (icon_x, icon_y), frameon=False, zorder=16)
     ax.add_artist(ab)
 
-    # "File Uploaded:" label (outside the pill, thin, grey)
-    ax.text(base_x + 28, base_y + pill_h/2, "File Uploaded:", fontsize=8, color='#888888',
-            ha='left', va='center', zorder=16, fontweight='300')
+    # "File Uploaded:" label (outside the pill, tertiary color)
+    ax.text(base_x + 28, base_y + pill_h/2, "File Uploaded:", fontsize=8, color=COLOR_TEXT_TERTIARY,
+            ha='left', va='center', zorder=16, fontweight=400, fontfamily=FONT_FAMILY)
 
     # Pill only around the filename
     pill_x = base_x + 175
     pill_w = 220
 
-    # Light blue background pill (only around filename)
+    # File attachment pill (matching app: #f2f3f6 bg, #e2e5eb border)
     pill = patches.FancyBboxPatch((pill_x, base_y), pill_w, pill_h,
-                                   boxstyle="round,pad=0,rounding_size=8",
-                                   facecolor='#e7f1ff', edgecolor='#b6d4fe', linewidth=1, zorder=15)
+                                   boxstyle="round,pad=0,rounding_size=4",
+                                   facecolor=COLOR_BG_TOOL, edgecolor=COLOR_BORDER, linewidth=1, zorder=15)
     ax.add_patch(pill)
 
-    # Filename (blue, normal weight, inside the pill)
-    ax.text(pill_x + 10, base_y + pill_h/2, "Apple Financials.pdf", fontsize=8, color='#0d6efd',
-            ha='left', va='center', zorder=16, fontweight='500')
+    # Filename (brand color, medium weight)
+    ax.text(pill_x + 10, base_y + pill_h/2, "Apple Financials.pdf", fontsize=8, color=COLOR_BRAND,
+            ha='left', va='center', zorder=16, fontweight=500, fontfamily=FONT_FAMILY)
 
 def draw_excel_cell(x, y, w, h, text, color='white', text_color='#212529', fontweight='normal', fontsize=10, highlight=False, is_formula=False, align='center', fontfamily='sans-serif'):
     """Draw an Excel cell"""
@@ -181,7 +202,7 @@ def draw_excel_cell(x, y, w, h, text, color='white', text_color='#212529', fontw
 
 # Cell reference colors for formula highlighting
 CELL_REF_COLORS = {
-    'C4': '#0d6efd',    # Blue - Discount Rate
+    'C4': COLOR_BRAND,  # Blue - Discount Rate
     'G9': '#dc3545',    # Red - FCF 2028E
     'C3': '#6f42c1',    # Purple - Terminal Multiple (moved to row 3)
     'C9:G9': '#198754', # Green - FCF range
@@ -367,7 +388,7 @@ projection_data = {
 }
 
 # --- PHASE 1: User Input (0-30 frames) ---
-input_text = "Do a quick Apple valuation"
+input_text = "Perform a DCF analysis on Apple"
 apple_typed_index = input_text.lower().find("apple") + len("apple")  # Show after "Apple" is typed
 for i in range(0, len(input_text) + 1, 2):
     frames.append({
@@ -396,20 +417,20 @@ for i in range(5):
         'phase': 'message_sent',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0}
+            {'text': 'Perform a DCF analysis on Apple', 'is_user': True, 'order': 0}
         ],
         'excel_content': [],
     })
 
 # First bot message streams
-first_response = "Researching assumptions online"
+first_response = "Researching assumptions online..."
 first_response_height = 55  # Shorter text, no wrapping needed
 for i in range(5, len(first_response) + 1, 10):
     frames.append({
         'phase': 'bot_responding',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
+            {'text': 'Perform a DCF analysis on Apple', 'is_user': True, 'order': 0},
             {'text': first_response[:min(i, len(first_response))], 'is_user': False, 'order': 1, 'final_height': first_response_height}
         ],
         'excel_content': [],
@@ -421,7 +442,7 @@ for i in range(6):
         'phase': 'bot_complete',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
+            {'text': 'Perform a DCF analysis on Apple', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height}
         ],
         'excel_content': [],
@@ -434,7 +455,7 @@ for i in range(1):
         'phase': 'excel_assumptions',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
+            {'text': 'Perform a DCF analysis on Apple', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height}
         ],
         'excel_content': [
@@ -448,7 +469,7 @@ for i in range(6):
         'phase': 'excel_assumptions',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
+            {'text': 'Perform a DCF analysis on Apple', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height}
         ],
         'excel_content': [
@@ -457,7 +478,7 @@ for i in range(6):
     })
 
 # --- PHASE 4: Second Bot Response (155-195) ---
-second_response = "Adding financials from PDF"
+second_response = "Extracting financials from PDF..."
 second_response_height = 55  # Shorter text, no wrapping needed
 
 for i in range(5, len(second_response) + 1, 10):
@@ -465,7 +486,7 @@ for i in range(5, len(second_response) + 1, 10):
         'phase': 'bot_responding',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
+            {'text': 'Perform a DCF analysis on Apple', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response[:min(i, len(second_response))], 'is_user': False, 'order': 2, 'final_height': second_response_height}
         ],
@@ -480,7 +501,7 @@ for i in range(6):
         'phase': 'bot_complete',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
+            {'text': 'Perform a DCF analysis on Apple', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height}
         ],
@@ -496,7 +517,7 @@ for i in range(1):
         'phase': 'excel_projections',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
+            {'text': 'Perform a DCF analysis on Apple', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height}
         ],
@@ -512,7 +533,7 @@ for i in range(6):
         'phase': 'excel_complete',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
+            {'text': 'Perform a DCF analysis on Apple', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height}
         ],
@@ -523,7 +544,7 @@ for i in range(6):
     })
 
 # --- PHASE 6: Third Bot Response (280-320) ---
-third_response = "Building Excel formulas"
+third_response = "Building Excel formulas..."
 third_response_height = 55  # Shorter text, no wrapping needed
 
 for i in range(5, len(third_response) + 1, 10):
@@ -531,7 +552,7 @@ for i in range(5, len(third_response) + 1, 10):
         'phase': 'bot_responding',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
+            {'text': 'Perform a DCF analysis on Apple', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height},
             {'text': third_response[:min(i, len(third_response))], 'is_user': False, 'order': 3, 'final_height': third_response_height}
@@ -548,7 +569,7 @@ for i in range(6):
         'phase': 'bot_complete',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
+            {'text': 'Perform a DCF analysis on Apple', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height},
             {'text': third_response, 'is_user': False, 'order': 3, 'final_height': third_response_height}
@@ -566,7 +587,7 @@ for step in range(4):
         'phase': 'excel_formulas',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
+            {'text': 'Perform a DCF analysis on Apple', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height},
             {'text': third_response, 'is_user': False, 'order': 3, 'final_height': third_response_height}
@@ -584,7 +605,7 @@ for step in range(4):
         'phase': 'excel_formulas',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
+            {'text': 'Perform a DCF analysis on Apple', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height},
             {'text': third_response, 'is_user': False, 'order': 3, 'final_height': third_response_height}
@@ -604,7 +625,7 @@ for i in range(0, len(enterprise_formula) + 1, 10):
         'phase': 'excel_formulas',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
+            {'text': 'Perform a DCF analysis on Apple', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height},
             {'text': third_response, 'is_user': False, 'order': 3, 'final_height': third_response_height}
@@ -622,7 +643,7 @@ for i in range(8):
         'phase': 'excel_formulas',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
+            {'text': 'Perform a DCF analysis on Apple', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height},
             {'text': third_response, 'is_user': False, 'order': 3, 'final_height': third_response_height}
@@ -640,7 +661,7 @@ for i in range(25):
         'phase': 'excel_formulas',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
+            {'text': 'Perform a DCF analysis on Apple', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height},
             {'text': third_response, 'is_user': False, 'order': 3, 'final_height': third_response_height}
@@ -659,7 +680,7 @@ for step in range(2):
         'phase': 'excel_final',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
+            {'text': 'Perform a DCF analysis on Apple', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height},
             {'text': third_response, 'is_user': False, 'order': 3, 'final_height': third_response_height}
@@ -677,7 +698,7 @@ for i in range(25):
         'phase': 'hold',
         'input_text': '',
         'chat_messages': [
-            {'text': 'Do a quick Apple valuation', 'is_user': True, 'order': 0},
+            {'text': 'Perform a DCF analysis on Apple', 'is_user': True, 'order': 0},
             {'text': first_response, 'is_user': False, 'order': 1, 'final_height': first_response_height},
             {'text': second_response, 'is_user': False, 'order': 2, 'final_height': second_response_height},
             {'text': third_response, 'is_user': False, 'order': 3, 'final_height': third_response_height}
@@ -816,7 +837,7 @@ def update(frame_data):
                     draw_cell_reference_highlights(ax, partial_formula, start_x, start_y, cell_w, cell_h)
                 elif formula_step >= 7:
                     # Show calculated value (no cell highlights, black bold text)
-                    draw_excel_cell(start_x + cell_w * 2, current_excel_y, cell_w, cell_h, '$2.1T', 'white', text_color='#212529', fontsize=10, fontweight='bold', highlight=False, fontfamily='sans-serif')
+                    draw_excel_cell(start_x + cell_w * 2, current_excel_y, cell_w, cell_h, '$2.1T', 'white', text_color='#212529', fontsize=8, fontweight='bold', highlight=False, fontfamily='sans-serif')
 
         elif content_type == 'final':
             # Draw final result (all calculations complete)
@@ -828,18 +849,38 @@ def update(frame_data):
 
             # Enterprise Value row (row 12, always bold)
             draw_excel_cell(start_x, current_excel_y, cell_w, cell_h, 'Enterprise Value', '#fff3cd', fontsize=8, fontweight='bold', align='left')
-            draw_excel_cell(start_x + cell_w * 2, current_excel_y, cell_w, cell_h, '$2.1T', 'white', text_color='#212529', fontsize=10, fontweight='bold', highlight=False, fontfamily='sans-serif')
+            draw_excel_cell(start_x + cell_w * 2, current_excel_y, cell_w, cell_h, '$2.1T', 'white', text_color='#212529', fontsize=8, fontweight='bold', highlight=False, fontfamily='sans-serif')
 
 # Generate animation
 ani = FuncAnimation(fig, update, frames=frames, interval=67, repeat=True)
-ani.save('dcf_apple_demo.gif', writer=PillowWriter(fps=10))
+
+# Save as MP4 (primary format - crisp, small file)
+from matplotlib.animation import FFMpegWriter
+mp4_writer = FFMpegWriter(fps=10, codec='libx264', extra_args=['-pix_fmt', 'yuv420p', '-crf', '23'])
+import os
+
+# Output directly to public/images/ for the website
+output_dir = os.path.normpath(os.path.join(os.path.dirname(__file__), '..', '..', 'public', 'images'))
+os.makedirs(output_dir, exist_ok=True)
+
+mp4_path = os.path.join(output_dir, 'dcf_apple_demo.mp4')
+gif_path = os.path.join(output_dir, 'dcf_apple_demo.gif')
+png_path = os.path.join(output_dir, 'dcf_apple_demo_final.png')
+
+ani.save(mp4_path, writer=mp4_writer)
+
+# Save as GIF (fallback)
+ani.save(gif_path, writer=PillowWriter(fps=10))
 
 # Generate final frame as PNG
 update(frames[-1])
-plt.savefig('dcf_apple_demo_final.png', dpi=150, bbox_inches='tight', facecolor='#ffffff')
+plt.savefig(png_path, dpi=150, bbox_inches='tight', facecolor='#ffffff')
 plt.close()
 
-print("✓ DCF animation generated successfully: dcf_apple_demo.gif")
+mp4_size = os.path.getsize(mp4_path) / 1024
+gif_size = os.path.getsize(gif_path) / 1024
+print(f"✓ MP4: {mp4_path} ({mp4_size:.0f}KB)")
+print(f"✓ GIF: {gif_path} ({gif_size:.0f}KB)")
 print(f"✓ Total frames: {len(frames)}")
 print(f"✓ Duration: ~{len(frames) / 10:.1f} seconds at 10fps")
-print("✓ Final frame saved as: dcf_apple_demo_final.png")
+print(f"✓ Final frame saved as: {png_path}")

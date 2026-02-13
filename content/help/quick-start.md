@@ -106,12 +106,19 @@ Once you're signed in, the AI chat interface opens with these components:
 - **Clear button** resets the conversation
 - **Help button** opens documentation
 
-### Memory Indicator
+### Context Indicator
 
-The Memory indicator shows how much of the AI's memory is being used:
-- **Green (0-70%)** - Plenty of room for conversation
-- **Orange (70-85%)** - Consider using @compact command to free space
-- **Red (85%+)** - System will auto-compact to free memory
+The context indicator shows how much of the AI's working memory is in use. Think of it like a whiteboard: AI can only hold so much information at once. The longer your conversation, the more of that whiteboard fills up — and when it's full, AI loses access to earlier details and becomes less accurate.
+
+**Keeping context low is one of the most impactful things you can do to improve AI performance.** A fresh conversation with focused instructions will dramatically outperform a long, sprawling one.
+
+| Color | Percentage | What to Do |
+|-------|------------|------------|
+| **Green** | 0-70% | No action needed |
+| **Orange** | 70-85% | Consider using **@compact** or starting fresh with **@clear** |
+| **Red** | 85%+ | System will auto-compact to free memory |
+
+When auto-compact triggers, HyperPerfect summarizes your conversation history into a concise handoff and starts a new conversation. The high-level context (what you were working on, what's been done) is preserved, but specific details from earlier messages will be lost.
 
 ### Keyboard Shortcuts
 
@@ -259,11 +266,14 @@ You can upload files for the AI to analyze alongside your Excel data:
 
 ### Managing Context
 
-When your conversation gets long, the context indicator will show higher percentages. You can:
+Every message you send and every response AI generates adds to the context window. As it fills up, AI performance degrades — it becomes more likely to make mistakes, forget instructions, or produce lower-quality output.
 
-- Use **@compact** to summarize old messages and free space
-- Use **@clear** to start completely fresh
-- The system will auto-compact at 85% to prevent issues
+**Best practices:**
+
+- **Start fresh often.** When you finish a task, use **@clear** before starting the next one. A clean slate gives AI the best chance of getting things right.
+- **Use @compact** to preserve a summary of your work while freeing up space. This keeps the high-level context but drops the specifics.
+- **Break big projects into focused sessions.** Instead of one long conversation that builds a full model, do it in steps: build the structure in one session, refine formulas in another.
+- At **85% capacity**, the system will auto-compact automatically to prevent context overflow.
 
 ---
 
