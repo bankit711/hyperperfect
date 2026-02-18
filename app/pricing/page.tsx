@@ -1,6 +1,7 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { Suspense, useState, useEffect } from "react"
+import { useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { Menu, X, Check, Brain, Zap } from "lucide-react"
 import { motion } from "framer-motion"
@@ -41,9 +42,21 @@ const faqs = [
 ]
 
 export default function PricingPage() {
+  return (
+    <Suspense>
+      <PricingContent />
+    </Suspense>
+  )
+}
+
+function PricingContent() {
+  const searchParams = useSearchParams()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [openFaq, setOpenFaq] = useState<number | null>(null)
+
+  const customerEmail = searchParams.get("prefilled_email")
+  const clientReferenceId = searchParams.get("client_reference_id")
 
   useEffect(() => {
     const handleScroll = () => {
@@ -213,6 +226,8 @@ export default function PricingPage() {
           <stripe-pricing-table
             pricing-table-id="prctbl_1T21rxDOJmTSL9boHIbfoDEW"
             publishable-key="pk_live_51RYDdyDOJmTSL9bo2I6ROKMgt8gXYnRAq8XIkIgxpsfk9q5lUQjKb8xH5rdtjYYZXfi3gMcrLjtEqIQaYb7jedgV00l4ZM43yO"
+            {...(clientReferenceId ? { "client-reference-id": clientReferenceId } : {})}
+            {...(customerEmail ? { "customer-email": customerEmail } : {})}
           />
         </div>
       </div>
