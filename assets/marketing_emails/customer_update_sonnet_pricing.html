@@ -51,7 +51,7 @@
 
               <!-- Greeting -->
               <p style="margin: 0 0 20px 0; font-size: 14px; line-height: 1.6; color: #374151;">
-                Hey {{contact.FIRSTNAME}},
+                Hey {{ contact.FIRSTNAME | default: "there" }},
               </p>
 
               <!-- Intro -->

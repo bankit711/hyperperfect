@@ -10,7 +10,7 @@
 
 ---
 
-Hey {{contact.FIRSTNAME}},
+Hey {{ contact.FIRSTNAME | default: "there" }},
 
 Two important updates.
 
