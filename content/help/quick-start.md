@@ -1,30 +1,15 @@
 ---
 title: "Quick Start Guide"
-description: "Transform your Excel workflow in 5 minutes. Install the add-in and start chatting with AI inside Excel."
+description: "Install the HyperPerfect add-in in Excel, sign in with your Microsoft account, and start chatting with AI. No separate account or software needed."
 order: 1
 category: "Getting Started"
 ---
 
-**What You'll Experience:**
-- Chat naturally - "Add a sum total row" or "Create a summary table"
-- Instant results - AI reads and writes to your Excel sheet in real-time
-- Smart assistance - Track the AI's thinking process as it works
-- Supercharge Excel tasks - Checking analyses, cleaning data, building models, and more
-- Iterative refinement - Follow up to adjust and build upon your work in real time
+## Install the Add-in
 
-## Get Started
+<a href="https://marketplace.microsoft.com/en-us/product/saas/wa200008526" target="_blank" rel="noopener noreferrer" style={{display:"inline-block",background:"#1a7bff",color:"white",fontWeight:700,fontSize:"16px",padding:"12px 28px",borderRadius:"8px",textDecoration:"none"}}>Get HyperPerfect on AppSource →</a>
 
-### Step 1: Install the Excel Add-in (2 minutes)
-
-**You can start using HyperPerfect immediately** - no signup required. Just install the add-in and open it in Excel. You'll sign in automatically through your Microsoft account.
-
-**For Individual Users & Home Use:**
-
-#### Microsoft AppSource Store Download (Recommended)
-
-Install directly from the Microsoft AppSource store:
-
-[Get HyperPerfect on AppSource](https://marketplace.microsoft.com/en-us/product/saas/wa200008526)
+Or install directly from within Excel:
 
 #### Windows Desktop
 
@@ -54,7 +39,7 @@ Install directly from the Microsoft AppSource store:
 
 **Note:** Excel Online works on any browser (Chrome, Edge, Safari, Firefox) on any device. Changes sync automatically to your OneDrive or SharePoint.
 
-**For Company/Enterprise Users:**
+### For Company/Enterprise Users
 
 If you're using Excel at work:
 
@@ -63,7 +48,7 @@ If you're using Excel at work:
 3. **Work Microsoft accounts** - Installation happens through your work Microsoft account automatically.
 4. **All platforms supported** - Your IT department can deploy to Windows, Mac, and web (Excel Online).
 
-**For IT Administrators:**
+### For IT Administrators
 
 Use the [Microsoft 365 Admin Center](https://admin.microsoft.com/) for centralized deployment:
 
@@ -75,7 +60,7 @@ Use the [Microsoft 365 Admin Center](https://admin.microsoft.com/) for centraliz
 
 **Important:** Add-ins can take **24-72 hours** to appear on users' ribbons after deployment.
 
-### Step 2: Start Your First Chat (1 minute)
+## Start Your First Chat
 
 1. **Open HyperPerfect** - the AI chat opens automatically after sign-in
 2. **Type a request** like "Analyze this data and create a summary table"

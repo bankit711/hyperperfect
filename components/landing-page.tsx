@@ -47,6 +47,7 @@ export default function LandingPage() {
               {[
                 { href: "/help/quick-start", label: "Quick Start" },
                 { href: "/help/why-hyperperfect", label: "Benefits" },
+                { href: "/pricing", label: "Pricing" },
                 { href: "/help", label: "Help" },
                 { href: "/resources", label: "Resources" },
               ].map((link) => (
@@ -111,6 +112,13 @@ export default function LandingPage() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Benefits
+              </Link>
+              <Link
+                href="/pricing"
+                className="text-white text-3xl font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Pricing
               </Link>
               <Link
                 href="/help"
