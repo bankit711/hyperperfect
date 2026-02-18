@@ -2,51 +2,9 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Menu, X, Check, Brain, ArrowRight, Zap } from "lucide-react"
+import { Menu, X, Check, Brain, Zap } from "lucide-react"
 import { motion } from "framer-motion"
-
-const tiers = [
-  {
-    name: "Free",
-    price: "$0",
-    period: "forever",
-    description: "Get started with no commitment. 5x usage for your first 30 days.",
-    cta: "Get Started Free",
-    ctaHref: "/help/quick-start",
-    highlighted: false,
-    badge: null,
-  },
-  {
-    name: "Starter",
-    price: "$20",
-    period: "/month",
-    description: "For occasional users who want AI assist when they need it.",
-    cta: "Get Started",
-    ctaHref: "/help/quick-start",
-    highlighted: false,
-    badge: null,
-  },
-  {
-    name: "Pro",
-    price: "$50",
-    period: "/month",
-    description: "For regular users who rely on AI in their daily Excel work.",
-    cta: "Go Pro",
-    ctaHref: "/help/quick-start",
-    highlighted: true,
-    badge: "Most Popular",
-  },
-  {
-    name: "Power",
-    price: "$180",
-    period: "/month",
-    description: "For power users running complex analyses and heavy daily use.",
-    cta: "Go Power",
-    ctaHref: "/help/quick-start",
-    highlighted: false,
-    badge: null,
-  },
-]
+import Script from "next/script"
 
 const features = [
   "AI chat assistant inside Excel",
@@ -247,61 +205,15 @@ export default function PricingPage() {
         </div>
       </div>
 
-      {/* Pricing Cards */}
-      <div className="relative z-10 bg-surface-secondary px-4 pb-20">
-        <div className="container mx-auto max-w-6xl mt-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6">
-            {tiers.map((tier, i) => (
-              <motion.div
-                key={tier.name}
-                className={`relative rounded-lg p-8 flex flex-col transition-all duration-150 ${
-                  tier.highlighted
-                    ? "bg-white border-2 border-brand shadow-hero -mt-2 md:-mt-4 pb-10"
-                    : "bg-white border border-hp-border shadow-card mt-2 md:mt-0"
-                }`}
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.15 + i * 0.1, ease: "easeOut" }}
-              >
-                {tier.badge && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                    <span className="bg-brand text-white text-sm font-bold px-4 py-1.5 rounded-full whitespace-nowrap">
-                      {tier.badge}
-                    </span>
-                  </div>
-                )}
-
-                <h3 className="text-lg font-bold text-hp-text-primary mb-1">
-                  {tier.name}
-                </h3>
-
-                <div className="mb-4">
-                  <span className="text-4xl font-bold text-hp-text-primary">
-                    {tier.price}
-                  </span>
-                  <span className="text-hp-text-secondary ml-1">
-                    {tier.period}
-                  </span>
-                </div>
-
-                <p className="text-hp-text-secondary text-sm mb-6 flex-grow">
-                  {tier.description}
-                </p>
-
-                <Link
-                  href={tier.ctaHref}
-                  className={`inline-flex items-center justify-center w-full whitespace-nowrap rounded-lg text-lg font-bold transition-all duration-150 focus-visible:outline-none px-6 py-3.5 group ${
-                    tier.highlighted
-                      ? "bg-brand text-white hover:bg-brand-hover shadow-button-glow"
-                      : "bg-surface-secondary text-hp-text-primary border border-hp-border hover:border-brand hover:text-brand"
-                  }`}
-                >
-                  {tier.cta}
-                  <ArrowRight size={18} className="ml-2 group-hover:translate-x-0.5 transition-transform" />
-                </Link>
-              </motion.div>
-            ))}
-          </div>
+      {/* Stripe Pricing Table */}
+      <div className="relative z-10 bg-surface-secondary px-4 py-16">
+        <div className="mx-auto max-w-[1400px]">
+          <Script async src="https://js.stripe.com/v3/pricing-table.js" />
+          {/* @ts-expect-error Stripe pricing table is a custom element */}
+          <stripe-pricing-table
+            pricing-table-id="prctbl_1T21rxDOJmTSL9boHIbfoDEW"
+            publishable-key="pk_live_51RYDdyDOJmTSL9bo2I6ROKMgt8gXYnRAq8XIkIgxpsfk9q5lUQjKb8xH5rdtjYYZXfi3gMcrLjtEqIQaYb7jedgV00l4ZM43yO"
+          />
         </div>
       </div>
 
