@@ -18,7 +18,7 @@ Two important updates.
 
 Up until now, usage has been open. Starting today, each account will have a monthly usage allowance based on your plan. We've kept it simple: every feature is available on every plan. The only difference is how much you can use each month.
 
-- **Free.** $0 forever. 5x usage for your first 30 days.
+- **Free.** $0 forever. 5x usage for your first month.
 - **Starter.** $20/month. For occasional users who want AI assist when they need it.
 - **Pro.** $50/month. For regular users who rely on AI in their daily Excel work.
 - **Power.** $180/month. For power users running complex analyses and heavy daily use.

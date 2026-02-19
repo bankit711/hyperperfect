@@ -14,7 +14,7 @@ const features = [
   "Custom instructions per account",
   "Conversation history with context compaction",
   "Multi-step task tracking",
-  "Fast mode (Claude Sonnet 4.5)",
+  "Fast mode (Claude Sonnet 4.6)",
   "Smart mode (Claude Opus 4.6)",
 ]
 
@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     q: "What's the difference between Fast and Smart mode?",
-    a: "Fast mode uses Claude Sonnet 4.5 — great for quick tasks, formatting, and simple analysis. Smart mode uses Claude Opus 4.6 — the most capable reasoning model, ideal for complex financial modeling and multi-step analysis. Both are available on every plan.",
+    a: "Fast mode uses Claude Sonnet 4.6 — great for quick tasks, formatting, and simple analysis. Smart mode uses Claude Opus 4.6 — the most capable reasoning model, ideal for complex financial modeling and multi-step analysis. Both are available on every plan.",
   },
   {
     q: "Can I switch plans later?",
@@ -33,7 +33,7 @@ const faqs = [
   },
   {
     q: "How does the free plan work?",
-    a: "The Free plan gives you ongoing access with a base usage allowance. During your first 30 days, you get 5x normal free usage to explore everything. After that, you stay on Free unless you upgrade — no data is lost either way.",
+    a: "The Free plan gives you ongoing access with a base usage allowance. During your first month, you get 5x normal free usage to explore everything. After that, you stay on Free unless you upgrade — no data is lost either way.",
   },
   {
     q: "Is my data secure?",
@@ -283,7 +283,7 @@ function PricingContent() {
                 <h3 className="font-bold text-hp-text-primary">Fast Mode</h3>
               </div>
               <p className="text-sm text-hp-text-secondary">
-                Claude Sonnet 4.5 — optimized for speed. Great for quick lookups, formatting, and simple tasks. Lower cost per interaction.
+                Claude Sonnet 4.6 — optimized for speed. Great for quick lookups, formatting, and simple tasks. Lower cost per interaction.
               </p>
             </div>
             <div className="rounded-lg border border-hp-border bg-surface-secondary p-6">
@@ -377,7 +377,7 @@ function PricingContent() {
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
           >
-            Free forever. No credit card. 5x usage for your first 30 days.
+            Free forever. No credit card. 5x usage for your first month.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
