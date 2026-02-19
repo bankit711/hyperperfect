@@ -9,6 +9,53 @@ All notable changes to HyperPerfect are documented here.
 
 ---
 
+## [1.0.30]
+
+### Usage Breakdown in Settings
+See exactly how your AI usage is distributed day by day.
+
+- **Daily Spend Table**: View per-day costs as a percentage of your monthly limit
+- **Today Highlighted**: Today's usage is called out so you can track active sessions
+- **Monthly Overview**: Spend bar shows your total usage against your plan limit at a glance
+- **Subscription Management**: Manage or upgrade your plan directly from the settings panel
+
+---
+
+## [1.0.29]
+
+### Free Tier After Trial
+Your work doesn't stop when your trial ends.
+
+- **Automatic Free Tier**: Accounts transition to a free tier when their trial expires — no hard cutoff
+- **Keep Working**: Continue using HyperPerfect with a modest monthly usage allowance
+- **Easy Upgrade**: Upgrade to a paid plan anytime from the settings panel when you need more
+
+---
+
+## [1.0.28]
+
+### Model Upgrades
+Both modes now run on newer, more capable Claude models.
+
+- **Fast Mode → Claude Sonnet 4.6**: Faster responses now powered by Sonnet 4.6 with adaptive thinking — a significant upgrade from Haiku
+- **Power Mode → Claude Opus 4.6**: Complex analysis now uses Opus 4.6, Anthropic's most capable model
+- **Better Results Across the Board**: Both modes deliver higher quality responses on the same tasks
+
+---
+
+## [1.0.27]
+
+### Custom Instructions
+Teach HyperPerfect about your workflow and it will remember across every conversation.
+
+- **Persistent Context**: Write instructions once and they're included in every AI request automatically
+- **@settings Command**: Type `@settings` or use the settings button to open your preferences panel
+- **Improve with AI**: Rough notes? Click "Improve with AI" to have Claude rewrite them into clear, well-structured instructions
+- **Undo Support**: Made a change you don't like? Undo restores your previous instructions even after closing the panel
+- **Autosave**: Changes save automatically as you type — no save button needed
+
+---
+
 ## [1.0.26]
 
 ### Real-Time Thinking Display
