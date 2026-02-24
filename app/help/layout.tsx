@@ -32,6 +32,7 @@ const NAV_SECTIONS = [
     items: [
       { slug: "excel-functionality", title: "Excel Functionality" },
       { slug: "ai-prompting", title: "AI Prompting Tips" },
+      { slug: "credit-usage", title: "Managing Your Credits" },
       { slug: "troubleshooting", title: "Troubleshooting" },
     ],
   },
