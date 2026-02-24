@@ -28,6 +28,7 @@ If you run out mid-month, you'll need to wait for your reset or upgrade.
 - Every AI interaction costs credits — asking questions, generating formulas, analyzing data, formatting
 - The amount depends on three things: (1) how much data the AI reads/writes, (2) which model is doing the work, and (3) how much thinking the AI does
 - Larger datasets, more complex outputs, and harder problems that require more reasoning = more credits
+- **AI responses cost more than input.** Sending data and prompts to the AI is relatively cheap — the expensive part is what the AI writes back, often costing 5x more per unit. Long, detailed responses use significantly more credits than short ones. This is another reason being specific about what you want (and what you don't) helps keep costs down.
 
 ## Memory and the Context Window
 
@@ -43,9 +44,13 @@ Each message you send adds to that memory:
 
 As you work, the memory gradually fills up. HyperPerfect uses caching to keep costs efficient — older parts of the conversation are cached so you're not paying full price to re-process them every time. But a fuller memory still means more data for the AI to work with, so credit usage does increase gradually as the conversation grows.
 
+### The Memory Display
+
+You'll see a **memory percentage** in the HyperPerfect panel. This shows how much of your conversation's available memory is currently in use. It goes up as you exchange messages, read data, and get responses — and resets to zero when you clear the conversation.
+
 ### When to Reset
 
-You can see your current memory usage in the HyperPerfect panel. If you're done with one task and starting something unrelated, use `@clear` to empty the memory. Starting fresh keeps things snappy and avoids carrying old context you no longer need.
+If you're done with one task and starting something unrelated, use `@clear` to empty the memory. Starting fresh keeps things snappy and avoids carrying old context you no longer need.
 
 When memory gets completely full, the AI will automatically compact older parts of the conversation to make room — but some earlier details may be summarized or dropped in the process.
 
@@ -54,8 +59,8 @@ When memory gets completely full, the AI will automatically compact older parts 
 For certain complex tasks, HyperPerfect uses **subagents** — separate AI processes that handle specific parts of a job (like reading a large table or running a multi-step analysis). Here's what you need to know:
 
 - Subagents **do use credits** — they're doing real AI work
-- Subagents **don't affect your memory bar** — they run in their own separate context and don't add to your main conversation's memory
-- This means your credit usage for a message might be higher than what the memory bar alone would suggest, especially for complex tasks that spawn subagents
+- Subagents **don't affect your memory display** — they run in their own separate context and don't add to your main conversation's memory
+- This means your credit usage for a message might be higher than what the memory percentage alone would suggest, especially for complex tasks that spawn subagents
 
 ## Smart, Fast, and Auto Modes
 
