@@ -5,7 +5,7 @@ Add new entries at the top (most recent first).
 
 ---
 
-### 2026-02-27 — HyperPerfect now picks the right AI for every task
+### 2026-02-27 — HyperPerfect is more powerful than ever 💪
 
 **Audience**: All current users (List ID: 11)
 **Features highlighted**: Auto Mode, Agent Teams
@@ -21,13 +21,11 @@ Hey {{ contact.FIRSTNAME | default: "there" }},
 
 Two things changed in HyperPerfect that you'll notice the next time you open it.
 
-**Auto Mode is now the default**
-HyperPerfect reads each request and picks the right AI for it. Simple questions get fast answers. Complex analysis gets full reasoning. You stop paying for power you don't need, and you don't have to think about which mode to use. If you want to override, type @mode.
+**HyperPerfect now empowers you with a team of agents**
+For complex tasks like building a model, analyzing a large dataset, or checking formulas across multiple sheets, HyperPerfect can now deploy specialists that work in parallel on different parts of the job. One on the Income Statement, one on the Balance Sheet, one checking the work. All at the same time. Just ask the AI to deploy subagents.
 
-**HyperPerfect can now work as a team**
-For complex tasks — building a model, analyzing a large dataset, checking formulas across multiple sheets — HyperPerfect can now deploy specialists that work in parallel on different parts of the job. One on the Income Statement, one on the Balance Sheet, one checking your work. All at the same time.
-
-This is early, but it's already the fastest way to get through a complex model.
+**Auto Mode is now the default mode for new users**
+In Auto Mode HyperPerfect reads each request and picks just the right AI model and settings for it. Simple questions get fast answers. Complex analysis gets full reasoning. You stop paying for power you don't need, extra power is there when you need it most, and best of all you don't have to think about which mode to use.
 
 See what's new →
 https://www.hyperperfect.ai/help/changelog

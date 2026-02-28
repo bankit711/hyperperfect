@@ -5,20 +5,20 @@
 
 ---
 
-**Subject:** HyperPerfect now picks the right AI for every task
+**Subject:** HyperPerfect is more powerful than ever 💪
 **Preview:** Two things changed that you'll notice the next time you open it.
 
 ---
 
 Hey {{ contact.FIRSTNAME | default: "there" }},
 
-Two things changed in HyperPerfect that you'll notice the next time you open it.
+HyperPerfect just got faster, smarter, and more capable than any other leading AI tool for Excel.
+
+**HyperPerfect now empowers you with a team of agents**
+For complex tasks like building a model, analyzing a large dataset, or checking formulas across multiple sheets, HyperPerfect can now deploy specialists that work in parallel on different parts of the job. One on the Income Statement, one on the Balance Sheet, one checking the work. All at the same time. Just ask the AI to deploy subagents.
 
 **Auto Mode is now the default for new users**
-In Auto Mode HyperPerfect reads each request and picks just the right AI model and settings for it. Simple questions get fast answers. Complex analysis gets full reasoning. You stop paying for power you don't need, extra power is there when you need it most, and best of all you don't have to think about which mode to use. 
-
-**HyperPerfect can now work as a team**
-For complex tasks like building a model, analyzing a large dataset, or checking formulas across multiple sheets, HyperPerfect can now deploy specialists that work in parallel on different parts of the job. One on the Income Statement, one on the Balance Sheet, one checking the work. All at the same time.
+In Auto Mode HyperPerfect reads each request and picks just the right AI model and settings for it. Simple questions get fast answers. Complex analysis gets full reasoning. You stop paying for power you don't need, extra power is there when you need it most, and best of all you don't have to think about which mode to use.
 
 
 See what's new →
