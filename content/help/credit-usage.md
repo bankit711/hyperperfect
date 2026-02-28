@@ -54,35 +54,35 @@ If you're done with one task and starting something unrelated, use `@clear` to e
 
 When memory gets completely full, the AI will automatically compact older parts of the conversation to make room — but some earlier details may be summarized or dropped in the process.
 
-### Subagents and Memory
+### Agent Teams and Memory
 
-For certain complex tasks, HyperPerfect uses **subagents** — separate AI processes that handle specific parts of a job (like reading a large table or running a multi-step analysis). Here's what you need to know:
+For complex tasks, HyperPerfect can deploy a **team of AI specialists** working in parallel — one on the Income Statement, one on the Balance Sheet, one checking formulas, all at the same time. Each specialist can read and write directly in your workbook.
 
-- Subagents **do use credits** — they're doing real AI work
-- Subagents **don't affect your memory display** — they run in their own separate context and don't add to your main conversation's memory
-- This means your credit usage for a message might be higher than what the memory percentage alone would suggest, especially for complex tasks that spawn subagents
+- Specialists **do use credits** — they're doing real AI work
+- Specialists **don't affect your memory display** — each one runs in its own separate context and doesn't add to your main conversation's memory
+- This means your credit usage for a message might be higher than the memory percentage alone would suggest, especially for complex tasks that use multiple specialists
 
 ## Smart, Fast, and Auto Modes
 
 ### Fast Mode
 
-- Uses our standard AI model (Sonnet)
+- Uses our standard AI model
 - Great for everyday tasks: formulas, formatting, quick analysis
 - Lower credit cost per interaction
 
 ### Smart Mode
 
-- Uses our most capable AI model (Opus)
+- Uses our most capable AI model
 - Best for complex financial modeling, multi-step analysis, nuanced reasoning
 - Uses roughly 1.5–2x more credits than Fast mode for the same task
-- The AI also does more "thinking" in Smart mode — deeper reasoning that produces better results but costs more
+- The AI does more "thinking" in Smart mode — deeper reasoning that produces better results but costs more
 
 ### Auto Mode (Recommended)
 
-- Automatically routes each request to the right model and effort level
-- Simple requests (greetings, basic tasks) get handled cheaply with minimal thinking
-- Complex requests get the full power of Smart mode with deep reasoning
-- You get the best balance of quality and credit efficiency without thinking about it
+- HyperPerfect reads each request and picks the right model and effort level automatically
+- Simple requests get handled fast and cheaply. Complex requests get full reasoning and power.
+- Applies to your messages and to any specialists deployed during complex tasks
+- You get the best results at the lowest cost without managing it yourself
 
 ### AI Thinking and Credits
 
@@ -96,11 +96,13 @@ This is why a simple "sum column B" costs much less than "build a financial mode
 
 ## Extended Memory Capacity
 
-- By default, HyperPerfect works with a standard context window
-- You can enable **Extended Memory Capacity** in your settings to give the AI roughly **5x the memory** of standard mode
-- Great for very large datasets where you need the AI to see more of your data at once
-- Uses approximately **2x more credits** than standard mode because the AI is processing more data per interaction
-- Only enable it when you actually need to work with large datasets — turn it off for routine tasks to save credits
+Excel fills AI memory faster than almost any other kind of work. Cells, formulas, formatting, and conversation history all stack up. Extended Memory Capacity gives you significantly more room for complex, long-running sessions.
+
+- Enable it in **@settings** — it's off by default
+- While you're within the standard memory range, everything works as normal. Once you exceed that limit, instead of compacting your conversation, the app switches into Extended mode and keeps going.
+- The **memory indicator** updates to reflect this: it shows "Extended" and measures your usage against the larger capacity so you always know where you stand. Hover over it for details.
+- Uses approximately **2x more credits** in Extended mode — best for complex models and large datasets where preserving full context is worth it. Turn it off for routine work.
+- Your settings panel shows whether it's available on your current plan.
 
 ## Tips to Get More From Your Credits
 

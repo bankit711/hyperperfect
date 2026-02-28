@@ -9,6 +9,42 @@ All notable changes to HyperPerfect are documented here.
 
 ---
 
+## [1.0.33]
+
+### Extended Memory
+AI memory fills up faster with Excel than with almost anything else. Every cell, formula, and sheet you work with takes up space — and a complex model can hit limits before you're done. Extended Memory gives you the room to finish.
+
+- **Turn It On in @settings**: Off by default. Enable it when working on large or complex workbooks.
+- **No More Mid-Session Compaction**: When you exceed the standard memory limit, the app enters Extended mode instead of compacting. Your full context stays intact.
+- **Memory Indicator Updates Automatically**: The indicator shows "Extended" once you're in extended mode, so you always know where you stand.
+- **Plan Required**: Your settings panel shows whether it's available on your account.
+
+---
+
+## [1.0.32]
+
+### Agent Teams
+HyperPerfect can now coordinate multiple AI specialists working in parallel on different parts of a task.
+
+- **Parallel Specialists**: The main AI breaks complex work into parts and deploys a team to tackle each one at the same time.
+- **They Work in Your Spreadsheet**: Each specialist can read and write directly in your workbook, not just reason about it.
+- **Built for Complex Models**: Ask HP to build a three-statement model and it can put one specialist on the Income Statement, another on the Balance Sheet, another checking formulas — all running at once.
+- **Clean Cancellation**: Cancel the main request and the whole team stops.
+
+---
+
+## [1.0.31]
+
+### Auto Mode
+HyperPerfect now picks the right AI for every request. Fast where it can be, powerful where it needs to be — without you having to think about it.
+
+- **On by Default**: Every new conversation starts in Auto.
+- **Right Tool for Every Task**: Simple questions get instant answers. Complex analysis gets full reasoning. You stop paying for power you don't need.
+- **Works Across the Whole Session**: Auto Mode applies to your requests and to any specialists deployed during complex tasks.
+- **Override Anytime**: Type `@mode` to switch to Fast or Smart manually.
+
+---
+
 ## [1.0.30]
 
 ### Usage Breakdown in Settings
