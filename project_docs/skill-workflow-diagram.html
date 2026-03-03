@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code System Architecture</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0f1117;
+    color: #e4e4e7;
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+
+  .page {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 14px;
+    color: #71717a;
+    margin-bottom: 48px;
+  }
+
+  /* Section headers */
+  .section-header {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #71717a;
+    margin-bottom: 16px;
+    margin-top: 48px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #27272a;
+  }
+
+  .section-header:first-of-type { margin-top: 0; }
+
+  /* ── Scope columns ── */
+  .scope-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .scope-col {
+    border: 1px solid #27272a;
+    border-radius: 12px;
+    padding: 20px;
+    background: #18181b;
+  }
+
+  .scope-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #a1a1aa;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .scope-title code {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 12px;
+    color: #6366f1;
+    background: #1e1b4b;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  /* ── Cards ── */
+  .card {
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+  }
+  .card:last-child { margin-bottom: 0; }
+
+  .card-context {
+    background: linear-gradient(135deg, #1e1b4b, #312e81);
+    border: 1px solid #4338ca;
+  }
+  .card-rule {
+    background: linear-gradient(135deg, #1a1a2e, #1e1b4b);
+    border: 1px solid #6366f1;
+  }
+  .card-skill {
+    background: linear-gradient(135deg, #0c1a2e, #172554);
+    border: 1px solid #1e40af;
+  }
+  .card-agent {
+    background: linear-gradient(135deg, #14261a, #064e3b);
+    border: 1px solid #10b981;
+  }
+  .card-hook {
+    background: linear-gradient(135deg, #2a1a0a, #451a03);
+    border: 1px solid #d97706;
+  }
+  .card-memory {
+    background: linear-gradient(135deg, #1a0a2a, #2e1065);
+    border: 1px solid #8b5cf6;
+  }
+  .card-output {
+    background: linear-gradient(135deg, #18181b, #27272a);
+    border: 1px solid #3f3f46;
+  }
+  .card-gate {
+    background: linear-gradient(135deg, #2a1a0a, #451a03);
+    border: 1px solid #d97706;
+  }
+  .card-plugin {
+    background: linear-gradient(135deg, #1a0a1a, #2e1040);
+    border: 1px solid #a855f7;
+  }
+
+  .card-title {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 3px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .card-desc {
+    font-size: 12px;
+    color: #a1a1aa;
+    line-height: 1.5;
+  }
+
+  .card-file {
+    font-size: 11px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    color: #6366f1;
+    margin-top: 4px;
+    opacity: 0.8;
+  }
+  .card-agent .card-file { color: #10b981; }
+  .card-hook .card-file { color: #d97706; }
+  .card-memory .card-file { color: #8b5cf6; }
+  .card-plugin .card-file { color: #a855f7; }
+
+  .badge {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 1px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .badge-auto { background: #064e3b; color: #10b981; }
+  .badge-conditional { background: #1e1b4b; color: #818cf8; }
+  .badge-trigger { background: #172554; color: #60a5fa; }
+  .badge-manual { background: #27272a; color: #a1a1aa; }
+  .badge-override { background: #451a03; color: #fbbf24; }
+  .badge-memory { background: #2e1065; color: #c4b5fd; }
+
+  /* ── Session lifecycle ── */
+  .lifecycle {
+    display: flex;
+    gap: 0;
+    align-items: stretch;
+    position: relative;
+  }
+
+  .lifecycle-phase {
+    flex: 1;
+    padding: 16px;
+    position: relative;
+  }
+
+  .lifecycle-phase + .lifecycle-phase {
+    border-left: 2px solid #27272a;
+  }
+
+  .lifecycle-phase-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .lifecycle-arrow {
+    position: absolute;
+    right: -13px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lifecycle-arrow::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid #71717a;
+    border-bottom: 2px solid #71717a;
+    transform: rotate(-45deg);
+  }
+
+  /* ── Override table ── */
+  .override-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-top: 8px;
+  }
+
+  .override-table th {
+    text-align: left;
+    padding: 8px 12px;
+    border-bottom: 1px solid #3f3f46;
+    color: #71717a;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .override-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #1f1f23;
+    color: #a1a1aa;
+  }
+
+  .override-table code {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 11px;
+    color: #818cf8;
+    background: #1e1b4b;
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  /* ── Knowledge flow ── */
+  .knowledge-flow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0;
+  }
+
+  .kf-source {
+    text-align: center;
+    min-width: 140px;
+  }
+
+  .kf-arrow {
+    flex: 0 0 40px;
+    height: 2px;
+    background: #3f3f46;
+    position: relative;
+  }
+  .kf-arrow::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid #71717a;
+    border-bottom: 2px solid #71717a;
+    transform: rotate(-45deg);
+    position: absolute;
+    right: 0;
+    top: -4px;
+  }
+
+  .kf-dest {
+    text-align: center;
+    min-width: 140px;
+  }
+
+  .kf-label {
+    font-size: 11px;
+    color: #71717a;
+    margin-top: 4px;
+  }
+
+  /* ── Agent memory ── */
+  .memory-scopes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  /* ── Compact cards for lists ── */
+  .card-compact {
+    padding: 8px 12px;
+    margin-bottom: 6px;
+    border-radius: 6px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card-compact .card-title {
+    font-size: 12px;
+    margin-bottom: 0;
+  }
+
+  /* ── Three-path diagram ── */
+  .three-path {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-top: 12px;
+  }
+
+  .path-col {
+    text-align: center;
+  }
+
+  .path-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .path-arrow {
+    width: 2px;
+    height: 24px;
+    background: #3f3f46;
+    margin: 0 auto;
+    position: relative;
+  }
+  .path-arrow::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid #71717a;
+    border-bottom: 2px solid #71717a;
+    transform: rotate(45deg);
+    position: absolute;
+    bottom: 0;
+    left: -3px;
+  }
+
+  /* ── Improvement loop ── */
+  .loop-diagram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 24px 0;
+    flex-wrap: wrap;
+  }
+
+  .loop-node {
+    border-radius: 10px;
+    padding: 16px 20px;
+    text-align: center;
+    min-width: 200px;
+    max-width: 260px;
+  }
+
+  .loop-connector {
+    font-size: 20px;
+    color: #3f3f46;
+  }
+
+  /* ── Legend ── */
+  .legend {
+    margin-top: 48px;
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-top: 24px;
+    border-top: 1px solid #27272a;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: #71717a;
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 800px) {
+    .scope-grid { grid-template-columns: 1fr; }
+    .three-path { grid-template-columns: 1fr; }
+    .memory-scopes { grid-template-columns: 1fr; }
+    .lifecycle { flex-direction: column; }
+    .lifecycle-phase + .lifecycle-phase { border-left: none; border-top: 2px solid #27272a; }
+    .lifecycle-arrow { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1>Claude Code System Architecture</h1>
+  <p class="subtitle">Context files, rules, skills, agents, hooks, and knowledge management across multiple projects</p>
+
+  <!-- ════════════════════════════════════════════ -->
+  <div class="section-header">Session Lifecycle</div>
+
+  <div class="lifecycle" style="background:#18181b;border-radius:12px;border:1px solid #27272a">
+    <div class="lifecycle-phase">
+      <div class="lifecycle-phase-title" style="color:#4338ca">
+        <span>01</span> Startup
+      </div>
+      <div class="card card-compact card-context">
+        <div class="card-title">CLAUDE.md <span class="badge badge-auto">auto</span></div>
+      </div>
+      <div class="card card-compact card-rule">
+        <div class="card-title">rules/*.md <span class="badge badge-conditional">conditional</span></div>
+      </div>
+      <div class="card card-compact card-memory">
+        <div class="card-title">MEMORY.md <span class="badge badge-auto">auto</span></div>
+      </div>
+      <div class="card card-compact card-hook">
+        <div class="card-title">SessionStart hook</div>
+      </div>
+      <div class="lifecycle-arrow"></div>
+    </div>
+
+    <div class="lifecycle-phase">
+      <div class="lifecycle-phase-title" style="color:#1e40af">
+        <span>02</span> Session Work
+      </div>
+      <div class="card card-compact card-skill">
+        <div class="card-title">Skills <span class="badge badge-trigger">on trigger</span></div>
+      </div>
+      <div class="card card-compact card-agent">
+        <div class="card-title">Agents <span class="badge badge-trigger">on delegate</span></div>
+      </div>
+      <div class="card card-compact card-hook">
+        <div class="card-title">PostToolUse hook <span class="badge badge-auto">async</span></div>
+      </div>
+      <div style="font-size:11px;color:#71717a;margin-top:8px;padding-left:4px">
+        Tracks modified files in .dirty-files
+      </div>
+      <div class="lifecycle-arrow"></div>
+    </div>
+
+    <div class="lifecycle-phase">
+      <div class="lifecycle-phase-title" style="color:#d97706">
+        <span>03</span> Context Pressure
+      </div>
+      <div class="card card-compact card-hook">
+        <div class="card-title">PreCompact hook</div>
+      </div>
+      <div style="font-size:11px;color:#71717a;margin-top:8px;padding-left:4px">
+        Creates diary entry from dirty files before context compression
+      </div>
+      <div class="lifecycle-arrow"></div>
+    </div>
+
+    <div class="lifecycle-phase">
+      <div class="lifecycle-phase-title" style="color:#10b981">
+        <span>04</span> Session End
+      </div>
+      <div class="card card-compact card-hook">
+        <div class="card-title">SessionEnd hook</div>
+      </div>
+      <div class="card card-compact card-memory">
+        <div class="card-title">Haiku synthesis</div>
+      </div>
+      <div style="font-size:11px;color:#71717a;margin-top:8px;padding-left:4px">
+        Spawns subagent to route insights to MEMORY.md and topics/
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <div class="section-header">Global vs Project Scope</div>
+
+  <div class="scope-grid">
+    <div class="scope-col">
+      <div class="scope-title">Global <code>~/.claude/</code></div>
+
+      <div class="card card-context">
+        <div class="card-title">CLAUDE.md</div>
+        <div class="card-desc">Git conventions, dev workflow, security, performance, knowledge management, MCP config</div>
+      </div>
+
+      <div class="card card-rule">
+        <div class="card-title">rules/ <span class="badge badge-conditional">paths: match</span></div>
+        <div class="card-desc">
+          code-quality.md &rarr; *.{ts,tsx,js,jsx,py}<br>
+          testing.md &rarr; *.test.*, *.spec.*, test_*<br>
+          documentation.md &rarr; *.md<br>
+          planning.md &rarr; docs/**
+        </div>
+      </div>
+
+      <div class="card card-skill">
+        <div class="card-title">skills/ <span style="font-size:11px;font-weight:400;color:#71717a">(9 global)</span></div>
+        <div class="card-desc">retrospective, project-setup, update-docs, update-skills, writing-agent-skills, python-code-review, python-code-verify, linear-project-management, warp-terminal</div>
+      </div>
+
+      <div class="card card-agent">
+        <div class="card-title">agents/ <span class="badge badge-memory">memory: user</span></div>
+        <div class="card-desc">
+          senior-engineer-reviewer (opus) &mdash; cross-project code reviews<br>
+          documentation-updater (opus) &mdash; cross-project doc sync
+        </div>
+        <div class="card-file">~/.claude/agent-memory/&lt;name&gt;/</div>
+      </div>
+
+      <div class="card card-hook">
+        <div class="card-title">hooks/ <span style="font-size:11px;font-weight:400;color:#71717a">(4 events)</span></div>
+        <div class="card-desc">SessionStart, PostToolUse, PreCompact, SessionEnd</div>
+        <div class="card-file">~/.claude/scripts/hooks/</div>
+      </div>
+
+      <div class="card card-plugin">
+        <div class="card-title">plugins/ <span style="font-size:11px;font-weight:400;color:#71717a">(3 enabled)</span></div>
+        <div class="card-desc">code-simplifier, frontend-design, context7</div>
+      </div>
+    </div>
+
+    <div class="scope-col">
+      <div class="scope-title">Project <code>&lt;repo&gt;/.claude/</code></div>
+
+      <div class="card card-context">
+        <div class="card-title">CLAUDE.md <span class="badge badge-override">extends global</span></div>
+        <div class="card-desc">Project architecture, commands, conventions. Each repo has its own.</div>
+      </div>
+
+      <div class="card card-rule">
+        <div class="card-title">rules/ <span class="badge badge-conditional">additive</span></div>
+        <div class="card-desc">
+          HP7: code-comments.md &rarr; *.{py,js,ts}<br>
+          <span style="color:#52525b">Both global and project rules apply when paths match</span>
+        </div>
+      </div>
+
+      <div class="card card-skill">
+        <div class="card-title">skills/ <span class="badge badge-override">overrides global</span></div>
+        <div class="card-desc">
+          Marketing: release-update, pre-commit-review<br>
+          HP7: pre-commit-review, excel-online-testing
+        </div>
+      </div>
+
+      <div class="card card-agent">
+        <div class="card-title">agents/ <span class="badge badge-override">overrides global</span></div>
+        <div class="card-desc">
+          HP7: 10 agents including overrides for senior-engineer-reviewer and documentation-updater with project-specific knowledge (Office.js, HTMX, sqlc)
+        </div>
+      </div>
+
+      <div class="card card-output" style="margin-top: 16px">
+        <div class="card-title" style="color:#71717a">Override behavior</div>
+        <table class="override-table">
+          <tr><th>Type</th><th>Same name</th><th>Result</th></tr>
+          <tr><td>Rules</td><td>Both load</td><td>Additive</td></tr>
+          <tr><td>Skills</td><td>Project wins</td><td>Global hidden</td></tr>
+          <tr><td>Agents</td><td>Project wins</td><td>Global hidden</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <div class="section-header">Agent Memory System</div>
+
+  <div class="memory-scopes">
+    <div class="card card-agent">
+      <div class="card-title">user <span class="badge badge-memory">cross-project</span></div>
+      <div class="card-desc">Accumulates patterns across all projects. Used by global agents.</div>
+      <div class="card-file">~/.claude/agent-memory/&lt;name&gt;/</div>
+    </div>
+    <div class="card card-agent">
+      <div class="card-title">project <span class="badge badge-memory">shared via git</span></div>
+      <div class="card-desc">Project-specific knowledge, committed to repo.</div>
+      <div class="card-file">.claude/agent-memory/&lt;name&gt;/</div>
+    </div>
+    <div class="card card-agent">
+      <div class="card-title">local <span class="badge badge-memory">gitignored</span></div>
+      <div class="card-desc">Project-specific, personal. Not shared.</div>
+      <div class="card-file">.claude/agent-memory-local/&lt;name&gt;/</div>
+    </div>
+  </div>
+
+  <div style="font-size:12px;color:#71717a;margin-top:12px;text-align:center">
+    Each agent with <code style="font-family:'SF Mono',monospace;font-size:11px;color:#818cf8">memory</code> set gets a persistent MEMORY.md (first 200 lines injected at startup) + Read/Write/Edit access to its memory directory
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <div class="section-header">Knowledge Capture: Three Paths</div>
+
+  <div class="three-path">
+    <div class="path-col">
+      <div class="card card-skill" style="min-height:100px">
+        <div class="card-title">Manual: /retro</div>
+        <div class="card-desc">Comprehensive end-of-session review. Extract, route, compact, report.</div>
+      </div>
+      <div class="path-arrow"></div>
+      <div style="margin-top:8px">
+        <div class="card card-memory" style="padding:8px 12px">
+          <div class="card-desc" style="font-size:11px">
+            MEMORY.md, topics/, CLAUDE.md (suggest), SKILL.md (suggest)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="path-col">
+      <div class="card card-hook" style="min-height:100px">
+        <div class="card-title">Automatic: SessionEnd</div>
+        <div class="card-desc">Lightweight. Reads dirty-files + diaries. Haiku subagent with write gate.</div>
+      </div>
+      <div class="path-arrow"></div>
+      <div style="margin-top:8px">
+        <div class="card card-memory" style="padding:8px 12px">
+          <div class="card-desc" style="font-size:11px">
+            MEMORY.md, topics/ (auto only, 30-min cooldown)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="path-col">
+      <div class="card card-gate" style="min-height:100px">
+        <div class="card-title">Within-skill: Loop 1</div>
+        <div class="card-desc">Immediate. Corrections at gates write back to skill reference files.</div>
+      </div>
+      <div class="path-arrow"></div>
+      <div style="margin-top:8px">
+        <div class="card card-memory" style="padding:8px 12px">
+          <div class="card-desc" style="font-size:11px">
+            Skill reference files (GUIDE.md, VAULT.md, etc.)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <div class="section-header">Self-Improvement Loop</div>
+
+  <div class="loop-diagram">
+    <div class="loop-node card card-skill">
+      <div class="card-title" style="justify-content:center">Session N</div>
+      <div class="card-desc">Skills run with current reference files. Agent uses current knowledge.</div>
+    </div>
+    <div class="loop-connector">&rarr;</div>
+    <div class="loop-node card card-gate">
+      <div class="card-title" style="justify-content:center">Feedback + Capture</div>
+      <div class="card-desc">Loop 1: gate corrections update skill files. Loop 2: /retro + hooks update memory.</div>
+    </div>
+    <div class="loop-connector">&rarr;</div>
+    <div class="loop-node card card-agent">
+      <div class="card-title" style="justify-content:center">Session N+1</div>
+      <div class="card-desc">Improved context loads. Skills and agents start better than before.</div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:4px">
+    <div class="card card-rule" style="display:inline-block;padding:8px 20px">
+      <div class="card-title" style="justify-content:center;font-size:12px">writing-agent-skills</div>
+      <div class="card-desc">Quality standard governing all skill edits: line budgets, progressive disclosure, pointers over copies</div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <div class="section-header">Knowledge Hierarchy</div>
+
+  <div style="overflow-x:auto">
+    <table class="override-table" style="margin:0">
+      <tr>
+        <th>Level</th>
+        <th>Location</th>
+        <th>Loaded</th>
+        <th>Budget</th>
+        <th>Purpose</th>
+      </tr>
+      <tr>
+        <td><strong style="color:#e4e4e7">L0</strong></td>
+        <td><code>~/.claude/CLAUDE.md</code></td>
+        <td><span class="badge badge-auto">auto</span></td>
+        <td>150 lines</td>
+        <td>Global preferences, workflow rules</td>
+      </tr>
+      <tr>
+        <td><strong style="color:#e4e4e7">R0</strong></td>
+        <td><code>~/.claude/rules/*.md</code></td>
+        <td><span class="badge badge-conditional">paths:</span></td>
+        <td>40 lines each</td>
+        <td>File-type-specific rules</td>
+      </tr>
+      <tr>
+        <td><strong style="color:#e4e4e7">P0</strong></td>
+        <td><code>&lt;project&gt;/CLAUDE.md</code></td>
+        <td><span class="badge badge-auto">auto</span></td>
+        <td>No limit</td>
+        <td>Project architecture, commands</td>
+      </tr>
+      <tr>
+        <td><strong style="color:#e4e4e7">R1</strong></td>
+        <td><code>.claude/rules/*.md</code></td>
+        <td><span class="badge badge-conditional">paths:</span></td>
+        <td>40 lines each</td>
+        <td>Project-specific coding rules</td>
+      </tr>
+      <tr>
+        <td><strong style="color:#e4e4e7">L1</strong></td>
+        <td><code>memory/MEMORY.md</code></td>
+        <td><span class="badge badge-auto">auto</span></td>
+        <td>150 lines</td>
+        <td>Project index: summaries + pointers</td>
+      </tr>
+      <tr>
+        <td><strong style="color:#e4e4e7">L2</strong></td>
+        <td><code>memory/topics/*.md</code></td>
+        <td><span class="badge badge-manual">on demand</span></td>
+        <td>300 lines</td>
+        <td>Deep knowledge, read when needed</td>
+      </tr>
+      <tr>
+        <td><strong style="color:#e4e4e7">S0</strong></td>
+        <td><code>.claude/skills/*/SKILL.md</code></td>
+        <td><span class="badge badge-trigger">on trigger</span></td>
+        <td>500 lines</td>
+        <td>Skill definitions and workflows</td>
+      </tr>
+      <tr>
+        <td><strong style="color:#e4e4e7">A0</strong></td>
+        <td><code>.claude/agents/*.md</code></td>
+        <td><span class="badge badge-trigger">on delegate</span></td>
+        <td>No limit</td>
+        <td>Subagent instructions</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <div class="section-header">Project Inventory</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+    <div class="card card-output">
+      <div class="card-title" style="color:#60a5fa">HyperPerfect</div>
+      <div class="card-desc">
+        Next.js marketing site<br>
+        www.hyperperfect.ai
+      </div>
+      <div style="margin-top:8px;font-size:11px;color:#71717a">
+        <strong style="color:#a1a1aa">Skills:</strong> release-update, pre-commit-review<br>
+        <strong style="color:#a1a1aa">Agents:</strong> uses globals<br>
+        <strong style="color:#a1a1aa">Rules:</strong> uses globals
+      </div>
+    </div>
+
+    <div class="card card-output">
+      <div class="card-title" style="color:#10b981">HyperPerfect7</div>
+      <div class="card-desc">
+        Excel add-in (Python + JS)<br>
+        Office.js, HTMX, sqlc
+      </div>
+      <div style="margin-top:8px;font-size:11px;color:#71717a">
+        <strong style="color:#a1a1aa">Skills:</strong> pre-commit-review, excel-online-testing<br>
+        <strong style="color:#a1a1aa">Agents:</strong> 10 (2 override globals + 8 specialized)<br>
+        <strong style="color:#a1a1aa">Rules:</strong> code-comments.md
+      </div>
+    </div>
+
+    <div class="card card-output">
+      <div class="card-title" style="color:#a1a1aa">Other Projects</div>
+      <div class="card-desc">
+        LinkedIn, Sales, Typefully
+      </div>
+      <div style="margin-top:8px;font-size:11px;color:#71717a">
+        Each has project-specific CLAUDE.md and skills. Global rules, agents, and skills apply to all.
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#4338ca"></div>
+      Context (CLAUDE.md)
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#6366f1"></div>
+      Rules (conditional)
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#1e40af"></div>
+      Skills (on trigger)
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#10b981"></div>
+      Agents (on delegate)
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#d97706"></div>
+      Hooks / Gates
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#8b5cf6"></div>
+      Memory / Knowledge
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#a855f7"></div>
+      Plugins
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#3f3f46"></div>
+      Output / Info
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
