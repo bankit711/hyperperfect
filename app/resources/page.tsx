@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Menu, X, ArrowRight, Terminal, Trophy } from "lucide-react"
+import { Menu, X, ArrowRight, Terminal, Trophy, GitBranch } from "lucide-react"
 
 const resources = [
   {
@@ -20,6 +20,14 @@ const resources = [
     icon: Terminal,
     href: "/resources/claude-code-guide/",
     tag: "Interactive Guide",
+  },
+  {
+    title: "Agentic Workflows",
+    description:
+      "See an interactive visualization that shows how we built an AI-enabled agentic workflow for HyperPerfect's daily sales report.",
+    icon: GitBranch,
+    href: "/resources/agentic-workflows/overview/",
+    tag: "AI Workflows",
   },
 ]
 
