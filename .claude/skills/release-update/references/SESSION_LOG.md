@@ -4,9 +4,9 @@ Tracks every run of the release-update skill. Used by Phase 0 to know where to p
 
 ## State
 
-- **Last run date**: 2026-02-27
-- **Last version documented in changelog**: 1.0.33
-- **Last email sent**: pending (Brevo draft ready, needs `BREVO_CAMPAIGNS_API_KEY` with Marketing permissions)
+- **Last run date**: 2026-03-25
+- **Last version documented in changelog**: 1.0.39
+- **Last email sent**: pending (Brevo draft created, campaign ID 34)
 
 ---
 
@@ -19,6 +19,14 @@ Tracks every run of the release-update skill. Used by Phase 0 to know where to p
 **Help pages updated**: `credit-usage.md` (Extended Memory section, Subagents→Agent Teams, mode descriptions)
 **Email drafted**: "HyperPerfect now picks the right AI for every task" | **Sent**: pending
 **Notes**: First run. Built the skill from scratch this session. Key process additions: FEATURE_VAULT.md, USER_CONTEXT.md, PRODUCT_CONTEXT.md, full Brevo HTML email workflow. One blocker: `BREVO_CAMPAIGNS_API_KEY` needs to be added to `.env.local` with Marketing permissions before campaign API calls work (current key is CRM-sync only).
+
+### 2026-03-25
+
+**HP7 commits reviewed**: 2026-02-27 through 2026-03-25
+**New changelog versions**: v1.0.34 through v1.0.39 (6 entries)
+**Help pages updated**: `ai-prompting.md` (commands reference, full AI control features section with prompts, agents, rules, plans, files, and demo walkthrough), `excel-functionality.md` (charts/pivot tables/conditional formatting section, file library section)
+**Email drafted**: "HyperPerfect now has agentic AI built for Excel" | **Sent**: pending
+**Notes**: Massive feature batch covering the full AI control suite (custom agents, prompts, rule sets, plan mode, file library) and full Excel control (execute_office_js). David's framing: "We've brought all of the power of agentic AI into Excel and made it simple to use." Key insight from David: agents protect the main context window, which is critical for Excel. The onboarding demo (Rosa's apple stand) is the canonical example of how everything works together. Brevo campaign key still not configured.
 
 ---
 

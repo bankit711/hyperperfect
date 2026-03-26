@@ -122,17 +122,17 @@ HTML template rules (match `customer_update_sonnet_pricing.html` exactly):
 
 ### Step 3: Brevo Campaign Draft
 Credentials in `/Users/davidingraham/hyperperfect/.env.local`:
-- `BREVO_CAMPAIGNS_API_KEY` — marketing campaigns key (confirmed working 2026-02-27)
+- `BREVO_API_KEY` — marketing campaigns key (confirmed working 2026-02-27)
 - `BREVO_SENDER_NAME=David Ingraham`, `BREVO_SENDER_EMAIL=di@hyperperfect.ai` — verified sender
 - Product update lists: **7** (Current App Subscribers, 59), **10** (Logged Into App, 29), **17** (Internal, 5)
 
-**If `BREVO_CAMPAIGNS_API_KEY` is missing or unauthorized:**
-Stop and tell David: "The Brevo campaign API key is missing. Check `.env.local` for `BREVO_CAMPAIGNS_API_KEY`."
+**If `BREVO_API_KEY` is missing or unauthorized:**
+Stop and tell David: "The Brevo campaign API key is missing. Check `.env.local` for `BREVO_API_KEY`."
 
 **If key is present:**
 ```bash
 curl -X POST "https://api.brevo.com/v3/emailCampaigns" \
-  -H "api-key: $BREVO_CAMPAIGNS_API_KEY" \
+  -H "api-key: $BREVO_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Product Update — [slug] (YYYY-MM-DD)",

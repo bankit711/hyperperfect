@@ -124,6 +124,27 @@ Discover and navigate your workbook structure without manual hunting.
 "Read the data from the Summary sheet"
 ```
 
+### Build Charts, Tables, and More
+
+HyperPerfect can create any Excel object the API supports, not just cell values and formatting.
+
+**Examples**:
+```
+"Create a bar chart from this sales data"
+"Build a pivot table grouped by region and quarter"
+"Add conditional formatting to highlight values over budget in red"
+"Create a dropdown list in column A with these options: Q1, Q2, Q3, Q4"
+"Add data validation to prevent negative numbers in the Amount column"
+"Insert sparklines next to each row showing the monthly trend"
+```
+
+**What's possible**:
+- **Charts**: Bar, line, pie, combo, scatter, and more
+- **Pivot tables**: Group, aggregate, and summarize data dynamically
+- **Conditional formatting**: Color scales, data bars, icon sets, and custom rules
+- **Data validation**: Dropdown lists, input restrictions, and custom validation
+- **Named ranges, table styles, sparklines, custom number formats** -- anything Excel supports programmatically
+
 ---
 
 ## How the AI Works Behind the Scenes
@@ -144,13 +165,14 @@ If something goes wrong, the AI automatically retries with corrections.
 - If validation fails, the AI explains the issue and automatically adjusts
 - Fixes are applied and retried without you needing to ask again
 
-### File Attachments for Context
+### File Library
 
-Upload images, PDFs, or other reference materials to give the AI additional context alongside your Excel work.
+Upload reference files to your library and the AI can access them across all your conversations.
 
-**Supported formats**:
-- **Images**: PNG, JPEG, GIF, WebP (up to 5 MB each)
-- **Documents**: PDF (up to 32 MB, 100 pages)
+- **Persistent Storage**: Files stay in your library. Upload once, use anywhere.
+- **Supported formats**: Images (PNG, JPEG, GIF, WebP), PDFs, and spreadsheets (XLSX)
+- **Link to Prompts and Agents**: Attach files to custom prompts or agents for easy access
+- **In-Chat Uploads**: You can also drag and drop files directly into a conversation for one-time use
 
 ---
 

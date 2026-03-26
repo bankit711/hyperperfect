@@ -9,6 +9,81 @@ All notable changes to HyperPerfect are documented here.
 
 ---
 
+## [1.0.39]
+
+### Full Excel Control
+HyperPerfect used to read, write, and format. Now it can do anything in Excel. Tables, charts, pivot tables, conditional formatting -- if Excel supports it, HyperPerfect can build it.
+
+- **Charts and Visualizations**: Ask for a bar chart, line graph, or combo chart and it builds one directly in your workbook
+- **Pivot Tables**: Turn raw data into pivot tables with the grouping and aggregation you need
+- **Conditional Formatting**: Apply color scales, data bars, icon sets, or custom rules to highlight what matters
+- **Data Validation**: Create dropdown lists, input restrictions, and validation rules
+- **No Limits**: Named ranges, sparklines, table styles, custom number formats -- the full Excel API is available
+
+---
+
+## [1.0.38]
+
+### Custom Prompts
+Save instructions and context you use often, then bring them into any conversation with one command.
+
+- **On-Demand Context**: Type `@prompt-name` to load a prompt's instructions directly into your chat
+- **Combine with Files**: Attach reference documents to a prompt so the AI has everything it needs
+- **Quality Controls**: Set the AI mode and effort level per prompt to balance speed and cost
+- **Reusable Workflows**: Build prompts for recurring tasks like `@monthly-close` or `@variance-analysis`
+- **Quick to Create**: Add new prompts from the settings panel. The AI can manage them for you too.
+
+---
+
+## [1.0.37]
+
+### File Library
+Upload reference files once and the AI can access them whenever it needs to.
+
+- **Persistent Storage**: Files stay in your library across conversations. Upload once, use anywhere.
+- **PDF and Image Support**: Upload PDFs, spreadsheets, and images. The AI reads and extracts data from all of them.
+- **Templates and Reference Docs**: Store report templates, policy documents, or prior-quarter outputs. The AI learns your formats and follows them.
+- **Organized Access**: Browse and manage your files from the Files tab. Link files to prompts or agents for easy retrieval.
+
+---
+
+## [1.0.36]
+
+### Plan Mode
+Map out complex work before the AI starts. Reuse plans for tasks you do every month.
+
+- **@plan Command**: Type `@plan` to enter planning mode. The AI reads your data but won't change anything until you approve the plan.
+- **Step-by-Step Plans**: Build a sequence of steps, each with its own instructions. Drag and drop to reorder.
+- **@execute to Run**: When the plan looks right, type `@execute`. The AI gets a clean, focused context and works through each step.
+- **Recurring Tasks**: Save plans for monthly reports, quarterly models, or any workflow you repeat. Run the same plan next month with fresh data.
+- **Works with Everything**: Plans can reference custom prompts, deploy custom agents, and follow your rule sets.
+
+---
+
+## [1.0.35]
+
+### Rule Sets
+Teach HyperPerfect your rules once. It follows them every time, in every conversation.
+
+- **Named Rule Sets**: Create sets of instructions for different workflows or standards. Toggle them on and off.
+- **Global Preferences**: Set preferences that apply to every conversation automatically.
+- **Formatting Standards**: "Always use accounting format. Bold headers. Freeze the top row." Say it once.
+- **AI-Managed**: The AI can create, edit, and organize rules for you during a conversation.
+
+---
+
+## [1.0.34]
+
+### Custom Agents
+Build your own AI specialists. Each one works in its own context, so the main AI stays focused on your task.
+
+- **Specialized Teammates**: Create agents with their own instructions, tools, and AI settings. A formatting expert, a data validator, a model auditor.
+- **Protected Context**: Each agent works in its own memory space. It reports back only what the main AI needs, keeping your conversation clean and focused.
+- **Data Scout**: The built-in scout agent explores your workbook's structure and reports back what it finds. Send multiple scouts to different sheets at once.
+- **Fine-Tune Performance**: Set quality and effort levels per agent to control speed and cost.
+
+---
+
 ## [1.0.33]
 
 ### Extended Memory
