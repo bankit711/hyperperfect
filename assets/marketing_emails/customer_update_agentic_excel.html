@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HyperPerfect now has agentic AI built for Excel</title>
+  <title>HyperPerfect now has full agentic AI workflows for Excel</title>
   <!--[if mso]>
   <noscript>
     <xml>
@@ -14,30 +14,35 @@
   </noscript>
   <![endif]-->
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap');
+    @media screen and (max-width: 600px) {
+      .feature-icon { display: block !important; width: 100% !important; padding: 24px 24px 12px 24px !important; }
+      .feature-content { display: block !important; width: 100% !important; padding: 0 24px 24px 24px !important; }
+      .feature-row { display: block !important; }
+    }
   </style>
 </head>
-<body style="margin: 0; padding: 0; background-color: #f9fafb; font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; -webkit-font-smoothing: antialiased;">
+<body style="margin: 0; padding: 0; background-color: #f4f5f7; font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; -webkit-font-smoothing: antialiased;">
 
   <!-- Preview Text -->
   <div style="display: none; max-height: 0; overflow: hidden; mso-hide: all;">
-    Custom agents, prompts, rules, plans, and full Excel control. The AI in your spreadsheet just got a lot more capable.
+    Custom agents, plans, and full Excel control. Your AI in Excel just got a major upgrade.
   </div>
 
   <!-- Wrapper -->
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #f9fafb;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #f4f5f7;">
     <tr>
       <td align="center" style="padding: 40px 16px;">
 
         <!-- Email Container -->
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width: 560px; background-color: #ffffff; border: 1px solid #e2e5eb; border-radius: 12px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px;">
 
           <!-- Logo Header -->
           <tr>
-            <td style="padding: 32px 40px 24px 40px; border-bottom: 1px solid #eceef2;">
+            <td style="padding: 0 0 32px 0;">
               <table role="presentation" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td style="font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 16px; font-weight: 600; color: #374151; letter-spacing: -0.01em;">
+                  <td style="font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 20px; font-weight: 700; color: #1a7bff; letter-spacing: -0.02em;">
                     HyperPerfect
                   </td>
                 </tr>
@@ -45,83 +50,194 @@
             </td>
           </tr>
 
-          <!-- Body Content -->
+          <!-- Intro Section -->
           <tr>
-            <td style="padding: 32px 40px;">
-
-              <!-- Greeting -->
-              <p style="margin: 0 0 20px 0; font-size: 14px; line-height: 1.6; color: #374151;">
-                Hey {{ contact.FIRSTNAME | default: "there" }},
+            <td style="padding: 0 0 8px 0;">
+              <p style="margin: 0; font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 28px; line-height: 34px; font-weight: 700; color: #111827; letter-spacing: -0.5px;">
+                Here's what's new
               </p>
-
-              <!-- Intro -->
-              <p style="margin: 0 0 20px 0; font-size: 14px; line-height: 1.6; color: #374151;">
-                HyperPerfect has had a big month. We've brought the full power of agentic AI into Excel and made it simple to use.
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 0 0 28px 0;">
+              <p style="margin: 0; font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; line-height: 24px; font-weight: 400; color: #374151;">
+                We've shipped a major update: build agentic AI workflows, keep them organized, and run them right in Excel. Complex but easy to use.
               </p>
+            </td>
+          </tr>
 
-              <!-- Agentic AI Headline -->
-              <p style="margin: 0 0 20px 0; font-size: 14px; line-height: 1.6; color: #374151; font-weight: 600;">
-                Custom Agents, Prompts, Rules, and Plans
-              </p>
-
-              <p style="margin: 0 0 20px 0; font-size: 14px; line-height: 1.6; color: #374151;">
-                You now have a complete toolkit for controlling how the AI works. Create custom agents that specialize in specific tasks. Save prompts you can load with one command. Set rules the AI follows every time. Build plans you can reuse monthly.
-              </p>
-
-              <p style="margin: 0 0 20px 0; font-size: 14px; line-height: 1.6; color: #374151;">
-                Each agent works in its own memory space, so the main AI stays focused on your task. This matters in Excel, where workbook data fills up the AI's memory fast.
-              </p>
-
-              <p style="margin: 0 0 20px 0; font-size: 14px; line-height: 1.6; color: #374151;">
-                The best part: you don't have to build any of it yourself. Describe what you need and the AI creates the agents, prompts, rules, and plans for you.
-              </p>
-
-              <!-- Divider -->
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin: 0 0 24px 0;">
-                <tr>
-                  <td style="border-top: 1px solid #eceef2;"></td>
+          <!-- Feature Card 1: Plan Mode -->
+          <tr>
+            <td style="padding: 0 0 12px 0;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 16px; border: 1px solid #e5e7eb;">
+                <tr class="feature-row">
+                  <td width="96" valign="top" class="feature-icon" style="padding: 28px 0 28px 24px;">
+                    <div style="width: 64px; height: 64px; background-color: #eef4ff; border-radius: 14px; text-align: center; line-height: 64px;">
+                      <!--[if !mso]><!-->
+                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1a7bff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></svg>
+                      <!--<![endif]-->
+                    </div>
+                  </td>
+                  <td valign="top" class="feature-content" style="padding: 28px 28px 28px 16px;">
+                    <p style="margin: 0 0 8px 0; font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 17px; line-height: 22px; font-weight: 700; color: #111827; letter-spacing: -0.2px;">
+                      Plan Mode
+                    </p>
+                    <p style="margin: 0 0 14px 0; font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; line-height: 24px; font-weight: 400; color: #374151;">
+                      Start a strategic planning session with your AI to map out the task. It builds the plan and the agentic tooling to get it done. Everything gets recorded and organized right in Excel. Accountability and predictability for your AI workflows.
+                    </p>
+                    <p style="margin: 0; font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; line-height: 20px; font-weight: 600;">
+                      <a href="https://www.hyperperfect.ai/help/plan-mode" target="_blank" style="color: #1a7bff; text-decoration: underline;">Learn more</a>
+                    </p>
+                  </td>
                 </tr>
               </table>
+            </td>
+          </tr>
 
-              <!-- Full Excel Control Headline -->
-              <p style="margin: 0 0 20px 0; font-size: 14px; line-height: 1.6; color: #374151; font-weight: 600;">
-                Full Excel Control
-              </p>
+          <!-- Feature Card 2: Custom Prompts and Rules -->
+          <tr>
+            <td style="padding: 0 0 12px 0;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 16px; border: 1px solid #e5e7eb;">
+                <tr class="feature-row">
+                  <td width="96" valign="top" class="feature-icon" style="padding: 28px 0 28px 24px;">
+                    <div style="width: 64px; height: 64px; background-color: #eef4ff; border-radius: 14px; text-align: center; line-height: 64px;">
+                      <!--[if !mso]><!-->
+                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1a7bff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"/></svg>
+                      <!--<![endif]-->
+                    </div>
+                  </td>
+                  <td valign="top" class="feature-content" style="padding: 28px 28px 28px 16px;">
+                    <p style="margin: 0 0 8px 0; font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 17px; line-height: 22px; font-weight: 700; color: #111827; letter-spacing: -0.2px;">
+                      Custom Prompts and Rules
+                    </p>
+                    <p style="margin: 0 0 14px 0; font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; line-height: 24px; font-weight: 400; color: #374151;">
+                      HyperPerfect helps you build and organize libraries of custom prompts and rules that integrate into your workflows automatically. Over time, they will improve, always looking for ways to adapt to your needs.
+                    </p>
+                    <p style="margin: 0; font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; line-height: 20px; font-weight: 600;">
+                      <a href="https://www.hyperperfect.ai/help/custom-prompts-and-rules" target="_blank" style="color: #1a7bff; text-decoration: underline;">Learn more</a>
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
 
-              <p style="margin: 0 0 20px 0; font-size: 14px; line-height: 1.6; color: #374151;">
-                HyperPerfect used to read, write, and format. Now it can do anything Excel supports. Charts, pivot tables, conditional formatting, data validation, named ranges, sparklines. The ceiling is gone.
-              </p>
+          <!-- Feature Card 3: Reference File Library -->
+          <tr>
+            <td style="padding: 0 0 12px 0;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 16px; border: 1px solid #e5e7eb;">
+                <tr class="feature-row">
+                  <td width="96" valign="top" class="feature-icon" style="padding: 28px 0 28px 24px;">
+                    <div style="width: 64px; height: 64px; background-color: #eef4ff; border-radius: 14px; text-align: center; line-height: 64px;">
+                      <!--[if !mso]><!-->
+                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1a7bff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+                      <!--<![endif]-->
+                    </div>
+                  </td>
+                  <td valign="top" class="feature-content" style="padding: 28px 28px 28px 16px;">
+                    <p style="margin: 0 0 8px 0; font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 17px; line-height: 22px; font-weight: 700; color: #111827; letter-spacing: -0.2px;">
+                      Reference File Library
+                    </p>
+                    <p style="margin: 0 0 14px 0; font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; line-height: 24px; font-weight: 400; color: #374151;">
+                      Build an organized library of reference files your AI can access anytime. Use them for sourcing data and information, or as templates for workflows that need to be repeatable.
+                    </p>
+                    <p style="margin: 0; font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; line-height: 20px; font-weight: 600;">
+                      <a href="https://www.hyperperfect.ai/help/file-library" target="_blank" style="color: #1a7bff; text-decoration: underline;">Learn more</a>
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
 
-              <!-- CTA -->
-              <p style="margin: 0 0 28px 0; font-size: 14px; line-height: 1.6; color: #374151;">
+          <!-- Feature Card 4: Custom Agents -->
+          <tr>
+            <td style="padding: 0 0 12px 0;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 16px; border: 1px solid #e5e7eb;">
+                <tr class="feature-row">
+                  <td width="96" valign="top" class="feature-icon" style="padding: 28px 0 28px 24px;">
+                    <div style="width: 64px; height: 64px; background-color: #eef4ff; border-radius: 14px; text-align: center; line-height: 64px;">
+                      <!--[if !mso]><!-->
+                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1a7bff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+                      <!--<![endif]-->
+                    </div>
+                  </td>
+                  <td valign="top" class="feature-content" style="padding: 28px 28px 28px 16px;">
+                    <p style="margin: 0 0 8px 0; font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 17px; line-height: 22px; font-weight: 700; color: #111827; letter-spacing: -0.2px;">
+                      Custom Agents
+                    </p>
+                    <p style="margin: 0 0 14px 0; font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; line-height: 24px; font-weight: 400; color: #374151;">
+                      Build a team of customized specialists. Scouts that find information in your workbook, formula wizards, or domain knowledge experts. They work in parallel, speeding up progress and improving performance by letting each one focus on what it does best.
+                    </p>
+                    <p style="margin: 0; font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; line-height: 20px; font-weight: 600;">
+                      <a href="https://www.hyperperfect.ai/help/custom-agents" target="_blank" style="color: #1a7bff; text-decoration: underline;">Learn more</a>
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Feature Card 5: Full Excel Control -->
+          <tr>
+            <td style="padding: 0 0 32px 0;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 16px; border: 1px solid #e5e7eb;">
+                <tr class="feature-row">
+                  <td width="96" valign="top" class="feature-icon" style="padding: 28px 0 28px 24px;">
+                    <div style="width: 64px; height: 64px; background-color: #eef4ff; border-radius: 14px; text-align: center; line-height: 64px;">
+                      <!--[if !mso]><!-->
+                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1a7bff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+                      <!--<![endif]-->
+                    </div>
+                  </td>
+                  <td valign="top" class="feature-content" style="padding: 28px 28px 28px 16px;">
+                    <p style="margin: 0 0 8px 0; font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 17px; line-height: 22px; font-weight: 700; color: #111827; letter-spacing: -0.2px;">
+                      Full Excel Control
+                    </p>
+                    <p style="margin: 0 0 14px 0; font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; line-height: 24px; font-weight: 400; color: #374151;">
+                      HyperPerfect now controls any programmable action in Excel: charts, PivotTables, conditional formatting, data validation, named ranges, tables, and even sparklines.
+                    </p>
+                    <p style="margin: 0; font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; line-height: 20px; font-weight: 600;">
+                      <a href="https://www.hyperperfect.ai/help/full-excel-control" target="_blank" style="color: #1a7bff; text-decoration: underline;">Learn more</a>
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- CTA Section -->
+          <tr>
+            <td style="padding: 0 0 32px 0;">
+              <p style="margin: 0 0 16px 0; font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; line-height: 24px; font-weight: 400; color: #374151;">
                 Open HyperPerfect and try the new guided walkthrough to see it all in action.
               </p>
-
-              <!-- CTA Button -->
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin: 0 0 28px 0;">
+              <table role="presentation" cellpadding="0" cellspacing="0">
                 <tr>
                   <td>
-                    <a href="https://www.hyperperfect.ai/help/changelog" target="_blank" style="display: inline-block; padding: 10px 24px; background-color: #1a7bff; color: #ffffff; font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 13px; font-weight: 500; text-decoration: none; border-radius: 6px; letter-spacing: 0.01em;">
-                      See what's new
+                    <a href="https://www.hyperperfect.ai/help/quick-start" target="_blank" style="display: inline-block; padding: 12px 28px; background-color: #1a7bff; color: #ffffff; font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 8px; letter-spacing: 0.01em;">
+                      Try for free in Excel
                     </a>
                   </td>
                 </tr>
               </table>
+            </td>
+          </tr>
 
-              <!-- Sign-off -->
-              <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #374151;">
-                Best,<br>
+          <!-- Sign-off -->
+          <tr>
+            <td style="padding: 0 0 40px 0;">
+              <p style="margin: 0; font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; line-height: 1.6; color: #374151;">
                 Dave<br>
                 <span style="font-size: 13px; color: #6b7280;">Founder, HyperPerfect</span>
               </p>
-
             </td>
           </tr>
 
           <!-- Footer -->
           <tr>
-            <td style="padding: 20px 40px; border-top: 1px solid #eceef2;">
-              <p style="margin: 0; font-size: 11px; line-height: 1.5; color: #9ca3af;">
+            <td style="padding: 24px 0 0 0; border-top: 1px solid #e5e7eb;">
+              <p style="margin: 0; font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 11px; line-height: 1.5; color: #9ca3af;">
                 HyperPerfect &middot; AI for Excel<br>
                 <a href="https://www.hyperperfect.ai" style="color: #9ca3af; text-decoration: underline;">hyperperfect.ai</a>
               </p>

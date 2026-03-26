@@ -159,12 +159,12 @@ export default function LandingPage() {
           transition={{ duration: 0.4, ease: "easeOut" }}
         >
           <Link
-            href="/resources/ai-excel-challenge"
+            href="/help/changelog"
             className="group inline-flex items-center gap-3 mb-8 px-6 py-3 rounded-full bg-white/15 border border-white/30 hover:bg-white/25 transition-all duration-200"
           >
-            <span className="inline-flex items-center gap-1.5 bg-yellow-400 text-black text-sm font-extrabold px-3 py-1 rounded-full">See the Proof</span>
-            <span className="text-white text-sm md:text-base font-medium">Watch HyperPerfect eliminate Claude&apos;s errors in a heads-up Excel challenge with Claude in Excel.</span>
-            <span className="text-white/70 group-hover:text-white group-hover:translate-x-0.5 transition-all text-sm font-semibold whitespace-nowrap">&rarr; See Results</span>
+            <span className="inline-flex items-center gap-1.5 bg-yellow-400 text-black text-sm font-extrabold px-3 py-1 rounded-full">New</span>
+            <span className="text-white text-sm md:text-base font-medium">Custom agents, plans, prompts, and full Excel control. See what&apos;s new.</span>
+            <span className="text-white/70 group-hover:text-white group-hover:translate-x-0.5 transition-all text-sm font-semibold whitespace-nowrap">&rarr; Changelog</span>
           </Link>
         </motion.div>
 
@@ -176,10 +176,10 @@ export default function LandingPage() {
           transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
         >
           <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-4">
-            Reliable AI for Excel has Arrived
+            The Most Powerful Agentic AI in Excel
           </h1>
-          <p className="text-xl md:text-2xl text-white/90">
-            Claude Opus 4.6 changed the game. HyperPerfect makes it flawless in Excel.
+          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+            Custom agents, prompts, rules, and plans. All the sophistication of agentic AI, none of the complexity. It just works.
           </p>
         </motion.div>
 
@@ -227,7 +227,7 @@ export default function LandingPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            Why AI struggles with spreadsheets
+            Agentic AI that&apos;s actually easy to use
           </motion.h2>
           <motion.div
             className="space-y-6 text-lg text-hp-text-secondary"
@@ -237,13 +237,13 @@ export default function LandingPage() {
             transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
           >
             <p>
-              AI models are notoriously bad at spreadsheets. You&apos;ve likely asked it to build one, and received a file back that was riddled with errors and not exactly what you requested.
+              AI tools like Claude now offer custom agents, skills, rules, and multi-step workflows. But setting them up requires technical knowledge, complex configuration files, and hours of trial and error.
             </p>
             <p>
-              <strong className="text-hp-text-primary">Why?</strong> Claude, ChatGPT and other leading models were built using natural language, not spreadsheet formulas. Sending a firehose of Excel formulas, cell references, and formatting details causes internal chaos, which leads to hallucinations and errors.
+              <strong className="text-hp-text-primary">HyperPerfect puts all of that inside Excel and makes it simple.</strong> Describe what you need in plain English and the AI builds the agents, prompts, rules, and plans for you. No configuration files. No coding. No learning curve.
             </p>
             <p>
-              We fixed this by bringing AI inside of Excel and adding a data translation layer that fundamentally changes how AI communicates with spreadsheets.
+              The result: you get the full power of agentic AI applied to your actual Excel work, not a demo.
             </p>
           </motion.div>
 
@@ -254,19 +254,19 @@ export default function LandingPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
           >
-            <h3 className="text-xl font-bold text-hp-text-primary mb-6 text-center">Here&apos;s how it works:</h3>
+            <h3 className="text-xl font-bold text-hp-text-primary mb-6 text-center">How it works:</h3>
             <div className="space-y-4">
               <div className="flex items-start">
                 <span className="text-brand font-bold text-xl mr-4">1.</span>
-                <span className="text-hp-text-secondary">We bring the absolute best AI models into Excel software and workflows</span>
+                <span className="text-hp-text-secondary">Tell the AI what you need. It creates custom agents, prompts, rules, and plans for you.</span>
               </div>
               <div className="flex items-start">
                 <span className="text-brand font-bold text-xl mr-4">2.</span>
-                <span className="text-hp-text-secondary">Our proprietary indexing engine prevents 95% of hallucination errors</span>
+                <span className="text-hp-text-secondary">Each agent works in its own memory space, so the main AI stays focused on your task.</span>
               </div>
               <div className="flex items-start">
                 <span className="text-brand font-bold text-xl mr-4">3.</span>
-                <span className="text-hp-text-secondary">Data transformation and enrichment improves AI comprehension by 10x</span>
+                <span className="text-hp-text-secondary">Save your workflows and reuse them. Monthly reports, data processing, model builds. Run the same plan next month.</span>
               </div>
             </div>
           </motion.div>
@@ -284,23 +284,23 @@ export default function LandingPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            Turn Excel into an AI agent that flawlessly builds models, cleans messy data, finds errors and makes dashboards look professional.
+            Everything you need to automate your Excel work
           </motion.p>
           <div className="mb-12"></div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {[
               {
-                title: "Accurate",
-                items: ["Best in class AI for task", "Built in error protection", "Real time task control"],
+                title: "Full Excel Control",
+                items: ["Charts, pivot tables, conditional formatting", "Data validation and named ranges", "Anything Excel supports, the AI can build"],
               },
               {
-                title: "Fast",
-                items: ["Accurate PDF extractions", "Integrated Web search", "Handles large datasets"],
+                title: "Custom Agents and Plans",
+                items: ["AI specialists that work in their own memory", "Reusable plans for recurring workflows", "The AI builds them for you automatically"],
               },
               {
-                title: "Secure",
-                items: ["Enterprise security", "Data stays private", "IT Dept approved"],
+                title: "Enterprise Ready",
+                items: ["Microsoft SSO, no separate signup", "Your data stays in your Excel session", "IT approved for Microsoft 365"],
               },
             ].map((card, i) => (
               <motion.div
@@ -332,23 +332,23 @@ export default function LandingPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            <h3 className="text-2xl font-bold text-hp-text-primary mb-4">Learn how to use HyperPerfect&apos;s AI in Excel</h3>
+            <h3 className="text-2xl font-bold text-hp-text-primary mb-4">See it in action</h3>
             <p className="text-hp-text-secondary mb-6 max-w-xl mx-auto">
-              Get free tutorials, prompts, and techniques that turn AI into your most powerful Excel tool.
+              Open HyperPerfect in Excel and try the guided walkthrough. The AI builds a custom workflow for you in minutes.
             </p>
             <Link
-              href="/help/sign-up"
+              href="/help/quick-start"
               className="inline-flex items-center justify-center whitespace-nowrap rounded-lg text-xl font-bold transition-all duration-150 focus-visible:outline-none bg-brand text-white hover:bg-brand-hover px-8 py-4"
             >
-              Start Learning Free
+              Try for Free in Excel
             </Link>
             <p className="text-sm text-hp-text-tertiary mt-4">
-              Excel on lockdown? Use HyperPerfect in minutes with a free{" "}
+              No credit card. No separate account.{" "}
               <Link
                 href="/help/quick-start"
                 className="text-brand underline hover:no-underline"
               >
-                Excel Online account
+                Works with Excel Online too
               </Link>.
             </p>
           </motion.div>

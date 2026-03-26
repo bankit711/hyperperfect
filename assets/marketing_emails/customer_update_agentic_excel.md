@@ -13,7 +13,7 @@ Subject: HyperPerfect now has agentic AI built for Excel
 
 Hi {{ contact.FIRSTNAME | default: "there" }},
 
-HyperPerfect has had a big month. We've brought the full power of agentic AI into Excel and made it simple to use.
+Hire a team of Excel analysts that stay organized, adapt to your needs, and improve over time.
 
 **Custom Agents, Prompts, Rules, and Plans**
 You now have a complete toolkit for controlling how the AI works. Create custom agents that specialize in specific tasks. Save prompts you can load with one command. Set rules the AI follows every time. Build plans you can reuse monthly.
