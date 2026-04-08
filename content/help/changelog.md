@@ -9,6 +9,74 @@ All notable changes to HyperPerfect are documented here.
 
 ---
 
+## [1.0.45]
+
+### Extended Memory for Everyone
+Extended memory used to be opt-in. Now it's on for all users. Opus and Sonnet both support 1M context.
+
+- **No Setup Needed**: Extended memory activates automatically when your session needs it
+- **Bigger Workbooks**: Work through complex, multi-sheet models without hitting memory limits mid-session
+- **Longer Sessions**: Keep your full conversation history intact during extended analytical work
+
+---
+
+## [1.0.44]
+
+### Saved Plans
+Build a plan once, reuse it next month. The AI knows your saved plans and will suggest them when they're relevant.
+
+- **Persistent Plans**: Plans now save across conversations. Your monthly close process, your model build steps, your data pipelines.
+- **AI Awareness**: The AI sees your saved plans and suggests running them when the task matches
+- **Full Integration**: Plans work with custom prompts, agents, and rule sets. Each step can load specific context, deploy specialists, and follow your rules.
+- **One Command**: Type `@execute` to run a saved plan with fresh data
+
+---
+
+## [1.0.43]
+
+### Cell Selection Context
+Select a range and ask a question. The AI now knows exactly what you're looking at.
+
+- **Point and Ask**: Highlight a range, then ask "what does this formula do?" or "summarize this data"
+- **No More Specifying Ranges**: The AI reads your current selection automatically
+- **Multi-Cell Selections**: Works with any multi-cell range or cross-sheet selection
+
+---
+
+## [1.0.42]
+
+### Find in Sheet
+Ask the AI to search your data. Find values, locate errors, and replace text across your worksheet.
+
+- **Search by Value**: "Find all cells containing 'Revenue' in this sheet"
+- **Find and Replace**: "Replace all instances of 2025 with 2026"
+- **Special Cells**: Locate formulas, errors, blanks, or constants with a single request
+
+---
+
+## [1.0.41]
+
+### Conversation Recall
+Your past conversations are no longer gone. Search them, recall them, and pick up where you left off.
+
+- **Conversation History**: Browse and search your past sessions from the recall drawer
+- **AI-Powered Recall**: The AI can pull context from a previous conversation into your current one
+- **Continuity**: "Remember the model we built last week? Update it with this month's data."
+
+---
+
+## [1.0.40]
+
+### Multi-Provider AI Routing
+HyperPerfect now uses Claude, Gemini, and ChatGPT. Not one AI. The right AI for each type of Excel work.
+
+- **Three Providers, One Experience**: Anthropic Claude, Google Gemini, and OpenAI ChatGPT are all available. The system picks the best one for each request automatically.
+- **Task-Based Routing**: Different AIs excel at different things. HyperPerfect benchmarks each provider across formula writing, financial modeling, data extraction, formatting, analysis, and more, then routes your request accordingly.
+- **Better Results, Faster, at Lower Cost**: The best model for quality where it matters. Faster models where speed is available. Lighter models where the task is simple. You get all three benefits at once.
+- **Your Preferences, Your Control**: Open Settings to see which providers are enabled. Override the default routing for any task type. Or let the system handle it.
+
+---
+
 ## [1.0.39]
 
 ### Full Excel Control

@@ -18,7 +18,7 @@ HyperPerfect's AI assistant can read, analyze, and modify your Excel data throug
 
 ## What You Can Do
 
-### Read & Analyze Your Data
+### Read and Analyze Your Data
 
 Ask the AI to examine your Excel data and provide insights, summaries, calculations, or answers about what you have.
 
@@ -26,36 +26,29 @@ Ask the AI to examine your Excel data and provide insights, summaries, calculati
 ```
 "Analyze the selected data and find patterns"
 "What's the average of these sales figures?"
-"Summarize this data in bullet points"
 "Look at A1:D10 and tell me if there are any outliers"
 "What's the total revenue by product?"
 ```
 
 **Tips**:
-- Select your data first for automatic detection
+- Select a range of cells and the AI detects it automatically (multi-cell selections)
 - Or specify the range like "A1:D10" or "B2:F20"
-- The AI works with large datasets efficiently — just ask, and it will handle it
+- The AI works with large datasets efficiently
 - You can ask follow-up questions about the same data without re-selecting
 
-### Create & Write Results Back to Excel
+### Write and Calculate
 
 Ask the AI to calculate results and write them directly to your spreadsheet.
 
 **Examples**:
 ```
 "Calculate monthly totals and write them to column F"
-"Create a summary of this data in cells A10:C15"
 "Add a calculation column that multiplies Quantity x Price"
 "Write statistics (mean, median, max, min) for this range"
 "Process this raw data and write the cleaned version to column B"
 ```
 
-**Tips**:
-- Be specific about where results should go (e.g., "column F" or "A10:B15")
-- The AI will avoid overwriting important data and let you know if adjustments are needed
-- Results are written all at once for efficiency
-
-### Format & Style Your Data
+### Format and Style
 
 Make your data look professional with formatting.
 
@@ -64,8 +57,6 @@ Make your data look professional with formatting.
 "Format A1:F1 as a professional header with bold text and blue background"
 "Format column C as currency with right alignment"
 "Make this table look professional with alternating row colors and borders"
-"Bold the header row and add borders to the entire table"
-"Highlight all values over 1000 in green"
 ```
 
 **Available Formatting Options**:
@@ -76,7 +67,7 @@ Make your data look professional with formatting.
 - **Number formats**: Currency, percentage, decimals, dates, and custom formats
 - **Column and row sizing**: Auto-fit or set custom widths and heights
 
-### Organize & Restructure Your Data
+### Organize and Restructure
 
 Move data around, duplicate ranges, or delete rows and columns.
 
@@ -85,7 +76,6 @@ Move data around, duplicate ranges, or delete rows and columns.
 "Copy this data from column A to column D"
 "Move the summary section from A1:C10 to E1:G10"
 "Delete rows 5 through 10"
-"Delete column D (the old data column)"
 "Copy the formatting from this header row to the data rows below"
 ```
 
@@ -98,52 +88,145 @@ Create hierarchical, structured reports like P&Ls, budgets, or balance sheets.
 "Create a professional P&L report for this data"
 "Build a quarterly budget summary with revenue, expenses, and profit margins"
 "Make a balance sheet with assets, liabilities, and equity sections"
-"Create a monthly sales report with totals and subtotals by region"
 ```
 
-### Create Data Tables with Formulas & Grouping
+### Search Your Data
 
-Generate structured data tables with automatic formatting and optional grouping with subtotals.
+Find values, locate errors, and replace text across your worksheet.
 
 **Examples**:
 ```
-"Create a sales table with Product, Quantity, Price, and Total columns (Total = Qty x Price)"
-"Build a customer list with Name, Email, Phone, and Date Created"
-"Make a transaction table grouped by month, with a subtotal row for each month"
+"Find all cells containing 'Revenue' in this sheet"
+"Replace all instances of 2025 with 2026"
+"Find all formula errors in this sheet"
+"Locate all blank cells in column B"
 ```
 
-### Explore Your Workbook
+### Recall Past Conversations
 
-Discover and navigate your workbook structure without manual hunting.
+Search your conversation history and pull context from previous sessions.
 
 **Examples**:
 ```
-"Show me all the sheets in this workbook"
-"What data tables do I have on this sheet?"
-"List all the Excel tables in the Sales sheet"
-"Read the data from the Summary sheet"
+"What did we build last Tuesday?"
+"Remember the model we worked on last week? Update it with March data."
+"Find my previous analysis of the Q1 numbers"
 ```
 
-### Build Charts, Tables, and More
+---
 
-HyperPerfect can create any Excel object the API supports, not just cell values and formatting.
+## AI Tools Reference
 
-**Examples**:
-```
-"Create a bar chart from this sales data"
-"Build a pivot table grouped by region and quarter"
-"Add conditional formatting to highlight values over budget in red"
-"Create a dropdown list in column A with these options: Q1, Q2, Q3, Q4"
-"Add data validation to prevent negative numbers in the Amount column"
-"Insert sparklines next to each row showing the monthly trend"
-```
+The AI has specialized tools for different types of Excel work. You don't need to know these names. Just describe what you want and the AI picks the right tool. This reference is for users who want to understand what's happening behind the scenes.
 
-**What's possible**:
-- **Charts**: Bar, line, pie, combo, scatter, and more
-- **Pivot tables**: Group, aggregate, and summarize data dynamically
-- **Conditional formatting**: Color scales, data bars, icon sets, and custom rules
-- **Data validation**: Dropdown lists, input restrictions, and custom validation
-- **Named ranges, table styles, sparklines, custom number formats** -- anything Excel supports programmatically
+### Core Tools
+
+| Tool | What it does |
+|------|-------------|
+| **Read Range** | Read cell values, formulas, and formatting from any range |
+| **Write Range** | Write data and formulas to cells, with optional formatting |
+| **Format Range** | Apply formatting to existing cells without changing values |
+| **Copy and Paste** | Copy a range to another location with formula adjustment |
+| **Move Range** | Cut and paste with formula reference adjustment |
+| **Insert Rows/Columns** | Insert new rows or columns into a worksheet |
+| **Delete Rows/Columns** | Remove rows or columns from a worksheet |
+| **Create Sheet** | Add a new worksheet to the workbook |
+
+### Discovery Tools
+
+| Tool | What it does |
+|------|-------------|
+| **List Sheets** | Show all worksheets in the workbook |
+| **Map Sheet** | Map a sheet's structure: headers, sections, tables, and data regions |
+| **Get Tables** | List Excel tables on a worksheet with their details |
+| **Get Used Range** | Find the boundaries of populated cells |
+| **Find in Sheet** | Search for values, find and replace, or locate special cells (formulas, errors, blanks) |
+| **Snapshot Range** | Capture a visual image of a cell range |
+
+### Report and Table Builders
+
+| Tool | What it does |
+|------|-------------|
+| **Create Report** | Build hierarchical financial reports (P&Ls, balance sheets, budgets) with sections, subtotals, and formulas |
+| **Create Table** | Build structured data tables with column types, grouping, and subtotals |
+
+### AI Control Tools
+
+| Tool | What it does |
+|------|-------------|
+| **Deploy Agent** | Send a specialist agent to work on a specific part of your task |
+| **Recall Conversation** | Search and pull context from past conversations |
+| **Manage Prompts** | Create and update your custom prompts |
+| **Manage Agents** | Create and update your custom agent definitions |
+| **Manage Rules** | Create and update your rule sets and global preferences |
+| **Manage Plans** | Create, update, and organize saved plans |
+| **Run Plan** | Execute a saved plan as a tracked checklist |
+| **Manage Files** | Access your file library, read files, and link files to prompts or agents |
+
+### Advanced Excel (Full Office.js Access)
+
+Beyond the core tools, HyperPerfect can execute any operation the Excel JavaScript API supports. This is what makes "anything Excel can do" possible. Here is what's available:
+
+**Charts and Visualizations**
+- Bar, column, line, pie, doughnut, scatter, area, combo, waterfall, and funnel charts
+- Customize axes, labels, legends, data series, colors, and trendlines
+- Position and resize charts on any sheet
+
+**Pivot Tables**
+- Create pivot tables from raw data
+- Configure row fields, column fields, value fields, and filters
+- Sort, filter, and reorder pivot fields
+- Change aggregation methods and layout styles
+
+**Conditional Formatting**
+- Color scales (two-color and three-color gradients)
+- Data bars with customizable fill
+- Icon sets (arrows, traffic lights, flags, ratings)
+- Formula-based rules for custom logic
+- Cell value rules (greater than, between, top 10, etc.)
+- Highlight duplicates, blanks, or errors
+
+**Data Validation**
+- Dropdown lists from a fixed set or cell range
+- Number constraints (whole number, decimal, between, greater than)
+- Date and time constraints
+- Text length limits
+- Custom formula validation
+- Input messages and error alerts
+
+**Named Ranges and References**
+- Create, update, and delete named ranges
+- Use names in formulas across sheets
+- Dynamic named ranges
+
+**Sorting and Filtering**
+- Multi-level sorting by any column
+- AutoFilter setup and management
+- Custom filter criteria
+
+**Row and Column Grouping**
+- Outline grouping with collapsible controls
+- Nested group levels
+- Summary rows above or below groups
+
+**Print and Page Layout**
+- Define print areas
+- Page breaks (horizontal and vertical)
+- Headers and footers with page numbers
+- Margins, orientation, and paper size
+
+**Cell Operations**
+- Merge and unmerge cells
+- Freeze panes (rows, columns, or both)
+- Comments and notes on cells
+- Sparklines (line, column, win/loss)
+- Data series auto-fill
+- Custom number formats
+
+**Performance**
+- Bulk operations with suspended calculation for speed
+- Batch updates across multiple ranges
+- Formula verification after writes
 
 ---
 

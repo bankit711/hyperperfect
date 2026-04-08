@@ -4,9 +4,9 @@ Tracks every run of the release-update skill. Used by Phase 0 to know where to p
 
 ## State
 
-- **Last run date**: 2026-03-25
-- **Last version documented in changelog**: 1.0.39
-- **Last email sent**: pending (Brevo draft created, campaign ID 34)
+- **Last run date**: 2026-04-08
+- **Last version documented in changelog**: 1.0.45
+- **Last email sent**: pending (Brevo draft created, campaign ID 35)
 
 ---
 
@@ -26,6 +26,15 @@ Tracks every run of the release-update skill. Used by Phase 0 to know where to p
 **New changelog versions**: v1.0.34 through v1.0.39 (6 entries)
 **Help pages updated**: `ai-prompting.md` (commands reference, full AI control features section with prompts, agents, rules, plans, files, and demo walkthrough), `excel-functionality.md` (charts/pivot tables/conditional formatting section, file library section)
 **Email drafted**: "HyperPerfect now has agentic AI built for Excel" | **Sent**: pending
+### 2026-04-08
+
+**HP7 commits reviewed**: 2026-03-25 through 2026-04-07
+**New changelog versions**: v1.0.40 through v1.0.45 (6 entries)
+**Help pages updated**: `ai-prompting.md` (AI Routing section with provider selection, task-type routing, user overrides), `excel-functionality.md` (full overhaul: tools reference table, exhaustive Office.js capabilities list, find in sheet, conversation recall)
+**Landing page updated**: New headline ("The Most Powerful Agentic AI Workflows for Excel"), hero copy updated for AI routing, new Intelligent AI Routing card with three-provider breakdown, feature cards reordered
+**Email drafted**: "Why is HyperPerfect better than Claude and ChatGPT? AI Model Routing." | **Sent**: pending (Brevo campaign ID 35)
+**Notes**: Headline feature is multi-provider AI routing (Claude, Gemini, ChatGPT) with task affinity benchmarks. David's framing: different AIs have measurable strengths, HP picks the best one per task type. Web search excluded from changelog (not new). Cell selection only works for multi-cell ranges. Subagents cannot access recall_conversation (excluded tool). Renamed "LLM Routing" to "AI Routing" throughout for user accessibility. Logo placeholders in email need real provider logos uploaded to Brevo before sending.
+
 **Notes**: Massive feature batch covering the full AI control suite (custom agents, prompts, rule sets, plan mode, file library) and full Excel control (execute_office_js). David's framing: "We've brought all of the power of agentic AI into Excel and made it simple to use." Key insight from David: agents protect the main context window, which is critical for Excel. The onboarding demo (Rosa's apple stand) is the canonical example of how everything works together. Brevo campaign key still not configured.
 
 ---

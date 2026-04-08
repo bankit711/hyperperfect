@@ -163,7 +163,7 @@ export default function LandingPage() {
             className="group inline-flex items-center gap-3 mb-8 px-6 py-3 rounded-full bg-white/15 border border-white/30 hover:bg-white/25 transition-all duration-200"
           >
             <span className="inline-flex items-center gap-1.5 bg-yellow-400 text-black text-sm font-extrabold px-3 py-1 rounded-full">New</span>
-            <span className="text-white text-sm md:text-base font-medium">Custom agents, plans, prompts, and full Excel control. See what&apos;s new.</span>
+            <span className="text-white text-sm md:text-base font-medium">Multi-provider AI routing: Claude, Gemini, and ChatGPT. See what&apos;s new.</span>
             <span className="text-white/70 group-hover:text-white group-hover:translate-x-0.5 transition-all text-sm font-semibold whitespace-nowrap">&rarr; Changelog</span>
           </Link>
         </motion.div>
@@ -176,10 +176,10 @@ export default function LandingPage() {
           transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
         >
           <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-4">
-            The Most Powerful Agentic AI in Excel
+            The Most Powerful Agentic AI Workflows for Excel
           </h1>
           <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
-            Custom agents, prompts, rules, and plans. All the sophistication of agentic AI, none of the complexity. It just works.
+            Custom agents, prompts, and plans. Intelligent AI routing across Claude, Gemini, and ChatGPT. The right AI for every task.
           </p>
         </motion.div>
 
@@ -227,7 +227,7 @@ export default function LandingPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            Agentic AI that&apos;s actually easy to use
+            Workflows that get smarter every time
           </motion.h2>
           <motion.div
             className="space-y-6 text-lg text-hp-text-secondary"
@@ -243,7 +243,7 @@ export default function LandingPage() {
               <strong className="text-hp-text-primary">HyperPerfect puts all of that inside Excel and makes it simple.</strong> Describe what you need in plain English and the AI builds the agents, prompts, rules, and plans for you. No configuration files. No coding. No learning curve.
             </p>
             <p>
-              The result: you get the full power of agentic AI applied to your actual Excel work, not a demo.
+              Then it goes a step further: every request is automatically routed to the best AI for that type of work. Claude for analysis, Gemini for formulas, ChatGPT for modeling. You get the right tool for every task without thinking about it.
             </p>
           </motion.div>
 
@@ -262,7 +262,7 @@ export default function LandingPage() {
               </div>
               <div className="flex items-start">
                 <span className="text-brand font-bold text-xl mr-4">2.</span>
-                <span className="text-hp-text-secondary">Each agent works in its own memory space, so the main AI stays focused on your task.</span>
+                <span className="text-hp-text-secondary">Each request is classified and routed to the AI provider that performs best for that task type.</span>
               </div>
               <div className="flex items-start">
                 <span className="text-brand font-bold text-xl mr-4">3.</span>
@@ -291,12 +291,12 @@ export default function LandingPage() {
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {[
               {
-                title: "Full Excel Control",
-                items: ["Charts, pivot tables, conditional formatting", "Data validation and named ranges", "Anything Excel supports, the AI can build"],
+                title: "Agentic Workflows",
+                items: ["Custom agents, prompts, rules, and plans", "Reusable workflows for recurring tasks", "The AI builds them for you automatically"],
               },
               {
-                title: "Custom Agents and Plans",
-                items: ["AI specialists that work in their own memory", "Reusable plans for recurring workflows", "The AI builds them for you automatically"],
+                title: "Full Excel Control",
+                items: ["Charts, pivot tables, conditional formatting", "Data validation and named ranges", "Anything Excel supports, the AI can build"],
               },
               {
                 title: "Enterprise Ready",
@@ -323,6 +323,50 @@ export default function LandingPage() {
               </motion.div>
             ))}
           </div>
+
+          {/* AI Routing Section */}
+          <motion.div
+            className="mb-16 bg-surface-secondary rounded-lg border border-hp-border shadow-card p-8 md:p-12"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
+            <h3 className="text-2xl md:text-3xl font-bold text-hp-text-primary mb-4 text-center">
+              Intelligent AI Routing
+            </h3>
+            <p className="text-lg text-hp-text-secondary text-center max-w-2xl mx-auto mb-8">
+              Every AI provider has strengths. HyperPerfect uses all of them.
+            </p>
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
+              {[
+                {
+                  provider: "Claude",
+                  strength: "Analysis and Reporting",
+                  desc: "When your task needs deep reasoning, synthesis, or written analysis, Claude leads.",
+                },
+                {
+                  provider: "Gemini",
+                  strength: "Formulas and Data Extraction",
+                  desc: "For formula generation, data extraction, and cleanup tasks, Gemini scores highest.",
+                },
+                {
+                  provider: "ChatGPT",
+                  strength: "Modeling and Formatting",
+                  desc: "Financial modeling and structured formatting tasks route to ChatGPT for best results.",
+                },
+              ].map((item) => (
+                <div key={item.provider} className="text-center">
+                  <p className="text-lg font-bold text-hp-text-primary mb-1">{item.provider}</p>
+                  <p className="text-sm font-semibold text-brand mb-2">{item.strength}</p>
+                  <p className="text-sm text-hp-text-secondary">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-center text-hp-text-secondary">
+              The system classifies every request by task type and routes it to the provider with the highest benchmark score. You can customize routing per task type in Settings, or let the defaults handle it.
+            </p>
+          </motion.div>
 
           {/* Second CTA */}
           <motion.div

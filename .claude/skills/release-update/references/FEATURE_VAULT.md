@@ -314,6 +314,168 @@ This is one of two headline features for the email. Frame as a capability explos
 
 ---
 
+### [1.0.40] Multi-Provider AI with LLM Routing
+**Shipped**: 2026-03-27/04-01
+**Status**: confirmed
+
+**What it does (technical)**:
+Three AI providers (Anthropic Claude, Google Gemini, OpenAI GPT) with 9 models. A task affinity system benchmarks each provider across 9 Excel task types and routes each request to the highest-performing provider. Auto Mode's classifier identifies the task type, then the affinity table picks the provider. Users can see rankings and override preferences per task type in Settings.
+
+**Who it's for**:
+All users, all tiers. Power users will appreciate the Settings control; everyone benefits from better results automatically.
+
+**The real value**:
+Every AI provider has genuine strengths and weaknesses. Gemini is measurably better at formulas and data extraction. GPT excels at financial modeling and formatting. Claude leads on analysis and reporting. Instead of being locked to one provider's tradeoffs, HyperPerfect picks the best AI for each type of Excel work. Better quality where it matters, faster responses where speed is available, lower cost where a lighter model handles the job. No other AI Excel tool does this.
+
+**Best framing angle**:
+"HyperPerfect now uses Claude, Gemini, and GPT. Not one AI. The right AI for each task."
+
+**Use cases**:
+- Writing a complex formula: routed to Gemini (highest benchmark score for formulas)
+- Building a financial model: routed to GPT (strongest at modeling tasks)
+- Analyzing trends in a dataset: routed to Claude (best at analysis and reporting)
+- User who wants control: open Settings, see the benchmark scores, override any task type
+
+**What it's NOT**:
+Not a "pick your favorite AI" toggle. The system routes intelligently by default. Manual overrides exist for power users, but the magic is in the automatic routing.
+
+**Notes**:
+Name the providers. Lead with the insight that different AIs are better at different things, and HP is the only tool that uses them all. Headline feature for the email and web page update.
+
+---
+
+### [1.0.41] Conversation Recall
+**Shipped**: 2026-03-26/04-01
+**Status**: confirmed
+
+**What it does (technical)**:
+Search and pull context from past conversations. Recall drawer in the UI. The AI also has a recall_conversation tool to reference prior work during a session.
+
+**Who it's for**:
+Users doing recurring work or picking up where they left off.
+
+**The real value**:
+Your past work doesn't disappear. The AI can reference what you built last week or last month.
+
+**Best framing angle**:
+"Pick up where you left off. The AI remembers your past conversations."
+
+**Use cases**:
+- "Remember the model we built last Tuesday? Update it with March numbers."
+- Searching conversation history for a specific analysis
+
+---
+
+### [1.0.42] Web Search
+**Shipped**: 2026-03-27/31
+**Status**: confirmed
+
+**What it does (technical)**:
+The AI can search the web and fetch pages to bring external information into the conversation.
+
+**Who it's for**:
+Users who need external context while working in Excel.
+
+**The real value**:
+Research without leaving Excel. Look up tax rates, industry benchmarks, company data.
+
+**Best framing angle**:
+"Ask a question that needs real-world data. The AI will look it up."
+
+**Use cases**:
+- "What's the current Fed funds rate?" while building a model
+- Pulling industry benchmarks to compare against your data
+
+---
+
+### [1.0.43] Find in Sheet
+**Shipped**: 2026-03-30
+**Status**: confirmed
+
+**What it does (technical)**:
+Search, find & replace, and locate special cells (formulas, errors, blanks) within sheets.
+
+**Who it's for**:
+Anyone working with large sheets.
+
+**The real value**:
+The AI can hunt through your data. Find errors, locate formulas, search for specific values.
+
+**Best framing angle**:
+"Ask the AI to find anything in your sheet."
+
+**Use cases**:
+- "Find all cells with errors in this sheet"
+- "Replace all instances of 2025 with 2026"
+
+---
+
+### [1.0.44] Cell Selection Context
+**Shipped**: 2026-04-05
+**Status**: confirmed
+
+**What it does (technical)**:
+HP now sees which cell(s) the user has selected, so it understands what you're pointing at.
+
+**Who it's for**:
+All users.
+
+**The real value**:
+Select a cell and ask "what does this formula do?" and it knows exactly which cell you mean.
+
+**Best framing angle**:
+"Select a cell, ask a question. The AI knows what you're looking at."
+
+**Use cases**:
+- Select a formula cell, ask "explain this"
+- Highlight a range, ask "summarize this data"
+
+---
+
+### [1.0.45] Saved Plans
+**Shipped**: 2026-03-31/04-07
+**Status**: confirmed
+
+**What it does (technical)**:
+Plans now persist across conversations. The AI sees your saved plans and can suggest running them when relevant.
+
+**Who it's for**:
+Users with recurring analytical workflows.
+
+**The real value**:
+Build a plan once, reuse it. The AI knows your plans exist and will suggest them.
+
+**Best framing angle**:
+"Save your plans. Reuse them next month."
+
+**Use cases**:
+- Monthly close process saved as a plan, run every month
+- Complex model build steps saved for team reuse
+
+---
+
+### [1.0.46] Extended Context GA
+**Shipped**: 2026-03-31
+**Status**: confirmed
+
+**What it does (technical)**:
+Extended memory (previously opt-in) is now generally available for all users.
+
+**Who it's for**:
+All users, especially those with large workbooks.
+
+**The real value**:
+No more running out of room mid-session. Large workbooks and long conversations just work.
+
+**Best framing angle**:
+"More room for your data. Extended memory is now on for everyone."
+
+**Use cases**:
+- Multi-sheet financial models that previously hit memory limits
+- Long analytical sessions that no longer get interrupted
+
+---
+
 ## Archive
 
 Features with confirmed value props from previous sessions are moved here once their changelog/email/help content is published.

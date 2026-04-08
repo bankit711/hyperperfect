@@ -287,3 +287,33 @@ The real power is in the combination. Here's how the onboarding demo ties it all
 3. **Plan** ("Monthly Variance Report") orchestrates the full workflow: run the prompt, review results, update rules if needed, present findings
 
 Rosa doesn't build any of this manually. She describes what she needs and the AI creates the rules, the prompt, and the plan. Next month, she types `@execute` and gets a consistent, accurate report.
+
+---
+
+## AI Routing: The Right AI for Every Task
+
+HyperPerfect doesn't rely on a single AI. It uses Claude, Gemini, and ChatGPT, and routes each request to the provider that performs best for that type of work.
+
+### How It Works
+
+When you send a message, the system classifies the task (formula writing, financial modeling, data extraction, formatting, analysis, reporting, cleanup, research, or general) and routes it to the AI provider with the highest benchmark score for that task type.
+
+Different providers have genuine strengths. Some are measurably better at formulas and data extraction. Others excel at financial modeling or formatting. Others lead on analysis and reporting. Instead of being locked to one provider's tradeoffs, you get the best tool for each job automatically.
+
+This works together with Auto Mode. Auto Mode determines the right quality and effort level. AI routing determines the right provider. Combined, every request gets the right AI at the right power level.
+
+### What You Can Control
+
+Open **Settings** to manage your provider preferences:
+
+- **Enable or disable providers**: Choose which AI providers HyperPerfect can use. You can enable all three or limit to the ones you prefer.
+- **Override routing per task type**: For each type of work (formulas, modeling, analysis, etc.), you can select your preferred provider. The system shows you which providers are available and their default ranking.
+- **Reset to defaults**: Clear all your custom preferences and return to the benchmarked defaults with one click.
+
+If you only have one provider enabled, the routing table is hidden since there's nothing to route between.
+
+### When Routing Applies
+
+AI routing applies to all Auto Mode requests and to agents deployed during your session. Each agent's task is classified and routed independently, so a formula agent might use a different provider than an analysis agent working in the same session.
+
+In Fast and Smart mode, routing still applies based on the general task type unless you've set a specific override.
