@@ -159,12 +159,12 @@ export default function LandingPage() {
           transition={{ duration: 0.4, ease: "easeOut" }}
         >
           <Link
-            href="/help/changelog"
+            href="/help/ai-routing"
             className="group inline-flex items-center gap-3 mb-8 px-6 py-3 rounded-full bg-white/15 border border-white/30 hover:bg-white/25 transition-all duration-200"
           >
             <span className="inline-flex items-center gap-1.5 bg-yellow-400 text-black text-sm font-extrabold px-3 py-1 rounded-full">New</span>
             <span className="text-white text-sm md:text-base font-medium">Multi-provider AI routing: Claude, Gemini, and ChatGPT. See what&apos;s new.</span>
-            <span className="text-white/70 group-hover:text-white group-hover:translate-x-0.5 transition-all text-sm font-semibold whitespace-nowrap">&rarr; Changelog</span>
+            <span className="text-white/70 group-hover:text-white group-hover:translate-x-0.5 transition-all text-sm font-semibold whitespace-nowrap">&rarr; Learn more</span>
           </Link>
         </motion.div>
 
@@ -341,23 +341,28 @@ export default function LandingPage() {
             <div className="grid md:grid-cols-3 gap-6 mb-8">
               {[
                 {
+                  provider: "OpenAI",
+                  logo: "/images/logo-openai-wordmark.png",
+                  strength: "Financial Modeling",
+                  desc: "Structures your P&L, balance sheet, and cash flow. The strongest model for building and organizing complex financial frameworks.",
+                },
+                {
                   provider: "Claude",
-                  strength: "Analysis and Reporting",
-                  desc: "When your task needs deep reasoning, synthesis, or written analysis, Claude leads.",
+                  logo: "/images/logo-claude-wordmark.png",
+                  strength: "Complex Work",
+                  desc: "Handles the broad range of Excel operations and deep analysis. Excels at multi-step reasoning and tasks that require careful thought.",
                 },
                 {
                   provider: "Gemini",
-                  strength: "Formulas and Data Extraction",
-                  desc: "For formula generation, data extraction, and cleanup tasks, Gemini scores highest.",
-                },
-                {
-                  provider: "ChatGPT",
-                  strength: "Modeling and Formatting",
-                  desc: "Financial modeling and structured formatting tasks route to ChatGPT for best results.",
+                  logo: "/images/logo-gemini-wordmark.jpg",
+                  strength: "Speed, Cost & Data",
+                  desc: "Fast and efficient for data extraction, cleanup, and high-volume tasks. Gets simple work done quickly so you're not paying for power you don't need.",
                 },
               ].map((item) => (
                 <div key={item.provider} className="text-center">
-                  <p className="text-lg font-bold text-hp-text-primary mb-1">{item.provider}</p>
+                  <div className="flex justify-center mb-3">
+                    <img src={item.logo} alt={item.provider} className="h-7 w-auto" />
+                  </div>
                   <p className="text-sm font-semibold text-brand mb-2">{item.strength}</p>
                   <p className="text-sm text-hp-text-secondary">{item.desc}</p>
                 </div>
@@ -366,6 +371,11 @@ export default function LandingPage() {
             <p className="text-center text-hp-text-secondary">
               The system classifies every request by task type and routes it to the provider with the highest benchmark score. You can customize routing per task type in Settings, or let the defaults handle it.
             </p>
+            <div className="text-center mt-6">
+              <Link href="/help/ai-routing" className="text-brand font-semibold hover:underline text-sm">
+                How AI routing works &rarr;
+              </Link>
+            </div>
           </motion.div>
 
           {/* Second CTA */}

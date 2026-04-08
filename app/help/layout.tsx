@@ -31,6 +31,12 @@ const NAV_SECTIONS = [
     icon: BookOpen,
     items: [
       { slug: "excel-functionality", title: "Excel Functionality" },
+      { slug: "full-excel-control", title: "Full Excel Control" },
+      { slug: "ai-routing", title: "AI Model Routing" },
+      { slug: "plan-mode", title: "Plan Mode" },
+      { slug: "custom-agents", title: "Custom Agents" },
+      { slug: "custom-prompts-and-rules", title: "Custom Prompts and Rules" },
+      { slug: "file-library", title: "Reference File Library" },
       { slug: "ai-prompting", title: "AI Prompting Tips" },
       { slug: "credit-usage", title: "Managing Your Credits" },
       { slug: "troubleshooting", title: "Troubleshooting" },
