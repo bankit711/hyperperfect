@@ -122,15 +122,11 @@
               </div>
 
               <div class="p ink-muted" style="margin:0 0 16px 0;">
-                Every AI model has different strengths and weaknesses, and the "best" one can change at any moment.
+                Every AI model has a different strength, and the rankings shift constantly. Yesterday, Claude won on all fronts in Excel. Today ChatGPT leads on financial modeling, Claude remains in the lead for complex thought, and Gemini leads on speed and data tasks. No single provider wins everything, and in many cases the gaps are wide.
               </div>
 
               <div class="p ink-muted" style="margin:0 0 16px 0;">
-                For months, Anthropic's Claude was the clear leader in Excel work. Then OpenAI's ChatGPT got a major upgrade in financial modeling and became the easy winner in that category. Meanwhile, Google's Gemini quietly became the fastest and most cost-efficient model for data tasks. And Anthropic still leads on complex reasoning and general Excel operations.
-              </div>
-
-              <div class="p ink-muted" style="margin:0 0 16px 0;">
-                It's impossible for the average user to keep on top of these constant shifts. So we built something none of the individual providers offer: <strong class="ink-body">we choose for you.</strong>
+                Keeping up is impossible. So we built something no individual provider offers: <strong class="ink-body">we benchmark all three continuously and route each request to the best model for that type of work, in real time.</strong>
               </div>
 
               <div class="p ink-muted" style="margin:0;">
@@ -150,78 +146,63 @@
             </td>
           </tr>
 
-          <!-- Provider Cards -->
+          <!-- Provider Cards — single table, synced rows -->
           <tr>
             <td class="px pad-sm" style="padding-bottom:24px;">
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <!-- Logo row -->
                 <tr>
-
-                  <!-- OpenAI GPT -->
-                  <td class="stack" width="33.3%" valign="top" style="padding:4px;">
-                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="card border-color" style="height:100%; border-width:1px; border-style:solid;">
-                      <tr>
-                        <td class="font ink-body" height="76" valign="middle" style="padding:12px 12px 0 12px; text-align:center;">
-                          <!-- OpenAI logo -->
-                          <img src="https://www.hyperperfect.ai/images/logo-openai-wordmark.png"
-                               width="90" alt="OpenAI"
-                               style="display:block; width:90px; height:auto; margin:0 auto;">
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="font ink-body" style="padding:0 12px 20px 12px; text-align:center;">
-                          <div class="h2" style="font-size:14px; margin:0 0 4px 0; color:#1e293b;">Financial Modeling</div>
-                          <div class="small ink-muted" style="text-align:left; font-size:13px; line-height:18px;">
-                            Structures your P&amp;L, balance sheet, and cash flow. The strongest model for building and organizing complex financial frameworks.
-                          </div>
-                        </td>
-                      </tr>
-                    </table>
+                  <td width="33.3%" height="64" style="height:64px; text-align:center; padding:16px 8px 0 8px; border:1px solid #e2e8f0; border-bottom:none; border-radius:12px 12px 0 0;" valign="middle" class="font ink-body">
+                    <img src="https://www.hyperperfect.ai/images/logo-openai-wordmark.png"
+                         width="110" height="49" alt="OpenAI"
+                         style="width:110px; height:49px;">
                   </td>
-
-                  <!-- Anthropic Claude -->
-                  <td class="stack mobile-pad-top" width="33.3%" valign="top" style="padding:4px;">
-                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="card border-color" style="height:100%; border-width:1px; border-style:solid;">
-                      <tr>
-                        <td class="font ink-body" height="76" valign="middle" style="padding:12px 12px 0 12px; text-align:center;">
-                          <!-- Claude logo -->
-                          <img src="https://www.hyperperfect.ai/images/logo-claude-wordmark.png"
-                               width="120" alt="Claude"
-                               style="display:block; width:120px; height:auto; margin:0 auto;">
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="font ink-body" style="padding:0 12px 20px 12px; text-align:center;">
-                          <div class="h2" style="font-size:14px; margin:0 0 4px 0; color:#1e293b;">Complex Work</div>
-                          <div class="small ink-muted" style="text-align:left; font-size:13px; line-height:18px;">
-                            Handles the broad range of Excel operations and deep analysis. Best at multi-step reasoning and tasks that require careful thought.
-                          </div>
-                        </td>
-                      </tr>
-                    </table>
+                  <td width="8" style="width:8px;"></td>
+                  <td width="33.3%" height="64" style="height:64px; text-align:center; padding:16px 8px 0 8px; border:1px solid #e2e8f0; border-bottom:none; border-radius:12px 12px 0 0;" valign="middle" class="font ink-body">
+                    <img src="https://www.hyperperfect.ai/images/logo-claude-wordmark.png"
+                         width="120" height="26" alt="Claude"
+                         style="width:120px; height:26px;">
                   </td>
-
-                  <!-- Google Gemini -->
-                  <td class="stack mobile-pad-top" width="33.3%" valign="top" style="padding:4px;">
-                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="card border-color" style="height:100%; border-width:1px; border-style:solid;">
-                      <tr>
-                        <td class="font ink-body" height="76" valign="middle" style="padding:12px 12px 0 12px; text-align:center;">
-                          <!-- Gemini logo -->
-                          <img src="https://www.hyperperfect.ai/images/logo-gemini-wordmark.jpg"
-                               width="100" alt="Google Gemini"
-                               style="display:block; width:100px; height:auto; margin:0 auto;">
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="font ink-body" style="padding:0 12px 20px 12px; text-align:center;">
-                          <div class="h2" style="font-size:14px; margin:0 0 4px 0; color:#1e293b;">Speed, Cost &amp; Data</div>
-                          <div class="small ink-muted" style="text-align:left; font-size:13px; line-height:18px;">
-                            Fast and efficient for data extraction, cleanup, and high-volume tasks. Gets simple work done quickly at lower cost.
-                          </div>
-                        </td>
-                      </tr>
-                    </table>
+                  <td width="8" style="width:8px;"></td>
+                  <td width="33.3%" height="64" style="height:64px; text-align:center; padding:16px 8px 0 8px; border:1px solid #e2e8f0; border-bottom:none; border-radius:12px 12px 0 0;" valign="middle" class="font ink-body">
+                    <img src="https://www.hyperperfect.ai/images/logo-gemini-wordmark.jpg"
+                         width="100" height="56" alt="Google Gemini"
+                         style="width:100px; height:56px;">
                   </td>
-
+                </tr>
+                <!-- Heading row -->
+                <tr>
+                  <td height="28" style="height:28px; text-align:center; padding:8px 12px 0 12px; border-left:1px solid #e2e8f0; border-right:1px solid #e2e8f0;" valign="middle" class="font">
+                    <div class="h2" style="font-size:14px; margin:0; color:#1e293b; font-weight:800;">Financial Modeling</div>
+                  </td>
+                  <td></td>
+                  <td height="28" style="height:28px; text-align:center; padding:8px 12px 0 12px; border-left:1px solid #e2e8f0; border-right:1px solid #e2e8f0;" valign="middle" class="font">
+                    <div class="h2" style="font-size:14px; margin:0; color:#1e293b; font-weight:800;">Complex Work</div>
+                  </td>
+                  <td></td>
+                  <td height="28" style="height:28px; text-align:center; padding:8px 12px 0 12px; border-left:1px solid #e2e8f0; border-right:1px solid #e2e8f0;" valign="middle" class="font">
+                    <div class="h2" style="font-size:14px; margin:0; color:#1e293b; font-weight:800;">Speed, Cost &amp; Data</div>
+                  </td>
+                </tr>
+                <!-- Description row -->
+                <tr>
+                  <td style="text-align:left; padding:6px 12px 20px 12px; border:1px solid #e2e8f0; border-top:none; border-radius:0 0 12px 12px;" valign="top" class="font">
+                    <div class="small ink-muted" style="font-size:13px; line-height:18px;">
+                      Structures your P&amp;L, balance sheet, and cash flow. The strongest model for building and organizing complex financial frameworks.
+                    </div>
+                  </td>
+                  <td></td>
+                  <td style="text-align:left; padding:6px 12px 20px 12px; border:1px solid #e2e8f0; border-top:none; border-radius:0 0 12px 12px;" valign="top" class="font">
+                    <div class="small ink-muted" style="font-size:13px; line-height:18px;">
+                      Handles the broad range of Excel operations and deep analysis. Best at multi-step reasoning and tasks that require careful thought.
+                    </div>
+                  </td>
+                  <td></td>
+                  <td style="text-align:left; padding:6px 12px 20px 12px; border:1px solid #e2e8f0; border-top:none; border-radius:0 0 12px 12px;" valign="top" class="font">
+                    <div class="small ink-muted" style="font-size:13px; line-height:18px;">
+                      Fast and efficient for data extraction, cleanup, and high-volume tasks. Gets simple work done quickly at lower cost.
+                    </div>
+                  </td>
                 </tr>
               </table>
             </td>

@@ -343,28 +343,31 @@ export default function LandingPage() {
                 {
                   provider: "OpenAI",
                   logo: "/images/logo-openai-wordmark.png",
+                  logoClass: "h-8",
                   strength: "Financial Modeling",
                   desc: "Structures your P&L, balance sheet, and cash flow. The strongest model for building and organizing complex financial frameworks.",
                 },
                 {
                   provider: "Claude",
                   logo: "/images/logo-claude-wordmark.png",
+                  logoClass: "h-6",
                   strength: "Complex Work",
-                  desc: "Handles the broad range of Excel operations and deep analysis. Excels at multi-step reasoning and tasks that require careful thought.",
+                  desc: "Handles the broad range of Excel operations and deep analysis. Best at multi-step reasoning and tasks that require careful thought.",
                 },
                 {
                   provider: "Gemini",
                   logo: "/images/logo-gemini-wordmark.jpg",
+                  logoClass: "h-9",
                   strength: "Speed, Cost & Data",
-                  desc: "Fast and efficient for data extraction, cleanup, and high-volume tasks. Gets simple work done quickly so you're not paying for power you don't need.",
+                  desc: "Fast and efficient for data extraction, cleanup, and high-volume tasks. Gets simple work done quickly at lower cost.",
                 },
               ].map((item) => (
                 <div key={item.provider} className="text-center">
-                  <div className="flex justify-center mb-3">
-                    <img src={item.logo} alt={item.provider} className="h-7 w-auto" />
+                  <div className="flex justify-center items-center h-14 mb-4">
+                    <img src={item.logo} alt={item.provider} className={`${item.logoClass} w-auto`} />
                   </div>
                   <p className="text-sm font-semibold text-brand mb-2">{item.strength}</p>
-                  <p className="text-sm text-hp-text-secondary">{item.desc}</p>
+                  <p className="text-sm text-hp-text-secondary text-left">{item.desc}</p>
                 </div>
               ))}
             </div>
