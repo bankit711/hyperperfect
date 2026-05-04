@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "build:grace": "node scripts/build-grace-intro.js",
+    "prebuild": "node scripts/build-grace-intro.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

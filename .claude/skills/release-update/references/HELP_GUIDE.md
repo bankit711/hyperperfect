@@ -13,6 +13,7 @@ All files are in `/Users/davidingraham/hyperperfect/content/help/`.
 | `excel-functionality.md` | Excel Functionality | Using HP | New Excel tools or operations (read, write, format, copy, etc.) |
 | `ai-prompting.md` | AI Prompting | Using HP | New chat commands (@mode, @compact, @settings, etc.) |
 | `credit-usage.md` | Credit Usage | Using HP | Billing changes, plan changes, free tier, usage visibility |
+| `custom-agents.md` | Custom Agents | Using HP | Custom agent feature changes, new fields, deployment behavior |
 | `troubleshooting.md` | Troubleshooting | Using HP | New known issues or solutions |
 | `data-security.md` | Data Security | Enterprise | Nothing typically |
 | `enterprise-access.md` | Enterprise Access | Enterprise | Enterprise billing or auth changes |

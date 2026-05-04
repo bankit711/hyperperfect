@@ -198,9 +198,19 @@
               "icon": "lucide-file",
               "title": "Quick Start"
             }
+          },
+          {
+            "id": "db2f50206a966058",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
           }
         ],
-        "currentTab": 12
+        "currentTab": 13
       }
     ],
     "direction": "vertical"
@@ -349,7 +359,7 @@
       "publish:Publish changes...": false
     }
   },
-  "active": "5d78275e8db7af9c",
+  "active": "db2f50206a966058",
   "lastOpenFiles": [
     "Sign Up.md",
     "Sign Up.md",
