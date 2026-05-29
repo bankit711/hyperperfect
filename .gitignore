@@ -43,3 +43,6 @@ assets/animations/*.png
 
 # temporary files
 .tmp.driveupload
+
+AGENTS.md
+**/AGENTS.md
