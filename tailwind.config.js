@@ -17,8 +17,32 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-work-sans)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-geist-mono)', 'ui-monospace', 'monospace'],
+        serif: ['var(--font-dm-serif)', 'Georgia', 'serif'],
+        dm: ['var(--font-dm-sans)', 'system-ui', 'sans-serif'],
       },
       colors: {
+        // Patricia personal-assistant palette (matches patricia.hyperperfect.ai)
+        pat: {
+          paper: '#FCF7F0',
+          paper2: '#F5EAD9',
+          terra: {
+            DEFAULT: '#A84A2F',
+            600: '#C9694A',
+            500: '#E08868',
+            200: '#F2C9B0',
+            100: '#FAEDE2',
+          },
+          slate: {
+            DEFAULT: '#5B91A8',
+            400: '#7DAEC2',
+            100: '#CFE3EC',
+          },
+          ink: {
+            DEFAULT: '#2A1A14',
+            700: '#4A352B',
+            500: '#7A6357',
+          },
+        },
         brand: {
           DEFAULT: '#1a7bff',
           hover: '#1565d8',

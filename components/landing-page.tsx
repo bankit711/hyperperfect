@@ -4,61 +4,78 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
 import { motion } from "framer-motion"
-import SignupModal from "./signup-modal"
+import WaitlistForm from "./waitlist-form"
+
+const TEAM = [
+  { name: "Penny", role: "Bookkeeping", img: "/grace/headshots/penny.png" },
+  { name: "Margo", role: "Marketing", img: "/grace/headshots/margo.png" },
+  { name: "Hank", role: "HR & Payroll", img: "/grace/headshots/hank.png" },
+  { name: "Sam", role: "Purchasing", img: "/grace/headshots/sam.png" },
+  { name: "Kit", role: "Customer Support", img: "/grace/headshots/kit.png" },
+  { name: "Rex", role: "Data & Reporting", img: "/grace/headshots/rex.png" },
+  { name: "Blake", role: "Proposals & Bids", img: "/grace/headshots/blake.png" },
+]
+
+const NAV_LINKS = [
+  { href: "#what", label: "What she does" },
+  { href: "#learns", label: "How she learns" },
+  { href: "#day", label: "A day with Patricia" },
+  { href: "#founding", label: "Founding access" },
+]
+
+function Eyebrow({ children, color = "slate" }: { children: React.ReactNode; color?: "slate" | "terra" }) {
+  const c = color === "slate" ? "text-pat-slate" : "text-pat-terra-600"
+  return (
+    <div className={`flex items-center gap-4 text-sm font-medium uppercase tracking-[0.18em] ${c}`}>
+      {children}
+    </div>
+  )
+}
 
 export default function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isSignupOpen, setIsSignupOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
-    }
+    const handleScroll = () => setIsScrolled(window.scrollY > 10)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  const scrollToWaitlist = () => {
+    document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth" })
+  }
+
   return (
-    <div className="relative">
+    <div className="relative font-dm bg-pat-paper text-pat-ink">
       {/* Navigation */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "glass border-b border-hp-border shadow-card"
-            : "bg-transparent"
+          isScrolled ? "bg-pat-paper/90 backdrop-blur border-b border-pat-terra-200" : "bg-transparent"
         }`}
       >
         <div className="container mx-auto px-4 md:px-6">
-          <div className="flex items-center justify-between h-20 md:h-24">
+          <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center">
-              <span
-                className={`font-bold text-3xl md:text-4xl transition-colors duration-300 ${
-                  isScrolled ? "text-hp-text-primary" : "text-white"
-                }`}
-              >
-                HyperPerfect
+            <Link href="/" className="flex items-center gap-3">
+              <img
+                src="/patricia/patricia-400.png"
+                alt="Patricia"
+                className="w-10 h-10 rounded-full object-cover object-top ring-1 ring-pat-terra-200"
+              />
+              <span className="flex flex-col leading-none">
+                <span className="font-serif text-2xl text-pat-ink">Patricia</span>
+                <span className="text-[11px] uppercase tracking-[0.16em] text-pat-ink-500 mt-0.5">by HyperPerfect</span>
               </span>
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
-              {[
-                { href: "/help/quick-start", label: "Quick Start" },
-                { href: "/help/why-hyperperfect", label: "Benefits" },
-                { href: "/pricing", label: "Pricing" },
-                { href: "/help", label: "Help" },
-                { href: "/resources", label: "Resources" },
-              ].map((link) => (
+            <nav className="hidden lg:flex items-center space-x-8">
+              {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-xl font-medium transition-colors duration-300 ${
-                    isScrolled
-                      ? "text-hp-text-secondary hover:text-hp-text-primary"
-                      : "text-white/90 hover:text-white"
-                  }`}
+                  className="text-base font-medium whitespace-nowrap text-pat-ink-700 hover:text-pat-terra transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -66,28 +83,17 @@ export default function LandingPage() {
             </nav>
 
             {/* Desktop CTA */}
-            <div className="hidden md:flex items-center space-x-4">
-              <Link
-                href="https://calendly.com/di-hyperperfect/30min"
-                className={`inline-flex items-center justify-center whitespace-nowrap rounded-lg text-lg font-medium transition-all duration-150 focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none border-2 px-6 py-3 ${
-                  isScrolled
-                    ? "border-brand text-brand hover:bg-brand hover:text-white"
-                    : "border-white text-white hover:bg-white hover:text-brand"
-                }`}
-                target="_blank"
-                rel="noopener noreferrer"
+            <div className="hidden lg:flex">
+              <button
+                onClick={scrollToWaitlist}
+                className="rounded-xl text-base font-medium px-6 py-2.5 bg-pat-terra text-pat-paper hover:bg-pat-terra-600 transition-colors"
               >
-                Book Demo
-              </Link>
+                Join the Waitlist
+              </button>
             </div>
 
             {/* Mobile Menu Button */}
-            <button
-              className={`md:hidden transition-colors duration-300 ${
-                isScrolled ? "text-hp-text-primary" : "text-white"
-              }`}
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
+            <button className="lg:hidden text-pat-ink" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -96,345 +102,429 @@ export default function LandingPage() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-black pt-16">
-          <div className="container mx-auto px-4 py-8">
+        <div className="fixed inset-0 z-40 bg-pat-paper pt-20">
+          <div className="container mx-auto px-6 py-8">
             <nav className="flex flex-col space-y-6">
-              <Link
-                href="/help/quick-start"
-                className="text-white text-3xl font-medium"
-                onClick={() => setIsMenuOpen(false)}
+              {NAV_LINKS.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="font-serif text-3xl text-pat-ink"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <button
+                onClick={() => {
+                  setIsMenuOpen(false)
+                  setTimeout(scrollToWaitlist, 100)
+                }}
+                className="rounded-xl text-lg font-medium py-4 w-full bg-pat-terra text-pat-paper"
               >
-                Quick Start
-              </Link>
-              <Link
-                href="/help/why-hyperperfect"
-                className="text-white text-3xl font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Benefits
-              </Link>
-              <Link
-                href="/pricing"
-                className="text-white text-3xl font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Pricing
-              </Link>
-              <Link
-                href="/help"
-                className="text-white text-3xl font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Help
-              </Link>
-              <Link
-                href="/resources"
-                className="text-white text-3xl font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Resources
-              </Link>
-              <div className="pt-6 border-t border-white/20">
-              </div>
-              <Link
-                href="https://calendly.com/di-hyperperfect/30min"
-                className="inline-flex items-center justify-center whitespace-nowrap rounded-lg text-lg font-medium transition-all duration-150 focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none border-2 border-white text-white hover:bg-white hover:text-brand py-4 w-full text-center"
-                onClick={() => setIsMenuOpen(false)}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Book Demo
-              </Link>
+                Join the Waitlist
+              </button>
             </nav>
           </div>
         </div>
       )}
 
-      {/* Hero Content - Centered Layout */}
-      <div className="relative z-10 flex flex-col items-center justify-center pt-32 pb-20 px-4 bg-brand">
-        {/* Announcement Banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-        >
-          <Link
-            href="/help/ai-routing"
-            className="group inline-flex items-center gap-3 mb-8 px-6 py-3 rounded-full bg-white/15 border border-white/30 hover:bg-white/25 transition-all duration-200"
-          >
-            <span className="inline-flex items-center gap-1.5 bg-yellow-400 text-black text-sm font-extrabold px-3 py-1 rounded-full">New</span>
-            <span className="text-white text-sm md:text-base font-medium">Multi-provider AI routing: Claude, Gemini, and ChatGPT. See what&apos;s new.</span>
-            <span className="text-white/70 group-hover:text-white group-hover:translate-x-0.5 transition-all text-sm font-semibold whitespace-nowrap">&rarr; Learn more</span>
-          </Link>
-        </motion.div>
-
-        {/* Headline */}
-        <motion.div
-          className="text-center mb-12 w-full"
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
-        >
-          <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-4">
-            The Most Powerful Agentic AI Workflows for Excel
-          </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
-            Custom agents, prompts, and plans. Intelligent AI routing across Claude, Gemini, and ChatGPT. The right AI for every task.
-          </p>
-        </motion.div>
-
-        {/* Animation - Hero Centerpiece */}
-        <motion.div
-          className="w-full max-w-[900px] mb-12"
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
-        >
-          <div className="rounded-lg overflow-hidden bg-white shadow-hero">
-            <video
-              src="/images/dcf_apple_demo.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full"
-            />
-          </div>
-        </motion.div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.3, ease: "easeOut" }}
-        >
-          <Link
-            href="/help/quick-start"
-            className="inline-flex items-center justify-center whitespace-nowrap rounded-lg text-xl font-bold transition-all duration-150 focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none bg-white text-brand hover:bg-white/90 px-8 py-4"
-          >
-            Try for Free in Excel
-          </Link>
-        </motion.div>
-      </div>
-
-      {/* Why Section */}
-      <div className="relative z-10 bg-surface-secondary py-20 px-4">
-        <div className="container mx-auto max-w-3xl">
-          <motion.h2
-            className="text-3xl md:text-4xl font-bold text-center text-hp-text-primary mb-8"
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+      {/* Hero */}
+      <section className="relative pt-28 md:pt-32 pb-20 px-4">
+        <div className="container mx-auto max-w-6xl">
+          {/* Announcement */}
+          <motion.button
+            onClick={scrollToWaitlist}
+            className="group inline-flex items-center gap-3 mb-12 px-5 py-2 rounded-full bg-pat-terra-100 border border-pat-terra-200 hover:bg-pat-terra-200/60 transition-colors"
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            Workflows that get smarter every time
-          </motion.h2>
-          <motion.div
-            className="space-y-6 text-lg text-hp-text-secondary"
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
-          >
-            <p>
-              AI tools like Claude now offer custom agents, skills, rules, and multi-step workflows. But setting them up requires technical knowledge, complex configuration files, and hours of trial and error.
-            </p>
-            <p>
-              <strong className="text-hp-text-primary">HyperPerfect puts all of that inside Excel and makes it simple.</strong> Describe what you need in plain English and the AI builds the agents, prompts, rules, and plans for you. No configuration files. No coding. No learning curve.
-            </p>
-            <p>
-              Then it goes a step further: every request is automatically routed to the best AI for that type of work. Claude for analysis, Gemini for formulas, ChatGPT for modeling. You get the right tool for every task without thinking about it.
-            </p>
-          </motion.div>
+            <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-pat-terra">
+              <span className="w-2 h-2 rounded-full bg-pat-terra-500" />
+              Early access
+            </span>
+            <span className="text-sm text-pat-ink-700">The founding cohort is filling up.</span>
+            <span className="text-sm font-semibold text-pat-terra group-hover:translate-x-0.5 transition-transform">Claim your spot &rarr;</span>
+          </motion.button>
 
-          <motion.div
-            className="mt-12"
+          <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-center">
+            {/* Left: copy + form */}
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, delay: 0.05, ease: "easeOut" }}
+            >
+              <Eyebrow color="terra">
+                <span className="w-2.5 h-2.5 rounded-full bg-pat-slate" />
+                Patricia · Personal Assistant
+              </Eyebrow>
+              <h1 className="font-serif text-6xl md:text-7xl xl:text-8xl leading-[0.95] tracking-tight text-pat-ink mt-6">
+                Meet <span className="italic text-pat-terra-600">Patricia.</span>
+              </h1>
+              <p className="text-2xl md:text-3xl text-pat-ink-700 leading-snug mt-8 max-w-xl">
+                Your inbox, calendar, and follow-ups handled around the clock, and without the headache.
+              </p>
+              <p className="text-base text-pat-ink-500 tracking-wide mt-5">
+                A personal assistant for busy business owners and executives.
+              </p>
+
+              <div id="waitlist" className="scroll-mt-28 mt-10">
+                <WaitlistForm variant="paper" />
+              </div>
+            </motion.div>
+
+            {/* Right: hire card */}
+            <motion.div
+              className="flex justify-center lg:justify-end"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, delay: 0.15, ease: "easeOut" }}
+            >
+              <div className="relative w-full max-w-sm rounded-[28px] bg-white border border-pat-terra-200 shadow-[0_30px_60px_-20px_rgba(42,26,20,0.18)] p-6">
+                <div className="flex justify-between items-center text-xs font-medium uppercase tracking-[0.16em] text-pat-terra-600">
+                  <span>Hire #001</span>
+                  <span className="inline-flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-pat-terra-500" />
+                    Available soon
+                  </span>
+                </div>
+                <div className="mt-5 rounded-2xl overflow-hidden bg-pat-paper aspect-square">
+                  <img
+                    src="/patricia/patricia-400.png"
+                    alt="Patricia"
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
+                <div className="mt-5">
+                  <div className="font-serif text-4xl text-pat-ink leading-none">Patricia</div>
+                  <div className="text-pat-terra-600 font-medium mt-2">Personal Assistant</div>
+                </div>
+                <div className="flex justify-between text-sm text-pat-ink-500 mt-5 pt-4 border-t border-pat-terra-100">
+                  <span>Reports to · You</span>
+                  <span>24 / 7</span>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Problem */}
+      <section className="px-4 py-24 border-t border-pat-terra-100">
+        <div className="container mx-auto max-w-5xl">
+          <Eyebrow>
+            <span>01</span>
+            <span className="h-px w-14 bg-pat-slate" />
+            <span>The Problem</span>
+          </Eyebrow>
+          <motion.h2
+            className="font-serif text-4xl md:text-6xl leading-[1.05] tracking-tight text-pat-ink mt-8 max-w-4xl"
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.45, ease: "easeOut" }}
           >
-            <h3 className="text-xl font-bold text-hp-text-primary mb-6 text-center">How it works:</h3>
-            <div className="space-y-4">
-              <div className="flex items-start">
-                <span className="text-brand font-bold text-xl mr-4">1.</span>
-                <span className="text-hp-text-secondary">Tell the AI what you need. It creates custom agents, prompts, rules, and plans for you.</span>
-              </div>
-              <div className="flex items-start">
-                <span className="text-brand font-bold text-xl mr-4">2.</span>
-                <span className="text-hp-text-secondary">Each request is classified and routed to the AI provider that performs best for that task type.</span>
-              </div>
-              <div className="flex items-start">
-                <span className="text-brand font-bold text-xl mr-4">3.</span>
-                <span className="text-hp-text-secondary">Save your workflows and reuse them. Monthly reports, data processing, model builds. Run the same plan next month.</span>
+            Are <span className="italic text-pat-terra-600">constant distractions</span> keeping you from focusing on what matters?
+          </motion.h2>
+          <p className="font-serif text-2xl md:text-3xl text-pat-ink-500 leading-snug mt-8 max-w-3xl">
+            Email, scheduling, follow-ups, the loose ends. Half your day disappears before the real work starts.
+          </p>
+          <div className="mt-10 pt-8 border-t-2 border-pat-slate max-w-3xl">
+            <p className="font-serif italic text-2xl md:text-3xl text-pat-ink leading-snug">
+              You don&apos;t need another app or employee to manage. You need <span className="text-pat-terra-600">great support</span> so you can focus on what matters.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* What she does + why she's different */}
+      <section id="what" className="px-4 py-24 bg-pat-paper2/50 border-t border-pat-terra-100 scroll-mt-20">
+        <div className="container mx-auto max-w-6xl">
+          <Eyebrow>
+            <span>02</span>
+            <span className="h-px w-14 bg-pat-slate" />
+            <span>Your Personal Assistant</span>
+          </Eyebrow>
+          <motion.h2
+            className="font-serif text-4xl md:text-5xl leading-[1.05] tracking-tight text-pat-ink mt-8 max-w-4xl"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, ease: "easeOut" }}
+          >
+            A new hire who is available at a moment&apos;s notice, around the clock, and never quits.
+          </motion.h2>
+
+          <div className="grid md:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-20 mt-14">
+            {/* What she does */}
+            <div>
+              <div className="text-sm font-medium uppercase tracking-[0.18em] text-pat-slate mb-7">What she does</div>
+              <div className="flex flex-col">
+                {[
+                  ["i.", "Inbox & calendar", ""],
+                  ["ii.", "Online tasks", "reservations, research, errands"],
+                  ["iii.", "Todos & follow-through", ""],
+                  ["iv.", "Drafts in your voice", ""],
+                ].map(([num, title, sub], idx, arr) => (
+                  <div
+                    key={title}
+                    className={`flex gap-5 items-baseline py-4 ${idx < arr.length - 1 ? "border-b border-pat-ink/10" : ""}`}
+                  >
+                    <span className="font-serif italic text-xl text-pat-terra-600 w-8 shrink-0">{num}</span>
+                    <span className="font-serif text-2xl text-pat-ink">
+                      {title}
+                      {sub && <span className="font-dm text-base not-italic text-pat-ink-500"> — {sub}</span>}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
-          </motion.div>
 
-        </div>
-      </div>
-
-      {/* Features Section */}
-      <div className="relative z-10 bg-white py-20 px-4">
-        <div className="container mx-auto max-w-5xl">
-          <motion.p
-            className="text-xl md:text-2xl font-semibold text-center text-hp-text-primary mb-4 max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-          >
-            Everything you need to automate your Excel work
-          </motion.p>
-          <div className="mb-12"></div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            {[
-              {
-                title: "Agentic Workflows",
-                items: ["Custom agents, prompts, rules, and plans", "Reusable workflows for recurring tasks", "The AI builds them for you automatically"],
-              },
-              {
-                title: "Full Excel Control",
-                items: ["Charts, pivot tables, conditional formatting", "Data validation and named ranges", "Anything Excel supports, the AI can build"],
-              },
-              {
-                title: "Enterprise Ready",
-                items: ["Microsoft SSO, no separate signup", "Your data stays in your Excel session", "IT approved for Microsoft 365"],
-              },
-            ].map((card, i) => (
-              <motion.div
-                key={card.title}
-                className="bg-surface-secondary rounded-lg p-8 border border-hp-border shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-150"
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1, ease: "easeOut" }}
-              >
-                <h3 className="text-xl font-bold text-hp-text-primary mb-4 text-center">{card.title}</h3>
-                <ul className="space-y-3">
-                  {card.items.map((item) => (
-                    <li key={item} className="flex items-start">
-                      <span className="text-brand font-bold mr-2">&bull;</span>
-                      <span className="text-hp-text-secondary">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
+            {/* Why she's different */}
+            <div>
+              <div className="text-sm font-medium uppercase tracking-[0.18em] text-pat-slate mb-7">Why she&apos;s different</div>
+              <div className="grid sm:grid-cols-2 gap-7">
+                {[
+                  ["Reliable.", "Juggles an impressive number of tasks without dropping a single ball. Ever."],
+                  ["Talented.", "Strong writer, tech fluent, and deeply knowledgeable about your world."],
+                  ["Adaptable.", "Tuned to fit your style from day one. She aims to please."],
+                  ["Proactive.", "Surfaces what matters and flags issues before you have to ask."],
+                ].map(([title, body]) => (
+                  <div key={title}>
+                    <div className="font-serif text-2xl text-pat-ink leading-tight">{title}</div>
+                    <p className="text-pat-ink-700 mt-2 leading-relaxed">{body}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
-          {/* AI Routing Section */}
-          <motion.div
-            className="mb-16 bg-surface-secondary rounded-lg border border-hp-border shadow-card p-8 md:p-12"
+          <p className="font-serif italic text-2xl text-pat-terra-600 mt-14 pt-8 border-t border-pat-ink/10">
+            The leverage of a personal assistant, at a fraction of the cost.
+          </p>
+        </div>
+      </section>
+
+      {/* How she learns */}
+      <section id="learns" className="px-4 py-24 border-t border-pat-terra-100 scroll-mt-20">
+        <div className="container mx-auto max-w-6xl">
+          <Eyebrow>
+            <span>03</span>
+            <span className="h-px w-14 bg-pat-slate" />
+            <span>How Patricia Learns</span>
+          </Eyebrow>
+          <motion.h2
+            className="font-serif text-4xl md:text-6xl leading-[1.05] tracking-tight text-pat-ink mt-8 max-w-4xl"
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.45, ease: "easeOut" }}
           >
-            <h3 className="text-2xl md:text-3xl font-bold text-hp-text-primary mb-4 text-center">
-              Intelligent AI Routing
-            </h3>
-            <p className="text-lg text-hp-text-secondary text-center max-w-2xl mx-auto mb-8">
-              Every AI provider has strengths. HyperPerfect uses all of them.
+            She becomes invaluable as she gets to know you and your business.
+          </motion.h2>
+
+          <div className="grid md:grid-cols-2 gap-7 mt-14">
+            {[
+              ["i.", "She learns from the work itself.", "From every email, call, and meeting, Patricia picks up your customers, suppliers, employees, and the details that matter."],
+              ["ii.", "She builds a memory of your business.", "A custom understanding of how you operate, so she makes better decisions and gives you foresight you didn't have before."],
+            ].map(([num, title, body]) => (
+              <div key={title} className="rounded-2xl bg-pat-paper2/60 border border-pat-terra-100 p-10">
+                <div className="font-serif italic text-5xl text-pat-terra-600">{num}</div>
+                <h3 className="font-serif text-3xl text-pat-ink mt-6 leading-tight">{title}</h3>
+                <p className="text-lg text-pat-ink-700 mt-4 leading-relaxed">{body}</p>
+              </div>
+            ))}
+          </div>
+          <p className="font-serif italic text-xl md:text-2xl text-pat-terra-600 text-center mt-12">
+            Every conversation teaches her more about your world.
+          </p>
+        </div>
+      </section>
+
+      {/* Control */}
+      <section className="px-4 py-24 bg-pat-ink text-pat-paper">
+        <div className="container mx-auto max-w-6xl grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div>
+            <Eyebrow>
+              <span className="text-pat-slate-400">04</span>
+              <span className="h-px w-14 bg-pat-slate-400" />
+              <span className="text-pat-slate-400">Control</span>
+            </Eyebrow>
+            <h2 className="font-serif text-4xl md:text-6xl leading-[1.0] tracking-tight mt-8">
+              Patricia follows directions perfectly.
+            </h2>
+            <p className="text-xl text-pat-terra-200 mt-8 max-w-lg leading-relaxed">
+              You keep total control over what she does on her own. She drafts, you decide. Nothing goes out without your say-so.
             </p>
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
+            <p className="font-serif italic text-2xl text-pat-slate-400 mt-6 max-w-lg leading-snug">
+              Just like a real hire, you widen the leash as she earns your trust.
+            </p>
+          </div>
+
+          {/* Permissions panel */}
+          <div className="rounded-2xl bg-pat-paper text-pat-ink p-7 shadow-[0_30px_60px_rgba(0,0,0,0.4)]">
+            <div className="flex justify-between items-center pb-5 border-b border-pat-ink/10">
+              <div className="font-serif text-2xl">Patricia · Permissions</div>
+              <div className="text-xs font-medium uppercase tracking-[0.12em] text-pat-slate">Trust Level · 2</div>
+            </div>
+            <div className="flex flex-col gap-3 mt-6">
               {[
-                {
-                  provider: "OpenAI",
-                  logo: "/images/logo-openai-wordmark.png",
-                  logoClass: "h-8",
-                  strength: "Financial Modeling",
-                  desc: "Structures your P&L, balance sheet, and cash flow. The strongest model for building and organizing complex financial frameworks.",
-                },
-                {
-                  provider: "Claude",
-                  logo: "/images/logo-claude-wordmark.png",
-                  logoClass: "h-6",
-                  strength: "Complex Work",
-                  desc: "Handles the broad range of Excel operations and deep analysis. Best at multi-step reasoning and tasks that require careful thought.",
-                },
-                {
-                  provider: "Gemini",
-                  logo: "/images/logo-gemini-wordmark.jpg",
-                  logoClass: "h-9",
-                  strength: "Speed, Cost & Data",
-                  desc: "Fast and efficient for data extraction, cleanup, and high-volume tasks. Gets simple work done quickly at lower cost.",
-                },
-              ].map((item) => (
-                <div key={item.provider} className="text-center">
-                  <div className="flex justify-center items-center h-14 mb-4">
-                    <img src={item.logo} alt={item.provider} className={`${item.logoClass} w-auto`} />
-                  </div>
-                  <p className="text-sm font-semibold text-brand mb-2">{item.strength}</p>
-                  <p className="text-sm text-hp-text-secondary text-left">{item.desc}</p>
+                ["Sort & clean inbox", "Auto", "bg-pat-paper", "text-pat-terra-600"],
+                ["Schedule meetings", "Auto", "bg-pat-paper", "text-pat-terra-600"],
+                ["Reply to routine emails", "Draft only", "bg-pat-paper2", "text-pat-ink-500"],
+                ["Send to clients", "Approval required", "bg-pat-slate-100", "text-pat-slate"],
+                ["Make commitments for you", "Approval required", "bg-pat-slate-100", "text-pat-slate"],
+              ].map(([label, status, bg, fg]) => (
+                <div key={label} className={`flex justify-between items-center px-5 py-4 rounded-xl ${bg}`}>
+                  <span className="text-lg">{label}</span>
+                  <span className={`text-xs font-medium uppercase tracking-[0.1em] whitespace-nowrap ${fg}`}>{status}</span>
                 </div>
               ))}
             </div>
-            <p className="text-center text-hp-text-secondary">
-              The system classifies every request by task type and routes it to the provider with the highest benchmark score. You can customize routing per task type in Settings, or let the defaults handle it.
-            </p>
-            <div className="text-center mt-6">
-              <Link href="/help/ai-routing" className="text-brand font-semibold hover:underline text-sm">
-                How AI routing works &rarr;
-              </Link>
-            </div>
-          </motion.div>
+          </div>
+        </div>
+      </section>
 
-          {/* Second CTA */}
-          <motion.div
-            className="text-center"
+      {/* A day with Patricia */}
+      <section id="day" className="px-4 py-24 border-t border-pat-terra-100 scroll-mt-20">
+        <div className="container mx-auto max-w-6xl">
+          <Eyebrow>
+            <span>05</span>
+            <span className="h-px w-14 bg-pat-slate" />
+            <span>A Day with Patricia</span>
+          </Eyebrow>
+          <motion.h2
+            className="font-serif text-4xl md:text-6xl leading-[1.05] tracking-tight text-pat-ink mt-8"
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.45, ease: "easeOut" }}
           >
-            <h3 className="text-2xl font-bold text-hp-text-primary mb-4">See it in action</h3>
-            <p className="text-hp-text-secondary mb-6 max-w-xl mx-auto">
-              Open HyperPerfect in Excel and try the guided walkthrough. The AI builds a custom workflow for you in minutes.
-            </p>
-            <Link
-              href="/help/quick-start"
-              className="inline-flex items-center justify-center whitespace-nowrap rounded-lg text-xl font-bold transition-all duration-150 focus-visible:outline-none bg-brand text-white hover:bg-brand-hover px-8 py-4"
-            >
-              Try for Free in Excel
-            </Link>
-            <p className="text-sm text-hp-text-tertiary mt-4">
-              No credit card. No separate account.{" "}
-              <Link
-                href="/help/quick-start"
-                className="text-brand underline hover:no-underline"
-              >
-                Works with Excel Online too
-              </Link>.
-            </p>
-          </motion.div>
+            Finally, support that works 24/7.
+          </motion.h2>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+            {[
+              ["Morning", "Inbox sorted", "Wake up to a daily briefing: your schedule, the urgent items, and a curated inbox.", "terra"],
+              ["Before 10am", "Meeting prep ready", "Briefing packages for your calls, so you walk in knowing exactly what matters.", "terra"],
+              ["After calls", "Follow-ups logged", "Next steps tracked, commitments captured, everything prioritized for you.", "terra"],
+              ["After work", "Always learning", "Patricia spends the night studying you and your business to become your most knowledgeable hire.", "slate"],
+            ].map(([when, title, body, color]) => (
+              <div key={String(when)}>
+                <div className="flex items-center gap-3">
+                  <span className={`w-3.5 h-3.5 rounded-full ${color === "slate" ? "bg-pat-slate" : "bg-pat-terra-600"}`} />
+                  <span className={`text-sm font-medium uppercase tracking-[0.14em] ${color === "slate" ? "text-pat-slate" : "text-pat-terra-600"}`}>
+                    {when}
+                  </span>
+                </div>
+                <h3 className="font-serif text-2xl text-pat-ink mt-5 leading-tight">{title}</h3>
+                <p className="text-pat-ink-700 mt-3 leading-relaxed">{body}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
+
+      {/* The team / future */}
+      <section className="px-4 py-24 bg-pat-paper2/50 border-t border-pat-terra-100">
+        <div className="container mx-auto max-w-6xl">
+          <Eyebrow>
+            <span>06</span>
+            <span className="h-px w-14 bg-pat-slate" />
+            <span>The Future</span>
+          </Eyebrow>
+          <motion.h2
+            className="font-serif text-4xl md:text-5xl leading-[1.05] tracking-tight text-pat-ink mt-8 max-w-4xl"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, ease: "easeOut" }}
+          >
+            Patricia is the first hire. A whole team is ready when you are.
+          </motion.h2>
+          <p className="text-lg text-pat-ink-700 mt-5 max-w-2xl">
+            Same model, one role at a time. A full back office, hired one teammate at a time.
+          </p>
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-6 mt-14">
+            {TEAM.map((m) => (
+              <div key={m.name} className="flex flex-col items-center text-center">
+                <div className="w-20 h-20 rounded-full overflow-hidden ring-1 ring-pat-terra-200 bg-pat-paper">
+                  <img src={m.img} alt={m.name} className="w-full h-full object-cover object-top" />
+                </div>
+                <div className="font-serif text-xl text-pat-ink mt-3 leading-none">{m.name}</div>
+                <div className="text-sm text-pat-ink-500 mt-1">{m.role}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Founding access / CTA */}
+      <section id="founding" className="px-4 py-24 bg-pat-terra text-pat-paper scroll-mt-20">
+        <div className="container mx-auto max-w-4xl text-center">
+          <Eyebrow color="slate">
+            <span className="w-2.5 h-2.5 rounded-full bg-pat-slate-400 mx-auto" />
+          </Eyebrow>
+          <div className="text-sm font-medium uppercase tracking-[0.18em] text-pat-terra-100 mb-8">Founding Access</div>
+          <motion.h2
+            className="font-serif text-5xl md:text-7xl leading-[0.95] tracking-tight"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, ease: "easeOut" }}
+          >
+            Let&apos;s get <span className="italic text-pat-slate-100">Patricia hired.</span>
+          </motion.h2>
+          <p className="text-xl md:text-2xl text-pat-terra-100 mt-8 max-w-2xl mx-auto leading-snug">
+            We&apos;re onboarding a limited founding group. Get an extended free run, earn credits for everyone you bring along, and a direct line to the team.
+          </p>
+
+          <div className="grid sm:grid-cols-3 gap-5 mt-12 text-left max-w-3xl mx-auto">
+            {[
+              ["Extended free access", "A long free run as a founding member, well beyond the standard trial."],
+              ["Referral credits", "Bring others onto the list and earn credits toward your own free time."],
+              ["Direct access", "A direct line to the team. Help shape Patricia."],
+            ].map(([label, desc]) => (
+              <div key={label} className="bg-pat-paper/10 border border-pat-paper/20 rounded-2xl p-6">
+                <p className="font-serif text-xl mb-1">{label}</p>
+                <p className="text-pat-terra-100 text-sm leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex justify-center mt-12">
+            <WaitlistForm variant="dark" />
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 p-6">
-        <div className="container mx-auto flex justify-between items-center">
-          <span className="text-white font-bold text-xl">HyperPerfect</span>
-          <div className="flex gap-8">
-            <Link
-              href="/help/terms-of-service"
-              className="text-gray-400 hover:text-white transition-colors"
-            >
+      <footer className="bg-pat-ink text-pat-paper px-4 py-10">
+        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-5">
+          <div className="flex items-center gap-3">
+            <img
+              src="/patricia/patricia-400.png"
+              alt="Patricia"
+              className="w-8 h-8 rounded-full object-cover object-top"
+            />
+            <span className="font-serif text-xl">Patricia</span>
+            <span className="text-pat-ink-500 text-sm">by HyperPerfect</span>
+          </div>
+          <div className="flex gap-8 items-center text-sm">
+            <Link href="/excel" className="text-pat-terra-200 hover:text-pat-paper transition-colors">
+              Using HyperPerfect for Excel?
+            </Link>
+            <Link href="/help/terms-of-service" className="text-pat-terra-200 hover:text-pat-paper transition-colors">
               Terms
             </Link>
-            <Link
-              href="/help/privacy-policy"
-              className="text-gray-400 hover:text-white transition-colors"
-            >
+            <Link href="/help/privacy-policy" className="text-pat-terra-200 hover:text-pat-paper transition-colors">
               Privacy
             </Link>
           </div>
         </div>
       </footer>
-
-      {/* Signup Modal */}
-      <SignupModal isOpen={isSignupOpen} onClose={() => setIsSignupOpen(false)} />
     </div>
   )
 }

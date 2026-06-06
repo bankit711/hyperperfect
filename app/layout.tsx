@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Work_Sans } from "next/font/google";
+import { Work_Sans, DM_Sans, DM_Serif_Display } from "next/font/google";
 import { GeistMono } from "geist/font/mono";
 import Script from "next/script";
 import "../styles/globals.css";
@@ -12,9 +12,29 @@ const workSans = Work_Sans({
   fallback: ['system-ui', 'Arial', 'sans-serif'],
 });
 
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  display: 'swap',
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-dm-sans',
+  fallback: ['system-ui', 'Arial', 'sans-serif'],
+});
+
+const dmSerif = DM_Serif_Display({
+  subsets: ["latin"],
+  display: 'swap',
+  weight: ['400'],
+  style: ['normal', 'italic'],
+  variable: '--font-dm-serif',
+  fallback: ['Georgia', 'serif'],
+});
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.hyperperfect.ai"),
   title: "HyperPerfect: Your AI Financial Analyst in Excel",
   description: "AI-powered financial modeling and Excel automation. Build auditable models, automate data analysis, and eliminate spreadsheet errors without lifting a finger.",
+  // Site-wide default favicon (HyperPerfect). The Patricia homepage overrides this in app/page.tsx.
+  icons: { icon: "/hyperperfect-favicon.ico" },
 };
 
 export default function RootLayout({
@@ -44,7 +64,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${workSans.variable} ${GeistMono.variable} font-sans`}>
+      <body className={`${workSans.variable} ${dmSans.variable} ${dmSerif.variable} ${GeistMono.variable} font-sans`}>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-BYW8TCVBDR"
           strategy="afterInteractive"
