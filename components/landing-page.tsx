@@ -210,6 +210,40 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Testimonial */}
+      <section className="px-4 py-20 md:py-24 bg-pat-paper2/50 border-t border-pat-terra-100">
+        <div className="container mx-auto max-w-3xl">
+          <div className="text-sm font-medium uppercase tracking-[0.18em] text-pat-terra-600 mb-6">
+            From a founding member
+          </div>
+          <motion.figure
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, ease: "easeOut" }}
+          >
+            <span aria-hidden className="block font-serif text-8xl leading-none text-pat-terra-200 select-none -mb-4">
+              &ldquo;
+            </span>
+            <blockquote className="font-serif text-2xl md:text-[1.75rem] leading-snug tracking-tight text-pat-ink">
+              Honestly <span className="italic text-pat-terra-600">better than any AI I&apos;ve ever used</span>,
+              including Claude. It&apos;s essentially{" "}
+              <span className="italic text-pat-terra-600">replaced a reporting manager, a sales assistant, and a
+              personal assistant</span>. I run four companies, and it&apos;s cut my workload down substantially.
+              The memory is <span className="italic text-pat-terra-600">crazy good</span> and it keeps getting
+              better the more I feed it.
+            </blockquote>
+            <figcaption className="mt-8 flex items-center gap-3">
+              <span className="font-serif text-xl text-pat-ink">Matt</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-pat-terra-500" />
+              <span className="text-sm uppercase tracking-[0.14em] text-pat-ink-500">
+                CEO &amp; Serial Entrepreneur
+              </span>
+            </figcaption>
+          </motion.figure>
+        </div>
+      </section>
+
       {/* Problem */}
       <section className="px-4 py-24 border-t border-pat-terra-100">
         <div className="container mx-auto max-w-5xl">
