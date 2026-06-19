@@ -1,5 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  // Patricia / Grace tokens (pat-* colors, serif/dm fonts, radii, shadows) come from the
+  // shared design system, the single source of truth also consumed by the ai-assistant app.
+  presets: [require("./design-system/tailwind-preset.cjs")],
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
@@ -15,34 +18,12 @@ module.exports = {
     },
     extend: {
       fontFamily: {
+        // Patricia families (serif, dm) come from the preset; these are website-only extras.
         sans: ['var(--font-work-sans)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-geist-mono)', 'ui-monospace', 'monospace'],
-        serif: ['var(--font-dm-serif)', 'Georgia', 'serif'],
-        dm: ['var(--font-dm-sans)', 'system-ui', 'sans-serif'],
       },
       colors: {
-        // Patricia personal-assistant palette (matches patricia.hyperperfect.ai)
-        pat: {
-          paper: '#FCF7F0',
-          paper2: '#F5EAD9',
-          terra: {
-            DEFAULT: '#A84A2F',
-            600: '#C9694A',
-            500: '#E08868',
-            200: '#F2C9B0',
-            100: '#FAEDE2',
-          },
-          slate: {
-            DEFAULT: '#5B91A8',
-            400: '#7DAEC2',
-            100: '#CFE3EC',
-          },
-          ink: {
-            DEFAULT: '#2A1A14',
-            700: '#4A352B',
-            500: '#7A6357',
-          },
-        },
+        // HyperPerfect-Excel product identity (separate brand from Patricia).
         brand: {
           DEFAULT: '#1a7bff',
           hover: '#1565d8',
@@ -76,18 +57,9 @@ module.exports = {
           pink: '#E05E7E',
         },
       },
-      borderRadius: {
-        sm: '6px',
-        DEFAULT: '8px',
-        md: '8px',
-        lg: '12px',
-        full: '9999px',
-      },
+      // Radii and the shared greyscale shadows (card/card-hover/input/hero) now come from
+      // the preset. Only the brand-blue glow is website-specific and stays here.
       boxShadow: {
-        card: '0 1px 3px rgba(0, 0, 0, 0.08)',
-        'card-hover': '0 4px 12px rgba(0, 0, 0, 0.1)',
-        input: '0 2px 8px rgba(0, 0, 0, 0.06)',
-        hero: '0 25px 60px -12px rgba(0, 0, 0, 0.25)',
         'button-glow': '0 0 20px rgba(26, 123, 255, 0.3)',
       },
       keyframes: {

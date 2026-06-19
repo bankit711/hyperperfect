@@ -1,0 +1,9 @@
+{
+  "pkg": "@hyperperfect/design-system",
+  "globalName": "PatriciaDS",
+  "projectId": "57eda2c3-bf6f-4217-95d0-376f31e7334c",
+  "shape": "package",
+  "buildCmd": "npm run build",
+  "cssEntry": "./dist/styles.css",
+  "readmeHeader": ".design-sync/conventions.md"
+}

@@ -1,0 +1,12 @@
+/**
+ * Compiled stylesheet for the design system. Running `npm run build:css` processes the
+ * Tailwind utilities the primitives use (against the shared preset) into dist/styles.css,
+ * which is the CSS the Claude Design bundle and any non-Tailwind consumer load.
+ */
+/* Brand families. The host apps load these via next/font (website) and a Google Fonts
+   link (app); the synced bundle pulls them from the same CDN so designs render on-brand. */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

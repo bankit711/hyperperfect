@@ -1,0 +1,43 @@
+{
+  "name": "@hyperperfect/design-system",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Patricia / Grace design system: canonical tokens and React primitives shared by the HyperPerfect website and synced to Claude Design.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./tailwind-preset": "./tailwind-preset.cjs",
+    "./tokens.json": "./src/tokens/tokens.json",
+    "./styles.css": "./dist/styles.css"
+  },
+  "files": ["dist", "tailwind-preset.cjs", "src/tokens/tokens.json"],
+  "scripts": {
+    "build": "vite build && tsc --emitDeclarationOnly --outDir dist && npm run build:css",
+    "build:css": "tailwindcss -c ./tailwind.config.cjs -i ./src/styles.css -o ./dist/styles.css --minify",
+    "emit:app-css": "node scripts/emit-app-css.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.3.6",
+    "typescript": "^5.3.3",
+    "vite": "^5.4.11",
+    "vite-plugin-dts": "^4.3.0"
+  }
+}
