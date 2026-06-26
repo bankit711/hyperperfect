@@ -16,10 +16,86 @@ const TEAM = [
   { name: "Blake", role: "Proposals & Bids", img: "/grace/headshots/blake.png" },
 ]
 
+// Patricia's live integrations, grouped by category. Only list tools she
+// genuinely connects to. Logos are monochrome by default and reveal brand color
+// on hover (see the grid below). SVGs live in /public/patricia/integrations and
+// were sourced from the public Composio logo CDN (logos.composio.dev); Granola
+// and SharePoint came from the vendor / Composio share_point slug. `logo` is the
+// filename stem, or null when no distinct mark exists (the name renders as text).
+const INTEGRATIONS = [
+  {
+    category: "Microsoft 365",
+    tools: [
+      { name: "Outlook", logo: "outlook" },
+      { name: "Calendar", logo: "outlook_calendar" },
+      { name: "OneDrive", logo: "one_drive" },
+      { name: "SharePoint", logo: "sharepoint" },
+      { name: "Contacts", logo: "contacts" },
+    ],
+  },
+  {
+    category: "Google Workspace",
+    tools: [
+      { name: "Gmail", logo: "gmail" },
+      { name: "Calendar", logo: "googlecalendar" },
+      { name: "Drive", logo: "googledrive" },
+      { name: "Contacts", logo: "googlecontacts" },
+      { name: "Tasks", logo: "googletasks" },
+    ],
+  },
+  {
+    category: "CRM & Marketing",
+    tools: [
+      { name: "HubSpot", logo: "hubspot" },
+      { name: "Salesforce", logo: "salesforce" },
+      { name: "Brevo", logo: "brevo" },
+      { name: "Apollo", logo: "apollo" },
+      { name: "LinkedIn", logo: "linkedin" },
+    ],
+  },
+  {
+    category: "Engineering",
+    tools: [
+      { name: "GitHub", logo: "github" },
+      { name: "Linear", logo: "linear" },
+      { name: "Neon", logo: "neon" },
+    ],
+  },
+  {
+    category: "Project Management",
+    tools: [
+      { name: "Asana", logo: "asana" },
+      { name: "Notion", logo: "notion" },
+    ],
+  },
+  {
+    category: "Meetings",
+    tools: [
+      { name: "Fireflies", logo: "fireflies" },
+      { name: "Granola", logo: "granola" },
+      { name: "Calendly", logo: "calendly" },
+    ],
+  },
+  {
+    category: "Messaging",
+    tools: [
+      { name: "Slack", logo: "slack" },
+      { name: "WhatsApp", logo: "whatsapp" },
+    ],
+  },
+  {
+    category: "Finance & Accounting",
+    tools: [
+      { name: "QuickBooks", logo: "quickbooks" },
+      { name: "Stripe", logo: "stripe" },
+    ],
+  },
+]
+
 const NAV_LINKS = [
   { href: "#what", label: "What she does" },
+  { href: "#connects", label: "What she connects to" },
   { href: "#learns", label: "How she learns" },
-  { href: "#day", label: "A day with Patricia" },
   { href: "#founding", label: "Founding access" },
 ]
 
@@ -157,7 +233,7 @@ export default function LandingPage() {
             >
               <Eyebrow color="terra">
                 <span className="w-2.5 h-2.5 rounded-full bg-pat-slate" />
-                Patricia · Personal Assistant
+                Patricia · Executive Assistant
               </Eyebrow>
               <h1 className="font-serif text-6xl md:text-7xl xl:text-8xl leading-[0.95] tracking-tight text-pat-ink mt-6">
                 Meet <span className="italic text-pat-terra-600">Patricia.</span>
@@ -166,7 +242,7 @@ export default function LandingPage() {
                 Your inbox, calendar, and follow-ups handled around the clock, and without the headache.
               </p>
               <p className="text-base text-pat-ink-500 tracking-wide mt-5">
-                A personal assistant for busy business owners and executives.
+                An executive assistant for busy business owners and executives, now reaching across the tools your whole business runs on.
               </p>
 
               <div id="waitlist" className="scroll-mt-28 mt-10">
@@ -198,7 +274,7 @@ export default function LandingPage() {
                 </div>
                 <div className="mt-5">
                   <div className="font-serif text-4xl text-pat-ink leading-none">Patricia</div>
-                  <div className="text-pat-terra-600 font-medium mt-2">Personal Assistant</div>
+                  <div className="text-pat-terra-600 font-medium mt-2">Executive Assistant</div>
                 </div>
                 <div className="flex justify-between text-sm text-pat-ink-500 mt-5 pt-4 border-t border-pat-terra-100">
                   <span>Reports to · You</span>
@@ -301,7 +377,7 @@ export default function LandingPage() {
           <Eyebrow>
             <span>02</span>
             <span className="h-px w-14 bg-pat-slate" />
-            <span>Your Personal Assistant</span>
+            <span>Your Executive Assistant</span>
           </Eyebrow>
           <motion.h2
             className="font-serif text-4xl md:text-5xl leading-[1.05] tracking-tight text-pat-ink mt-8 max-w-4xl"
@@ -312,26 +388,31 @@ export default function LandingPage() {
           >
             A new hire who is available at a moment&apos;s notice, around the clock, and never quits.
           </motion.h2>
+          <p className="font-serif text-2xl md:text-3xl text-pat-ink-500 leading-snug mt-8 max-w-3xl">
+            The executive assistant you&apos;ve always wanted, except powered by AI. Most of the time, you won&apos;t be able to tell.
+          </p>
 
-          <div className="grid md:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-20 mt-14">
+          <div className="grid md:grid-cols-2 gap-12 lg:gap-16 mt-14">
             {/* What she does */}
             <div>
               <div className="text-sm font-medium uppercase tracking-[0.18em] text-pat-slate mb-7">What she does</div>
               <div className="flex flex-col">
                 {[
-                  ["i.", "Inbox & calendar", ""],
-                  ["ii.", "Online tasks", "reservations, research, errands"],
-                  ["iii.", "Todos & follow-through", ""],
-                  ["iv.", "Drafts in your voice", ""],
+                  ["i.", "Calendar", "scheduling, logistics, meeting prep"],
+                  ["ii.", "Communications", "email triage, drafting, research"],
+                  ["iii.", "Organization", "task management, prioritization, filing"],
+                  ["iv.", "Personal concierge", "travel, reservations, online errands"],
+                  ["v.", "Projects & special tasks", "planning, research, execution"],
+                  ["vi.", "Recurring workflows", "data entry, analysis, reporting"],
                 ].map(([num, title, sub], idx, arr) => (
                   <div
                     key={title}
                     className={`flex gap-5 items-baseline py-4 ${idx < arr.length - 1 ? "border-b border-pat-ink/10" : ""}`}
                   >
                     <span className="font-serif italic text-xl text-pat-terra-600 w-8 shrink-0">{num}</span>
-                    <span className="font-serif text-2xl text-pat-ink">
-                      {title}
-                      {sub && <span className="font-dm text-base not-italic text-pat-ink-500"> — {sub}</span>}
+                    <span className="flex-1">
+                      <span className="font-serif text-2xl text-pat-ink">{title}</span>
+                      {sub && <span className="block font-dm text-base text-pat-ink-500 mt-1.5">{sub}</span>}
                     </span>
                   </div>
                 ))}
@@ -341,7 +422,7 @@ export default function LandingPage() {
             {/* Why she's different */}
             <div>
               <div className="text-sm font-medium uppercase tracking-[0.18em] text-pat-slate mb-7">Why she&apos;s different</div>
-              <div className="grid sm:grid-cols-2 gap-7">
+              <div className="flex flex-col gap-10">
                 {[
                   ["Reliable.", "Juggles an impressive number of tasks without dropping a single ball. Ever."],
                   ["Talented.", "Strong writer, tech fluent, and deeply knowledgeable about your world."],
@@ -358,7 +439,7 @@ export default function LandingPage() {
           </div>
 
           <p className="font-serif italic text-2xl text-pat-terra-600 mt-14 pt-8 border-t border-pat-ink/10">
-            The leverage of a personal assistant, at a fraction of the cost.
+            The leverage of an executive assistant, at a fraction of the cost.
           </p>
         </div>
       </section>
@@ -383,8 +464,8 @@ export default function LandingPage() {
 
           <div className="grid md:grid-cols-2 gap-7 mt-14">
             {[
-              ["i.", "She learns from the work itself.", "From every email, call, and meeting, Patricia picks up your customers, suppliers, employees, and the details that matter."],
-              ["ii.", "She builds a memory of your business.", "A custom understanding of how you operate, so she makes better decisions and gives you foresight you didn't have before."],
+              ["i.", "She learns from the work itself.", "From every email, call, and meeting, she picks up your customers, suppliers, and the details that matter. Prep for a call and she'll surface things from past conversations you'd long forgotten."],
+              ["ii.", "She builds a memory of your world.", "A custom understanding of how you operate, down to the personal details. She'll remember to buy your spouse a birthday present, and to book your favorite hotel in Chicago."],
             ].map(([num, title, body]) => (
               <div key={title} className="rounded-2xl bg-pat-paper2/60 border border-pat-terra-100 p-10">
                 <div className="font-serif italic text-5xl text-pat-terra-600">{num}</div>
@@ -396,6 +477,15 @@ export default function LandingPage() {
           <p className="font-serif italic text-xl md:text-2xl text-pat-terra-600 text-center mt-12">
             Every conversation teaches her more about your world.
           </p>
+          <div className="text-center mt-6">
+            <Link
+              href="/chief-of-staff"
+              className="inline-flex items-center gap-1.5 text-base font-medium text-pat-terra hover:text-pat-terra-600 transition-colors"
+            >
+              See how she grows into your chief of staff
+              <span aria-hidden>&rarr;</span>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -483,11 +573,66 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* The team / future */}
-      <section className="px-4 py-24 bg-pat-paper2/50 border-t border-pat-terra-100">
+      {/* Connects to your stack */}
+      <section id="connects" className="px-4 py-24 bg-pat-paper2/50 border-t border-pat-terra-100 scroll-mt-20">
         <div className="container mx-auto max-w-6xl">
           <Eyebrow>
             <span>06</span>
+            <span className="h-px w-14 bg-pat-slate" />
+            <span>Connected to Your Stack</span>
+          </Eyebrow>
+          <motion.h2
+            className="font-serif text-4xl md:text-5xl leading-[1.05] tracking-tight text-pat-ink mt-8 max-w-4xl"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, ease: "easeOut" }}
+          >
+            She works across the systems your business already runs on.
+          </motion.h2>
+          <p className="text-lg text-pat-ink-700 mt-5 max-w-2xl">
+            Patricia works inside your email, calendar, CRM, books, and the tools your team already runs on, so work moves end to end and not just in your inbox.
+          </p>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-12 mt-16">
+            {INTEGRATIONS.map((group) => (
+              <div key={group.category}>
+                <div className="font-serif italic text-xl text-pat-terra-600 min-h-[3.5rem]">{group.category}</div>
+                <div className="h-px w-10 bg-pat-ink/15 mt-3 mb-6" />
+                <ul className="flex flex-col gap-4">
+                  {group.tools.map((tool) => (
+                    <li key={tool.name} className="group flex items-center gap-2.5">
+                      {tool.logo ? (
+                        <img
+                          src={`/patricia/integrations/${tool.logo}.svg`}
+                          alt=""
+                          aria-hidden
+                          className="w-5 h-5 shrink-0 object-contain brightness-0 opacity-60 transition duration-200 group-hover:brightness-100 group-hover:opacity-100"
+                        />
+                      ) : (
+                        <span className="w-5 h-5 shrink-0" aria-hidden />
+                      )}
+                      <span className="font-dm text-lg text-pat-ink/60 transition-colors group-hover:text-pat-ink">
+                        {tool.name}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <p className="font-serif italic text-xl md:text-2xl text-pat-terra-600 text-center mt-16">
+            Select integrations. More added every week.
+          </p>
+        </div>
+      </section>
+
+      {/* The team / future */}
+      <section className="px-4 py-24 border-t border-pat-terra-100">
+        <div className="container mx-auto max-w-6xl">
+          <Eyebrow>
+            <span>07</span>
             <span className="h-px w-14 bg-pat-slate" />
             <span>The Future</span>
           </Eyebrow>
@@ -501,7 +646,7 @@ export default function LandingPage() {
             Patricia is the first hire. A whole team is ready when you are.
           </motion.h2>
           <p className="text-lg text-pat-ink-700 mt-5 max-w-2xl">
-            Same model, one role at a time. A full back office, hired one teammate at a time.
+            Patricia already spans your departments. Next, a specialist for each one: Penny in your books, Hank in payroll, Margo in your marketing stack. Same model, hired one teammate at a time.
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-6 mt-14">
