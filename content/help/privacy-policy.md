@@ -5,7 +5,7 @@ order: 12
 category: "Legal"
 ---
 
-**Last revised – Mar 2025**
+**Last revised – Jun 2026**
 
 HyperPerfect ("HyperPerfect," "we" or "us") is committed to protecting the privacy of its clients ("Client," "you" or "your"). This Privacy Policy explains how HyperPerfect collects, uses, and shares the personal information we collect from visitors to our website ("Website").
 
@@ -45,6 +45,9 @@ We and our third-party partners use tracking technologies such as cookies, web b
 - **Interaction Data** (pages visited, links clicked, frequency of visits)
 - **Location Data** (GPS coordinates, IP-based approximations)
 
+### Advertising and Conversion Measurement
+We use advertising pixels from platforms such as Reddit to measure how our marketing performs and to reach relevant audiences. When you submit a form on our Website, your email address may be hashed in your browser before it is shared with these advertising partners, who use it to match conversions to their own users. We do not share your plain-text email with these partners through this process. To opt out of this sharing, see Section 10.
+
 ### Managing Cookies
 You can manage your cookie preferences by:
 - Changing your browser settings to notify or block cookies
@@ -58,7 +61,7 @@ You can manage your cookie preferences by:
 We may share your personal information with:
 - **Third parties at your request**
 - **Service providers & business partners** (e.g., payment processors, analytics providers)
-- **Marketing partners**
+- **Marketing partners** (including advertising platforms such as Reddit, which receive hashed identifiers to measure conversions and target advertising)
 - **Aggregated or anonymized data recipients**
 
 Additionally, we may share information to comply with legal requirements, prevent fraud, with companies under HyperPerfect's corporate umbrella, or in case of a business sale or merger.
@@ -127,9 +130,9 @@ California residents have the right to:
 - Know the purpose of data collection
 - See a list of third parties with whom data is shared
 - Request data deletion (subject to legal exceptions)
-- Opt out of the sale of personal information
+- Opt out of the sale or sharing of personal information
 
-**HyperPerfect does not sell personal information.**
+**HyperPerfect does not sell personal information for money.** We do share hashed identifiers, such as a hashed email address, with advertising partners like Reddit to measure conversions and deliver advertising. California law treats this as "sharing" for cross-context behavioral advertising. To opt out of this sharing, email us at [help@hyperperfect.ai](mailto:help@hyperperfect.ai).
 
 To exercise your rights, contact us at: [help@hyperperfect.ai](mailto:help@hyperperfect.ai)
 

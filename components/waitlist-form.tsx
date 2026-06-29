@@ -74,6 +74,12 @@ export default function WaitlistForm({ variant = "paper" }: WaitlistFormProps) {
       fetch(WAITLIST_ENDPOINT, { method: "POST", body: formData, mode: "no-cors" }).catch(() => {})
     }
 
+    // Reddit Pixel conversion: report the waitlist signup for ad attribution.
+    // Pass the email explicitly so Reddit's advanced matching hashes the exact
+    // address (more reliable than auto-scraping the DOM field).
+    const rdt = (window as unknown as { rdt?: (...args: unknown[]) => void }).rdt
+    rdt?.("track", "SignUp", { email: trimmed })
+
     setSubmitted(true)
   }
 
