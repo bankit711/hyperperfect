@@ -79,9 +79,13 @@ export default function RootLayout({
         </Script>
         <Script id="reddit-pixel" strategy="afterInteractive">
           {`
-            !function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);
-            rdt('init','a2_j91lctwqcjgm');
-            rdt('track','PageVisit');
+            var hpTrackingEnabled = ['www.hyperperfect.ai','hyperperfect.ai'].includes(location.hostname);
+            try { if (localStorage.getItem('hp_disable_tracking') === '1') hpTrackingEnabled = false; } catch (e) {}
+            if (hpTrackingEnabled) {
+              !function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);
+              rdt('init','a2_j91lctwqcjgm');
+              rdt('track','PageVisit');
+            }
           `}
         </Script>
         {children}

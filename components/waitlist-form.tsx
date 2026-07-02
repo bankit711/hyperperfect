@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react"
 
+import { trackWaitlistSignup } from "@/lib/tracking"
+
 // Brevo subscription form serving the "Patricia Waitlist" list (id 20).
 // Posts no-cors (opaque response), so success is shown optimistically.
 const WAITLIST_ENDPOINT =
@@ -71,14 +73,13 @@ export default function WaitlistForm({ variant = "paper" }: WaitlistFormProps) {
       formData.append("locale", "en")
       formData.append("REFERRAL_CODE", code)
       formData.append("REFERRED_BY", referredBy)
-      fetch(WAITLIST_ENDPOINT, { method: "POST", body: formData, mode: "no-cors" }).catch(() => {})
+      // no-cors gives an opaque response: resolution confirms the request
+      // reached Brevo (the strongest signal available here), rejection means
+      // it never arrived, so no conversion is reported.
+      fetch(WAITLIST_ENDPOINT, { method: "POST", body: formData, mode: "no-cors" })
+        .then(() => trackWaitlistSignup(trimmed))
+        .catch(() => {})
     }
-
-    // Reddit Pixel conversion: report the waitlist signup for ad attribution.
-    // Pass the email explicitly so Reddit's advanced matching hashes the exact
-    // address (more reliable than auto-scraping the DOM field).
-    const rdt = (window as unknown as { rdt?: (...args: unknown[]) => void }).rdt
-    rdt?.("track", "SignUp", { email: trimmed })
 
     setSubmitted(true)
   }
